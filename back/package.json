@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index",
-    "lint": "eslint . --quiet --fix --cache",
+    "lint": "eslint \"**/*.{js}\" --quiet --fix --cache",
     "prepare": "cd .. && husky install back/.husky"
   },
   "author": "",
