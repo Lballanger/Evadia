@@ -1,0 +1,25 @@
+{
+  "name": "on-demenage",
+  "version": "1.0.0",
+  "description": "Projet apothéose",
+  "main": "index.js",
+  "scripts": {
+    "lint:back": "cd ./back && npm run lint",
+    "lint:front": "cd ./front && npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Uther/projet-15-on-demenage.git"
+  },
+  "keywords": [
+    "React",
+    "NodeJS",
+    "Express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Uther/projet-15-on-demenage/issues"
+  },
+  "homepage": "https://github.com/O-clock-Uther/projet-15-on-demenage#readme"
+}
