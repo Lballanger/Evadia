@@ -13,9 +13,9 @@ const Footer = () => (
       <NavLink className="footer__button" type="button" to="/about">
         A propos
       </NavLink>
-      <button className="footer__button" type="button">
+      <NavLink className="footer__button" type="button" to="/legals">
         Mentions légales
-      </button>
+      </NavLink>
     </div>
   </footer>
 );
