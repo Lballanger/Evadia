@@ -4,7 +4,7 @@ const searchController = require('./controllers/searchController');
 
 const router = Router();
 
-// GET /search
+// /search
 
 /**
  * Responds with one city from database
@@ -27,5 +27,9 @@ router.get('/api/search/random', searchController.findRandom);
  * @summary Responds with a list of cities matching the criteria
  */
 router.post('/api/search/criteria', searchController.findByCriteria);
+
+// /city
+
+// /auth
 
 module.exports = router;
