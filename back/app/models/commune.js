@@ -2,6 +2,7 @@ const client = require('../database');
 
 class Commune {
   constructor(obj = {}) {
+    // eslint-disable-next-line guard-for-in
     for (const propName in obj) {
       this[propName] = obj[propName];
     }
