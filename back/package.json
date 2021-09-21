@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index",
-    "lint": "eslint \"**/*.{js}\" --quiet --fix --cache",
+    "lint": "eslint \"**/*.js\" --quiet --fix --cache",
     "prepare": "cd .. && husky install back/.husky"
   },
   "author": "",
@@ -26,6 +26,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1"
   }
 }
