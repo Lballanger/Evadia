@@ -19,7 +19,7 @@ router.get('/api/search/city', searchController.findByName);
  * @group Search
  * @summary Responds with one random city from database
  */
-router.get('/api/search/random', searchController.findRandom);
+router.get('/api/search/random', searchController.randomSearch);
 /**
  * Responds with a list of cities matching the criteria
  * @route GET /search/criteria
