@@ -5,6 +5,8 @@ import Contact from '../Contact';
 import About from '../About';
 import Legals from '../Legals';
 import Criteria from '../Criteria';
+import Results from '../Results';
+import Details from '../Details';
 
 import './index.scss';
 
@@ -24,6 +26,12 @@ const App = () => (
     </Route>
     <Route path="/criteria" exact>
       <Criteria />
+    </Route>
+    <Route path="/results" exact>
+      <Results />
+    </Route>
+    <Route path="/details" exact>
+      <Details />
     </Route>
   </Switch>
 );

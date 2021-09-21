@@ -1,0 +1,35 @@
+.details__card{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+    justify-content: center;
+	align-content: center;
+    border: solid black 2px;
+    background-color: rgb(255, 241, 241);
+    height: 100vh;
+
+    &__titre{
+        display: flex;
+        justify-content: space-around;
+        border-bottom: solid black 2px;
+
+
+        &__p{
+            margin: 1rem;
+        }
+    }
+
+    &__button{
+        border:none;
+        text-decoration: none;
+        background-color: rgb(206, 196, 52);
+        cursor: pointer;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    &__main__p{
+        margin: 1.5rem;
+    }
+}

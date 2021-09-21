@@ -1,3 +1,30 @@
+.criteria{
+    max-height: 100vh;
+
+    &__h1{
+        font-size: 2rem;
+        font-style: bold;
+        text-align: center;
+        margin: 3rem;
+    }
+
+    &__inputs{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: stretch;
+        align-content: space-around;
+    }
+    &__submit{
+        text-align: center;
+        margin: 2rem;
+    }
+
+}
+
+
+
 /** Switch
  -------------------------------------*/
 
