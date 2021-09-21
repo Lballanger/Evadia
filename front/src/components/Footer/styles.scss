@@ -1,0 +1,25 @@
+.footer {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: flex-end;
+	align-content: space-around;
+
+    &__display{
+        display: flex;
+        width: auto;
+        height: 3rem;
+        align-content: space-around;
+        font-size: 1.2rem;
+        margin-right: 1.5rem;
+        text-align: center;
+    }
+
+    &__button{
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+    }
+}
