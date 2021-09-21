@@ -3,3 +3,4 @@ front/dist
 back/node_modules
 
 */.env
+back/sqitch.conf
