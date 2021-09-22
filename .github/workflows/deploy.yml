@@ -40,4 +40,5 @@ jobs:
           source ~/.nvm/nvm.sh
           npm install
           npm run build
+          echo 'Deployed successfully to Digital Ocean server'
     
