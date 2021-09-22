@@ -30,7 +30,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
       with:
         source: '.'
-        cache: 'var/www/on-demenage'
+        target: '/var/www/on-demenage'
         
     - name: Executing remote command
       uses: appleboy/ssh-action@master
