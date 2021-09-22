@@ -22,7 +22,7 @@ jobs:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
+        KEY: ${{ secrets.KEY }}
       with:
         source: '.'
         target: '/var/www/on-demenage'
@@ -33,7 +33,7 @@ jobs:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
+        KEY: ${{ secrets.KEY }}
         script: |
           cd /var/www/on-demenage/front
           export NVM_DIR=~/.nvm
