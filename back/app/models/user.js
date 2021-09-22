@@ -12,6 +12,20 @@ class User {
     }
   }
 
+  static async getById(id) {
+    try {
+      const result = await client.query('SELECT * FROM users WHERE id = $1', [
+        id,
+      ]);
+      if (result.rows.length === 0) {
+        return null;
+      }
+      return new User(result.rows[0]);
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
   static async getByEmail(email) {
     try {
       const { rows } = await client.query(
