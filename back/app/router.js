@@ -2,6 +2,9 @@ const { Router } = require('express');
 
 const searchController = require('./controllers/searchController');
 
+const communeSchema = require('./schemas/commune');
+const { validateQuery } = require('./services/validator');
+
 const router = Router();
 
 // /search
@@ -12,7 +15,11 @@ const router = Router();
  * @group Search
  * @summary Responds with one city from database
  */
-router.get('/api/search/city', searchController.findByName);
+router.get(
+  '/api/search/city',
+  validateQuery(communeSchema),
+  searchController.findByName
+);
 /**
  * Responds with one random city from database
  * @route GET /search/random
