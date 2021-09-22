@@ -21,7 +21,6 @@ jobs:
       env:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.KEY }}
       with:
         source: '.'
@@ -32,7 +31,6 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.KEY }}
         script: |
           cd /var/www/on-demenage/front
