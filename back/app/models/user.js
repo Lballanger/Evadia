@@ -27,11 +27,11 @@ class User {
     }
   }
 
-  static async create(user) {
+  async create() {
     try {
       const { rows } = await client.query(
         'INSERT INTO user (firstname, lastname, email, password, role) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-        [user.firstname, user.lastname, user.email, user.password, user.role]
+        [this.firstname, this.lastname, this.email, this.password, this.role]
       );
       return new User(rows[0]);
     } catch (err) {
