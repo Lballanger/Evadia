@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const { compare } = require('../services/bcryptService');
+const { compare, hash } = require('../services/bcryptService');
 const jwtService = require('../services/jwtService');
 
 const authController = {
@@ -18,6 +18,32 @@ const authController = {
         firstname: user.firstname,
         lastname: user.lastname,
         role: user.role,
+        token,
+      });
+    } catch (error) {
+      return response.status(500).json(error.message);
+    }
+  },
+  register: async (request, response) => {
+    const { email, password, firstname, lastname } = request.body;
+    try {
+      const user = await User.getByEmail(email);
+      if (user) return response.status(400).json('User already exists');
+      const hashedPassword = await hash(password);
+      const newUser = await User.create({
+        email,
+        password: hashedPassword,
+        firstname,
+        lastname,
+        role: 'user',
+      });
+      const token = await jwtService.sign({ id: newUser.id });
+      return response.json({
+        id: newUser.id,
+        email: newUser.email,
+        firstname: newUser.firstname,
+        lastname: newUser.lastname,
+        role: newUser.role,
         token,
       });
     } catch (error) {
