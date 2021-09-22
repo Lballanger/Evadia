@@ -9,9 +9,13 @@
   margin-right: 100px;
 }
 
+.list__results {
+   width: 100%;
+  padding: 0 2rem;
+}
 
 .result__button {
-  width: 90%;
+  width: 100%;
   height: 5rem;
   display: flex;
 	flex-direction: row;
@@ -28,3 +32,4 @@
     justify-content: fcenter;
     align-items: center;
     }
+    

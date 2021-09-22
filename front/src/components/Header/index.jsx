@@ -5,12 +5,18 @@ import './styles.scss';
 
 const Header = () => (
   <header className="header">
-    <NavLink className="header__logo__button" type="button" to="/">
+    <NavLink
+      className="header__logo__button"
+      type="button"
+      to="/"
+      style={{ textDecoration: 'none' }}
+    >
       <img src={logo} className="header__logo" alt="Logo Evadia" />
+      <h1 className="header__h1">
+        <strong>Evadia</strong>
+      </h1>
     </NavLink>
-    <h1 className="header__h1">
-      <strong>Evadia</strong>
-    </h1>
+
     <div className="header__button__display">
       <button className="header__button" type="button">
         Connexion
