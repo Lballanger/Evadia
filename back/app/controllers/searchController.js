@@ -10,7 +10,7 @@ const searchController = {
    */
   findByName: async (request, response) => {
     try {
-      const { name } = request.params;
+      const { name } = request.body.query;
       const commune = await Commune.findByName(name);
       response.json(commune);
     } catch (error) {
@@ -23,10 +23,10 @@ const searchController = {
    * Express middleware sending a random common to the browser
    * @route /api/search/random
    * @method GET
-   * @param {Request} request
+   * @param {_} request
    * @param {Response} response
    */
-  randomSearch: async (request, response) => {
+  randomSearch: async (_, response) => {
     try {
       const commune = await Commune.randomSearch();
       response.json(commune);
