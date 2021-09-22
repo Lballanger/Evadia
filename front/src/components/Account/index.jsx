@@ -31,6 +31,12 @@ const Account = () => (
     <Accordion />
     <Accordion />
 
+    <div className="account__delete">
+      <button className="account__delete__btn" type="button">
+        Supprimer mon compte
+      </button>
+    </div>
+
     <Footer />
   </>
 );

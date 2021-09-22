@@ -2,7 +2,6 @@
 
     &__avatar{
 
-
         &__img{
             width: 20%;
             margin-bottom: 1.5rem;
@@ -17,9 +16,9 @@
 
     &__infos{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         background-color: white;
-        width: 100%;
+        width: 80%;
         padding: 1rem;
         margin: 0 auto;
 
@@ -33,13 +32,36 @@
             padding: 1rem;
             border-radius: 20px;
         }
+
+        &__ul{
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__li{
+            margin-left: 2rem;
+        }
     }
 
-    &__infos__ul{
+    &__delete{
         display: flex;
-        flex-direction: column;
+        justify-content: center;
 
+        &__btn{
+            border:none;
+            text-decoration: none;
+            background-color: rgb(226, 43, 43);
+            cursor: pointer;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-radius: 20px;
+        }
     }
+
+
+
+
 
 
 }

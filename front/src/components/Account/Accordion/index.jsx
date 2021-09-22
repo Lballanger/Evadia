@@ -4,10 +4,7 @@ import './styles.scss';
 const Accordion = () => {
   const accordionData = {
     title: 'Favoris',
-    content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis sapiente
-      laborum cupiditate possimus labore, hic temporibus velit dicta earum
-      suscipit commodi eum enim atque at? Et perspiciatis dolore iure
-      voluptatem.`,
+    content: `Paris`,
   };
 
   const { title, content } = accordionData;
@@ -20,7 +17,11 @@ const Accordion = () => {
             <div>{title}</div>
             <div>+</div>
           </div>
-          <div className="accordion__content">{content}</div>
+          <div className="accordion__content">
+            <ul className="accordion__content__ul">
+              <li className="accordion__content__li">{content}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </>

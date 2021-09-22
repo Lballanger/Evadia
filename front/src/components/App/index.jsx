@@ -9,9 +9,10 @@ import Results from '../Results';
 import Details from '../Details';
 import Connexion from '../Connexion';
 import Account from '../Account';
-import Inscription from '../Inscritption';
+import Inscription from '../Inscription';
 
 import './index.scss';
+import NewPassword from '../NewPassword';
 
 const App = () => (
   <Switch>
@@ -44,6 +45,9 @@ const App = () => (
     </Route>
     <Route path="/inscription" exact>
       <Inscription />
+    </Route>
+    <Route path="/newpassword" exact>
+      <NewPassword />
     </Route>
   </Switch>
 );

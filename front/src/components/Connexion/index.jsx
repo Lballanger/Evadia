@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 
@@ -30,9 +31,14 @@ const Connexion = () => (
         <div className="connexion__form__submit">
           <button type="submit">Se connecter</button>
         </div>
-        <div className="connexion__form__forgottenPassword">
+        <NavLink
+          className="connexion__form__forgottenPassword"
+          type="button"
+          to="/NewPassword"
+          style={{ textDecoration: 'none' }}
+        >
           Mot de passe oublié
-        </div>
+        </NavLink>
       </form>
     </div>
     <Footer />
