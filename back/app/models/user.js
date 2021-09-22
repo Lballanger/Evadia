@@ -50,6 +50,15 @@ class User {
       throw new Error(err);
     }
   }
+
+  async delete() {
+    try {
+      await client.query('DELETE FROM user WHERE id = $1', [this.id]);
+      return true;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 module.exports = User;
