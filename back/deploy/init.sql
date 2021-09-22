@@ -3,10 +3,10 @@
 BEGIN;
 
 CREATE TABLE commune (
-    code_insee INT PRIMARY KEY,
-    code_departement INT,
-    code_postal INT[],
-    code_region INT,
+    code_insee TEXT PRIMARY KEY,
+    code_departement TEXT,
+    code_postal TEXT[],
+    code_region TEXT,
     city_name TEXT,
     longitude FLOAT,
     latitude FLOAT,
