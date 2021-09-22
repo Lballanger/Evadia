@@ -15,4 +15,15 @@ CREATE TABLE private.commune (
     population INT
 );
 
+CREATE TABLE private.school (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT,
+    coordinates POINT,
+    commune_code TEXT NOT NULL REFERENCES private.commune(code_insee),
+    status TEXT,
+    address TEXT,
+    zip_code TEXT,
+    type TEXT
+);
+
 COMMIT;
