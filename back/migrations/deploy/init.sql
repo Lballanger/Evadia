@@ -2,7 +2,9 @@
 
 BEGIN;
 
-CREATE TABLE commune (
+CREATE SCHEMA private;
+
+CREATE TABLE private.commune (
     code_insee TEXT PRIMARY KEY,
     code_departement TEXT,
     code_postal TEXT[],

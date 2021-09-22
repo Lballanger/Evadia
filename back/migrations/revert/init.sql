@@ -2,6 +2,8 @@
 
 BEGIN;
 
-DROP TABLE commune;
+DROP TABLE private.commune;
+
+DROP SCHEMA private;
 
 COMMIT;

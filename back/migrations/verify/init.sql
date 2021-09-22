@@ -2,6 +2,6 @@
 
 BEGIN;
 
-SELECT * FROM commune WHERE false;
+SELECT * FROM private.commune WHERE false;
 
 ROLLBACK;
