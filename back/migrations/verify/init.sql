@@ -3,5 +3,6 @@
 BEGIN;
 
 SELECT * FROM private.commune WHERE false;
+SELECT * FROM private.school WHERE false;
 
 ROLLBACK;
