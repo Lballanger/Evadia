@@ -12,6 +12,7 @@ const Account = () => (
         <img
           className="account__avatar__img"
           src="https://www.impressions-languedoc.eu/1967-large_default/dark-vador-casque.jpg"
+          alt="dark vador"
         />
       </div>
       <div className="account__infos">

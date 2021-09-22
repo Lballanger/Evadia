@@ -1,0 +1,62 @@
+.inscription {
+  text-align: center;
+
+  &__title {
+    font-size: large;
+    font-weight: bold;
+  }
+
+  &__form {
+    padding-top: 50px;
+  }
+
+  &__form__lastname {
+    margin-bottom: 30px;
+  }
+
+  &__form__firstname {
+    margin-bottom: 30px;
+  }
+
+  &__form__city {
+    margin-bottom: 30px;
+  }
+
+  &__form__email {
+    margin-bottom: 30px;
+  }
+
+  &__form__password {
+    margin-bottom: 30px;
+  }
+  
+  &__form__confirm {
+    margin-bottom: 10px;
+  }
+  
+  &__form__readLegals {
+    margin-bottom: 30px;
+  }
+
+  &__form__readLegals__title {
+    margin-left: 5px;
+    font-size: small;
+  }
+
+  &__form__readLegals__link {
+    margin-left: 5px;
+  }
+
+  &__form__alreadyAccount {
+    margin-bottom: 15px;
+    font-size: smaller;
+  }
+
+  &__form__alreadyAccount__link {
+    margin-left: 5px;
+  }
+
+  &__form__alreadyAccount__submit {
+    margin-bottom: 80px;
+  }
+}

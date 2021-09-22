@@ -34,17 +34,37 @@ const Inscription = () => (
           <p>Confirmation du mot de passe</p>
           <input type="password" />
         </div>
-        <div className="inscritpion__form__readLegals">
+        <div className="inscription__form__readLegals">
           <input
             className="inscription__form__readLegals__checkbox"
             type="checkbox"
           />
           <span className="inscription__form__readLegals__title">
             J'ai lu les
-            <NavLink className="footer__button" type="button" to="/legals">
+            <NavLink
+              className="inscription__form__readLegals__link"
+              type="button"
+              to="/legals"
+            >
               CGU
             </NavLink>
           </span>
+        </div>
+
+        <div className="inscription__form__alreadyAccount">
+          <span className="inscription__form__alreadyAccount__title">
+            J'ai déjà un compte,
+          </span>
+          <NavLink
+            className="inscription__form__alreadyAccount__link"
+            type="button"
+            to="/connexion"
+          >
+            Je me connecte
+          </NavLink>
+        </div>
+        <div className="inscription__form__alreadyAccount__submit">
+          <button type="submit">S'inscrire</button>
         </div>
       </form>
     </div>
