@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Footer from '../Footer';

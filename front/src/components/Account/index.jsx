@@ -4,7 +4,6 @@ import Footer from '../Footer';
 import Accordion from './Accordion';
 import './styles.scss';
 
-5;
 const Account = () => (
   <>
     <Header />
