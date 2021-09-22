@@ -9,7 +9,7 @@ const Homepage = () => (
   <>
     <Header />
     <div className="homepage__container">
-      <h2 className="homepage__container__h2">Evadez-vous</h2>
+      <h1 className="homepage__container__h1">Evadez-vous</h1>
       <p className="homepage__container__p">
         Le Lorem Ipsum est simplement du faux texte employé dans la composition
         et la mise en page avant impression. Le Lorem Ipsum est le faux texte
