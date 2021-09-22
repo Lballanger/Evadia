@@ -6,6 +6,37 @@
     }
 
     &__p{
-        width: 80%;
+        text-align: center;
+    }
+
+    &__search{
+        display: flex;
+        flex-direction: column;
+        margin: 2rem;
+
+        &__link{
+            padding: 2rem;
+            margin-bottom: 3.2rem;
+            border: black 2px solid;
+            background-color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            
+
+            &__button{
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+
+        &__link:hover{
+            background-color: rgb(75, 192, 137);
+        }
+    }
+}
+
+@media screen and (max-width: 730px){
+    .homepage__container__p{
+        visibility:hidden;
     }
 }

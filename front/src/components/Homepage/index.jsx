@@ -12,47 +12,42 @@ const Homepage = () => (
     <div className="homepage__container">
       <h1 className="homepage__container__h1">Evadez-vous</h1>
       <p className="homepage__container__p">
-        Le Lorem Ipsum est simplement du faux texte employé dans la composition
-        et la mise en page avant impression. Le Lorem Ipsum est le faux texte
-        standard de depuis les années 1500, quand un imprimeur anonyme assembla
-        ensemble des morceaux de texte pour réaliser un livre spécimen de
-        polices de texte. Il n'a pas fait que survivre cinq siècles, siècles,
-        mais s'est aussi adapté à la bureautique informatique, sans contenu n'en
-        soit modifié. Il a été popularisé dans les années 1960 grâce à la vente
-        de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus
-        récemment, par son inclusion dans des applications de mise en page de
-        texte, comme Aldus PageMaker.
+Trouvez la ville de vos rêves pour un déménagement, un week-end, et bien plus encore !
       </p>
       <div className="homepage__container__search">
-        <div className="homepage__container__search__random">
+
           <NavLink
-            className="homepage__container__search__random__button"
+            className="homepage__container__search__link__button"
             type="button"
             to="/random"
           >
-            Recherche aléatoire
+           <div className="homepage__container__search__link">
+              Recherche aléatoire
+            </div>
           </NavLink>
-        </div>
-
-        <div className="homepage__container__search__city">
+      
           <NavLink
-            className="homepage__container__search__city__button"
+            className="homepage__container__search__link__button"
             type="button"
             to="/details"
           >
-            Recherche par nom de ville
+            <div className="homepage__container__search__link">
+              Recherche par nom de ville
+            </div>
           </NavLink>
-        </div>
 
-        <div className="homepage__container__search__criteria">
+
+
           <NavLink
-            className="homepage__container__search__criteria__button"
+            className="homepage__container__search__link__button"
             type="button"
             to="/criteria"
           >
-            Recherche par critères
+            <div className="homepage__container__search__link">
+              Recherche par critères
+            </div>
           </NavLink>
-        </div>
+
       </div>
     </div>
     <Footer />
