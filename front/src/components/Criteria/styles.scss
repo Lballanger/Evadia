@@ -1,0 +1,66 @@
+.criteria{
+    max-height: 100vh;
+
+    &__h1{
+        font-size: 2rem;
+        font-style: bold;
+        text-align: center;
+        margin: 3rem;
+    }
+
+    &__inputs{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: stretch;
+        align-content: space-around;
+    }
+    &__submit{
+        text-align: center;
+        margin: 2rem;
+    }
+
+}
+
+
+
+/** Switch
+ -------------------------------------*/
+
+ .switch input {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  /**
+   * 1. Adjust this to size
+   */
+  
+  .switch {
+    display: inline-block;
+    font-size: 20px; /* 1 */
+    height: 1em;
+    width: 2em;
+    background: rgb(255, 255, 255);
+    border-radius: 1em;
+  }
+  
+  .switch div {
+    height: 1em;
+    width: 1em;
+    border-radius: 1em;
+    background: rgb(60, 105, 250);
+    box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
+    -webkit-transition: all 300ms;
+       -moz-transition: all 300ms;
+            transition: all 300ms;
+  }
+  
+  .switch input:checked + div {
+    -webkit-transform: translate3d(100%, 0, 0);
+       -moz-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+            background: rgb(255, 105, 105);
+  }
+  

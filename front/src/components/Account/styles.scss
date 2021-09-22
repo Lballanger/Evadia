@@ -1,0 +1,67 @@
+.account{
+
+    &__avatar{
+
+        &__img{
+            width: 20%;
+            margin-bottom: 1.5rem;
+        }
+    
+        &__display{
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+
+    &__infos{
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        width: 80%;
+        padding: 1rem;
+        margin: 0 auto;
+
+        &__edit{
+            border:none;
+            text-decoration: none;
+            background-color: blueviolet;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 20px;
+        }
+
+        &__ul{
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__li{
+            margin-left: 2rem;
+        }
+    }
+
+    &__delete{
+        display: flex;
+        justify-content: center;
+
+        &__btn{
+            border:none;
+            text-decoration: none;
+            background-color: rgb(226, 43, 43);
+            cursor: pointer;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-radius: 20px;
+        }
+    }
+
+
+
+
+
+
+}
