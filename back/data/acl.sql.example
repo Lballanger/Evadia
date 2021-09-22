@@ -1,0 +1,11 @@
+BEGIN;
+
+-- password to be defined
+CREATE USER administrator WITH PASSWORD '';
+
+-- allows the use of the schema private to administrator
+GRANT USAGE ON SCHEMA private TO administrator;
+-- allow all privilege to the administrator
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA private TO administrator;
+
+COMMIT;

@@ -4,3 +4,4 @@ back/node_modules
 
 */.env
 back/sqitch.conf
+back/data/acl.sql
