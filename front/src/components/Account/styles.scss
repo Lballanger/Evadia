@@ -1,0 +1,13 @@
+.account{
+
+    &__infos{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__infos__ul{
+        display: flex;
+        flex-direction: column;
+
+    }
+}

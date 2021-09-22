@@ -7,6 +7,8 @@ import Legals from '../Legals';
 import Criteria from '../Criteria';
 import Results from '../Results';
 import Details from '../Details';
+import Connexion from '../Connexion';
+import Account from '../Account';
 
 import './index.scss';
 
@@ -32,6 +34,12 @@ const App = () => (
     </Route>
     <Route path="/details" exact>
       <Details />
+    </Route>
+    <Route path="/connexion" exact>
+      <Connexion />
+    </Route>
+    <Route path="/account" exact>
+      <Account />
     </Route>
   </Switch>
 );

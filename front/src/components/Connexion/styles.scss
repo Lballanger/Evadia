@@ -1,0 +1,37 @@
+.connexion {
+  text-align: center;
+
+  &__title {
+    font-size: large;
+    font-weight: bold;
+  }
+
+  &__form {
+    padding-top: 200px;
+  }
+
+  &__form__email {
+    margin-bottom: 80px;
+  }
+
+  &__form__password {
+    margin-bottom: 10px;
+  }
+  
+  &__form__remember {
+    margin-bottom: 50px;
+  }
+
+  &__form__remember__title {
+    font-size: small;
+  }
+
+  &__form__remember__checkbox {
+    margin-right: 3px;
+  }
+
+  &__form__forgottenPassword {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}

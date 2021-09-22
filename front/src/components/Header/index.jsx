@@ -18,9 +18,14 @@ const Header = () => (
     </NavLink>
 
     <div className="header__button__display">
-      <button className="header__button" type="button">
+      <NavLink
+        className="header__button"
+        type="button"
+        to="/connexion"
+        style={{ textDecoration: 'none' }}
+      >
         Connexion
-      </button>
+      </NavLink>
       <button className="header__button" type="button">
         Inscription
       </button>
