@@ -38,6 +38,18 @@ class User {
       throw new Error(err);
     }
   }
+
+  async update() {
+    try {
+      const { rows } = await client.query(
+        'UPDATE user SET firstname = $1, lastname = $2, password = $3, role = $4 WHERE id = $5 RETURNING *',
+        [this.firstname, this.lastname, this.password, this.role, this.id]
+      );
+      return new User(rows[0]);
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 module.exports = User;
