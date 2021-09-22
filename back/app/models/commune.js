@@ -22,7 +22,7 @@ class Commune {
   static async findByName(query) {
     try {
       const { rows } = await client.query(
-        'SELECT * FROM commune WHERE city_name = $1',
+        'SELECT * FROM commune WHERE code_insee = $1',
         [query]
       );
       return rows.map((row) => new Commune(row));
@@ -40,10 +40,8 @@ class Commune {
    */
   static async randomSearch() {
     try {
-      const id = Math.floor(Math.random() * (34095 - 1) + 1);
       const { rows } = await client.query(
-        'SELECT * FROM commune WHERE id=$1',
-        id
+        'SELECT * FROM commune ORDER BY RANDOM() LIMIT 1'
       );
       return rows.map((row) => new Commune(row));
     } catch (error) {
