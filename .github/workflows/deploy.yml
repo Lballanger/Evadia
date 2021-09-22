@@ -24,12 +24,10 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         KEY: ${{ secrets.KEY }}
         script: |
-          export NVM_DIR=~/.nvm
-          source ~/.nvm/nvm.sh
-          rm on-demenage
-          git clone git@github.com:O-clock-Uther/projet-15-on-demenage.git on-demenage
-          cd /on-demenage/front
+          cd ~/on-demenage
+          git pull
+          cd ~/on-demenage/front
           npm install && npm run build
-          cp /on-demenage/front/dist/* /var/www/on-demenage/
+          cp ~/on-demenage/front/dist/* /var/www/on-demenage/
           echo 'Deployed successfully to Digital Ocean server'
     
