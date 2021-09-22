@@ -1,8 +1,38 @@
 .account{
 
+    &__avatar{
+
+
+        &__img{
+            width: 20%;
+            margin-bottom: 1.5rem;
+        }
+    
+        &__display{
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+
     &__infos{
         display: flex;
         justify-content: space-around;
+        background-color: white;
+        width: 100%;
+        padding: 1rem;
+        margin: 0 auto;
+
+        &__edit{
+            border:none;
+            text-decoration: none;
+            background-color: blueviolet;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 20px;
+        }
     }
 
     &__infos__ul{
@@ -10,4 +40,6 @@
         flex-direction: column;
 
     }
+
+
 }

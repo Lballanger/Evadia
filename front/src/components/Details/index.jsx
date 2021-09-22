@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import Footer from '../Footer';
 import Header from '../Header';
 
@@ -10,7 +10,7 @@ const Details = () => (
     <Header />
     <div className="container">
       <button className="details__new__search__button" type="button">
-        Nouvelle recherche
+        Nouvelle recherche (ça doit être un menu burger ici)
       </button>
 
       <div className="details__card">

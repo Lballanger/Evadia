@@ -8,10 +8,12 @@ const Account = () => (
   <>
     <Header />
     <div className="account__container">
-      <div className="account__avatar">
-        <img src="https://www.impressions-languedoc.eu/1967-large_default/dark-vador-casque.jpg" />
+      <div className="account__avatar__display">
+        <img
+          className="account__avatar__img"
+          src="https://www.impressions-languedoc.eu/1967-large_default/dark-vador-casque.jpg"
+        />
       </div>
-
       <div className="account__infos">
         <ul className="account__infos__ul">
           <li className="account__infos__li">Nom</li>
@@ -25,6 +27,7 @@ const Account = () => (
       </div>
     </div>
 
+    <Accordion />
     <Accordion />
 
     <Footer />

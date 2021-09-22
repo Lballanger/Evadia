@@ -15,7 +15,7 @@
     margin: 2rem auto;
   }
   
-  .accordion-title {
+  .accordion__title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -23,17 +23,17 @@
     background-color: #21aeca;
   }
   
-  .accordion-title:hover {
+  .accordion__title:hover {
     background-color: #3ab4cc;
   }
   
-  .accordion-title,
-  .accordion-content {
+  .accordion__title,
+  .accordion__content {
     padding: 1rem;
   }
   
-  .accordion-content {
-    background-color: #39b9d2;
+  .accordion__content {
+    background-color: #d23979;
   }
   
   @media screen and (max-width: 700px) {

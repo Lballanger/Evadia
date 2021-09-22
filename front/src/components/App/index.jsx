@@ -9,6 +9,7 @@ import Results from '../Results';
 import Details from '../Details';
 import Connexion from '../Connexion';
 import Account from '../Account';
+import Inscription from '../Inscritption';
 
 import './index.scss';
 
@@ -40,6 +41,9 @@ const App = () => (
     </Route>
     <Route path="/account" exact>
       <Account />
+    </Route>
+    <Route path="/inscription" exact>
+      <Inscription />
     </Route>
   </Switch>
 );
