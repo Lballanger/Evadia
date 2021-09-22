@@ -1,11 +1,17 @@
 .criteria{
     max-height: 100vh;
+    background-color: rgba($color: #000000, $alpha: .5);
+    padding: 2rem;
+    border-radius: 20px;
 
     &__h1{
         font-size: 2rem;
         font-style: bold;
         text-align: center;
-        margin: 3rem;
+        margin: 2rem;
+        margin-top: 0rem;
+        padding-bottom: 1.5rem;
+        border-bottom: black solid 2px;
     }
 
     &__inputs{
@@ -15,12 +21,58 @@
         justify-content: space-around;
         align-items: stretch;
         align-content: space-around;
+
+        &__toggle{
+
+          &__1{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 3rem;
+          }
+
+          &__name{
+            padding-top: 1rem;
+          }
+        }
     }
     &__submit{
         text-align: center;
         margin: 2rem;
     }
 
+    &__slider{
+
+      &__1{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3rem;
+
+        &__name{
+          padding-top: 1rem;
+          text-align: center;
+        }
+      }
+    }
+
+    &__submit{
+      border:none;
+      text-decoration: none;
+      background-color: rgb(43, 226, 83);
+      cursor: pointer;
+      margin-bottom: 1rem;
+      margin-top: 5rem;
+      padding: 1rem;
+      border-radius: 20px;
+
+      &__btn{
+        width: 50%;
+        text-decoration: none;
+        color: inherit;
+      }
+      }
+      &__submit:hover{
+        background-color: rgb(123, 201, 46);
+    }
 }
 
 
@@ -39,11 +91,12 @@
   
   .switch {
     display: inline-block;
-    font-size: 20px; /* 1 */
+    font-size: 2rem; /* 1 */
     height: 1em;
     width: 2em;
     background: rgb(255, 255, 255);
     border-radius: 1em;
+    box-shadow: 0 0.1em 0.5em rgba(0,0,0,0.3);
   }
   
   .switch div {

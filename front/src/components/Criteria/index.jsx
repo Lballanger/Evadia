@@ -20,48 +20,55 @@ const Criteria = () => (
               <input type="checkbox" />
               <div />
             </label>
-            <span>Critère 1</span>
+            <span className="criteria__inputs__toggle__name">Critère 1</span>
           </div>
 
-          <div className="criteria__inputs__toggle__2">
+          <div className="criteria__inputs__toggle__1">
             <label className="switch">
               <input type="checkbox" />
               <div />
             </label>
-            <span>Critère 2</span>
+            <span className="criteria__inputs__toggle__name">Critère 2</span>
           </div>
 
-          <div className="criteria__inputs__toggle__3">
+          <div className="criteria__inputs__toggle__1">
             <label className="switch">
               <input type="checkbox" />
               <div />
             </label>
-            <span>Critère 3</span>
+            <span className="criteria__inputs__toggle__name">Critère 3</span>
           </div>
         </div>
 
         {/* Inputs de type slide */}
 
-        <div className="criteria__inputs__slider">
-          <div className="criteria__inputs__slider__1">
+        <div className="criteria__slider">
+          <div className="criteria__slider__1">
             <input type="range" id="critere" name="critere" min="0" max="11" />
-            <label htmlFor="critere">Critere 4</label>
+            <label htmlFor="critere" className="criteria__slider__1__name">
+              Critere 4
+            </label>
           </div>
 
-          <div className="criteria__inputs__slider__2">
+          <div className="criteria__slider__1">
             <input type="range" id="critere" name="critere" min="0" max="11" />
-            <label htmlFor="critere">Critere 5</label>
+            <label htmlFor="critere" className="criteria__slider__1__name">
+              Critere 5
+            </label>
           </div>
 
-          <div className="criteria__inputs__slider__3">
+          <div className="criteria__slider__1">
             <input type="range" id="critere" name="critere" min="0" max="11" />
-            <label htmlFor="critere">Critere 6</label>
+            <label htmlFor="critere" className="criteria__slider__1__name">
+              Critere 6
+            </label>
           </div>
         </div>
 
         {/* Inputs de type Select */}
 
         <div className="criteria__inputs__select">
+          <p className="criteria__inputs__select__name">Région</p>
           <select>
             <option value="auvergne">Auvergne-Rhône-Alpes</option>
             <option value="bourgogne">Bourgogne-Franche-Comté</option>
@@ -81,7 +88,7 @@ const Criteria = () => (
     </div>
 
     <div className="criteria__submit">
-      <NavLink type="button" to="/results">
+      <NavLink type="button" to="/results" className="criteria__submit__btn">
         Validez
       </NavLink>
     </div>
