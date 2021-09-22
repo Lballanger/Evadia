@@ -26,6 +26,18 @@ class User {
       throw new Error(err);
     }
   }
+
+  static async create(user) {
+    try {
+      const { rows } = await client.query(
+        'INSERT INTO user (firstname, lastname, email, password, role) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+        [user.firstname, user.lastname, user.email, user.password, user.role]
+      );
+      return new User(rows[0]);
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 module.exports = User;
