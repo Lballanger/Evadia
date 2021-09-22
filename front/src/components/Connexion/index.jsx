@@ -34,7 +34,7 @@ const Connexion = () => (
         <NavLink
           className="connexion__form__forgottenPassword"
           type="button"
-          to="/NewPassword"
+          to="/forgottenpassword"
           style={{ textDecoration: 'none' }}
         >
           Mot de passe oublié

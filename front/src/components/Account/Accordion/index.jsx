@@ -21,6 +21,9 @@ const Accordion = () => {
             <ul className="accordion__content__ul">
               <li className="accordion__content__li">{content}</li>
             </ul>
+            <button className="accordion__content__btn" type="button">
+              Enlever
+            </button>
           </div>
         </div>
       </div>

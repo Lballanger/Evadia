@@ -8,8 +8,8 @@ const NewPassword = () => (
   <>
     <Header />
     <div className="container">
+      <div className="newPassword__title">NOUVEAU MOT DE PASSE</div>
       <div className="newPassword">
-        <div className="newPassword__title">NOUVEAU MOT DE PASSE</div>
         <form className="newPassword__form">
           <div className="newPassword__form__password">
             <p>Mot de passe</p>

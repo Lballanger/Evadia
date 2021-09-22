@@ -2,12 +2,14 @@
   display: flex;
   justify-content: center;
   margin-bottom: 100px;
+  flex-wrap: wrap;
 }
 
-.newPassword {
+.forgottenPassword {
   text-align: center;
   border: solid 2px gray;
   width: 70%;
+  
     
   &__title {
     font-size: large;
@@ -20,16 +22,7 @@
     padding-top: 150px;
   }
   
-  &__form__password {
-    margin-bottom: 50px;
-  }
   
-  &__form__confirm {
-    margin-bottom: 50px;
-  }
-  
-  
-
   &__form__submit {
     margin-top: 50px;
     margin-bottom: 50px;

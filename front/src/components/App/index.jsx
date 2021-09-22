@@ -13,6 +13,7 @@ import Inscription from '../Inscription';
 
 import './index.scss';
 import NewPassword from '../NewPassword';
+import ForgottenPassword from '../ForgottenPassword';
 
 const App = () => (
   <Switch>
@@ -48,6 +49,9 @@ const App = () => (
     </Route>
     <Route path="/newpassword" exact>
       <NewPassword />
+    </Route>
+    <Route path="/forgottenPassword" exact>
+      <ForgottenPassword />
     </Route>
   </Switch>
 );

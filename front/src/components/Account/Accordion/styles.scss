@@ -11,7 +11,7 @@
   }
   
   .accordion {
-    max-width: 80%;
+    max-width: 30%;
     margin: 2rem auto;
   }
   
@@ -34,6 +34,8 @@
   
   .accordion__content {
     background-color: #d23979;
+    display: flex;
+    justify-content: space-between;
 
     &__li{
       margin-left: 1rem;
