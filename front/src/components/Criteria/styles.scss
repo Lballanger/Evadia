@@ -1,6 +1,13 @@
+.criteria__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 100vh;
+}
+
 .criteria{
-    max-height: 100vh;
-    background-color: rgba($color: #000000, $alpha: .5);
+
+    background-color: rgba($color: #000000, $alpha: .2);
     padding: 2rem;
     border-radius: 20px;
 
@@ -35,10 +42,6 @@
           }
         }
     }
-    &__submit{
-        text-align: center;
-        margin: 2rem;
-    }
 
     &__slider{
 
@@ -55,24 +58,32 @@
     }
 
     &__submit{
-      border:none;
-      text-decoration: none;
-      background-color: rgb(43, 226, 83);
-      cursor: pointer;
-      margin-bottom: 1rem;
-      margin-top: 5rem;
-      padding: 1rem;
-      border-radius: 20px;
+      display: flex;
+      justify-content: center;
 
-      &__btn{
-        width: 50%;
+      &__display{
+        border:none;
         text-decoration: none;
-        color: inherit;
+        background-color: rgb(43, 226, 83);
+        cursor: pointer;
+        margin-bottom: 1rem;
+        margin-top: 5rem;
+        padding: 1rem;
+        border-radius: 20px;
+        text-align: center;
+        margin: 2rem;
+        width: 20%;
+  
+        &__btn{
+          text-decoration: none;
+          color: inherit;
+        }
+        }
+        &__submit:hover{
+          background-color: rgb(123, 201, 46);
       }
-      }
-      &__submit:hover{
-        background-color: rgb(123, 201, 46);
     }
+    
 }
 
 
