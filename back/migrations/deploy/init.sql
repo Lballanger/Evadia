@@ -10,8 +10,7 @@ CREATE TABLE private.commune (
     code_postal TEXT[],
     code_region TEXT,
     city_name TEXT,
-    longitude FLOAT,
-    latitude FLOAT,
+    coordinates POINT,
     population INT
 );
 
