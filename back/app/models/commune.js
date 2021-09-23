@@ -70,9 +70,19 @@ class Commune {
    * @returns {Array<Commune>} new instance of common or null
    * @throws {Error} if the query didn't match any common in the database
    */
-  static async findByCriteria() {
+  static async findByCriteria(params) {
     try {
-      const { rows } = await client.query('SELECT * FROM commune WHERE ');
+      // 1. envoyer en BDD les critaires pour checker les commune
+      // 2. returning tout les code_insee de chaque commune correspondants aux critaires
+      const correspondingCommon = await client.query(
+        'SELECT commune_code FROM fonction where $1=$1',
+        params
+      );
+      // 3. renvoyer le resultat au front
+      const { rows } = await client.query(
+        'SELECT * FROM commune WHERE code_insee=$1',
+        correspondingCommon
+      );
       return rows.map((row) => new Commune(row));
     } catch (error) {
       console.log(error);

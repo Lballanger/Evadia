@@ -45,7 +45,8 @@ const searchController = {
    */
   findByCriteria: async (request, response) => {
     try {
-      const commune = await Commune.findByCriteria();
+      const params = request.body;
+      const commune = await Commune.findByCriteria(params);
       response.json(commune);
     } catch (error) {
       console.log(error);
