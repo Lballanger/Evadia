@@ -1,38 +1,37 @@
 .footer {
-    position:absolute;
-    left:0;
-    bottom:0;
-    right:0;
+  // position:absolute;
+  // left:0;
+  // bottom:0;
+  // right:0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-content: space-around;
+  margin-top: auto;
+  background-color: rgba(31, 31, 31, 0.5);
+  padding: 0.5rem;
+  color: white;
+
+  &__p {
+    font-size: 0.9rem;
+  }
+
+  &__display {
     display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-	align-items: flex-end;
-	align-content: space-around;
-    margin-top: auto;
-    background-color: rgba(31, 31, 31, 0.5);
-    padding: 0.5rem;
-    color: white;
+    width: auto;
+    align-content: space-around;
+    font-size: 0.9rem;
+    text-align: center;
+  }
 
-    &__p{
-        font-size: 0.9rem;
-    }
-
-    &__display{
-        display: flex;
-        width: auto;
-        align-content: space-around;
-        font-size: 0.9rem;
-        text-align: center;
-    }
-
-    &__button{
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        margin-left: 2rem;
-        text-decoration: none;
-        color: inherit;
-
-    }
+  &__button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 2rem;
+    text-decoration: none;
+    color: inherit;
+  }
 }

@@ -3,7 +3,7 @@ import Footer from '../Footer';
 import Header from '../Header';
 
 import './styles.scss';
-import gif from '../../../public/404.gif';
+import gif from '../../assets/images/404.gif';
 
 const Notfound = () => (
   <>
