@@ -2,3 +2,4 @@
 %project=on-demenage
 
 init 2021-09-21T12:58:27Z LoicB <ballanger.loic@gmail.com> # Sqitch initialisation
+user_table 2021-09-23T08:36:16Z Germain <gmichaud.dev@gmail.com> # Create User table
