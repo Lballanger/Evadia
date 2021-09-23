@@ -26,12 +26,22 @@ const getUser = async () => {
   return data;
 };
 
+const updateUser = async (params) => {
+  const { data } = await instance.patch('/user', params);
+  return data;
+};
+
+const deleteUser = async () => {
+  const { data } = await instance.delete('/user');
+  return data;
+};
+
 const doRegister = async (params) => {
   try {
     const { data } = await instance.post('/auth/register', params);
     instance.defaults.headers.authorization = `Bearer ${data.accessToken}`;
     localStorage.setItem('ON_DEMENAGE:REFRESH_TOKEN', data.refreshToken);
-    return await getUser();
+    return data;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -42,7 +52,7 @@ const doLogin = async (params) => {
     const { data } = await instance.post('/auth/login', params);
     instance.defaults.headers.authorization = `Bearer ${data.accessToken}`;
     localStorage.setItem('ON_DEMENAGE:REFRESH_TOKEN', data.refreshToken);
-    return await getUser();
+    return data;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -67,7 +77,6 @@ instance.interceptors.response.use(
           instance.defaults.headers.common.authorization = `Bearer ${data.accessToken}`;
           originalRequest.headers.authorization = `Bearer ${data.accessToken}`;
         } catch (error) {
-          console.log(error.response.status);
           localStorage.removeItem('ON_DEMENAGE:REFRESH_TOKEN');
         }
         return instance(originalRequest);
@@ -81,6 +90,8 @@ export default {
   getCity,
   getCityWithCriteria,
   getUser,
+  updateUser,
+  deleteUser,
   doLogin,
   doRegister,
 };
