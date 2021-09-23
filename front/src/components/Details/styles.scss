@@ -1,12 +1,21 @@
+.details__container{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+
+}
+
 .details__card{
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	align-items: center;
-    justify-content: center;
-	align-content: center;
     border: solid black 2px;
-    background-color: rgb(255, 241, 241);
+    background-color: rgba(255, 241, 241, 0.3);
+    width: 80%;
 
     &__titre{
         display: flex;
@@ -22,13 +31,15 @@
     &__button{
         border:none;
         text-decoration: none;
-        background-color: rgb(206, 196, 52);
+        background-color: rgb(255, 238, 0);
+        padding: 0.4rem;
+        border-radius: 10px;
         cursor: pointer;
         margin-bottom: 1rem;
         margin-top: 1rem;
     }
 
-    &__main__p{
+    &__main__ul{
         margin: 1.5rem;
     }
 }

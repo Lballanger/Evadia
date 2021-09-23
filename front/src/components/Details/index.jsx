@@ -9,10 +9,12 @@ import './styles.scss';
 const Details = () => (
   <>
     <Header />
-    <div className="container">
-      <button className="details__new__search__button" type="button">
-        Nouvelle recherche (ça doit être un menu burger ici)
-      </button>
+    <div className="details__container">
+      <div className="details__new__search">
+        <button className="details__new__search__button" type="button">
+          Nouvelle recherche (menu burger on mobile)
+        </button>
+      </div>
 
       <div className="details__card">
         <div className="details__card__titre">
@@ -23,11 +25,12 @@ const Details = () => (
         </div>
 
         <div className="details__card__main">
-          <p className="details__card__main__p">
-            Résultat de la recherche mais j'ai aucune idée de comment on va
-            faire.
-          </p>
-          <p className="details__card__main__p">Germain oscour !</p>
+          <ul className="details__card__main__ul">
+            <li className="details__card__main__li">Département : 51</li>
+            <li className="details__card__main__li">Code Postal : 51510</li>
+            <li className="details__card__main__li">Internet : Fibre</li>
+            <li className="details__card__main__li">Population: 17.500</li>
+          </ul>
         </div>
       </div>
     </div>
