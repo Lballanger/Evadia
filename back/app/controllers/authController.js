@@ -27,14 +27,19 @@ const authController = {
       if (!user) return response.status(400).json('Invalid credentials');
       if (!(await compare(password, user.password)))
         return response.status(400).json('Invalid credentials');
-      const token = await jwtService.sign({ id: user.id });
+      const accessToken = await jwtService.generateToken({ id: user.id });
+      const refreshToken = await jwtService.generateToken(
+        { id: user.id },
+        true
+      );
       return response.json({
         id: user.id,
         email: user.email,
         firstname: user.firstname,
         lastname: user.lastname,
         role: user.role,
-        token,
+        accessToken,
+        refreshToken,
       });
     } catch (error) {
       return response.status(500).json(error.message);
@@ -53,14 +58,19 @@ const authController = {
         lastname,
         role: 'user',
       });
-      const token = await jwtService.sign({ id: newUser.id });
+      const accessToken = await jwtService.generateToken({ id: newUser.id });
+      const refreshToken = await jwtService.generateToken(
+        { id: newUser.id },
+        true
+      );
       return response.json({
         id: newUser.id,
         email: newUser.email,
         firstname: newUser.firstname,
         lastname: newUser.lastname,
         role: newUser.role,
-        token,
+        accessToken,
+        refreshToken,
       });
     } catch (error) {
       return response.status(500).json(error.message);
