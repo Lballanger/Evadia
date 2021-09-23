@@ -62,14 +62,11 @@
       justify-content: center;
 
       &__display{
-        border:none;
-        text-decoration: none;
-        background-color: rgb(43, 226, 83);
+        border-radius: 50px;
+        background: linear-gradient(145deg, #2ef259, #27cb4b);
+        box-shadow:  5px 5px 0px #25c047;
         cursor: pointer;
-        margin-bottom: 1rem;
-        margin-top: 5rem;
         padding: 1rem;
-        border-radius: 20px;
         text-align: center;
         margin: 2rem;
         width: 20%;
@@ -79,8 +76,11 @@
           color: inherit;
         }
         }
-        &__submit:hover{
-          background-color: rgb(123, 201, 46);
+        &__display:hover{
+          border-radius: 50px;
+          background: #2be253;
+          box-shadow: inset 5px 5px 0px #25c047,
+            inset -5px -5px 0px #31ff5f;
       }
     }
     

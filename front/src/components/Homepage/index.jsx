@@ -3,14 +3,20 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Footer from '../Footer';
 import Header from '../Header';
+import backgroundVideo from '../../../public/drone_view.mp4';
 
 import './styles.scss';
 
 const Homepage = () => (
   <>
+    <div className="background_video">
+      <video autoPlay loop muted id="video">
+        <source ssrc={backgroundVideo} type="video/mp4" />
+      </video>
+    </div>
     <Header />
     <div className="homepage__container">
-      <h1 className="homepage__container__h1">Evadez-vous</h1>
+      <h1 className="homepage__container__h1">Evadez-vous avec Evadia</h1>
       <h2 className="homepage__container__h2">
         Trouvez la ville de vos rêves pour un déménagement, un week-end, et bien
         plus encore !

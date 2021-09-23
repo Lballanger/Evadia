@@ -1,4 +1,14 @@
+#video{
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+}
+
 .homepage__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-height: 100vh;
 
     &__h1{
         text-align: center;
@@ -8,6 +18,7 @@
     &__h2{
         text-align: center;
         margin: 4rem;
+        margin-bottom: 10rem;
     }
 
     &__search{
@@ -17,22 +28,29 @@
         margin-bottom: 2rem;
 
         &__link{
-            padding: 2rem;
+            padding: 5rem;
             margin-bottom: 3.2rem;
-            border: black 2px solid;
             background-color: white;
             text-align: center;
             font-size: 1.5rem;
+            border-radius: 50px;
+            background: linear-gradient(145deg, #ffd452, #e6b245);
+            box-shadow:  5px 5px 0px #d9a841,
+                         -5px -5px 0px #ffe459;
             
 
             &__button{
                 text-decoration: none;
                 color: inherit;
+                
             }
         }
 
         &__link:hover{
-            background-color: rgb(75, 192, 137);
+            border-radius: 50px;
+            background: #ffc64d;
+            box-shadow: inset 5px 5px 0px #d9a841,
+            inset -5px -5px 0px #ffe459;
         }
     }
 }
@@ -67,7 +85,6 @@
         &__link{
             padding: 2rem;
             margin-bottom: 3.2rem;
-            border: black 2px solid;
             background-color: white;
             text-align: center;
             font-size: 1.5rem;
@@ -81,7 +98,10 @@
         }
 
         &__link:hover{
-            background-color: rgb(75, 192, 137);
+            border-radius: 50px;
+background: #ffc64d;
+box-shadow: inset 5px 5px 0px #d9a841,
+            inset -5px -5px 0px #ffe459;
         }
     }
 }

@@ -112,7 +112,7 @@ const Criteria = () => (
             to="/results"
             className="criteria__submit__display__btn"
           >
-            Validez
+            Va chercher !
           </NavLink>
         </div>
       </div>

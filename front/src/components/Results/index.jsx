@@ -12,11 +12,11 @@ const Results = () => (
       <div className="results">
         <div className="results__criteria">
           <div className="criteria__return">
-            <NavLink type="button" to="/criteria">
-              Retour vers la page des critères
+            <NavLink type="button" to="/criteria" className="criteria__return__btn">
+              Modifier critères
             </NavLink>
           </div>
-          <div className="resultsNbr">0 villes dans votre recherches</div>
+          <div className="resultsNbr">0 villes dans votre recherche(s).</div>
         </div>
       </div>
 
