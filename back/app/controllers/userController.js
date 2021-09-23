@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const { compare, hash } = require('../services/bcryptService');
 
 const userController = {
   user: async (request, response) => {
@@ -23,14 +24,19 @@ const userController = {
     try {
       const user = await User.getById(id);
       if (!user) return response.status(404).json('User not found');
-      const updatedUser = await User.update(id, {
+      let hashedPassword = user.password;
+      if (!(await compare(password, user.password))) {
+        hashedPassword = await hash(password);
+      }
+      await User.update(id, {
         firstname,
         lastname,
         email,
-        password,
+        password: hashedPassword,
         role,
       });
-      return response.json(updatedUser);
+      // TODO: if password changed, revoke/logout user
+      return response.json({ firstname, lastname, email, role });
     } catch (error) {
       return response.status(500).json(error.message);
     }
