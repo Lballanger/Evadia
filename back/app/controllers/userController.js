@@ -41,6 +41,16 @@ const userController = {
       return response.status(500).json(error.message);
     }
   },
+  delete: async (request, response) => {
+    const { id } = request.user;
+    try {
+      await User.delete(id);
+      // TODO: revoke user token
+      return response.status(204);
+    } catch (error) {
+      return response.status(500).json(error.message);
+    }
+  },
 };
 
 module.exports = userController;
