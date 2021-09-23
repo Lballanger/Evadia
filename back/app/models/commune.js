@@ -1,5 +1,15 @@
 const client = require('../database');
 
+/**
+ * An entity representing a common
+ * @typedef Commune
+ * @property {string} code_insee
+ * @property {string} code_departement
+ * @property {string} code_postal
+ * @property {string} code_region
+ * @property {string} city_name
+ * @property {integer} population
+ */
 class Commune {
   /**
    * The class Commune
@@ -15,9 +25,10 @@ class Commune {
   /**
    * Fetches a common from the database
    * @param {string} query
-   * @returns {Array<Commune>}
    * @async
    * @static
+   * @returns {Array<Commune>} new instance of common or null
+   * @throws {Error} if the query didn't match any common in the database
    */
   static async findByName(query) {
     try {
@@ -34,9 +45,10 @@ class Commune {
 
   /**
    * Fetches a random common from the database
-   * @returns {Array<Commune>}
    * @async
    * @static
+   * @returns {Array<Commune>} new instance of common or null
+   * @throws {Error} if the query didn't match any common in the database
    */
   static async randomSearch() {
     try {
@@ -53,9 +65,10 @@ class Commune {
   /**
    * Fetches all common matching the criteria from the database
    * @param {*}
-   * @returns {Array<Commune>}
    * @async
    * @static
+   * @returns {Array<Commune>} new instance of common or null
+   * @throws {Error} if the query didn't match any common in the database
    */
   static async findByCriteria() {
     try {

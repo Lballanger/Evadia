@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/O-clock-Uther/projet-15-on-demenage/issues"
   },
-  "homepage": "https://github.com/O-clock-Uther/projet-15-on-demenage#readme"
+  "homepage": "https://github.com/O-clock-Uther/projet-15-on-demenage#readme",
+  "dependencies": {}
 }
