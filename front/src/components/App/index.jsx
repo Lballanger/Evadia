@@ -10,6 +10,7 @@ import Details from '../Details';
 import Connexion from '../Connexion';
 import Account from '../Account';
 import Inscription from '../Inscription';
+import Notfound from '../Notfound';
 
 import './index.scss';
 import NewPassword from '../NewPassword';
@@ -52,6 +53,9 @@ const App = () => (
     </Route>
     <Route path="/forgottenPassword" exact>
       <ForgottenPassword />
+    </Route>
+    <Route>
+      <Notfound />
     </Route>
   </Switch>
 );
