@@ -2,6 +2,7 @@ const { Router } = require('express');
 
 const searchController = require('./controllers/searchController');
 const authController = require('./controllers/authController');
+const userController = require('./controllers/userController');
 const { authMiddleware } = require('./middlewares/authMiddleware');
 
 const communeSchema = require('./schemas/commune');
@@ -45,7 +46,23 @@ router.post('/api/search/criteria', searchController.findByCriteria);
  * @group Auth
  * @summary Return data for the current connected user or error message if not connected with valid token
  */
-router.get('/api/user', authMiddleware, authController.user);
+router.get('/api/user', authMiddleware, userController.user);
+
+/**
+ * Update the current user data
+ * @route PUT /user
+ * @group Auth
+ * @summary Update the current user data
+ */
+router.patch('/api/user', authMiddleware, userController.update);
+
+/**
+ * Delete the current user from database
+ * @route DELETE /user
+ * @group Auth
+ * @summary Delete the current user from database
+ */
+router.delete('/api/user', authMiddleware, userController.delete);
 
 /**
  * Log user in
