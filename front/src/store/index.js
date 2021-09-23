@@ -1,7 +1,11 @@
-import { createStore } from 'redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
-import reducer from '../reducers';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import citySlice from '../features/city/citySlice';
 
-const store = createStore(reducer, devToolsEnhancer());
-
-export default store;
+export default configureStore({
+  reducer: {
+    city: citySlice.reducer,
+  },
+  middleware: getDefaultMiddleware({
+    serializable: false,
+  }),
+});
