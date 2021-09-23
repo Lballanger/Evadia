@@ -16,7 +16,10 @@ const Homepage = () => (
     </div>
     <Header />
     <div className="homepage__container">
-      <h1 className="homepage__container__h1">Evadez-vous avec Evadia</h1>
+      <h1 className="homepage__container__h1">
+        Evadez-vous avec{' '}
+        <span className="homepage__container__evadia">Evadia</span>
+      </h1>
       <h2 className="homepage__container__h2">
         Trouvez la ville de vos rêves pour un déménagement, un week-end, et bien
         plus encore !
@@ -27,9 +30,7 @@ const Homepage = () => (
           type="button"
           to="/random"
         >
-          <div className="homepage__container__search__link">
-            Recherche aléatoire
-          </div>
+          <div className="homepage__container__search__link">Aléatoire</div>
         </NavLink>
 
         <NavLink
@@ -37,9 +38,7 @@ const Homepage = () => (
           type="button"
           to="/details"
         >
-          <div className="homepage__container__search__link">
-            Recherche par nom de ville
-          </div>
+          <div className="homepage__container__search__link">Par ville</div>
         </NavLink>
 
         <NavLink
@@ -47,9 +46,7 @@ const Homepage = () => (
           type="button"
           to="/criteria"
         >
-          <div className="homepage__container__search__link">
-            Recherche par critères
-          </div>
+          <div className="homepage__container__search__link">Critères</div>
         </NavLink>
       </div>
     </div>

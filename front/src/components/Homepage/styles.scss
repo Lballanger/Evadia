@@ -10,6 +10,12 @@
     justify-content: space-around;
     max-height: 100vh;
 
+    &__evadia{
+        text-transform: uppercase;
+        color: #54e35d;
+        font-weight: bold;
+        font-size: 3.5rem;
+    }
     &__h1{
         text-align: center;
         font-size: 3rem;
@@ -37,6 +43,7 @@
             background: linear-gradient(145deg, #ffd452, #e6b245);
             box-shadow:  5px 5px 0px #d9a841,
                          -5px -5px 0px #ffe459;
+            width: 25rem;
             
 
             &__button{
@@ -80,6 +87,7 @@
         flex-direction: column;
         align-items: center;
         margin: 2rem;
+
         
 
         &__link{
@@ -88,6 +96,7 @@
             background-color: white;
             text-align: center;
             font-size: 1.5rem;
+
             
 
             &__button{
@@ -99,11 +108,23 @@
 
         &__link:hover{
             border-radius: 50px;
-background: #ffc64d;
-box-shadow: inset 5px 5px 0px #d9a841,
+            background: #ffc64d;
+            box-shadow: inset 5px 5px 0px #d9a841,
             inset -5px -5px 0px #ffe459;
         }
     }
 }
 
+}
+
+
+// ------ CSS 1200px  ---------
+
+@media screen and (max-width: 1300px) and (min-width: 1001px){
+
+    .homepage__container__search__link{
+        padding:2rem;
+        font-size: 1.5rem;
+        width: 20rem;
+    }
 }
