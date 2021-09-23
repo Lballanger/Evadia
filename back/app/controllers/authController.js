@@ -3,22 +3,6 @@ const { compare, hash } = require('../services/bcryptService');
 const jwtService = require('../services/jwtService');
 
 const authController = {
-  user: async (request, response) => {
-    const { id } = request.user;
-    try {
-      const user = await User.getById(id);
-      if (!user) return response.status(404).json('User not found');
-      return response.json({
-        id: user.id,
-        email: user.email,
-        firstname: user.firstname,
-        lastname: user.lastname,
-        role: user.role,
-      });
-    } catch (error) {
-      return response.status(500).json(error.message);
-    }
-  },
   login: async (request, response) => {
     const { email, password } = request.body;
     try {
