@@ -12,6 +12,7 @@ import Account from '../Account';
 import Inscription from '../Inscription';
 import Notfound from '../Notfound';
 import API from '../../api';
+import {useUser} from '../../hooks/useAuth'
 
 import './index.scss';
 import NewPassword from '../NewPassword';
@@ -19,62 +20,79 @@ import ForgottenPassword from '../ForgottenPassword';
 import userStore from '../../store/user';
 
 const App = () => {
-  const setUser = userStore((state) => state.setUser);
-
+  const setUser = userStore(state => state.setUser);
+  const { data, isError, isLoading } = useUser();
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const data = await API.getUser();
-        setUser(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getUser();
-  }, []);
+    if (data) {
+      setUser(data);
+    } else if (isError) {
+      setUser(null);
+    }
+  }, [data, isError]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-  <Switch>
-    <Route path="/" exact>
-      <Homepage />
-    </Route>
-    <Route path="/contact" exact>
-      <Contact />
-    </Route>
-    <Route path="/about" exact>
-      <About />
-    </Route>
-    <Route path="/legals" exact>
-      <Legals />
-    </Route>
-    <Route path="/criteria" exact>
-      <Criteria />
-    </Route>
-    <Route path="/results" exact>
-      <Results />
-    </Route>
-    <Route path="/details" exact>
-      <Details />
-    </Route>
-    <Route path="/connexion" exact>
-      <Connexion />
-    </Route>
-    <Route path="/account" exact>
-      <Account />
-    </Route>
-    <Route path="/inscription" exact>
-      <Inscription />
-    </Route>
-    <Route path="/newpassword" exact>
-      <NewPassword />
-    </Route>
-    <Route path="/forgottenPassword" exact>
-      <ForgottenPassword />
-    </Route>
-    <Route>
-      <Notfound />
-    </Route>
-  </Switch>
-);};
+    <Switch>
+      <Route path="/" exact>
+        <Homepage />
+      </Route>
+      <Route path="/contact" exact>
+        <Contact />
+      </Route>
+      <Route path="/about" exact>
+        <About />
+      </Route>
+      <Route path="/legals" exact>
+        <Legals />
+      </Route>
+      <Route path="/criteria" exact>
+        <Criteria />
+      </Route>
+      <Route path="/results" exact>
+        <Results />
+      </Route>
+      <Route path="/details" exact>
+        <Details />
+      </Route>
+      <Route path="/connexion" exact>
+        <Connexion />
+      </Route>
+      <Route path="/account" exact>
+        <ProtectedRoute component={Account} />
+      </Route>
+      <Route path="/inscription" exact>
+        <Inscription />
+      </Route>
+      <Route path="/newpassword" exact>
+        <NewPassword />
+      </Route>
+      <Route path="/forgottenPassword" exact>
+        <ForgottenPassword />
+      </Route>
+      <Route>
+        <Notfound />
+      </Route>
+    </Switch>
+  );
+};
+
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const user = userStore(state => state.user);
+
+  return (
+  <Route
+    {...rest}
+    render={props => {
+      if (user) {
+        return <Component {...props} />;
+      } else {
+        return <Connexion />;
+      }
+    }}
+  />
+)};
 
 export default App;
