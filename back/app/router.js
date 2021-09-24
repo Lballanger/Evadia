@@ -5,8 +5,8 @@ const authController = require('./controllers/authController');
 const userController = require('./controllers/userController');
 const { authMiddleware } = require('./middlewares/authMiddleware');
 
-const communeSchema = require('./schemas/commune');
-const { validateQuery } = require('./services/validator');
+// const communeSchema = require('./schemas/commune');
+// const { validateQuery } = require('./services/validator');
 
 const router = Router();
 
@@ -18,11 +18,7 @@ const router = Router();
  * @group Search
  * @summary Responds with one city from database
  */
-router.get(
-  '/api/search/city',
-  validateQuery(communeSchema),
-  searchController.findByName
-);
+router.get('/api/search/city', searchController.findByName);
 /**
  * Responds with a city from database
  * @route GET /search/city/:insee
@@ -45,7 +41,9 @@ router.get('/api/search/random', searchController.randomSearch);
  */
 router.post('/api/search/criteria', searchController.findByCriteria);
 
-// /city
+router.post('/api/search/city/:insee/check', searchController.addFavorite);
+
+router.delete('/api/search/city/:insee/check', searchController.delFavorite);
 
 /**
  * Get data for the current connected user
