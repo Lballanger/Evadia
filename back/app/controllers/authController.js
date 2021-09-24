@@ -30,7 +30,7 @@ const authController = {
     }
   },
   register: async (request, response) => {
-    const { email, password, firstname, lastname } = request.body;
+    const { email, password, firstname, lastname, city } = request.body;
     try {
       const user = await User.getByEmail(email);
       if (user) return response.status(400).json('User already exists');
