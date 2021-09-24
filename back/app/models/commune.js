@@ -33,10 +33,31 @@ class Commune {
   static async findByName(query) {
     try {
       const { rows } = await client.query(
-        'SELECT * FROM commune WHERE code_insee = $1',
+        'SELECT * FROM private.commune WHERE code_insee = $1',
         [query]
       );
       return rows.map((row) => new Commune(row));
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
+  }
+
+  /**
+   * Fetch a city by its code_insee
+   * @param {string} code_insee
+   * @async
+   * @static
+   * @returns {Array<Commune>} new instance of city found or null
+   * @throws {Error} if the query didn't match any city in the database
+   */
+  static async findByCodeInsee(codeInsee) {
+    try {
+      const { rows } = await client.query(
+        'SELECT * FROM private.commune WHERE code_insee = $1',
+        [codeInsee]
+      );
+      return new Commune(rows[0]);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -53,7 +74,7 @@ class Commune {
   static async randomSearch() {
     try {
       const { rows } = await client.query(
-        'SELECT * FROM commune ORDER BY RANDOM() LIMIT 1'
+        'SELECT * FROM private.commune ORDER BY RANDOM() LIMIT 1'
       );
       return rows.map((row) => new Commune(row));
     } catch (error) {
@@ -80,7 +101,7 @@ class Commune {
       );
       // 3. renvoyer le resultat au front
       const { rows } = await client.query(
-        'SELECT * FROM commune WHERE code_insee=$1',
+        'SELECT * FROM private.commune WHERE code_insee=$1',
         correspondingCommon
       );
       return rows.map((row) => new Commune(row));
