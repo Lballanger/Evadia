@@ -24,6 +24,13 @@ router.get(
   searchController.findByName
 );
 /**
+ * Responds with a city from database
+ * @route GET /search/city/:insee
+ * @group Search
+ * @summary Responds with a city from database
+ */
+router.get('/api/search/city/:insee', searchController.findByInsee);
+/**
  * Responds with one random city from database
  * @route GET /search/random
  * @group Search
