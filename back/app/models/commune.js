@@ -95,15 +95,11 @@ class Commune {
     try {
       // 1. envoyer en BDD les critaires pour checker les commune
       // 2. returning tout les code_insee de chaque commune correspondants aux critaires
-      const correspondingCommon = await client.query(
-        'SELECT commune_code FROM fonction where $1=$1',
-        params
+      const {rows} = await client.query(
+        'SELECT * FROM private.criteria($1)',
+        [params]
       );
-      // 3. renvoyer le resultat au front
-      const { rows } = await client.query(
-        'SELECT * FROM private.commune WHERE code_insee=$1',
-        correspondingCommon
-      );
+      console.log(rows);
       return rows.map((row) => new Commune(row));
     } catch (error) {
       console.log(error);
