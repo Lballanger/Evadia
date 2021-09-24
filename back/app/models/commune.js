@@ -138,11 +138,22 @@ class Commune {
 
   static async delete(insee) {
     try {
-      const { rows } = await client.query(
-        'SELECT * FROM private.user_has_commune WHERE code_insee = $1',
+      await client.query(
+        'DELETE FROM private.user_has_commune WHERE commune_code_insee=$1',
         [insee]
       );
-      return new Commune(rows[0]);
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
+  }
+
+  static async update(insee, boolean) {
+    try {
+      await client.query(
+        'UPDATE private.user_has_commune SET is_favorite=$2 WHERE commune_code_insee=$1',
+        [insee, boolean]
+      );
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
