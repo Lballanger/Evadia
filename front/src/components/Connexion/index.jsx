@@ -1,16 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 
 import './styles.scss';
+import Form from '../Shared/Form';
+import Input from '../Shared/Input';
+import API from '../../api';
 
-const Connexion = () => (
-  <>
-    <Header />
-    <div className="connexion">
-      <div className="connexion__title">CONNEXION</div>
-      <form className="connexion__form">
+const initialInputs = {
+  email: '',
+  password: '',
+};
+
+const Connexion = () => {
+  const [inputs, setInputs] = useState({ ...initialInputs });
+
+  const inputChange = (event) => {
+    setInputs((state) => ({
+      ...state,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = await API.doLogin(inputs);
+    console.log(data);
+    setInputs({ ...initialInputs });
+  };
+
+  return (
+    <>
+      <Header />
+      <div className="connexion">
+        <div className="connexion__title">CONNEXION</div>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="email"
+            labelText="Email"
+            id="email"
+            value={inputs.email}
+            onChange={inputChange}
+          />
+          <Input
+            type="password"
+            labelText="Mot de passe"
+            id="password"
+            value={inputs.password}
+            onChange={inputChange}
+          />
+          <button type="submit">Se connecter</button>
+        </Form>
+        {/* <form className="connexion__form">
         <div className="connexion__form__email">
           <p>Email</p>
           <input type="email" />
@@ -39,10 +81,11 @@ const Connexion = () => (
         >
           Mot de passe oublié
         </NavLink>
-      </form>
-    </div>
-    <Footer />
-  </>
-);
+      </form> */}
+      </div>
+      <Footer />
+    </>
+  );
+};
 
 export default Connexion;
