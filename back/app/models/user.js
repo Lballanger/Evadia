@@ -32,13 +32,14 @@ class User {
    */
   static async getById(id) {
     try {
-      const result = await client.query('SELECT * FROM "user" WHERE id = $1', [
-        id,
-      ]);
+      const result = await client.query(
+        "SELECT u.*, json_agg(json_build_object('code_insee', c.code_insee, 'code_departement', c.code_departement, 'code_postal', c.code_postal, 'code_region', c.code_region, 'city_name', c.city_name, 'coordinates', c.coordinates, 'population', c.population)) AS city FROM private.\"user\" AS u JOIN private.commune AS c ON c.code_insee = u.city WHERE u.id = $1",
+        [id]
+      );
       if (result.rows.length === 0) {
         return null;
       }
-      return new User(result.rows[0]);
+      return result.rows[0];
     } catch (err) {
       throw new Error(err);
     }
@@ -55,7 +56,7 @@ class User {
   static async getByEmail(email) {
     try {
       const { rows } = await client.query(
-        'SELECT * FROM "user" WHERE email = $1',
+        'SELECT * FROM private."user" WHERE email = $1',
         [email]
       );
       if (rows.length === 0) {
@@ -76,8 +77,15 @@ class User {
   async create() {
     try {
       const { rows } = await client.query(
-        'INSERT INTO "user" (firstname, lastname, email, password, role) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-        [this.firstname, this.lastname, this.email, this.password, this.role]
+        'INSERT INTO private."user" (firstname, lastname, email, password, city, role) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+        [
+          this.firstname,
+          this.lastname,
+          this.email,
+          this.password,
+          this.city,
+          this.role,
+        ]
       );
       return new User(rows[0]);
     } catch (err) {
@@ -94,8 +102,15 @@ class User {
   async update() {
     try {
       const { rows } = await client.query(
-        'UPDATE "user" SET firstname = $1, lastname = $2, password = $3, role = $4 WHERE id = $5 RETURNING *',
-        [this.firstname, this.lastname, this.password, this.role, this.id]
+        'UPDATE private."user" SET firstname = $1, lastname = $2, password = $3, city = $4 role = $5 WHERE id = $6 RETURNING *',
+        [
+          this.firstname,
+          this.lastname,
+          this.password,
+          this.city,
+          this.role,
+          this.id,
+        ]
       );
       return new User(rows[0]);
     } catch (err) {
@@ -105,7 +120,7 @@ class User {
 
   async delete() {
     try {
-      await client.query('DELETE FROM "user" WHERE id = $1', [this.id]);
+      await client.query('DELETE FROM private."user" WHERE id = $1', [this.id]);
       return true;
     } catch (err) {
       throw new Error(err);

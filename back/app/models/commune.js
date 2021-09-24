@@ -95,7 +95,7 @@ class Commune {
     try {
       // 1. envoyer en BDD les critaires pour checker les commune
       // 2. returning tout les code_insee de chaque commune correspondants aux critaires
-      const {rows} = await client.query(
+      const { rows } = await client.query(
         'SELECT * FROM private.criteria($1)',
         [params]
       );

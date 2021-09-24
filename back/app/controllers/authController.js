@@ -40,6 +40,7 @@ const authController = {
         password: hashedPassword,
         firstname,
         lastname,
+        city,
         role: 'user',
       });
       const accessToken = await jwtService.generateToken({ id: newUser.id });
