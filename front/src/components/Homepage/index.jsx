@@ -11,7 +11,7 @@ const Homepage = () => (
   <>
     <div className="background_video">
       <video autoPlay loop muted id="video">
-        <source ssrc={backgroundVideo} type="video/mp4" />
+        <source src={backgroundVideo} type="video/mp4" />
       </video>
     </div>
     <Header />
