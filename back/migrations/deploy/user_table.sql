@@ -14,6 +14,7 @@ CREATE TABLE private."user" (
   firstname TEXT NOT NULL,
   lastname TEXT NOT NULL,
   password TEXT NOT NULL,
+  city TEXT NOT NULL REFERENCES private.commune(code_insee),
   role TEXT NOT NULL DEFAULT 'user',
   email_verified_at TIMESTAMPTZ DEFAULT NULL
 );
