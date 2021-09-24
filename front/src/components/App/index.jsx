@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Homepage from '../Homepage';
 import Contact from '../Contact';
 import About from '../About';
@@ -89,7 +89,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
       if (user) {
         return <Component {...props} />;
       } else {
-        return <Connexion />;
+        return <Redirect to="/connexion" />;
       }
     }}
   />
