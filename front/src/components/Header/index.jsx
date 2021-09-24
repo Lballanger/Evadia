@@ -20,16 +20,17 @@ const Header = () => {
       </NavLink>
 
       <ul className="header__links">
-        <li className="header__item slideInDown-1">
-          <NavLink className="header__link" type="button" to="/connexion">
-            Connexion
-          </NavLink>
-        </li>
-        <li className="header__item slideInDown-2">
-          <NavLink className="header__link" type="button" to="/inscription">
-            Inscription
-          </NavLink>
-        </li>
+        <NavLink className="header__link" type="button" to="/connexion">
+          <div className="header__links__display">
+            <li className="header__item slideInDown-1">Connexion</li>
+          </div>
+        </NavLink>
+
+        <NavLink className="header__link" type="button" to="/inscription">
+          <div className="header__links__display">
+            <li className="header__item slideInDown-2">Inscription</li>
+          </div>
+        </NavLink>
       </ul>
       <button
         className="header__burger"
