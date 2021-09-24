@@ -36,7 +36,7 @@ class Commune {
         'SELECT * FROM private.commune WHERE code_insee = $1',
         [query]
       );
-      return rows.map((row) => new Commune(row));
+      return new Commune(rows[0]);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -105,6 +105,44 @@ class Commune {
         correspondingCommon
       );
       return rows.map((row) => new Commune(row));
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
+  }
+
+  static async findByFavorite(insee) {
+    try {
+      const { rows } = await client.query(
+        'SELECT * FROM private.user_has_commune WHERE code_insee = $1',
+        [insee]
+      );
+      return new Commune(rows[0]);
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
+  }
+
+  static async add(insee, user, boolean) {
+    try {
+      await client.query(
+        'INSERT INTO private.user_has_commune (commune_code_insee, user_id, is_favorite) Values ($1, $2, $3)',
+        [insee, user, boolean]
+      );
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
+  }
+
+  static async delete(insee) {
+    try {
+      const { rows } = await client.query(
+        'SELECT * FROM private.user_has_commune WHERE code_insee = $1',
+        [insee]
+      );
+      return new Commune(rows[0]);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
