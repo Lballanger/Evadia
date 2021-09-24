@@ -20,6 +20,24 @@ const searchController = {
   },
 
   /**
+   * Method that returns the commune by its code_insee
+   * @route /api/search/city/:insee
+   * @method GET
+   * @param {Request} request
+   * @param {Response} response
+   */
+  findByInsee: async (request, response) => {
+    try {
+      const { insee } = request.params;
+      const commune = await Commune.findByCodeInsee(insee);
+      response.json(commune);
+    } catch (error) {
+      console.log(error);
+      response.status(500).json(error.message);
+    }
+  },
+
+  /**
    * Express middleware sending a random common to the browser
    * @route /api/search/random
    * @method GET
