@@ -71,7 +71,7 @@ const authController = {
       // TODO: get refreshToken from db or redis and check if exists
       const decoded = jwtService.validateToken(token, true);
       if (decoded == null) return response.status(401).json('Invalid token');
-      const newToken = await jwtService.sign({ id: decoded.id });
+      const newToken = await jwtService.generateToken({ id: decoded.id });
       // TODO: Store the new token in db or redis
       return response.json({ token: newToken });
     } catch (error) {
