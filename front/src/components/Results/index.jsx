@@ -2,12 +2,14 @@ import { NavLink } from 'react-router-dom';
 import React from 'react';
 import Footer from '../Footer';
 import Header from '../Header';
+import Map from '../Map';
 
 import './styles.scss';
 
 const Results = () => (
   <>
     <Header />
+
     <div className="list__results">
       <div className="results">
         <div className="results__criteria">
@@ -26,7 +28,11 @@ const Results = () => (
 
       <div className="result">
         <button type="button" className="result__button">
-          <img className="picture" src="../public/paris.jpg" alt="city" />
+          <img
+            className="picture"
+            src="../../assets/images/paris.jpg"
+            alt="city"
+          />
           <div className="result__info">
             <p>Paris</p>
             <div className="infos">
@@ -35,6 +41,9 @@ const Results = () => (
             </div>
           </div>
         </button>
+        <div>
+          <Map />
+        </div>
       </div>
 
       <div className="result">
