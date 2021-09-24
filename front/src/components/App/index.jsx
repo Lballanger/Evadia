@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Homepage from '../Homepage';
 import Contact from '../Contact';
@@ -11,12 +11,29 @@ import Connexion from '../Connexion';
 import Account from '../Account';
 import Inscription from '../Inscription';
 import Notfound from '../Notfound';
+import API from '../../api';
 
 import './index.scss';
 import NewPassword from '../NewPassword';
 import ForgottenPassword from '../ForgottenPassword';
+import userStore from '../../store/user';
 
-const App = () => (
+const App = () => {
+  const setUser = userStore((state) => state.setUser);
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const data = await API.getUser();
+        setUser(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUser();
+  }, []);
+
+  return (
   <Switch>
     <Route path="/" exact>
       <Homepage />
@@ -58,6 +75,6 @@ const App = () => (
       <Notfound />
     </Route>
   </Switch>
-);
+);};
 
 export default App;

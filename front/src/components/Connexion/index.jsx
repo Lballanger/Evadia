@@ -7,6 +7,7 @@ import './styles.scss';
 import Form from '../Shared/Form';
 import Input from '../Shared/Input';
 import API from '../../api';
+import userStore from '../../store/user';
 
 const initialInputs = {
   email: '',
@@ -15,6 +16,7 @@ const initialInputs = {
 
 const Connexion = () => {
   const [inputs, setInputs] = useState({ ...initialInputs });
+  const setUser = userStore((state) => state.setUser);
 
   const inputChange = (event) => {
     setInputs((state) => ({
@@ -25,9 +27,13 @@ const Connexion = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = await API.doLogin(inputs);
-    console.log(data);
-    setInputs({ ...initialInputs });
+    try {
+      const data = await API.doLogin(inputs);
+      setUser(data);
+      setInputs({ ...initialInputs });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
