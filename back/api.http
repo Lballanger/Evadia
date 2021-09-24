@@ -17,5 +17,9 @@ Content-Length: 141
 ### RANDOM
 GET {{host}}/api/search/random HTTP/1.1
 
+###
 
+GET {{host}}/api/search/city?ville=354
 
+###
+GET {{host}}/api/search/random
