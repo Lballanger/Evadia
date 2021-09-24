@@ -7,7 +7,7 @@ const ForgottenPassword = () => (
   <>
     <Header />
     <div className="container">
-      <div className="forgottenPassword__title">MOT DE PASSE OUBLIE</div>
+      <div className="forgottenPassword__title">Mot de passe oublié</div>
       <div className="forgottenPassword">
         <form className="forgottenPassword__form">
           <div className="forgottenPassword__form__email">
@@ -15,7 +15,9 @@ const ForgottenPassword = () => (
             <input type="email" />
           </div>
           <div className="newPassword__form__submit">
-            <button type="submit">Enregistrer</button>
+            <button type="submit" className="newPassword__form__submit__btn">
+              Envoyer
+            </button>
           </div>
         </form>
       </div>
