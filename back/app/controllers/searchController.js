@@ -92,15 +92,15 @@ const searchController = {
       const { boolean } = request.query;
       const commune = await Commune.findByFavorite(insee);
       if (!commune) {
+        // if commune, then change or delete favorite or blacklist
         await Commune.add(insee, user, boolean);
         // eslint-disable-next-line eqeqeq
       } else if (commune.is_favorite == boolean) {
-        await Commune.delete();
-        // if commune, then change or delete favorite or blacklist
-        // change if is true in coming and register as false (the opposite also work)
         // delete if is true in coming and register as true (the opposite is true too)
+        await Commune.delete(insee);
       } else {
-        await Commune.update();
+        // change if is true in coming and register as false (the opposite also work)
+        await Commune.update(insee, boolean);
       }
       response.json(commune);
     } catch (error) {
