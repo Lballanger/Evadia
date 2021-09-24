@@ -28,6 +28,10 @@ jobs:
           git pull
           cd ~/on-demenage/front
           npm install && npm run build
-          cp ~/on-demenage/front/dist/* /var/www/on-demenage/
+          cp -r ~/on-demenage/front/dist/* /var/www/on-demenage/
+          cp -r ~/on-demenage/back/* ~/api/
+          cd ~/api/
+          npm install
+          pm2 reload API
           echo 'Deployed successfully to Digital Ocean server'
     
