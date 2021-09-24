@@ -4,3 +4,4 @@
 init 2021-09-21T12:58:27Z LoicB <ballanger.loic@gmail.com> # Sqitch initialisation
 user_table 2021-09-23T08:36:16Z Germain <gmichaud.dev@gmail.com> # Create User table
 function_criteria 2021-09-24T14:58:43Z LoicB <ballanger.loic@gmail.com> # Creation of the criteria function
+user_has_commune 2021-09-24T16:44:46Z LoicB <ballanger.loic@gmail.com> # Creation of the intermediate table user_has_commune
