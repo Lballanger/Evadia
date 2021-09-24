@@ -11,13 +11,7 @@ const Input = ({
 }) => (
   <div className={className}>
     <label htmlFor={id}>{labelText}</label>
-    <input
-      id={id}
-      name={id}
-      type={type}
-      value={value}
-      onChange={(event) => onChange(event.target.value)}
-    />
+    <input id={id} name={id} type={type} value={value} onChange={onChange} />
   </div>
 );
 
