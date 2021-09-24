@@ -2,7 +2,7 @@
   position: fixed;
   z-index: -1;
   width: 100%;
-  filter: blur(5px);
+  filter: blur(3px);
   object-fit: cover;
 }
 
@@ -82,10 +82,18 @@
       display: none;
     }
 
+    &__evadia {
+      text-transform: uppercase;
+      color: #54e35d;
+      font-weight: bold;
+      font-size: 3.5rem;
+      text-shadow: 1px 1px 5px rgba(39, 39, 39, 0.2);
+    }
     &__h1 {
       text-align: center;
       font-size: 3rem;
-      margin-bottom: 3rem;
+      color: white;
+      text-shadow: 1px 1px 20px rgba(39, 39, 39, 0.3);
     }
 
     &__search {

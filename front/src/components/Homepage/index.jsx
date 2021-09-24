@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
