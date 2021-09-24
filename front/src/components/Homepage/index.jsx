@@ -23,7 +23,7 @@ const Homepage = () => {
     <>
       <div className="background_video">
         <video autoPlay loop muted id="video">
-          <source ssrc={backgroundVideo} type="video/mp4" />
+          <source src={backgroundVideo} type="video/mp4" />
         </video>
       </div>
       <Header />
@@ -37,13 +37,13 @@ const Homepage = () => {
           bien plus encore !
         </h2>
         <div className="homepage__container__search">
-          <button
+          <a
+            href="#"
             className="homepage__container__search__link__button"
-            type="button"
             onClick={toRandom}
           >
             <div className="homepage__container__search__link">Aléatoire</div>
-          </button>
+          </a>
 
           <NavLink
             className="homepage__container__search__link__button"
