@@ -2,7 +2,6 @@
   position: fixed;
   z-index: -1;
   width: 100%;
-  filter: blur(3px);
   object-fit: cover;
 }
 
@@ -41,7 +40,7 @@
     margin-bottom: 2rem;
 
     &__link {
-      padding: 5rem;
+      padding: 3rem;
       margin-bottom: 3.2rem;
       background-color: white;
       text-align: center;
@@ -49,7 +48,7 @@
       border-radius: 50px;
       background: linear-gradient(145deg, #ffd452, #e6b245);
       box-shadow: 5px 5px 0px #d9a841, -5px -5px 0px #ffe459;
-      width: 25rem;
+      width: 20rem;
 
       &__button {
         text-decoration: none;
