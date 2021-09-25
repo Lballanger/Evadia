@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Homepage from '../Homepage';
@@ -12,7 +13,7 @@ import Account from '../Account';
 import Inscription from '../Inscription';
 import Notfound from '../Notfound';
 import API from '../../api';
-import {useUser} from '../../hooks/useAuth'
+import { useUser } from '../../hooks/useAuth';
 
 import './index.scss';
 import NewPassword from '../NewPassword';
@@ -20,7 +21,7 @@ import ForgottenPassword from '../ForgottenPassword';
 import userStore from '../../store/user';
 
 const App = () => {
-  const setUser = userStore(state => state.setUser);
+  const setUser = userStore((state) => state.setUser);
   const { data, isError, isLoading } = useUser();
   useEffect(() => {
     if (data) {
@@ -30,9 +31,9 @@ const App = () => {
     }
   }, [data, isError]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <Switch>
@@ -61,7 +62,8 @@ const App = () => {
         <Connexion />
       </Route>
       <Route path="/account" exact>
-        <ProtectedRoute component={Account} />
+        {/* <ProtectedRoute component={Account} /> */}
+        <Account />
       </Route>
       <Route path="/inscription" exact>
         <Inscription />
@@ -79,20 +81,21 @@ const App = () => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const user = userStore(state => state.user);
+  const user = userStore((state) => state.user);
 
   return (
-  <Route
-    {...rest}
-    render={props => {
-      if (user) {
-        return <Component {...props} />;
-      } else {
+    <Route
+      {...rest}
+      render={(props) => {
+        if (user) {
+          return <Component {...props} />;
+        }
         return <Redirect to="/connexion" />;
-      }
-    }}
-  />
-)};
+      }}
+    />
+  );
+};
 
 export default App;

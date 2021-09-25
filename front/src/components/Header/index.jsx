@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import useWindowSize from '../../hooks/useWindowSize';
@@ -7,12 +7,18 @@ import './styles.scss';
 
 const Header = () => {
   const { isMobile } = useWindowSize();
-  const user = userStore(state => state.user);
+  const user = userStore((state) => state.user);
   const [showLinks, setShowLinks] = useState(false);
 
   const handleShowLinks = () => {
     setShowLinks(!showLinks);
   };
+
+  useEffect(() => {
+    if (!isMobile && showLinks) {
+      setShowLinks(false);
+    }
+  }, [isMobile]);
 
   return (
     <header className={`header ${showLinks ? 'show-nav' : 'hide-nav'} `}>
@@ -52,14 +58,63 @@ const Header = () => {
           )}
         </ul>
       ) : (
-        <button
-          className="header__burger"
-          type="button"
-          onClick={handleShowLinks}
-        >
-          <span className="burger-bar" />
-        </button>
-        // Ici le menu mobile qui sera en position fixed, le state de showLinks sera utilisé pour le toggle de celui-ci uniquement
+        <>
+          <button
+            className="header__burger"
+            type="button"
+            onClick={handleShowLinks}
+            style={{ zIndex: 99 }}
+          >
+            <span className="burger-bar" />
+          </button>
+          {showLinks && (
+            <div style={{ position: 'fixed', inset: 0 }}>
+              <ul className="header__links">
+                {user ? (
+                  <>
+                    <NavLink
+                      className="header__link"
+                      type="button"
+                      to="/account"
+                    >
+                      <div className="header__links__display">
+                        <li className="header__item slideInDown-2">
+                          Bonjour {user.firstname}
+                        </li>
+                      </div>
+                    </NavLink>
+                  </>
+                ) : (
+                  <>
+                    <NavLink
+                      className="header__link"
+                      type="button"
+                      to="/connexion"
+                    >
+                      <div className="header__links__display">
+                        <li className="header__item slideInDown-1">
+                          Connexion
+                        </li>
+                      </div>
+                    </NavLink>
+
+                    <NavLink
+                      className="header__link"
+                      type="button"
+                      to="/inscription"
+                    >
+                      <div className="header__links__display">
+                        <li className="header__item slideInDown-2">
+                          Inscription
+                        </li>
+                      </div>
+                    </NavLink>
+                  </>
+                )}
+              </ul>
+            </div>
+          )}
+        </>
       )}
     </header>
   );
