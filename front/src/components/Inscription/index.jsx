@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import API from '../../api';
+import useWindowSize from '../../hooks/useWindowSize';
 import Footer from '../Footer';
 import Header from '../Header';
 import Form from '../Shared/Form';
@@ -11,6 +12,7 @@ import './styles.scss';
 const initialInputs = {
   firstname: '',
   lastname: '',
+  city: '',
   email: '',
   password: '',
   password_confirm: '',
@@ -19,35 +21,36 @@ const initialInputs = {
 const Inscription = () => {
   const [inputs, setInputs] = useState({ ...initialInputs });
   const [errors, setErrors] = useState({});
+  const { isMobile } = useWindowSize();
 
-  const handleChange = async (event) => {
+  const handleChange = async event => {
     if (errors) {
-      setErrors((state) => {
+      setErrors(state => {
         const copy = { ...state };
         delete copy[event.target.name];
         return copy;
       });
     }
-    setInputs((state) => ({
+    setInputs(state => ({
       ...state,
       [event.target.name]: event.target.value,
     }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
     const inputsKeys = Object.keys(inputs);
-    inputsKeys.forEach((key) => {
+    inputsKeys.forEach(key => {
       if (!inputs[key].trim().length) {
         console.log('set error to', key);
-        setErrors((state) => ({
+        setErrors(state => ({
           ...state,
           [key]: `${key} est obligatoire`,
         }));
       }
     });
     if (inputs.password !== inputs.password_confirm) {
-      setErrors((state) => ({
+      setErrors(state => ({
         ...state,
         password_confirm:
           'Le mot de passe de confirmation ne match pas avec le mot de passe saisi.',
@@ -69,103 +72,67 @@ const Inscription = () => {
       <Header />
       <div className="inscription">
         <div className="inscription__title">INSCRIPTION</div>
-        {JSON.stringify(errors)}
-        <Form onSubmit={handleSubmit}>
-          <Input
-            type="text"
-            id="firstname"
-            labelText="Prénom"
-            value={inputs.firstname}
-            onChange={handleChange}
-          />
-          <Input
-            type="text"
-            id="lastname"
-            labelText="Nom"
-            value={inputs.lastname}
-            onChange={handleChange}
-          />
-          <Input
-            type="email"
-            id="email"
-            labelText="Email"
-            value={inputs.email}
-            onChange={handleChange}
-          />
-          <Input
-            type="password"
-            id="password"
-            labelText="Mot de passe"
-            value={inputs.password}
-            onChange={handleChange}
-          />
-          <Input
-            type="password"
-            id="password_confirm"
-            labelText="Confirmation du mot de passe"
-            value={inputs.password_confirm}
-            onChange={handleChange}
-          />
-          <button type="submit">S'enregistrer</button>
-        </Form>
-        {/* <form className="inscription__form">
-        <div className="inscription__form__lastname">
-          <p>Nom</p>
-          <input type="text" />
-        </div>
-        <div className="inscription__form__firstname">
-          <p>Prénom</p>
-          <input type="text" />
-        </div>
-        <div className="inscription__form__city">
-          <p>Ville</p>
-          <input type="text" />
-        </div>
-        <div className="inscription__form__email">
-          <p>Email</p>
-          <input type="email" />
-        </div>
-        <div className="inscription__form__password">
-          <p>Mot de passe</p>
-          <input type="password" />
-        </div>
-        <div className="inscription__form__confirm">
-          <p>Confirmation du mot de passe</p>
-          <input type="password" />
-        </div>
-        <div className="inscription__form__readLegals">
-          <input
-            className="inscription__form__readLegals__checkbox"
-            type="checkbox"
-          />
-          <span className="inscription__form__readLegals__title">
-            J'ai lu les
-            <NavLink
-              className="inscription__form__readLegals__link"
-              type="button"
-              to="/legals"
-            >
-              CGU
-            </NavLink>
-          </span>
-        </div>
-
-        <div className="inscription__form__alreadyAccount">
-          <span className="inscription__form__alreadyAccount__title">
-            J'ai déjà un compte,
-          </span>
-          <NavLink
-            className="inscription__form__alreadyAccount__link"
-            type="button"
-            to="/connexion"
-          >
-            Je me connecte
-          </NavLink>
-        </div>
-        <div className="inscription__form__alreadyAccount__submit">
-          <button type="submit">S'inscrire</button>
-        </div>
-      </form> */}
+        <section className="inscription__section">
+          <Form onSubmit={handleSubmit}>
+            <Input
+              type="text"
+              id="firstname"
+              labelText="Prénom"
+              value={inputs.firstname}
+              onChange={handleChange}
+            />
+            <Input
+              type="text"
+              id="lastname"
+              labelText="Nom"
+              value={inputs.lastname}
+              onChange={handleChange}
+            />
+            <Input
+              type="text"
+              id="city"
+              labelText="Ville"
+              value={inputs.city}
+              onChange={handleChange}
+            />
+            <Input
+              type="email"
+              id="email"
+              labelText="Email"
+              value={inputs.email}
+              onChange={handleChange}
+            />
+            <Input
+              type="password"
+              id="password"
+              labelText="Mot de passe"
+              value={inputs.password}
+              onChange={handleChange}
+            />
+            <Input
+              type="password"
+              id="password_confirm"
+              labelText="Confirmation du mot de passe"
+              value={inputs.password_confirm}
+              onChange={handleChange}
+            />
+            <button type="submit" className="inscription__form-group-button">
+              S'enregistrer
+            </button>
+          </Form>
+          {!isMobile && (
+            <div>
+              <img src="" alt="img-inscription" />
+              <span>
+                <p>
+                  Créez un compte pour pouvoir bénéficier de toutes les
+                  fonctionnalités de l'application ou{' '}
+                </p>
+                <NavLink to="/connexion">connectez-vous</NavLink>
+              </span>
+            </div>
+          )}
+        </section>
       </div>
       <Footer />
     </>

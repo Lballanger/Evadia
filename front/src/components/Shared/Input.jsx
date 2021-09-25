@@ -5,15 +5,48 @@ const Input = ({
   className = '',
   id,
   labelText = '',
+  placeholder = '',
   type = 'text',
   value,
   onChange,
 }) => (
-  <div className={className}>
-    <label htmlFor={id}>{labelText}</label>
-    <input id={id} name={id} type={type} value={value} onChange={onChange} />
+  <div className={className} style={styles.group}>
+    <label htmlFor={id} style={styles.label}>
+      {labelText}
+    </label>
+    <input
+      id={id}
+      name={id}
+      type={type}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      style={styles.input}
+    />
   </div>
 );
+
+const styles = {
+  group: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'baseline',
+    width: '100%',
+    marginBottom: '0.8rem',
+  },
+  label: {
+    fontSize: '1.1rem',
+    color: '#666',
+  },
+  input: {
+    width: '100%',
+    fontSize: '1.3rem',
+    borderRadius: '0.3rem',
+    boxShadow: '0px 2px 10px -4px rgba(0,0,0,.3)',
+    border: '1px solid #efefef',
+    padding: '0.8rem 0.6rem',
+  },
+};
 
 Input.propTypes = PropTypes.shape({
   className: PropTypes.string,
