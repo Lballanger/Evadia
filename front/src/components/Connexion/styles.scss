@@ -1,13 +1,74 @@
 .connexion {
-  text-align: center;
+  padding: 1rem 2rem;
+  background-color: #efefef;
+  min-height: 100vh;
 
   &__title {
-    font-size: large;
+    font-size: 3rem;
     font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: row;
+
+    & > div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      span {
+        text-align: right;
+        max-width: 80%;
+        font-size: 2rem;
+      }
+    }
   }
 
   &__form {
-    padding-top: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  &__form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 100%;
+    max-width: 80%;
+    margin-bottom: 0.7rem;
+  }
+
+  &__form-group-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #666;
+  }
+
+  &__form-group-input {
+    width: 100%;
+    font-size: 1.3rem;
+    border-radius: 0.5rem;
+    box-shadow: rgb(0 0 0 / 30%) 0px 2px 10px -4px;
+    border: 2px solid rgb(160, 160, 160);
+    padding: 0.4rem;
+  }
+
+  &__form-group-button {
+    border: none;
+    padding: 0.4rem 0.8rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 10px -4px rgb(0 0 0 / 30%);
+    background-color: #38bd98;
+    color: #fff;
+    cursor: pointer;
   }
 
   &__form__email {
@@ -17,7 +78,7 @@
   &__form__password {
     margin-bottom: 10px;
   }
-  
+
   &__form__remember {
     margin-bottom: 50px;
   }
@@ -31,11 +92,12 @@
   }
 
   &__form__forgottenPassword {
-    margin-bottom: 50px;
+    align-self: center;
+    color: inherit;
+    font-size: 1rem;
   }
 
   &__form__submit {
     margin-bottom: 50px;
   }
 }
-
