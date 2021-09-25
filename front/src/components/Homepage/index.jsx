@@ -4,7 +4,7 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import Footer from '../Footer';
 import Header from '../Header';
-import backgroundVideo from '../../assets/video/timelapse.mp4';
+import backgroundVideo from '../../assets/video/timelapse_light.mp4';
 import API from '../../api';
 
 import './styles.scss';
