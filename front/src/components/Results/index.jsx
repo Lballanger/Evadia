@@ -9,7 +9,7 @@ import './styles.scss';
 const Results = () => (
   <>
     <Header />
-
+    <Map />
     <div className="list__results">
       <div className="results">
         <div className="results__criteria">
@@ -41,9 +41,6 @@ const Results = () => (
             </div>
           </div>
         </button>
-        <div>
-          <Map />
-        </div>
       </div>
 
       <div className="result">

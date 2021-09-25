@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 // import { NavLink } from 'react-router-dom';
 import Footer from '../Footer';
 import Header from '../Header';
+import Map from '../Map';
 import cityHooks from '../../hooks/useCity';
 
 import './styles.scss';
@@ -42,6 +43,10 @@ const Details = () => {
               </li>
             </ul>
           </div>
+        </div>
+
+        <div className="details__map">
+          <Map />
         </div>
       </div>
       <Footer />
