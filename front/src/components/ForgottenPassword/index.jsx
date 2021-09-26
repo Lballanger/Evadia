@@ -1,23 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import API from '../../api';
+import Form from '../Shared/Form';
+import Input from '../Shared/Input';
 import './styles.scss';
 
-const ForgottenPassword = () => (
-  <div className="container">
-    <div className="forgottenPassword__title">Mot de passe oublié</div>
-    <div className="forgottenPassword">
-      <form className="forgottenPassword__form">
-        <div className="forgottenPassword__form__email">
-          <p>Email</p>
-          <input type="email" />
-        </div>
-        <div className="newPassword__form__submit">
-          <button type="submit" className="newPassword__form__submit__btn">
-            Envoyer
+const ForgottenPassword = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    try {
+      const data = await API.forgotPassword({ email });
+      if (!data || data.status !== 200) throw new Error('User not found');
+      alert(data.data);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  return (
+    <div className="forgoten-password">
+      <div className="forgoten-password__title">MOT DE PASSE OUBLIE</div>
+      <section className="forgoten-password__section">
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="email"
+            id="email"
+            labelText="Email"
+            value={email}
+            onChange={event => setEmail(event.target.value)}
+          />
+          <button
+            type="submit"
+            className="forgoten-password__form-group-button"
+          >
+            Valider
           </button>
-        </div>
-      </form>
+        </Form>
+      </section>
     </div>
-  </div>
-);
+  );
+};
 
 export default ForgottenPassword;

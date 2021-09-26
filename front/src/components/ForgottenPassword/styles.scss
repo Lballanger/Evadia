@@ -1,47 +1,60 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 100px;
-  flex-wrap: wrap;
-}
-
-.forgottenPassword {
-  text-align: center;
-  width: 70%;
+.forgoten-password {
+  padding: 1rem 2rem;
+  background-color: #efefef;
+  min-height: 100vh;
 
   &__title {
-    font-size: large;
+    font-size: 3rem;
     font-weight: bold;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-decoration: underline;
   }
 
-  &__form {
-    padding-top: 3rem;
+  &__section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+
+    & > div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      span {
+        text-align: left;
+        max-width: 80%;
+        font-size: 2rem;
+      }
+    }
   }
 
-  &__form__submit {
-    margin-top: 50px;
-    margin-bottom: 50px;
+  &__form__readLegals {
+    margin-bottom: 30px;
   }
-}
 
-.newPassword__form__submit {
-  &__btn {
+  &__form__readLegals__title {
+    margin-left: 5px;
+    font-size: small;
+  }
+
+  &__form__readLegals__link {
+    margin-left: 5px;
+  }
+
+  &__form-group-button {
     border: none;
-    text-decoration: none;
-    padding: 0.5rem;
-    border-radius: 50px;
-    background: linear-gradient(145deg, #2ef259, #27cb4b);
-  }
-
-  &__btn:hover {
-    text-decoration: none;
-    border-radius: 50px;
-    background: #2be253;
-    box-shadow: inset 5px 5px 0px #25c047, inset -5px -5px 0px #31ff5f;
+    padding: 0.4rem 0.8rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 10px -4px rgb(0 0 0 / 30%);
+    background-color: #38bd98;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    margin: 0.6rem 0;
   }
 }

@@ -36,6 +36,8 @@ const deleteUser = async () => {
   return data;
 };
 
+const forgotPassword = async (params) => await instance.post('/user/forgot-password', params);
+
 const doRegister = async (params) => {
   try {
     const { data } = await instance.post('/auth/register', params);
@@ -92,6 +94,7 @@ export default {
   getUser,
   updateUser,
   deleteUser,
+  forgotPassword,
   doLogin,
   doRegister,
 };
