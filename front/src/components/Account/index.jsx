@@ -1,15 +1,12 @@
 import React from 'react';
-import Header from '../Header';
-import Footer from '../Footer';
 import Accordion from './Accordion';
 import './styles.scss';
 import userStore from '../../store/user';
 
 const Account = () => {
-  const user = userStore((state) => state.user);
+  const user = userStore(state => state.user);
   return (
     <>
-      <Header />
       <div className="account__container">
         <div className="account__avatar__display">
           <img
@@ -39,8 +36,6 @@ const Account = () => {
           Supprimer mon compte
         </button>
       </div>
-
-      <Footer />
     </>
   );
 };

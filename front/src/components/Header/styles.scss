@@ -1,12 +1,15 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  min-height: 75px;
   background-color: transparent;
   color: white;
+  padding: 0.9rem 1rem;
+  z-index: 9999;
 
   @media screen and (max-width: 900) {
     .header__h1 {
@@ -17,61 +20,31 @@
   &__logo__button {
     display: flex;
     text-decoration: none;
+    flex-direction: row;
+    align-items: center;
   }
 
   &__logo {
-    width: 3.5rem;
-    height: 3.5rem;
-    margin-left: 1rem;
-    margin-top: 0.5rem;
+    width: 100%;
+    max-width: 3.5rem;
 
     &__button {
       border: none;
       background-color: transparent;
       cursor: pointer;
       text-decoration: none;
-      color: inherit;
+      color: white;
     }
   }
 
   &__h1 {
     font-weight: bold;
     font-size: 1.5rem;
-    margin-left: -10px;
-    padding-top: 2px;
+    padding: 0;
+    margin: 0;
   }
 
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &__logo__button {
-      display: flex;
-    }
-
-    &__logo {
-      width: 3.5rem;
-      height: 3.5rem;
-      margin-left: 1rem;
-      margin-top: 0.5rem;
-
-      &__button {
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        text-decoration: none;
-        color: white;
-      }
-    }
-
-    &__h1 {
-      font-weight: bold;
-      font-size: 1.5rem;
-      margin-left: -10px;
-      padding-top: 2px;
-    }
-
     &__button__display {
       display: flex;
       flex-direction: row;
@@ -103,20 +76,12 @@
   &__links {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
     align-items: center;
-    align-content: space-around;
+    gap: 1rem;
   }
 
   &__link {
-    display: flex;
-    width: auto;
-    height: 3rem;
     font-size: 1.2rem;
-    margin-right: 1.5rem;
-    text-align: center;
-    padding: 0 0.3rem;
     color: inherit;
     text-decoration: none;
   }
@@ -127,8 +92,6 @@
     background: transparent;
     color: inherit;
     border: none;
-    margin-right: 20px;
-    margin-top: -60px;
   }
 }
 
@@ -193,7 +156,7 @@
   }
   .burger-bar::before,
   .burger-bar::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
   }

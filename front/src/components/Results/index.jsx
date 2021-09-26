@@ -1,14 +1,11 @@
-import { NavLink } from 'react-router-dom';
 import React from 'react';
-import Footer from '../Footer';
-import Header from '../Header';
+import { NavLink } from 'react-router-dom';
 import Map from '../Map';
 
 import './styles.scss';
 
 const Results = () => (
   <>
-    <Header />
     <Map />
     <div className="list__results">
       <div className="results">
@@ -82,7 +79,6 @@ const Results = () => (
         </button>
       </div>
     </div>
-    <Footer />
   </>
 );
 

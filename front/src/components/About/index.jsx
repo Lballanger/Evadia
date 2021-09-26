@@ -1,13 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import './styles.scss';
-import Header from '../Header';
-import Footer from '../Footer';
 
 const About = () => (
   <>
-    <Header />
-
     <h1 className="About__h1">A propos</h1>
     <h2 className="About__h2">Evadia</h2>
     <p>
@@ -30,8 +26,6 @@ const About = () => (
       <figcaption>François alias Le Talentueux</figcaption>
       <figcaption>Loïc alias Le Meilleur des Deux</figcaption>
     </div>
-
-    <Footer />
   </>
 );
 

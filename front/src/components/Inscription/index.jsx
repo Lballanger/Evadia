@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import API from '../../api';
 import useWindowSize from '../../hooks/useWindowSize';
-import Footer from '../Footer';
-import Header from '../Header';
 import Form from '../Shared/Form';
 import Input from '../Shared/Input';
 import './styles.scss';
@@ -68,74 +66,70 @@ const Inscription = () => {
   };
 
   return (
-    <>
-      <Header />
-      <div className="inscription">
-        <div className="inscription__title">INSCRIPTION</div>
-        <section className="inscription__section">
-          <Form onSubmit={handleSubmit}>
-            <Input
-              type="text"
-              id="firstname"
-              labelText="Prénom"
-              value={inputs.firstname}
-              onChange={handleChange}
-            />
-            <Input
-              type="text"
-              id="lastname"
-              labelText="Nom"
-              value={inputs.lastname}
-              onChange={handleChange}
-            />
-            <Input
-              type="text"
-              id="city"
-              labelText="Ville"
-              value={inputs.city}
-              onChange={handleChange}
-            />
-            <Input
-              type="email"
-              id="email"
-              labelText="Email"
-              value={inputs.email}
-              onChange={handleChange}
-            />
-            <Input
-              type="password"
-              id="password"
-              labelText="Mot de passe"
-              value={inputs.password}
-              onChange={handleChange}
-            />
-            <Input
-              type="password"
-              id="password_confirm"
-              labelText="Confirmation du mot de passe"
-              value={inputs.password_confirm}
-              onChange={handleChange}
-            />
-            <button type="submit" className="inscription__form-group-button">
-              S'enregistrer
-            </button>
-          </Form>
-          {!isMobile && (
-            <div>
-              <img src="" alt="img-inscription" />
-              <span>
-                <p>
-                  Créez un compte pour pouvoir bénéficier de toutes les
-                  fonctionnalités de l'application ou{' '}
-                </p>
-                <NavLink to="/connexion">connectez-vous</NavLink>
-              </span>
-            </div>
-          )}
-        </section>
-      </div>
-      <Footer />
-    </>
+    <div className="inscription">
+      <div className="inscription__title">INSCRIPTION</div>
+      <section className="inscription__section">
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            id="firstname"
+            labelText="Prénom"
+            value={inputs.firstname}
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
+            id="lastname"
+            labelText="Nom"
+            value={inputs.lastname}
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
+            id="city"
+            labelText="Ville"
+            value={inputs.city}
+            onChange={handleChange}
+          />
+          <Input
+            type="email"
+            id="email"
+            labelText="Email"
+            value={inputs.email}
+            onChange={handleChange}
+          />
+          <Input
+            type="password"
+            id="password"
+            labelText="Mot de passe"
+            value={inputs.password}
+            onChange={handleChange}
+          />
+          <Input
+            type="password"
+            id="password_confirm"
+            labelText="Confirmation du mot de passe"
+            value={inputs.password_confirm}
+            onChange={handleChange}
+          />
+          <button type="submit" className="inscription__form-group-button">
+            S'enregistrer
+          </button>
+        </Form>
+        {!isMobile && (
+          <div>
+            <img src="" alt="img-inscription" />
+            <span>
+              <p>
+                Créez un compte pour pouvoir bénéficier de toutes les
+                fonctionnalités de l'application ou{' '}
+              </p>
+              <NavLink to="/connexion">connectez-vous</NavLink>
+            </span>
+          </div>
+        )}
+      </section>
+    </div>
   );
 };
 

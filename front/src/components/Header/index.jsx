@@ -7,7 +7,7 @@ import './styles.scss';
 
 const Header = () => {
   const { isMobile } = useWindowSize();
-  const user = userStore((state) => state.user);
+  const user = userStore(state => state.user);
   const [showLinks, setShowLinks] = useState(false);
 
   const handleShowLinks = () => {
@@ -33,27 +33,29 @@ const Header = () => {
         <ul className="header__links">
           {user ? (
             <>
-              <NavLink className="header__link" type="button" to="/account">
-                <div className="header__links__display">
-                  <li className="header__item slideInDown-2">
-                    Bonjour {user.firstname}
-                  </li>
-                </div>
-              </NavLink>
+              <li className="header__item slideInDown-2">
+                <NavLink className="header__link" type="button" to="/account">
+                  Bonjour {user.firstname}
+                </NavLink>
+              </li>
             </>
           ) : (
             <>
-              <NavLink className="header__link" type="button" to="/connexion">
-                <div className="header__links__display">
-                  <li className="header__item slideInDown-1">Connexion</li>
-                </div>
-              </NavLink>
+              <li className="header__item">
+                <NavLink className="header__link" type="button" to="/connexion">
+                  Connexion
+                </NavLink>
+              </li>
 
-              <NavLink className="header__link" type="button" to="/inscription">
-                <div className="header__links__display">
-                  <li className="header__item slideInDown-2">Inscription</li>
-                </div>
-              </NavLink>
+              <li className="header__item">
+                <NavLink
+                  className="header__link"
+                  type="button"
+                  to="/inscription"
+                >
+                  Inscription
+                </NavLink>
+              </li>
             </>
           )}
         </ul>

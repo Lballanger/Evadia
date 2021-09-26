@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import Header from '../Header';
-import Footer from '../Footer';
 
 import './styles.scss';
 import Form from '../Shared/Form';
@@ -39,49 +37,45 @@ const Connexion = () => {
   };
 
   return (
-    <>
-      <Header />
-      <div className="connexion">
-        <div className="connexion__title">CONNEXION</div>
-        <section className="connexion__section">
-          {!isMobile && (
-            <div>
-              <img src="" alt="img-connexion" />
-              <span>
-                <p>Connectez-vous pour accéder à votre compte, ou </p>
-                <NavLink to="/inscription">créez un compte</NavLink>
-              </span>
-            </div>
-          )}
-          <Form onSubmit={handleSubmit}>
-            <Input
-              type="email"
-              labelText="Email"
-              id="email"
-              value={inputs.email}
-              onChange={inputChange}
-            />
-            <Input
-              type="password"
-              labelText="Mot de passe"
-              id="password"
-              value={inputs.password}
-              onChange={inputChange}
-            />
-            <button type="submit" className="connexion__form-group-button">
-              Se connecter
-            </button>
-            <Link
-              to="/forgottenPassword"
-              className="connexion__form__forgottenPassword"
-            >
-              Mot de passe oublié
-            </Link>
-          </Form>
-        </section>
-      </div>
-      <Footer />
-    </>
+    <div className="connexion">
+      <div className="connexion__title">CONNEXION</div>
+      <section className="connexion__section">
+        {!isMobile && (
+          <div>
+            <img src="" alt="img-connexion" />
+            <span>
+              <p>Connectez-vous pour accéder à votre compte, ou </p>
+              <NavLink to="/inscription">créez un compte</NavLink>
+            </span>
+          </div>
+        )}
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="email"
+            labelText="Email"
+            id="email"
+            value={inputs.email}
+            onChange={inputChange}
+          />
+          <Input
+            type="password"
+            labelText="Mot de passe"
+            id="password"
+            value={inputs.password}
+            onChange={inputChange}
+          />
+          <button type="submit" className="connexion__form-group-button">
+            Se connecter
+          </button>
+          <Link
+            to="/forgottenPassword"
+            className="connexion__form__forgottenPassword"
+          >
+            Mot de passe oublié
+          </Link>
+        </Form>
+      </section>
+    </div>
   );
 };
 

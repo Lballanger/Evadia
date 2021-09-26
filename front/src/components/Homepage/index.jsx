@@ -2,8 +2,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import Footer from '../Footer';
-import Header from '../Header';
 import backgroundVideo from '../../assets/video/timelapse_light.mp4';
 import API from '../../api';
 
@@ -12,7 +10,7 @@ import cityStore from '../../store/city';
 
 const Homepage = () => {
   const history = useHistory();
-  const setCity = cityStore((state) => state.setCity);
+  const setCity = cityStore(state => state.setCity);
 
   const toRandom = async () => {
     const data = await API.getRandomCity();
@@ -27,7 +25,6 @@ const Homepage = () => {
           <source src={backgroundVideo} type="video/mp4" />
         </video>
       </div>
-      <Header />
       <div className="homepage__container">
         <h1 className="homepage__container__h1">
           Evadez-vous avec{' '}
@@ -63,7 +60,6 @@ const Homepage = () => {
           </NavLink>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
