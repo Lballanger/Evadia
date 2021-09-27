@@ -41,9 +41,13 @@ router.get('/api/search/random', searchController.randomSearch);
  */
 router.post('/api/search/criteria', searchController.findByCriteria);
 
+/**
+ * Add/Update/Delete the user favorite or blacklist
+ * @route GET /search/city/:insee/check
+ * @group Search
+ * @summary Add/Update/Delete the user favorite or blacklist
+ */
 router.post('/api/search/city/:insee/check', searchController.addFavorite);
-
-router.delete('/api/search/city/:insee/check', searchController.delFavorite);
 
 /**
  * Get data for the current connected user
