@@ -6,6 +6,11 @@ export const useLogin = (data) => useMutation((data) => API.doLogin(data));
 export const useRegister = (data) =>
   // eslint-disable-next-line no-shadow
   useMutation((data) => API.doRegister(data));
-export const useUser = () => useQuery(['user'], () => API.getUser());
+export const useUser = () =>
+  useQuery(['user'], () => API.getUser(), {
+    onError: (err) => {
+      throw err;
+    },
+  });
 
 export default { useLogin, useRegister, useUser };

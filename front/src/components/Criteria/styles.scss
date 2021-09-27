@@ -4,8 +4,9 @@
   .criteria__container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    max-height: 100vh;
+    background: #fff;
+    min-height: 100vh;
+    color: #000;
   }
   .criteria {
     background-color: rgba($color: #000000, $alpha: 0.2);
@@ -41,13 +42,13 @@
           padding-top: 1rem;
         }
       }
-    }
 
-    &__slider {
-      &__1 {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 3rem;
+      &__slider {
+        &__1 {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 3rem;
+        }
 
         &__name {
           padding-top: 1rem;
@@ -55,7 +56,6 @@
         }
       }
     }
-
     &__submit {
       display: flex;
       justify-content: center;
@@ -68,7 +68,7 @@
         padding: 1rem;
         text-align: center;
         margin: 2rem;
-        width: auto;
+        width: 20%;
 
         &__btn {
           text-decoration: none;
@@ -248,4 +248,39 @@
   -moz-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
   background: rgb(255, 105, 105);
+}
+
+section.range-slider {
+  position: relative;
+  width: 200px;
+  // height: 35px;
+  text-align: center;
+}
+
+section.range-slider input {
+  pointer-events: none;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  top: 15px;
+  width: 200px;
+  outline: none;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+section.range-slider input::-webkit-slider-thumb {
+  pointer-events: all;
+  position: relative;
+  z-index: 1;
+  outline: 0;
+}
+
+section.range-slider input::-moz-range-thumb {
+  pointer-events: all;
+  position: relative;
+  z-index: 10;
+  -moz-appearance: none;
+  width: 9px;
 }
