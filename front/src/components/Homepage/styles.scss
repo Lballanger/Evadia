@@ -9,6 +9,7 @@
     flex-direction: column;
     justify-content: space-around;
     max-height: 100vh;
+    padding-top: 25%;
 
     &__evadia {
       text-transform: uppercase;
@@ -70,12 +71,14 @@
     z-index: -1;
     width: 100%;
     object-fit: cover;
+    min-height: 100vh;
   }
 
   .homepage__container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-top: 25%;
 
     &__evadia {
       text-transform: uppercase;
