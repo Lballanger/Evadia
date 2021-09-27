@@ -23,3 +23,6 @@ GET {{host}}/api/search/city?ville=354
 
 ###
 GET {{host}}/api/search/random
+
+###
+POST {{host}}/api/search/city/54318/check?boolean=false

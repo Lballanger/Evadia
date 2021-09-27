@@ -1,14 +1,13 @@
+require('dotenv').config();
 const { Pool } = require('pg');
-
-const ssl = {};
-
-if (process.env.NODE_ENV === 'production') {
-  ssl.rejectUnauthorized = false;
-}
+// const fs = require('fs');
 
 const config = {
   connectionString: process.env.DATABASE_URL,
-  ssl,
+  // ssl: {
+  //     ca: fs.readFileSync(__dirname + '/ca-certificate.crt'),
+  // },
+  // rejectUnauthorized: true,
 };
 
 const pool = new Pool(config);

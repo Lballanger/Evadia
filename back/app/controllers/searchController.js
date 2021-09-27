@@ -79,7 +79,7 @@ const searchController = {
   },
 
   /**
-   * Method cheking if city is a favorite, if not add it
+   * Method cheking if city is a favorite, if not add it or delete or modify
    * @route /api/search/city/:insee/check
    * @method POST
    * @param {Request} request
@@ -90,17 +90,17 @@ const searchController = {
       const { insee } = request.params;
       const { user } = request.user;
       const { boolean } = request.query;
-      const commune = await Commune.findByFavorite(insee);
-      if (!commune) {
-        // if commune, then change or delete favorite or blacklist
+      const commune = await Commune.findByFavorite(insee, user);
+      if (commune === null) {
+        // if commune is not register in favorite then add
         await Commune.add(insee, user, boolean);
         // eslint-disable-next-line eqeqeq
-      } else if (commune.is_favorite == boolean) {
+      } else if (`${commune.is_favorite}` == boolean) {
         // delete if is true in coming and register as true (the opposite is true too)
-        await Commune.delete(insee);
+        await Commune.delete(insee, user);
       } else {
         // change if is true in coming and register as false (the opposite also work)
-        await Commune.update(insee, boolean);
+        await Commune.update(insee, user, boolean);
       }
       response.json(commune);
     } catch (error) {

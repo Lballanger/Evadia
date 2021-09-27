@@ -93,8 +93,6 @@ class Commune {
    */
   static async findByCriteria(params) {
     try {
-      // 1. envoyer en BDD les critaires pour checker les commune
-      // 2. returning tout les code_insee de chaque commune correspondants aux critaires
       const { rows } = await client.query(
         'SELECT * FROM private.criteria($1)',
         [params]
@@ -108,20 +106,23 @@ class Commune {
   }
 
   /**
-   * Fetch a city by its code_insee
+   * Fetch a city by its code_insee and user_id
    * @param {string} code_insee
    * @async
    * @static
    * @returns {Array<Commune>} new instance of city found or null
    * @throws {Error} if the query didn't match any city in the database
    */
-  static async findByFavorite(insee) {
+  static async findByFavorite(insee, user) {
     try {
       const { rows } = await client.query(
-        'SELECT * FROM private.user_has_commune WHERE code_insee = $1',
-        [insee]
+        'SELECT * FROM private.user_has_commune WHERE commune_code_insee = $1 AND user_id=$2',
+        [insee, user]
       );
-      return new Commune(rows[0]);
+      if (rows.length > 0) {
+        return new Commune(rows[0]);
+      }
+      return null;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -129,7 +130,7 @@ class Commune {
   }
 
   /**
-   * Insert one city in favorite/blacklist
+   * Insert a city in favorite/blacklist for a user
    * @param {string} code_insee
    * @param {integer} user
    * @param {boolean} boolean
@@ -150,7 +151,7 @@ class Commune {
   }
 
   /**
-   * Delte one city from favorite/blacklist
+   * Delete a city from favorite/blacklist for a user
    * @param {string} code_insee
    * @param {integer} user
    * @param {boolean} boolean
@@ -158,11 +159,11 @@ class Commune {
    * @static
    * @throws {Error} if the query didn't match any city in the database
    */
-  static async delete(insee) {
+  static async delete(insee, user) {
     try {
       await client.query(
-        'DELETE FROM private.user_has_commune WHERE commune_code_insee=$1',
-        [insee]
+        'DELETE FROM private.user_has_commune WHERE commune_code_insee=$1 AND user_id=$2',
+        [insee, user]
       );
     } catch (error) {
       console.log(error);
@@ -171,7 +172,7 @@ class Commune {
   }
 
   /**
-   * Update one city in favorite/blacklist
+   * Update a city in favorite/blacklist for a user
    * @param {string} code_insee
    * @param {integer} user
    * @param {boolean} boolean
@@ -179,11 +180,11 @@ class Commune {
    * @static
    * @throws {Error} if the query didn't match any city in the database
    */
-  static async update(insee, boolean) {
+  static async update(insee, user, boolean) {
     try {
       await client.query(
-        'UPDATE private.user_has_commune SET is_favorite=$2 WHERE commune_code_insee=$1',
-        [insee, boolean]
+        'UPDATE private.user_has_commune SET is_favorite=$3 WHERE commune_code_insee=$1 AND user_id=$2',
+        [insee, user, boolean]
       );
     } catch (error) {
       console.log(error);
