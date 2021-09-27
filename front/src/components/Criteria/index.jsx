@@ -94,21 +94,21 @@ const Criteria = () => {
         </section>
         <section className="departements">
           <select name="codedepartement" onChange={handleChange}>
-            <option selected disabled>
-              Choisir un code département
-            </option>
+            <option disabled>Choisir un code département</option>
             {departements.map((code) => (
-              <option value={code}>{code}</option>
+              <option value={code} key={code}>
+                {code}
+              </option>
             ))}
           </select>
         </section>
         <section className="schools">
           <select name="type_ecole" onChange={handleChange}>
-            <option selected disabled>
-              Type d&apos;école
-            </option>
+            <option disabled>Type d&apos;école</option>
             {schools.map((code) => (
-              <option value={code}>{code}</option>
+              <option value={code} key={code}>
+                {code}
+              </option>
             ))}
           </select>
         </section>
