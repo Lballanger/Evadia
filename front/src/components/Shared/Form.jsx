@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Form = ({ children, onSubmit, ...props }) => (
-  <form onSubmit={onSubmit} {...props} style={styles.form}>
-    {children}
-  </form>
-);
-
 const styles = {
   form: {
     width: '100%',
@@ -21,6 +15,13 @@ const styles = {
     boxShadow: '0 2px 10px -4px rgba(0, 0, 0, .3)',
   },
 };
+
+const Form = ({ children, onSubmit, ...props }) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  <form onSubmit={onSubmit} {...props} style={styles.form}>
+    {children}
+  </form>
+);
 
 Form.propTypes = PropTypes.shape({
   children: PropTypes.node.isRequired,

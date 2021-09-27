@@ -15,17 +15,17 @@ const initialInputs = {
 
 const Connexion = () => {
   const [inputs, setInputs] = useState({ ...initialInputs });
-  const setUser = userStore(state => state.setUser);
+  const setUser = userStore((state) => state.setUser);
   const { isMobile } = useWindowSize();
 
-  const inputChange = event => {
-    setInputs(state => ({
+  const inputChange = (event) => {
+    setInputs((state) => ({
       ...state,
       [event.target.name]: event.target.value,
     }));
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const data = await API.doLogin(inputs);

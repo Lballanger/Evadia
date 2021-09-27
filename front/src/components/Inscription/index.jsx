@@ -21,34 +21,34 @@ const Inscription = () => {
   const [errors, setErrors] = useState({});
   const { isMobile } = useWindowSize();
 
-  const handleChange = async event => {
+  const handleChange = async (event) => {
     if (errors) {
-      setErrors(state => {
+      setErrors((state) => {
         const copy = { ...state };
         delete copy[event.target.name];
         return copy;
       });
     }
-    setInputs(state => ({
+    setInputs((state) => ({
       ...state,
       [event.target.name]: event.target.value,
     }));
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const inputsKeys = Object.keys(inputs);
-    inputsKeys.forEach(key => {
+    inputsKeys.forEach((key) => {
       if (!inputs[key].trim().length) {
         console.log('set error to', key);
-        setErrors(state => ({
+        setErrors((state) => ({
           ...state,
           [key]: `${key} est obligatoire`,
         }));
       }
     });
     if (inputs.password !== inputs.password_confirm) {
-      setErrors(state => ({
+      setErrors((state) => ({
         ...state,
         password_confirm:
           'Le mot de passe de confirmation ne match pas avec le mot de passe saisi.',

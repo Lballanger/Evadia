@@ -11,7 +11,7 @@ const { useRandomCity } = cityHooks;
 
 // eslint-disable-next-line react/prop-types
 const Details = () => {
-  const city = cityStore(state => state.city);
+  const city = cityStore((state) => state.city);
 
   return (
     <div className="details__container">

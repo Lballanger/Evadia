@@ -4,7 +4,7 @@ import './styles.scss';
 import userStore from '../../store/user';
 
 const Account = () => {
-  const user = userStore(state => state.user);
+  const user = userStore((state) => state.user);
   return (
     <>
       <div className="account__container">

@@ -36,7 +36,8 @@ const deleteUser = async () => {
   return data;
 };
 
-const forgotPassword = async (params) => await instance.post('/user/forgot-password', params);
+const forgotPassword = async (params) =>
+  instance.post('/user/forgot-password', params);
 
 const doRegister = async (params) => {
   try {

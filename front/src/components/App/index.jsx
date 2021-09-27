@@ -23,7 +23,7 @@ import ForgottenPassword from '../ForgottenPassword';
 import userStore from '../../store/user';
 
 const App = () => {
-  const setUser = userStore(state => state.setUser);
+  const setUser = userStore((state) => state.setUser);
   const { data, isError, isLoading } = useUser();
   useEffect(() => {
     if (data) {
@@ -91,12 +91,12 @@ const App = () => {
 
 // eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const user = userStore(state => state.user);
+  const user = userStore((state) => state.user);
 
   return (
     <Route
       {...rest}
-      render={props => {
+      render={(props) => {
         if (user) {
           return <Component {...props} />;
         }

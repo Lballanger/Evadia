@@ -1,6 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const styles = {
+  group: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'baseline',
+    width: '100%',
+    marginBottom: '0.8rem',
+  },
+  label: {
+    fontSize: '1.1rem',
+    color: '#666',
+  },
+  input: {
+    width: '100%',
+    fontSize: '1.3rem',
+    borderRadius: '0.3rem',
+    boxShadow: '0px 2px 10px -4px rgba(0,0,0,.3)',
+    border: '1px solid #efefef',
+    padding: '0.8rem 0.6rem',
+  },
+};
+
 const Input = ({
   className = '',
   id,
@@ -25,28 +47,6 @@ const Input = ({
     />
   </div>
 );
-
-const styles = {
-  group: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'baseline',
-    width: '100%',
-    marginBottom: '0.8rem',
-  },
-  label: {
-    fontSize: '1.1rem',
-    color: '#666',
-  },
-  input: {
-    width: '100%',
-    fontSize: '1.3rem',
-    borderRadius: '0.3rem',
-    boxShadow: '0px 2px 10px -4px rgba(0,0,0,.3)',
-    border: '1px solid #efefef',
-    padding: '0.8rem 0.6rem',
-  },
-};
 
 Input.propTypes = PropTypes.shape({
   className: PropTypes.string,

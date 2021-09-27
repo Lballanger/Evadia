@@ -10,7 +10,7 @@ import cityStore from '../../store/city';
 
 const Homepage = () => {
   const history = useHistory();
-  const setCity = cityStore(state => state.setCity);
+  const setCity = cityStore((state) => state.setCity);
 
   const toRandom = async () => {
     const data = await API.getRandomCity();

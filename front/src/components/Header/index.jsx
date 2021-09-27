@@ -7,7 +7,7 @@ import './styles.scss';
 
 const Header = () => {
   const { isMobile } = useWindowSize();
-  const user = userStore(state => state.user);
+  const user = userStore((state) => state.user);
   const [showLinks, setShowLinks] = useState(false);
 
   const handleShowLinks = () => {

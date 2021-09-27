@@ -7,7 +7,7 @@ import './styles.scss';
 const ForgottenPassword = () => {
   const [email, setEmail] = useState('');
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const data = await API.forgotPassword({ email });
@@ -28,7 +28,7 @@ const ForgottenPassword = () => {
             id="email"
             labelText="Email"
             value={email}
-            onChange={event => setEmail(event.target.value)}
+            onChange={(event) => setEmail(event.target.value)}
           />
           <button
             type="submit"
