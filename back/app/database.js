@@ -10,6 +10,10 @@ const config = {
   // rejectUnauthorized: true,
 };
 
+if (process.env.NODE_ENV === 'production') {
+  config.ssl.rejectUnauthorized = false;
+}
+
 const pool = new Pool(config);
 
 module.exports = pool;
