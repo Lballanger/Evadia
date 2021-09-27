@@ -9,6 +9,7 @@
     flex-direction: column;
     justify-content: space-around;
     max-height: 100vh;
+    padding-top: 25%;
 
     &__evadia {
       text-transform: uppercase;
@@ -70,12 +71,14 @@
     z-index: -1;
     width: 100%;
     object-fit: cover;
+    min-height: 100vh;
   }
 
   .homepage__container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-top: 15%;
 
     &__evadia {
       text-transform: uppercase;
@@ -114,12 +117,12 @@
         border-radius: 20px;
         background: linear-gradient(145deg, #ffd452, #e6b245);
         box-shadow: 5px 5px 0px #d9a841, -5px -5px 0px #ffe459;
-        width: 60%;
+        width: 100%;
 
         &__button {
           text-decoration: none;
           color: inherit;
-          width: 100%;
+          width: 25%;
         }
       }
 
