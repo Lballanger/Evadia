@@ -1,0 +1,19 @@
+// ---- Mobile First
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .legals {
+    width: fit-content;
+    height: fit-content;
+    padding: 40% 10%;
+  }
+}
+
+// ---- DESKTOP ----
+
+@media screen and (min-width: 1024px) {
+  .legals {
+    width: fit-content;
+    height: fit-content;
+    padding: 20% 30%;
+  }
+}
