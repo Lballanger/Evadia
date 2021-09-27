@@ -24,11 +24,12 @@ import userStore from '../../store/user';
 
 const App = () => {
   const setUser = userStore((state) => state.setUser);
-  const { data, isError, isLoading } = useUser();
+  const { data, isError, error, isLoading } = useUser();
   useEffect(() => {
     if (data) {
       setUser(data);
     } else if (isError) {
+      console.log('APP USER ERROR: ', error);
       setUser(null);
     }
   }, [data, isError]);

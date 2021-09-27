@@ -4,6 +4,9 @@ import axios from 'axios';
 
 const instance = axios.create({
   baseURL: 'http://134.122.95.34/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 const getRandomCity = async () => {
@@ -16,15 +19,10 @@ const getCity = async (params) => {
   return data;
 };
 
-const getCityWithCriteria = async (params) => {
-  const { data } = await instance.post('/search/criteria', params);
-  return data;
-};
+const getCityWithCriteria = async (params) =>
+  instance.post('/search/criteria', params);
 
-const getUser = async () => {
-  const { data } = await instance.get('/user');
-  return data;
-};
+const getUser = async () => instance.get('/user');
 
 const updateUser = async (params) => {
   const { data } = await instance.patch('/user', params);
@@ -85,6 +83,7 @@ instance.interceptors.response.use(
         return instance(originalRequest);
       }
     }
+    return Promise.reject(error);
   }
 );
 
