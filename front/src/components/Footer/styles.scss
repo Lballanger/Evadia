@@ -1,37 +1,93 @@
-.footer {
-  // position:absolute;
-  // left:0;
-  // bottom:0;
-  // right:0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  align-content: space-around;
-  margin-top: auto;
-  background-color: rgba(31, 31, 31, 0.5);
-  padding: 0.5rem;
-  color: white;
+// ---- Mobile First
 
-  &__p {
-    font-size: 0.9rem;
-  }
-
-  &__display {
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .footer {
+    // position:absolute;
+    // left:0;
+    // bottom:0;
+    // right:0;
     display: flex;
-    width: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
     align-content: space-around;
-    font-size: 0.9rem;
-    text-align: center;
-  }
+    margin-top: auto;
+    background-color: rgba(31, 31, 31, 0.5);
+    padding: 0.2rem;
+    color: white;
 
-  &__button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    margin-left: 2rem;
-    text-decoration: none;
-    color: inherit;
+    &__p {
+      display: none;
+      font-size: 0.9rem;
+    }
+    &__mobile {
+      font-size: 0.6rem;
+      margin-left: 0.8rem;
+    }
+    &__display {
+      display: flex;
+      width: auto;
+      align-content: space-around;
+      font-size: 0.6rem;
+      text-align: center;
+      margin-right: 1rem;
+    }
+
+    &__button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      margin-left: 2rem;
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+// ---- DESKTOP ----
+
+@media screen and (min-width: 1024px) {
+  .footer {
+    // position:absolute;
+    // left:0;
+    // bottom:0;
+    // right:0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: space-between;
+    margin-top: auto;
+    background-color: rgba(31, 31, 31, 0.5);
+    padding: 0.2rem;
+    color: white;
+
+    &__p {
+      font-size: 0.9rem;
+      margin: auto;
+    }
+    &__mobile {
+      display: none;
+      font-size: 0.6rem;
+    }
+    &__display {
+      display: flex;
+      width: auto;
+      align-content: space-between;
+      font-size: 0.9rem;
+      text-align: center;
+      margin: auto;
+    }
+
+    &__button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      margin-left: 2rem;
+      text-decoration: none;
+      color: inherit;
+    }
   }
 }
