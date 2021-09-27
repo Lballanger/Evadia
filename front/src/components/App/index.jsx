@@ -61,7 +61,7 @@ const App = () => {
           <Route path="/results" exact>
             <Results />
           </Route>
-          <Route path="/details" exact>
+          <Route path="/details/:codeInsee" exact>
             <Details />
           </Route>
           <Route path="/connexion" exact>

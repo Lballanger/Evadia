@@ -1,17 +1,48 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect } from 'react';
-// import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import Map from '../Map';
-import cityHooks from '../../hooks/useCity';
+import cityStore from '../../store/city';
+import useWindowSize from '../../hooks/useWindowSize';
+import API from '../../api';
 
 import './styles.scss';
-import cityStore from '../../store/city';
-
-const { useRandomCity } = cityHooks;
 
 // eslint-disable-next-line react/prop-types
 const Details = () => {
+  const { codeInsee } = useParams();
+  const history = useHistory();
+  const { isMobile } = useWindowSize();
   const city = cityStore((state) => state.city);
+  const setCity = cityStore((state) => state.setCity);
+  const [dataForMap, setDataForMap] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // eslint-disable-next-line consistent-return
+    const getCity = async () => {
+      try {
+        const data = await API.getCityByInsee(codeInsee);
+        if (!data.city_name) throw new Error('City not found');
+        setCity(data);
+        setDataForMap((state) => [
+          ...state,
+          {
+            city_name: data.city_name,
+            population: data.population,
+            coords: [data.coordinates.x, data.coordinates.y],
+          },
+        ]);
+      } catch (error) {
+        return history.push('/404');
+      } finally {
+        setLoading(false);
+      }
+    };
+    getCity();
+  }, [codeInsee]);
+
+  if (loading) return 'Loading...'; // TODO: Implementer un loader
 
   return (
     <div className="details__container">
@@ -41,9 +72,11 @@ const Details = () => {
         </div>
       </div>
 
-      <div className="details__map">
-        <Map />
-      </div>
+      {!isMobile && (
+        <div className="details__map">
+          <Map cities={dataForMap} center={dataForMap[0].coords} />
+        </div>
+      )}
     </div>
   );
 };

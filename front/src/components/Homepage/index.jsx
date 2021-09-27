@@ -15,7 +15,7 @@ const Homepage = () => {
   const toRandom = async () => {
     const data = await API.getRandomCity();
     setCity(data[0]);
-    history.push('/details');
+    history.push(`/details/${data[0].code_insee}`);
   };
 
   return (

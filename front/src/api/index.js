@@ -19,6 +19,11 @@ const getCity = async (params) => {
   return data;
 };
 
+const getCityByInsee = async (codeInsee) => {
+  const { data } = await instance.get(`/search/city/${codeInsee}`);
+  return data;
+};
+
 const getCityWithCriteria = async (params) =>
   instance.post('/search/criteria', params);
 
@@ -90,6 +95,7 @@ instance.interceptors.response.use(
 export default {
   getRandomCity,
   getCity,
+  getCityByInsee,
   getCityWithCriteria,
   getUser,
   updateUser,
