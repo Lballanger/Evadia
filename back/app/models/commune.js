@@ -107,6 +107,14 @@ class Commune {
     }
   }
 
+  /**
+   * Fetch a city by its code_insee
+   * @param {string} code_insee
+   * @async
+   * @static
+   * @returns {Array<Commune>} new instance of city found or null
+   * @throws {Error} if the query didn't match any city in the database
+   */
   static async findByFavorite(insee) {
     try {
       const { rows } = await client.query(
@@ -120,6 +128,15 @@ class Commune {
     }
   }
 
+  /**
+   * Insert one city in favorite/blacklist
+   * @param {string} code_insee
+   * @param {integer} user
+   * @param {boolean} boolean
+   * @async
+   * @static
+   * @throws {Error} if the query didn't match any city in the database
+   */
   static async add(insee, user, boolean) {
     try {
       await client.query(
@@ -132,6 +149,15 @@ class Commune {
     }
   }
 
+  /**
+   * Delte one city from favorite/blacklist
+   * @param {string} code_insee
+   * @param {integer} user
+   * @param {boolean} boolean
+   * @async
+   * @static
+   * @throws {Error} if the query didn't match any city in the database
+   */
   static async delete(insee) {
     try {
       await client.query(
@@ -144,6 +170,15 @@ class Commune {
     }
   }
 
+  /**
+   * Update one city in favorite/blacklist
+   * @param {string} code_insee
+   * @param {integer} user
+   * @param {boolean} boolean
+   * @async
+   * @static
+   * @throws {Error} if the query didn't match any city in the database
+   */
   static async update(insee, boolean) {
     try {
       await client.query(
