@@ -40,6 +40,7 @@ const Inscription = () => {
     const inputsKeys = Object.keys(inputs);
     inputsKeys.forEach((key) => {
       if (!inputs[key].trim().length) {
+        // eslint-disable-next-line no-console
         console.log('set error to', key);
         setErrors((state) => ({
           ...state,
@@ -57,9 +58,11 @@ const Inscription = () => {
     if (Object.keys(errors).length === 0) {
       try {
         const data = await API.doRegister(inputs);
+        // eslint-disable-next-line no-console
         console.log(data);
         setInputs({ ...initialInputs });
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.log('Error register', err);
       }
     }
