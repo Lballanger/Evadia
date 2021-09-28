@@ -20,7 +20,7 @@ const Account = () => {
             <li className="account__infos__li">{user.lastname}</li>
             <li className="account__infos__li">{user.firstname}</li>
             <li className="account__infos__li">{user.email}</li>
-            <li className="account__infos__li">{user?.city}</li>
+            <li className="account__infos__li">{user?.city.city_name}</li>
           </ul>
           <button className="account__infos__edit" type="button">
             Modifier

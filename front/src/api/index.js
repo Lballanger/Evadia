@@ -79,9 +79,11 @@ instance.interceptors.response.use(
       if (refreshToken && refreshToken !== '') {
         instance.defaults.headers.common.authorization = `Bearer ${refreshToken}`;
         try {
-          const { data } = await instance.post('/auth/refresh-token');
-          instance.defaults.headers.common.authorization = `Bearer ${data.accessToken}`;
-          originalRequest.headers.authorization = `Bearer ${data.accessToken}`;
+          const { data } = await instance.post('/auth/refresh-token', {
+            token: refreshToken,
+          });
+          instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
+          originalRequest.headers.authorization = `Bearer ${data.token}`;
         } catch (error) {
           localStorage.removeItem('ON_DEMENAGE:REFRESH_TOKEN');
         }

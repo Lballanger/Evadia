@@ -57,7 +57,7 @@ const Criteria = () => {
     <section className="criteria__container">
       <h1>Rechercher des villes selon vos critères</h1>
       <form onSubmit={handleSumbit} className="criteria">
-        <div className="criteria__inputs">
+        {/* <div className="criteria__inputs">
           <div className="criteria__inputs__toggle">
             <div className="criteria__inputs__toggle__1">
               <label className="switch">
@@ -67,9 +67,11 @@ const Criteria = () => {
               <span className="criteria__inputs__toggle__name">Critère 1</span>
             </div>
           </div>
-        </div>
+        </div> */}
         <section className="range-slider">
-          <span className="rangeValues">Choisir la population</span>
+          <label className="rangeValues">Choisir la population</label>
+          <br />
+          <br />
           <span>
             Minimum: {inputs.populationmin} - Maximum: {inputs.populationmax}
           </span>
@@ -77,7 +79,7 @@ const Criteria = () => {
             name="populationmin"
             value={inputs.populationmin}
             min="0"
-            max="10000000"
+            max="4000000"
             step="100"
             type="range"
             onChange={handleChange}
@@ -86,31 +88,44 @@ const Criteria = () => {
             name="populationmax"
             value={inputs.populationmax}
             min="0"
-            max="10000000"
+            max="4000000"
             step="100"
             type="range"
             onChange={handleChange}
           />
         </section>
+        <br />
         <section className="departements">
-          <select name="codedepartement" onChange={handleChange}>
-            <option disabled>Choisir un code département</option>
-            {departements.map((code) => (
-              <option value={code} key={code}>
-                {code}
-              </option>
-            ))}
-          </select>
+          <label htmlFor="codedepartement">Choisir un département</label>
+          <div className="select">
+            <select
+              id="codedepartement"
+              name="codedepartement"
+              onChange={handleChange}
+            >
+              <option disabled>Choisir un code département</option>
+              {departements.map((code) => (
+                <option value={code} key={code}>
+                  {code}
+                </option>
+              ))}
+            </select>
+            <span className="focus" />
+          </div>
         </section>
+        <br />
         <section className="schools">
-          <select name="type_ecole" onChange={handleChange}>
-            <option disabled>Type d&apos;école</option>
-            {schools.map((code) => (
-              <option value={code} key={code}>
-                {code}
-              </option>
-            ))}
-          </select>
+          <label htmlFor="type_ecole">Choisir le type d&apos;école</label>
+          <div className="select">
+            <select id="type_select" name="type_ecole" onChange={handleChange}>
+              <option disabled>Type d&apos;école</option>
+              {schools.map((code) => (
+                <option value={code} key={code}>
+                  {code}
+                </option>
+              ))}
+            </select>
+          </div>
         </section>
         <button type="submit">Lancer la recherche</button>
       </form>

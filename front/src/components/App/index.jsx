@@ -27,7 +27,7 @@ const App = () => {
   const { data, isError, error, isLoading } = useUser();
   useEffect(() => {
     if (data) {
-      setUser(data);
+      setUser(data.data);
     } else if (isError) {
       console.log('APP USER ERROR: ', error);
       setUser(null);
