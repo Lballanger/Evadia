@@ -1,0 +1,57 @@
+.About {
+  &__container {
+    margin-top: 6rem;
+    padding-top: 2rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 1rem;
+  }
+  &__h2 {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 1.5rem;
+  }
+  &__h3 {
+    font-size: 1.5rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+    color: rgb(255, 208, 0);
+  }
+  &__p {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  &__team {
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+
+    &__display {
+      display: flex;
+      align-items: center;
+    }
+    &__avatar {
+      width: 5%;
+    }
+  }
+}
+
+.italic {
+  font-style: italic;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .About__team {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+    align-content: stretch;
+
+    &__avatar {
+      width: 30%;
+    }
+  }
+}

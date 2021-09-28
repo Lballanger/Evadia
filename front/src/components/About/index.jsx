@@ -1,30 +1,65 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import './styles.scss';
+import avatar from '../../assets/images/avatar.png';
 
 const About = () => (
   <>
-    <h1 className="About__h1">A propos</h1>
-    <h2 className="About__h2">Evadia</h2>
-    <p>
-      Le Lorem Ipsum est simplement du faux texte employé dans la composition et
-      la mise en page avant impression. Le Lorem Ipsum est le faux texte
-      standard de l'imprimerie depuis les années 1500, quand un imprimeur
-      anonyme assembla ensemble des morceaux de texte pour réaliser un livre
-      spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
-      mais s'est aussi adapté à la bureautique informatique, sans que son
-      contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce
-      à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et,
-      plus récemment, par son inclusion dans des applications de mise en page de
-      texte, comme Aldus PageMaker.
-    </p>
+    <div className="About__container">
+      <h1 className="About__h1">A propos</h1>
+      <h2 className="About__h2">Evadia</h2>
+      <h3 className="About__h3">Qu'est-ce qu'est EVADIA ?</h3>
+      <p className="About__p">
+        EVADIA est un projet de fin d'année de 5 étudiants de la promo Uther
+        d'O'Clock. Réalisé en 4 semaines, de A à Z, il a nécessité le savoir de
+        3 personnes en Back et 2 et demie en Front. Nous comptons le "et demie"
+        car Germain Michaud a été sur le front (
+        <span className="italic">c'est le cas de le dire</span>) des deux côtés.
+      </p>
+      <h3 className="About__h3">Quelle est l'utilité de ce site ?</h3>
+      <p className="About__p">
+        Nous sommes partis de la problématique que quand une personne souhaite
+        déménager dans une autre ville, pour diverses raisons, il lui est bien
+        souvent difficile de trouver certaines informations essentielles
+        facilement. Notre site regroupe toutes ces informations au même endroit.
+      </p>
+      <h3 className="About__h3">Comment avons-nous procédé ?</h3>
+      <p className="About__p">
+        L'équipe du Back, Alison Serra (qui est à l'initiative du projet), Loïc
+        Ballanger et Germain Michaud ont récupéré une quantité folle
+        d'informations à travers des API gouvernementales afin de créer leur
+        propre API, celle que nous utilisons pour la quasi-intégralité du site.
+      </p>
 
-    <div className="About__dev">
-      <figcaption>Germain alias Le Grand Berlin</figcaption>
-      <figcaption>Clément aliast Le Magnifique</figcaption>
-      <figcaption>Alison alias Emoji Sensei</figcaption>
-      <figcaption>François alias Le Talentueux</figcaption>
-      <figcaption>Loïc alias Le Meilleur des Deux</figcaption>
+      <h3 className="About__h3">L'équipe</h3>
+      <div className="About__team">
+        <div className="About__team__display">
+          <img src={avatar} className="About__team__avatar" alt="avatar" />
+          <p className="About__team__dev">
+            Germain <span className="italic">Le Grand Berlin</span>
+          </p>
+
+          <img src={avatar} className="About__team__avatar" alt="avatar" />
+          <figcaption className="About__team__dev">
+            Clément <span className="italic">Le Magnifique</span>
+          </figcaption>
+
+          <img src={avatar} className="About__team__avatar" alt="avatar" />
+          <figcaption className="About__team__dev">
+            Alison <span className="italic">Emoji Sensei</span>
+          </figcaption>
+
+          <img src={avatar} className="About__team__avatar" alt="avatar" />
+          <figcaption className="About__team__dev">
+            François <span className="italic">Le Talentueux</span>
+          </figcaption>
+
+          <img src={avatar} className="About__team__avatar" alt="avatar" />
+          <figcaption className="About__team__dev">
+            Loïc <span className="italic">Le Meilleur des Deux</span>
+          </figcaption>
+        </div>
+      </div>
     </div>
   </>
 );

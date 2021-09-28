@@ -42,6 +42,7 @@
     font-size: 1.5rem;
     padding: 0;
     margin: 0;
+    text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.5);
   }
 
   .header {
@@ -156,7 +157,7 @@
   }
   .burger-bar::before,
   .burger-bar::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
   }
