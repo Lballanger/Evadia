@@ -2,7 +2,6 @@
 
 BEGIN;
 
-INSERT INTO private."user" (email, lastname, firstname, password)
-VALUES ('TEST.TEST@gmail.test', 'MyLastname', 'MyFirstname', 'Super');
+SELECT * FROM private.user WHERE false;
 
 ROLLBACK;
