@@ -1,11 +1,11 @@
 // ---- Mobile First
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .footer {
-    // position:absolute;
-    // left:0;
-    // bottom:0;
-    // right:0;
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -47,7 +47,7 @@
 
 // ---- DESKTOP ----
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 481px) {
   .footer {
     // position:absolute;
     // left:0;
