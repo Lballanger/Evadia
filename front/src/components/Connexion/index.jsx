@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 
 import './styles.scss';
 import Form from '../Shared/Form';
@@ -14,6 +14,7 @@ const initialInputs = {
 };
 
 const Connexion = () => {
+  const history = useHistory();
   const [inputs, setInputs] = useState({ ...initialInputs });
   const setUser = userStore((state) => state.setUser);
   const { isMobile } = useWindowSize();
@@ -31,8 +32,10 @@ const Connexion = () => {
       const data = await API.doLogin(inputs);
       setUser(data);
       setInputs({ ...initialInputs });
+      history.push('/');
     } catch (error) {
       console.log(error);
+      alert(error.message);
     }
   };
 

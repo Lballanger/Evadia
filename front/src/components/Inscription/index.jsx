@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import API from '../../api';
 import useWindowSize from '../../hooks/useWindowSize';
 import Form from '../Shared/Form';
@@ -17,6 +17,7 @@ const initialInputs = {
 };
 
 const Inscription = () => {
+  const history = useHistory();
   const [inputs, setInputs] = useState({ ...initialInputs });
   const [errors, setErrors] = useState({});
   const { isMobile } = useWindowSize();
@@ -61,6 +62,7 @@ const Inscription = () => {
         // eslint-disable-next-line no-console
         console.log(data);
         setInputs({ ...initialInputs });
+        history.push('/');
       } catch (err) {
         // eslint-disable-next-line no-console
         console.log('Error register', err);
