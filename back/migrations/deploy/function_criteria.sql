@@ -10,7 +10,7 @@ BEGIN;
 */
 
 CREATE OR REPLACE FUNCTION private.criteria(json) RETURNS SETOF private.commune AS $$
-	SELECT private.commune.* FROM private.commune JOIN private.school ON school.commune_code=private.commune.code_insee
+	SELECT private.commune.* FROM private.commune
     -- Criterion between two population values
 	WHERE population::int BETWEEN (($1->>'populationmin')::int) AND (($1->>'populationmax')::int)
 	AND (CASE 
@@ -30,7 +30,8 @@ CREATE OR REPLACE FUNCTION private.criteria(json) RETURNS SETOF private.commune 
 	AND (CASE
         -- Test for the presence of the type_ecole key in the json
 	  	WHEN (($1->'type_ecole')::text IS NOT NULL) = true
-		  	THEN private.school.type=($1->>'type_ecole')::text
+		  	-- check if the towns have one of the schools you are looking for
+		  	THEN private.commune.code_insee IN (SELECT private.school.commune_code FROM private.school WHERE private.school.type=($1->>'type_ecole')::text)
 	  	ELSE true 
 	  	END)
 $$ LANGUAGE SQL STRICT;
