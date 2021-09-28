@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import useWindowSize from '../../hooks/useWindowSize';
 import cityStore from '../../store/city';
 import Map from '../Map';
@@ -19,7 +19,13 @@ const Results = () => {
 
   return (
     <>
-      {!isMobile && <Map cities={transformCoords(cities)} />}
+      {!isMobile && (
+        <Map
+          cities={transformCoords(cities)}
+          center={[cities[0].coordinates.x, cities[0].coordinates.y]}
+          className="fixed-map"
+        />
+      )}
       <div className={`list__results${isMobile ? '' : ' with-map'}`}>
         <div className="results">
           <div className="results__criteria">
@@ -33,15 +39,15 @@ const Results = () => {
               </NavLink>
             </div>
             <div className="resultsNbr">
-              {cities.length}
-              ville{cities.length > 1 ? 's' : ''} dans votre recherche(s).
+              {cities.length} ville{cities.length > 1 ? 's' : ''} dans votre
+              recherche.
             </div>
           </div>
         </div>
 
         {cities.map((city) => (
-          <div className="result">
-            <button type="button" className="result__button">
+          <Link to={`/details/${city.code_insee}`}>
+            <div className="result">
               <img
                 className="picture"
                 src={`../../assets/images/${city.city_name}.jpg`}
@@ -54,8 +60,8 @@ const Results = () => {
                   <p>info</p>
                 </div>
               </div>
-            </button>
-          </div>
+            </div>
+          </Link>
         ))}
       </div>
     </>

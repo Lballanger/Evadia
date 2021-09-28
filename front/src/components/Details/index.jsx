@@ -74,7 +74,7 @@ const Details = () => {
 
       {!isMobile && (
         <div className="details__map">
-          <Map cities={dataForMap} center={dataForMap[0].coords} />
+          <Map cities={dataForMap} center={dataForMap[0].coords} zoom={11} />
         </div>
       )}
     </div>

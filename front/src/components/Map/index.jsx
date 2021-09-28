@@ -13,11 +13,16 @@ import 'leaflet/dist/leaflet.css';
 import './styles.scss';
 
 const defaultPosition = [46.82414087601361, 2.6038539530657316];
-const Map = ({ cities, center = defaultPosition }) => (
-  <div>
+const Map = ({
+  cities,
+  center = defaultPosition,
+  className = '',
+  zoom = 7,
+}) => (
+  <div className={className}>
     <MapContainer
       center={center}
-      zoom={7}
+      zoom={zoom}
       scrollWheelZoom={false}
       className="map__container"
       zoomControl={false}
