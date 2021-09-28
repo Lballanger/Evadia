@@ -1,21 +1,34 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import backgroundVideo from '../../assets/video/timelapse_light.mp4';
 import API from '../../api';
 
 import './styles.scss';
 import cityStore from '../../store/city';
+import AutoSuggest from '../AutoSuggest';
 
 const Homepage = () => {
   const history = useHistory();
   const setCity = cityStore((state) => state.setCity);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toRandom = async () => {
     const data = await API.getRandomCity();
     setCity(data[0]);
     history.push(`/details/${data[0].code_insee}`);
+  };
+
+  const goToDetails = (commune) => {
+    history.push(`/details/${commune.code_insee}`);
+  };
+
+  const handleCloseModal = (event) => {
+    event.stopPropagation();
+    setIsModalOpen(false);
   };
 
   return (
@@ -43,13 +56,15 @@ const Homepage = () => {
             <div className="homepage__container__search__link">Aléatoire</div>
           </a>
 
-          <NavLink
+          {/* <NavLink className="homepage__container__search__link__button" type="button" to="/details">
+            <div className="homepage__container__search__link">Par ville</div>
+          </NavLink> */}
+          <div
             className="homepage__container__search__link__button"
-            type="button"
-            to="/details"
+            onClick={() => setIsModalOpen(true)}
           >
             <div className="homepage__container__search__link">Par ville</div>
-          </NavLink>
+          </div>
 
           <NavLink
             className="homepage__container__search__link__button"
@@ -60,6 +75,21 @@ const Homepage = () => {
           </NavLink>
         </div>
       </div>
+      {isModalOpen && (
+        <>
+          <div className="overlay" onClick={handleCloseModal} />
+          <div className="modal">
+            <AutoSuggest onSelected={goToDetails} limit={5} />
+            <button
+              type="button"
+              onClick={handleCloseModal}
+              className="modal__close"
+            >
+              X
+            </button>
+          </div>
+        </>
+      )}
     </>
   );
 };
