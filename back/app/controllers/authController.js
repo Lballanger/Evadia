@@ -13,7 +13,7 @@ const authController = {
       if (!(await compare(password, user.password)))
         return response.status(400).json('Invalid credentials');
 
-      // TODO: Remove from blacklist
+      await userBlacklistService.removeFromBlacklist(user.id);
 
       const accessToken = await jwtService.generateToken({ id: user.id });
       const refreshToken = await jwtService.generateToken(
@@ -71,21 +71,17 @@ const authController = {
       if ((await userBlacklistService.addInBlacklist(id)) !== 'OK') {
         throw new Error('Impossible to logged out');
       }
-      response.json({ accessToken: null, success: true });
+      return response.json({ accessToken: null, success: true });
     } catch (error) {
       return response.status(500).json(error.message);
     }
   },
   refreshToken: async (request, response) => {
-    const { token } = request.body;
+    const { id } = request.user;
     try {
-      if (token == null) return response.status(401).json('No token provided');
-      // TODO: get refreshToken from db or redis and check if exists
-      const decoded = await jwtService.validateToken(token, true);
-      if (decoded == null) return response.status(401).json('Invalid token');
-      const newToken = await jwtService.generateToken({ id: decoded.id });
-      // TODO: Store the new token in db or redis
-      return response.json({ token: newToken });
+      // All check was made in the authMiddleware and we hava access to the user ID in request.user
+      const newToken = await jwtService.generateToken({ id });
+      return response.json({ accessToken: newToken });
     } catch (error) {
       return response.status(500).json(error.message);
     }
