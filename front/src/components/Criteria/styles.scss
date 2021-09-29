@@ -316,7 +316,7 @@ select {
 
 .select {
   display: grid;
-  grid-template-areas: 'select';
+  grid-template-areas: "select";
   align-items: center;
   position: relative;
 
@@ -343,7 +343,7 @@ select {
 
   // Custom arrow
   &:not(.select--multiple)::after {
-    content: '';
+    content: "";
     justify-self: end;
     width: 0.8em;
     height: 0.5em;
@@ -424,4 +424,9 @@ label {
   background: #1f9f87;
   font-size: 1rem;
   letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.criteria button:hover {
+  background: darkcyan;
 }
