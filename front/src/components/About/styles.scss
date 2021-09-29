@@ -10,15 +10,21 @@
     margin-right: auto;
     margin-bottom: 2rem;
   }
+
+  &__h1 {
+    margin: 2rem 0 2rem 0;
+  }
+
   &__h2 {
     text-align: center;
     text-transform: uppercase;
-    margin: 1.5rem;
+    margin: 1rem;
+    font-size: 2rem;
   }
   &__h3 {
     font-size: 1.5rem;
     margin-left: 2rem;
-    margin-top: 4rem;
+    margin-top: 3rem;
     margin-bottom: 1rem;
     margin-right: 2rem;
     color: rgb(255, 208, 0);
@@ -26,10 +32,12 @@
   &__p {
     margin-left: 2rem;
     margin-right: 2rem;
+    text-justify: auto;
   }
   &__team {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 
     &__a {
       display: inline-block;
@@ -41,6 +49,7 @@
       justify-content: center;
       align-items: center;
       padding-bottom: 2rem;
+      margin-left: 2rem;
     }
 
     &__display {
@@ -50,11 +59,17 @@
 
     &__dev {
       padding-bottom: 0.5rem;
+      padding-top: 0.7rem;
+      text-align: center;
+    }
+
+    &__role {
       text-align: center;
     }
     &__avatar {
-      width: 50%;
+      width: 60%;
       text-align: center;
+      border-bottom: 2px solid black;
     }
   }
 }
@@ -72,15 +87,23 @@
   .About__team {
     &__display {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       align-content: center;
       justify-content: space-between;
+      margin-left: 2rem;
+      margin-right: 2rem;
     }
+
+    &__one {
+      width: 50%;
+    }
+
     &__truc {
       display: flex;
     }
     &__avatar {
-      width: 15%;
+      width: 50%;
     }
   }
 }

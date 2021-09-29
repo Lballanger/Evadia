@@ -21,7 +21,11 @@ const About = () => (
         Nous sommes partis de la problématique que quand une personne souhaite
         déménager dans une autre ville, pour diverses raisons, il lui est bien
         souvent difficile de trouver certaines informations essentielles
-        facilement. Notre site regroupe toutes ces informations au même endroit.
+        facilement. Ces informations, tel que la météo à l'année, la taille de
+        la population d'une commune, les écoles ou encore les hôpitaux proches,
+        sont toutes regroupées sur notre site. Nous planifions d'or et déjà de
+        rajouter davantage de critères comme l'éligibilité de la fibre, liker un
+        lieu et une messagerie interne entre utilisateurs.
       </p>
       <h3 className="About__h3">Comment avons-nous procédé ?</h3>
       <p className="About__p">
@@ -41,7 +45,7 @@ const About = () => (
               className="About__team__a"
             >
               <p className="About__team__dev">Germain Michaud</p>
-              <p className="About__team__dev">
+              <p className="About__team__role">
                 <span className="italic">Scrum Master</span>
               </p>
             </a>
@@ -51,7 +55,7 @@ const About = () => (
             <img src={avatar} className="About__team__avatar" alt="avatar" />
             <a href="https://github.com/AlisonSerra" className="About__team__a">
               <p className="About__team__dev">Alison Serra</p>
-              <p className="About__team__dev">
+              <p className="About__team__role">
                 <span className="italic">Git Master</span>
               </p>
             </a>
@@ -64,7 +68,7 @@ const About = () => (
               className="About__team__a"
             >
               <p className="About__team__dev">Clément Kieken</p>
-              <p className="About__team__dev">
+              <p className="About__team__role">
                 <span className="italic">Product Owner</span>
               </p>
             </a>
@@ -77,7 +81,7 @@ const About = () => (
               className="About__team__a"
             >
               <p className="About__team__dev">François Charron</p>
-              <p className="About__team__dev">
+              <p className="About__team__role">
                 <span className="italic">Lead Dev Front</span>
               </p>
             </a>
@@ -87,7 +91,7 @@ const About = () => (
             <img src={avatar} className="About__team__avatar" alt="avatar" />
             <a href="https://github.com/Lballanger" className="About__team__a">
               <p className="About__team__dev">Loïc Ballanger</p>
-              <p className="About__team__dev">
+              <p className="About__team__role">
                 <span className="italic">Lead Dev Back</span>
               </p>
             </a>
