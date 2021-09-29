@@ -22,6 +22,7 @@
     text-decoration: none;
     flex-direction: row;
     align-items: center;
+    z-index: 100;
   }
 
   &__logo {
@@ -114,7 +115,7 @@
     height: 100vh;
     padding: 2rem;
     visibility: none;
-    background-color: black;
+    // background-color: black;
     opacity: 0.97;
     transition: all 0.8s ease-in-out;
     display: flex;
