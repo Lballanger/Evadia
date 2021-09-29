@@ -97,4 +97,10 @@ router.post('/api/auth/register', authController.register);
  */
 router.post('/api/auth/logout', authMiddleware, authController.logout);
 
+router.post(
+  '/api/auth/refresh-token',
+  authMiddleware(true),
+  authController.refreshToken
+);
+
 module.exports = router;

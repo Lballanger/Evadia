@@ -11,6 +11,9 @@ const authController = {
       if (!user) return response.status(400).json('Invalid credentials');
       if (!(await compare(password, user.password)))
         return response.status(400).json('Invalid credentials');
+
+      // TODO: Remove from blacklist
+
       const accessToken = await jwtService.generateToken({ id: user.id });
       const refreshToken = await jwtService.generateToken(
         { id: user.id },
@@ -35,14 +38,14 @@ const authController = {
       const user = await User.getByEmail(email);
       if (user) return response.status(400).json('User already exists');
       const hashedPassword = await hash(password);
-      const newUser = await User.create({
+      const newUser = await new User({
         email,
         password: hashedPassword,
         firstname,
         lastname,
         city,
         role: 'user',
-      });
+      }).create();
       const accessToken = await jwtService.generateToken({ id: newUser.id });
       const refreshToken = await jwtService.generateToken(
         { id: newUser.id },
