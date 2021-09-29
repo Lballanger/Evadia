@@ -11,12 +11,7 @@
   padding: 0.9rem 1rem;
   z-index: 9999;
 
-  @media screen and (max-width: 900) {
-    .header__h1 {
-      display: none;
-    }
-  }
-
+  
   &__logo__button {
     display: flex;
     text-decoration: none;
@@ -97,11 +92,115 @@
   }
 }
 
-@media screen and (max-width: 900) {
-  .header__h1 {
-    display: none;
+@media screen and (min-width: 481px) and (max-width: 900px) {
+  
+    .header__links {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      right: -100vw;
+      bottom: 0;
+      width: 0;
+      height: 100vh;
+      padding: 2rem;
+      visibility: none;
+      // background-color: black;
+      opacity: 0.97;
+      transition: all 0.8s ease-in-out;
+      display: flex;
+      justify-content: space-around;
+  
+      &__link {
+        display: block;
+        padding: 1.5rem;
+        font-size: 5vw;
+      }
+  
+      &__burger {
+        display: block;
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+      }
+  
+      &__burger:hover {
+        cursor: pointer;
+      }
+    }
+  
+    .show-nav .header__links {
+      width: 100vw;
+      right: 0;
+      visibility: visible;
+    }
+  
+    .burger-bar,
+    .burger-bar::before,
+    .burger-bar::after {
+      display: block;
+      width: 40px;
+      height: 3px;
+      position: relative;
+      border-radius: 3px;
+      background: white;
+      transition: all 0.5s ease-in-out;
+    }
+    .burger-bar::before,
+    .burger-bar::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+    .burger-bar::before {
+      transform: translateY(-12px);
+    }
+  
+    .burger-bar::after {
+      transform: translateY(12px);
+    }
+  
+    .show-nav .burger-bar {
+      width: 0;
+      background: transparent;
+    }
+  
+    .show-nav .burger-bar::before {
+      transform: rotate(45deg);
+    }
+  
+    .show-nav .burger-bar::after {
+      transform: rotate(-45deg);
+    }
+  
+    .header__item {
+      transform: translateY(100vh);
+      margin: 0 0 2rem;
+      padding: 2rem;
+      background-color: white;
+      text-align: center;
+      font-size: 1.5rem;
+      border-radius: 50px;
+      background: linear-gradient(145deg, #528fff, #528fff);
+      width: 15rem;
+      height: 0px;
+    }
+    .header__item:hover {
+      background: linear-gradient(145deg, #526cff, #526cff);
+    }
+    .show-nav .header__item {
+      transform: translateY(0);
+    }
+  
+    .show-nav .slideInDown-1 {
+      transition: all 1s ease-out;
+    }
+  
+    .show-nav .slideInDown-2 {
+      transition: all 1.1s ease-out;
+    }
   }
-}
+
 
 @media screen and (max-width: 480px) {
   .header__links {

@@ -7,7 +7,7 @@ import userStore from '../../store/user';
 import './styles.scss';
 
 const Header = ({ location: { pathname } }) => {
-  const { isMobile } = useWindowSize();
+  const { isMobile, isTablet } = useWindowSize();
   const user = userStore((state) => state.user);
   const [showLinks, setShowLinks] = useState(false);
 
@@ -16,7 +16,7 @@ const Header = ({ location: { pathname } }) => {
   };
 
   const closeMenu = () => {
-    if (isMobile && showLinks) {
+    if (isMobile && isTablet && showLinks) {
       setShowLinks(false);
     }
   };
@@ -39,7 +39,7 @@ const Header = ({ location: { pathname } }) => {
         </h1>
       </NavLink>
 
-      {!isMobile ? (
+      {!isMobile && !isTablet ? (
         <ul className="header__links">
           {user ? (
             <>
