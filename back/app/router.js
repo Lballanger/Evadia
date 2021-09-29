@@ -55,7 +55,7 @@ router.post('/api/search/city/:insee/check', searchController.addFavorite);
  * @group Auth
  * @summary Return data for the current connected user or error message if not connected with valid token
  */
-router.get('/api/user', authMiddleware, userController.user);
+router.get('/api/user', authMiddleware(), userController.user);
 
 /**
  * Update the current user data
@@ -63,7 +63,7 @@ router.get('/api/user', authMiddleware, userController.user);
  * @group Auth
  * @summary Update the current user data
  */
-router.patch('/api/user', authMiddleware, userController.update);
+router.patch('/api/user', authMiddleware(), userController.update);
 
 /**
  * Delete the current user from database
@@ -71,7 +71,7 @@ router.patch('/api/user', authMiddleware, userController.update);
  * @group Auth
  * @summary Delete the current user from database
  */
-router.delete('/api/user', authMiddleware, userController.delete);
+router.delete('/api/user', authMiddleware(), userController.delete);
 
 /**
  * Log user in
@@ -95,7 +95,7 @@ router.post('/api/auth/register', authController.register);
  * @group Auth
  * @summary Return error message if user was not connected (no token provided or invalid) otherwise return status 204
  */
-router.post('/api/auth/logout', authMiddleware, authController.logout);
+router.post('/api/auth/logout', authMiddleware(), authController.logout);
 
 router.post(
   '/api/auth/refresh-token',

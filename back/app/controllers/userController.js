@@ -13,6 +13,7 @@ const userController = {
         firstname: user.firstname,
         lastname: user.lastname,
         role: user.role,
+        city: user.city,
       });
     } catch (error) {
       return response.status(500).json(error.message);

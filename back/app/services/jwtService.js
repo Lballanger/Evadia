@@ -25,13 +25,17 @@ const jwtService = {
    * @returns {string} Return a token
    */
   generateToken: async (payload, isRefresh = false) => {
+    const expiresIn = parseInt(
+      isRefresh
+        ? process.env.JWT_REFRESH_SECRET_DURATION
+        : process.env.JWT_SECRET_DURATION,
+      10
+    );
     const token = jwt.sign(
       payload,
       isRefresh ? process.env.JWT_REFRESH_SECRET : process.env.JWT_SECRET,
       {
-        expiresIn: isRefresh
-          ? process.env.JWT_REFRESH_SECRET_DURATION
-          : process.env.JWT_SECRET_DURATION,
+        expiresIn,
       }
     );
     return token;
