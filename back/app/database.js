@@ -11,7 +11,9 @@ const config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-  config.ssl.rejectUnauthorized = false;
+  config.ssl = {
+    rejectUnauthorized: false,
+  };
 }
 
 const pool = new Pool(config);
