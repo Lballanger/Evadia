@@ -5,6 +5,10 @@
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     border-radius: 1rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
   }
   &__h2 {
     text-align: center;
@@ -14,7 +18,7 @@
   &__h3 {
     font-size: 1.5rem;
     margin-left: 2rem;
-    margin-top: 2rem;
+    margin-top: 4rem;
     margin-bottom: 1rem;
     margin-right: 2rem;
     color: rgb(255, 208, 0);
@@ -26,14 +30,31 @@
   &__team {
     display: flex;
     flex-direction: row;
-    align-content: space-around;
+
+    &__a {
+      display: inline-block;
+    }
+
+    &__one {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 2rem;
+    }
 
     &__display {
       display: flex;
       align-items: center;
     }
+
+    &__dev {
+      padding-bottom: 0.5rem;
+      text-align: center;
+    }
     &__avatar {
-      width: 5%;
+      width: 50%;
+      text-align: center;
     }
   }
 }
@@ -43,15 +64,23 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
+  .About__container {
+    margin-left: 0rem;
+    margin-right: 0rem;
+    width: 100%;
+  }
   .About__team {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: baseline;
-    align-content: stretch;
-
+    &__display {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: space-between;
+    }
+    &__truc {
+      display: flex;
+    }
     &__avatar {
-      width: 30%;
+      width: 15%;
     }
   }
 }

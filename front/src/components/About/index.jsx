@@ -34,30 +34,64 @@ const About = () => (
       <h3 className="About__h3">L'équipe</h3>
       <div className="About__team">
         <div className="About__team__display">
-          <img src={avatar} className="About__team__avatar" alt="avatar" />
-          <p className="About__team__dev">
-            Germain <span className="italic">Le Grand Berlin</span>
-          </p>
+          <div className="About__team__one">
+            <img src={avatar} className="About__team__avatar" alt="avatar" />
+            <a
+              href="https://github.com/GermainMichaud"
+              className="About__team__a"
+            >
+              <p className="About__team__dev">Germain Michaud</p>
+              <p className="About__team__dev">
+                <span className="italic">Scrum Master</span>
+              </p>
+            </a>
+          </div>
 
-          <img src={avatar} className="About__team__avatar" alt="avatar" />
-          <figcaption className="About__team__dev">
-            Clément <span className="italic">Le Magnifique</span>
-          </figcaption>
+          <div className="About__team__one">
+            <img src={avatar} className="About__team__avatar" alt="avatar" />
+            <a href="https://github.com/AlisonSerra" className="About__team__a">
+              <p className="About__team__dev">Alison Serra</p>
+              <p className="About__team__dev">
+                <span className="italic">Git Master</span>
+              </p>
+            </a>
+          </div>
 
-          <img src={avatar} className="About__team__avatar" alt="avatar" />
-          <figcaption className="About__team__dev">
-            Alison <span className="italic">Emoji Sensei</span>
-          </figcaption>
+          <div className="About__team__one">
+            <img src={avatar} className="About__team__avatar" alt="avatar" />
+            <a
+              href="https://github.com/Clementkieken"
+              className="About__team__a"
+            >
+              <p className="About__team__dev">Clément Kieken</p>
+              <p className="About__team__dev">
+                <span className="italic">Product Owner</span>
+              </p>
+            </a>
+          </div>
 
-          <img src={avatar} className="About__team__avatar" alt="avatar" />
-          <figcaption className="About__team__dev">
-            François <span className="italic">Le Talentueux</span>
-          </figcaption>
+          <div className="About__team__one">
+            <img src={avatar} className="About__team__avatar" alt="avatar" />
+            <a
+              href="https://github.com/FrancoisCHARRON"
+              className="About__team__a"
+            >
+              <p className="About__team__dev">François Charron</p>
+              <p className="About__team__dev">
+                <span className="italic">Lead Dev Front</span>
+              </p>
+            </a>
+          </div>
 
-          <img src={avatar} className="About__team__avatar" alt="avatar" />
-          <figcaption className="About__team__dev">
-            Loïc <span className="italic">Le Meilleur des Deux</span>
-          </figcaption>
+          <div className="About__team__one">
+            <img src={avatar} className="About__team__avatar" alt="avatar" />
+            <a href="https://github.com/Lballanger" className="About__team__a">
+              <p className="About__team__dev">Loïc Ballanger</p>
+              <p className="About__team__dev">
+                <span className="italic">Lead Dev Back</span>
+              </p>
+            </a>
+          </div>
         </div>
       </div>
     </div>
