@@ -60,7 +60,7 @@ const AutoSuggest = ({ onSelected, limit = 10 }) => {
   };
 
   const inputProps = {
-    placeholder: 'Entrez ici le nom de la commune à rechercher',
+    placeholder: 'Nom de la ville :',
     value,
     onChange,
   };

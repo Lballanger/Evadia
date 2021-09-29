@@ -3,6 +3,7 @@
 @media screen  and (max-width: 480px) {
   #video {
     display: none;
+    filter: alpha(opacity=5);
   }
   .homepage__container {
     display: flex;
