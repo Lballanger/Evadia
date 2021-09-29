@@ -1,4 +1,5 @@
 const jwtService = require('../services/jwtService');
+const blacklistService = require('../services/userBlacklistService');
 
 // eslint-disable-next-line consistent-return
 exports.authMiddleware =
@@ -27,7 +28,9 @@ exports.authMiddleware =
       if (decoded == null)
         return res.status(401).json({ error: 'Invalid or expired token' });
 
-      // TODO: If user is in blacklist (Redis) return error
+      if (await blacklistService.getUser(decoded.id)) {
+        return res.status(401).json({ error: 'You must to be logged' });
+      }
 
       // If token is valid, we set the user data to the request
       req.user = decoded;
