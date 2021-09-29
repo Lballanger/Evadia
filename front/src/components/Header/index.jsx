@@ -16,7 +16,7 @@ const Header = ({ location: { pathname } }) => {
   };
 
   const closeMenu = () => {
-    if (isMobile && isTablet && showLinks) {
+    if ((isMobile || isTablet) && showLinks) {
       setShowLinks(false);
     }
   };
