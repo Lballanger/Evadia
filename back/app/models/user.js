@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 const client = require('../database');
 
 /**
@@ -33,8 +34,7 @@ class User {
   static async getById(id) {
     try {
       const result = await client.query(
-        // eslint-disable-next-line quotes
-        "SELECT u.*,json_build_object('code_insee', c.code_insee, 'code_departement', c.code_departement, 'code_postal', c.code_postal, 'code_region', c.code_region, 'city_name', c.city_name, 'coordinates', c.coordinates, 'population', c.population) AS city FROM private.\"user\" AS u JOIN private.commune AS c ON c.code_insee = u.city WHERE u.id = $1 GROUP BY u.id, c.code_insee",
+        "SELECT u.*, json_build_object('code_insee', c.code_insee, 'code_departement', c.code_departement, 'code_postal', c.code_postal, 'code_region', c.code_region, 'city_name', c.city_name, 'coordinates', c.coordinates, 'population', c.population) AS city, (SELECT json_agg(json_build_object('id', uhc.id, 'commune_id', uhc.commune_code_insee, 'is_favorite', uhc.is_favorite, 'date', uhc.created_at, 'details', json_build_object('city_name', co.city_name, 'population', co.population, 'coordinates', co.coordinates))) AS commune FROM private.user_has_commune AS uhc JOIN private.commune AS co ON co.code_insee = uhc.commune_code_insee WHERE uhc.user_id = u.id) AS favorites FROM private.\"user\" AS u JOIN private.commune AS c ON c.code_insee = u.city  WHERE u.id = $1 GROUP BY u.id, c.code_insee",
         [id]
       );
       if (result.rows.length === 0) {
@@ -57,7 +57,7 @@ class User {
   static async getByEmail(email) {
     try {
       const { rows } = await client.query(
-        'SELECT * FROM private."user" WHERE email = $1',
+        "SELECT u.*, json_build_object('code_insee', c.code_insee, 'code_departement', c.code_departement, 'code_postal', c.code_postal, 'code_region', c.code_region, 'city_name', c.city_name, 'coordinates', c.coordinates, 'population', c.population) AS city, (SELECT json_agg(json_build_object('id', uhc.id, 'commune_id', uhc.commune_code_insee, 'is_favorite', uhc.is_favorite, 'date', uhc.created_at, 'details', json_build_object('city_name', co.city_name, 'population', co.population, 'coordinates', co.coordinates))) AS commune FROM private.user_has_commune AS uhc JOIN private.commune AS co ON co.code_insee = uhc.commune_code_insee WHERE uhc.user_id = u.id) AS favorites FROM private.\"user\" AS u JOIN private.commune AS c ON c.code_insee = u.city  WHERE u.email = $1 GROUP BY u.id, c.code_insee",
         [email]
       );
       if (rows.length === 0) {

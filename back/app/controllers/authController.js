@@ -26,6 +26,8 @@ const authController = {
         firstname: user.firstname,
         lastname: user.lastname,
         role: user.role,
+        city: user.city,
+        favorites: user.favorites,
         accessToken,
         refreshToken,
       });
