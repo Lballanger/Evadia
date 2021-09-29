@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 export default function useWindowSize() {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 481);
   const [isTablet, setIsTablet] = useState(
-    window.innerWidth >= 768 && window.innerWidth < 1024
+    window.innerWidth >= 481 && window.innerWidth < 1024
   );
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
   const [isLandscape, setIsLandscape] = useState(
@@ -18,8 +18,8 @@ export default function useWindowSize() {
       const windowHeight = window.innerHeight;
       setWidth(windowWidth);
       setHeight(windowHeight);
-      setIsMobile(windowWidth < 768);
-      setIsTablet(windowWidth >= 768 && windowWidth < 1024);
+      setIsMobile(windowWidth < 481);
+      setIsTablet(windowWidth >= 481 && windowWidth < 1024);
       setIsDesktop(windowWidth >= 1024);
       setIsLandscape(windowWidth > windowHeight);
     };
