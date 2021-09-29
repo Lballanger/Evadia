@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const { compare, hash } = require('../services/bcryptService');
 const jwtService = require('../services/jwtService');
+const userBlacklistService = require('../services/userBlacklistService');
 
 const authController = {
   login: async (request, response) => {
@@ -64,10 +65,17 @@ const authController = {
       return response.status(500).json(error.message);
     }
   },
-  logout: async (request, response) =>
-    // TODO: remove token from db or redis
-    // TODO: find a way to revoke token
-    response.json('Logged out'),
+  logout: async (request, response) => {
+    const { id } = request.user;
+    try {
+      if ((await userBlacklistService.addInBlacklist(id)) !== 'OK') {
+        throw new Error('Impossible to logged out');
+      }
+      response.json({ accessToken: null, success: true });
+    } catch (error) {
+      return response.status(500).json(error.message);
+    }
+  },
   refreshToken: async (request, response) => {
     const { token } = request.body;
     try {
