@@ -9,9 +9,7 @@ Content-Length: 141
 	{
 		"populationmin": "4800",
 		"populationmax": "15000",
-		"codedepartement": "77",
-		"type_ecole": "Lycée",
-		"distance_ecole_max": "1"
+		"type_ecole": "Lycée"
 	}
 
 ### RANDOM
