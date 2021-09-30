@@ -2,6 +2,12 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+CREATE TABLE private.commerce (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT,
+    coordinates POINT,
+    commune_code TEXT NOT NULL REFERENCES private.commune(code_insee),
+    type TEXT
+);
 
 COMMIT;
