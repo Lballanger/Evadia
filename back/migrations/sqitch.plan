@@ -8,3 +8,5 @@ user_has_commune 2021-09-24T16:44:46Z LoicB <ballanger.loic@gmail.com> # Creatio
 weather_table 2021-09-28T15:55:01Z LoicB <ballanger.loic@gmail.com> # Creation of the weather table
 commerce_table 2021-09-28T15:56:38Z LoicB <ballanger.loic@gmail.com> # Creation of the commerce table
 internet_table 2021-09-30T10:30:44Z Alison <alison.serra@hotmail.fr> # Creation of the internet_table
+personal_health 2021-09-30T12:20:49Z Alison <alison.serra@hotmail.fr> # creation of the personal_health
+health_institution 2021-09-30T12:27:05Z Alison <alison.serra@hotmail.fr> # creation of the health_institution
