@@ -5,6 +5,7 @@ import API from '../../api';
 import useWindowSize from '../../hooks/useWindowSize';
 import Form from '../Shared/Form';
 import Input from '../Shared/Input';
+import inscription from '../../assets/images/inscription.jpg';
 import './styles.scss';
 
 const initialInputs = {
@@ -123,13 +124,19 @@ const Inscription = () => {
         </Form>
         {!isMobile && (
           <div>
-            <img src="" alt="img-inscription" />
+            <img
+              className="inscription__logo"
+              src={inscription}
+              alt="img-inscription"
+            />
             <span>
               <p>
                 Créez un compte pour pouvoir bénéficier de toutes les
                 fonctionnalités de l'application ou{' '}
+                <NavLink className="inscription__link" to="/connexion">
+                  connectez-vous
+                </NavLink>
               </p>
-              <NavLink to="/connexion">connectez-vous</NavLink>
             </span>
           </div>
         )}

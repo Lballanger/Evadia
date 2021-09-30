@@ -7,6 +7,7 @@ import Input from '../Shared/Input';
 import API from '../../api';
 import userStore from '../../store/user';
 import useWindowSize from '../../hooks/useWindowSize';
+import login from '../../assets/images/Login.png';
 
 const initialInputs = {
   email: '',
@@ -45,10 +46,14 @@ const Connexion = () => {
       <section className="connexion__section">
         {!isMobile && (
           <div>
-            <img src="" alt="img-connexion" />
+            <img className="connexion__logo" src={login} alt="img-connexion" />
             <span>
-              <p>Connectez-vous pour accéder à votre compte, ou </p>
-              <NavLink to="/inscription">créez un compte</NavLink>
+              <p>
+                Connectez-vous pour accéder à votre compte, ou
+                <NavLink className="connexion__link" to="/inscription">
+                  créez un compte
+                </NavLink>
+              </p>
             </span>
           </div>
         )}

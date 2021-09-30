@@ -6,14 +6,19 @@
   background-attachment: fixed;
   padding: 1rem 2rem;
   background-color: #efefef;
-  min-height: 100vh;
-
+  
   &__title {
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 2rem;
+    margin-top: 8rem;;
+    margin-bottom: 5rem;
     text-align: center;
-    text-decoration: underline;
+  }
+
+  &__logo {
+    width: 20rem;
+    margin-left: 1.9rem;
+    margin-top: -11rem;
   }
 
   &__section {
@@ -30,11 +35,24 @@
       align-items: flex-start;
 
       span {
-        text-align: left;
+        margin-top: 2rem;
+        text-align: justify;
         max-width: 80%;
-        font-size: 2rem;
+        font-size: 1.5rem;
+        text-shadow: 1px 1px 40px;
+        width: 22rem;
       }
     }
+  }
+
+  &__link {
+    margin-left: 0.2rem;
+    text-decoration: underline;
+    transition: 0.6s;
+  }
+
+  &__link:hover {
+    color: darkcyan;;
   }
 
   &__form__readLegals {
@@ -61,5 +79,16 @@
     cursor: pointer;
     border-radius: 3px;
     margin: 0.6rem 0;
+    transition: 0.6s;
   }
+
+  &__form-group-button:hover {
+    background-color: darkcyan;;
+  }
+
+
+
+
+
 }
+
