@@ -47,10 +47,8 @@ const Details = () => {
 
   return (
     <div className="details__container">
-      <div className="details__new__search">
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Dropdown />
-        </div>
+      <div className="details__new__search" style={{ display: 'flex' }}>
+        <Dropdown />
       </div>
 
       <div className="details__card">
