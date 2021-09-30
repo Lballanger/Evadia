@@ -11,7 +11,6 @@
   padding: 0.9rem 1rem;
   z-index: 9999;
 
-  
   &__logo__button {
     display: flex;
     text-decoration: none;
@@ -75,6 +74,10 @@
     flex-direction: row;
     align-items: center;
     gap: 1rem;
+  }
+
+  &__item {
+    position: relative;
   }
 
   &__link {
@@ -151,7 +154,7 @@
   }
   .burger-bar::before,
   .burger-bar::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
   }
@@ -185,8 +188,7 @@
   .header__item:hover {
     background: linear-gradient(145deg, #526cff, #526cff);
   }
-  }
-
+}
 
 @media screen and (max-width: 480px) {
   .header__links {
@@ -247,7 +249,7 @@
   }
   .burger-bar::before,
   .burger-bar::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
   }

@@ -68,8 +68,8 @@ const App = () => {
             <Connexion />
           </Route>
           <Route path="/account" exact>
-            {/* <ProtectedRoute component={Account} /> */}
-            <Account />
+            <ProtectedRoute component={Account} />
+            {/* <Account /> */}
           </Route>
           <Route path="/inscription" exact>
             <Inscription />

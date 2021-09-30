@@ -1,15 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { NavLink, withRouter, useHistory } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { IoCaretDownOutline, IoCaretUpOutline } from 'react-icons/io5';
 import logo from '../../assets/images/logo.png';
 import useWindowSize from '../../hooks/useWindowSize';
 import userStore from '../../store/user';
 import './styles.scss';
+import API from '../../api';
+import UserMenu from './UserMenu';
+
+const styles = {
+  btnNav: {
+    padding: '.3rem .6rem',
+    background: '#fff',
+    color: '#333',
+    lineHeight: 1,
+    borderRadius: '.4rem',
+    boxShadow: '0 0 10px -2px rgb(0 0 0 / 60%)',
+    fontWeight: 500,
+  },
+  btn: {
+    position: 'relative',
+    cursor: 'pointer',
+    color: 'rgb(34, 34, 34)',
+    paddingRight: '.4rem',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '.7rem',
+    borderRadius: '.4rem',
+    border: 'none',
+    background: 'rgb(79 146 186)',
+    boxShadow: '0 0 10px -4px rgba(22, 22, 22, .7)',
+    zIndex: 3,
+  },
+  image: {
+    height: '30px',
+    borderRadius: '50%',
+    outline: '5px solid rgb(79 146 186)',
+    boxShadow: '4px 0 10px',
+    zIndex: 2,
+  },
+};
 
 const Header = ({ location: { pathname } }) => {
+  const history = useHistory();
   const { isMobile, isTablet } = useWindowSize();
   const user = userStore((state) => state.user);
+  const setUser = userStore((state) => state.setUser);
   const [showLinks, setShowLinks] = useState(false);
+  const [profileMenu, setProfileMenu] = useState(false);
 
   const handleShowLinks = () => {
     setShowLinks(!showLinks);
@@ -21,7 +61,22 @@ const Header = ({ location: { pathname } }) => {
     }
   };
 
+  const handleLogout = async () => {
+    const data = await API.doLogout();
+    if (data.success) {
+      if (pathname === '/account') history.push('/');
+      console.log('Reset user data');
+      setUser(null);
+    }
+  };
+
+  const handleUserMenu = (event) => {
+    event.stopPropagation();
+    setProfileMenu((state) => !state);
+  };
+
   useEffect(() => {
+    console.log(pathname);
     closeMenu();
   }, [isMobile, pathname]);
 
@@ -43,10 +98,48 @@ const Header = ({ location: { pathname } }) => {
         <ul className="header__links">
           {user ? (
             <>
-              <li className="header__item slideInDown-2">
+              {/* <li className="header__item slideInDown-1">
                 <NavLink className="header__link" type="button" to="/account">
                   Bonjour {user.firstname}
                 </NavLink>
+              </li>
+              <li className="header__item slideInDown-2">
+                <button
+                  className="header__link"
+                  type="button"
+                  onClick={handleLogout}
+                >
+                  <IoLogOutOutline />
+                </button>
+              </li> */}
+              <li className="header__item">
+                <button
+                  className="header__link"
+                  type="button"
+                  style={styles.btn}
+                  onClick={handleUserMenu}
+                >
+                  <img
+                    style={styles.image}
+                    src={`https://eu.ui-avatars.com/api/?name=${user.firstname}+${user.lastname}&rounded=true&background=0dbca4&color=efefef&font-size=0.75`}
+                    alt={`Profile of ${user.firstname} ${user.lastname}`}
+                  />
+                  {profileMenu ? (
+                    <IoCaretUpOutline color="#efefef" />
+                  ) : (
+                    <IoCaretDownOutline color="#efefef" />
+                  )}
+                </button>
+
+                <AnimatePresence exitBeforeEnter initial={false}>
+                  {profileMenu && (
+                    <UserMenu
+                      user={user}
+                      handleLogout={handleLogout}
+                      onDismiss={() => setProfileMenu(false)}
+                    />
+                  )}
+                </AnimatePresence>
               </li>
             </>
           ) : (
@@ -186,6 +279,12 @@ const Header = ({ location: { pathname } }) => {
       )}
     </header>
   );
+};
+
+Header.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default withRouter(Header);

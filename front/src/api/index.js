@@ -2,12 +2,18 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
+const LOCAL_REFRESH_KEY = 'ON_DEMENAGE:REFRESH_TOKEN';
+
 const instance = axios.create({
   baseURL: 'http://134.122.95.34/api',
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+instance.defaults.headers.authorization = `Bearer ${
+  localStorage.getItem(LOCAL_REFRESH_KEY) || null
+}`;
 
 const getRandomCity = async () => {
   const { data } = await instance.get('/search/random');
@@ -46,7 +52,7 @@ const doRegister = async (params) => {
   try {
     const { data } = await instance.post('/auth/register', params);
     instance.defaults.headers.authorization = `Bearer ${data.accessToken}`;
-    localStorage.setItem('ON_DEMENAGE:REFRESH_TOKEN', data.refreshToken);
+    localStorage.setItem(LOCAL_REFRESH_KEY, data.refreshToken);
     return data;
   } catch (error) {
     throw new Error(error.message);
@@ -57,7 +63,17 @@ const doLogin = async (params) => {
   try {
     const { data } = await instance.post('/auth/login', params);
     instance.defaults.headers.authorization = `Bearer ${data.accessToken}`;
-    localStorage.setItem('ON_DEMENAGE:REFRESH_TOKEN', data.refreshToken);
+    localStorage.setItem(LOCAL_REFRESH_KEY, data.refreshToken);
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const doLogout = async () => {
+  try {
+    const { data } = await instance.post('/auth/logout');
+    localStorage.removeItem(LOCAL_REFRESH_KEY);
     return data;
   } catch (error) {
     throw new Error(error.message);
@@ -75,17 +91,15 @@ instance.interceptors.response.use(
       originalRequest._retry !== true
     ) {
       originalRequest._retry = true;
-      const refreshToken = localStorage.getItem('ON_DEMENAGE:REFRESH_TOKEN');
+      const refreshToken = localStorage.getItem(LOCAL_REFRESH_KEY);
       if (refreshToken && refreshToken !== '') {
         instance.defaults.headers.common.authorization = `Bearer ${refreshToken}`;
         try {
-          const { data } = await instance.post('/auth/refresh-token', {
-            token: refreshToken,
-          });
-          instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
-          originalRequest.headers.authorization = `Bearer ${data.token}`;
+          const { data } = await instance.post('/auth/refresh-token');
+          instance.defaults.headers.common.authorization = `Bearer ${data.accessToken}`;
+          originalRequest.headers.authorization = `Bearer ${data.accessToken}`;
         } catch (error) {
-          localStorage.removeItem('ON_DEMENAGE:REFRESH_TOKEN');
+          localStorage.removeItem(LOCAL_REFRESH_KEY);
         }
         return instance(originalRequest);
       }
@@ -105,4 +119,5 @@ export default {
   forgotPassword,
   doLogin,
   doRegister,
+  doLogout,
 };
