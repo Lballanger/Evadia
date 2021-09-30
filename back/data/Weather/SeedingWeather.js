@@ -1,4 +1,3 @@
-require('dotenv').config();
 // eslint-disable-next-line import/no-extraneous-dependencies
 const StreamArray = require('stream-json/streamers/StreamArray');
 const { Writable } = require('stream');
@@ -6,49 +5,47 @@ const fs = require('fs');
 const db = require('../../app/database');
 
 const fileStream = fs.createReadStream(
-  '../api/JSON-2021-deploiement-haut-debit.json',
+  '../api/meteo-donnees-synop-essentielles-omm.json',
   {
     encoding: 'utf-8',
   }
 );
 const jsonStream = StreamArray.withParser();
 
-const goodNumber = (value) => {
-  let myString = `${value}`;
-  while (myString.length < 5) {
-    myString = `0${myString}`;
-  }
-  return myString;
-};
-
-// console.log(goodNumber('1234'));
-
 const processingStream = new Writable({
   write({ value }, encoding, callback) {
     setTimeout(async () => {
       try {
-        // console.log(value, 'commune_code = ', value.code_commune, '\n', 'coverage = ', value.pourcentage_internet, '\n');
-        if (value) {
+        if (value.fields.codegeo) {
+          // console.log("commune_code = ", value.fields.codegeo, "\n" "coordinates = ", value.fields.coordonnees[0], "\n", "temperature = ", value.fields.tc, "\n", "humidity = ", value.fields.u, "\n", "wind = ", value.fields.ff, "\n", "date = ", value.fields.date, "\n");
           // const coordinates = record.fields.position.map((coord) =>
-          // parseFloat(coord)
+          //  parseFloat(coord)
           // );
-          const commune = goodNumber(value.code_commune);
-          // console.log("commune = ", `\'${commune}\'`);
           const { rows } = await db.query(
-            `SELECT code_insee FROM private.commune WHERE code_insee='${commune}';`
+            `SELECT code_insee FROM private.commune WHERE code_insee='${value.fields.codegeo}';`
           );
           if (rows.length > 0) {
             console.log(rows);
             await db.query(
-              `INSERT INTO private.internet (
-              commune_code, 
-              coverage
-              ) VALUES ($1, $2);`,
-              [commune, value.pourcentage_internet]
+              `INSERT INTO private.weather (commune_code,
+                                    coordinates,
+                                    temperature,
+                                    humidity,
+                                    wind,
+                                    date) 
+                VALUES ($1, $2, $3, $4, $5, $6);`,
+              [
+                value.fields.codegeo,
+                `(${value.fields.coordonnees[0]}, ${value.fields.coordonnees[1]})`,
+                value.fields.tc,
+                value.fields.u,
+                value.fields.ff,
+                value.fields.date,
+              ]
             );
           }
-          callback();
         }
+        callback();
       } catch (error) {
         console.log(error);
       }
@@ -64,5 +61,3 @@ jsonStream.pipe(processingStream);
 
 // So we're waiting for the 'finish' event when everything is done.
 processingStream.on('finish', () => console.log('All done'));
-
-// all done !!!
