@@ -5,6 +5,7 @@ import Map from '../Map';
 import cityStore from '../../store/city';
 import useWindowSize from '../../hooks/useWindowSize';
 import API from '../../api';
+import Dropdown from './MenuMobile/Dropdown';
 
 import './styles.scss';
 
@@ -47,9 +48,9 @@ const Details = () => {
   return (
     <div className="details__container">
       <div className="details__new__search">
-        <button className="details__new__search__button" type="button">
-          Nouvelle recherche (menu burger on mobile)
-        </button>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Dropdown />
+        </div>
       </div>
 
       <div className="details__card">
