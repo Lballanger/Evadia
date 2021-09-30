@@ -169,6 +169,7 @@ const Header = ({ location: { pathname } }) => {
             type="button"
             onClick={handleShowLinks}
             style={{ zIndex: 99 }}
+            backgroundColor="transparent"
           >
             <span className="burger-bar" />
           </button>
