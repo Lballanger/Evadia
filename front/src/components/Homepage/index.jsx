@@ -4,7 +4,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import backgroundVideo from '../../assets/video/timelapse_light.mp4';
+import backgroundVideo from '../../assets/video/timelapse_light_grid_4.webm';
 import API from '../../api';
 
 import './styles.scss';
