@@ -2,6 +2,6 @@
 
 BEGIN;
 
--- XXX Add verifications here.
+SELECT * FROM private.health_institution WHERE false;
 
 ROLLBACK;
