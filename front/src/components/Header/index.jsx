@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { NavLink, withRouter, useHistory } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import logo from '../../assets/images/logo.png';
 import useWindowSize from '../../hooks/useWindowSize';
 import userStore from '../../store/user';
 import './styles.scss';
+import API from '../../api';
 
 const Header = ({ location: { pathname } }) => {
+  const history = useHistory();
   const { isMobile, isTablet } = useWindowSize();
   const user = userStore((state) => state.user);
+  const setUser = userStore((state) => state.setUser);
   const [showLinks, setShowLinks] = useState(false);
 
   const handleShowLinks = () => {
@@ -21,7 +25,17 @@ const Header = ({ location: { pathname } }) => {
     }
   };
 
+  const handleLogout = async () => {
+    const data = await API.doLogout();
+    if (data.success) {
+      if (pathname === '/account') history.push('/');
+      console.log('Reset user data');
+      setUser(null);
+    }
+  };
+
   useEffect(() => {
+    console.log(pathname);
     closeMenu();
   }, [isMobile, pathname]);
 
@@ -43,10 +57,19 @@ const Header = ({ location: { pathname } }) => {
         <ul className="header__links">
           {user ? (
             <>
-              <li className="header__item slideInDown-2">
+              <li className="header__item slideInDown-1">
                 <NavLink className="header__link" type="button" to="/account">
                   Bonjour {user.firstname}
                 </NavLink>
+              </li>
+              <li className="header__item slideInDown-2">
+                <button
+                  className="header__link"
+                  type="button"
+                  onClick={handleLogout}
+                >
+                  Déco
+                </button>
               </li>
             </>
           ) : (
@@ -186,6 +209,12 @@ const Header = ({ location: { pathname } }) => {
       )}
     </header>
   );
+};
+
+Header.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default withRouter(Header);
