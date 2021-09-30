@@ -1,7 +1,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  width: 13rem;
+  width: 11rem;
   background-color: #38bd98;
   text-align: center;
   border-radius: 0.5rem;
@@ -29,6 +29,16 @@
 
   &__button {
     font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+
+    &__arrow {
+      transition: transform 0.3s;
+
+      &__animation {
+        transform: rotateZ(180deg);
+      }
+    }
   }
 }
 

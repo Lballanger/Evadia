@@ -50,7 +50,12 @@ const Dropdown = () => {
       <div className="dropdown" ref={dropdownRef}>
         <div className="dropdown__button" onClick={showDropdownMenu}>
           {' '}
-          Navigation <IoChevronDownOutline />
+          Navigation{' '}
+          <IoChevronDownOutline
+            className={` dropdown__button__arrow ${
+              displayMenu ? 'dropdown__button__arrow__animation' : ''
+            }`}
+          />
         </div>
 
         {displayMenu ? (
