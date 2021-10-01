@@ -39,10 +39,8 @@ const Homepage = () => {
         </video>
       </div>
       <div className="homepage__container">
-        <h1 className="homepage__container__h1">
-          Evadez-vous avec{' '}
-          <span className="homepage__container__evadia">Evadia</span>
-        </h1>
+        <h1 className="homepage__container__h1">Evadez-vous avec </h1>
+        <span className="homepage__container__evadia">Evadia</span>
         <h2 className="homepage__container__h2">
           Trouvez la ville de vos rêves pour un déménagement, un week-end, et
           bien plus encore !
