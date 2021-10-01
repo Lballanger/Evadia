@@ -9,4 +9,24 @@ CREATE TABLE private.health_institution (
     categorie TEXT
 );
 
+CREATE OR REPLACE FUNCTION private.get_health_institution(code TEXT) RETURNS JSON AS $$
+SELECT
+  json_agg(
+    json_build_object(
+      'id',
+      health_institution.id,
+      'commune_code',
+      health_institution.commune_code,
+      'coordinates',
+      health_institution.coordinates,
+      'categorie',
+      health_institution.categorie
+    )
+  )
+FROM
+  private.health_institution AS health_institution
+WHERE
+  health_institution.commune_code = code;
+$$ LANGUAGE SQL STRICT;
+
 COMMIT;
