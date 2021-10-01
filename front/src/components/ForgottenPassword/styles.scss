@@ -1,7 +1,6 @@
 .forgoten-password {
   padding: 1rem 2rem;
   background-color: #efefef;
-  min-height: 100vh;
   background-image: url("../../assets/images/bckgrnd_uhd.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -9,11 +8,11 @@
   background-attachment: fixed;
 
   &__title {
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 2rem;
+    margin-top: 8rem;;
+    margin-bottom: 5rem;
     text-align: center;
-    text-decoration: underline;
   }
 
   &__section {
@@ -61,5 +60,10 @@
     cursor: pointer;
     border-radius: 3px;
     margin: 0.6rem 0;
+    transition: 0.6s;
+  }
+
+  &__form-group-button:hover {
+    background-color: darkcyan;;
   }
 }
