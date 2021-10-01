@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 const styles = {
   form: {
     width: '100%',
+    maxWidth: '800px',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    margin: '0 1rem',
+    margin: '0 auto',
     padding: '2rem 1rem',
     background: '#fff',
     borderRadius: '7px',
