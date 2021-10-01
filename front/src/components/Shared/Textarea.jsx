@@ -45,9 +45,8 @@ const Textarea = ({
       placeholder={placeholder}
       id={id}
       name={id}
-    >
-      {value}
-    </textarea>
+      defaultValue={value}
+    />
   </div>
 );
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IoClose } from 'react-icons/io5';
 
 const styles = {
   group: {
@@ -13,6 +14,10 @@ const styles = {
     fontSize: '1.1rem',
     color: '#666',
   },
+  inputDiv: {
+    position: 'relative',
+    width: '100%',
+  },
   input: {
     width: '100%',
     fontSize: '1.3rem',
@@ -21,40 +26,76 @@ const styles = {
     border: '1px solid #efefef',
     padding: '0.8rem 0.6rem',
   },
+  inputBtn: {
+    position: 'absolute',
+    right: '.5rem',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    background: '#e4e4e4',
+    width: '30px',
+    height: '30px',
+    borderRadius: '.3rem',
+    border: 'none',
+    cursor: 'pointer',
+  },
 };
 
 const Input = ({
-  className = '',
   id,
   labelText = '',
   placeholder = '',
   type = 'text',
   value,
   onChange,
+  onClear,
+  ...props
 }) => (
-  <div className={className} style={styles.group}>
+  <div style={styles.group}>
     <label htmlFor={id} style={styles.label}>
       {labelText}
     </label>
-    <input
-      id={id}
-      name={id}
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      style={styles.input}
-    />
+    <div style={styles.inputDiv}>
+      <input
+        id={id}
+        name={id}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        style={styles.input}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
+      />
+      {value.length ? (
+        <button
+          type="button"
+          style={styles.inputBtn}
+          onClick={() => onClear(id)}
+        >
+          <IoClose width="30px" height="30px" />
+        </button>
+      ) : null}
+    </div>
   </div>
 );
 
-Input.propTypes = PropTypes.shape({
-  className: PropTypes.string,
+Input.defaultProps = {
+  labelText: '',
+  type: 'text',
+  value: '',
+  onChange: () => {},
+  onClear: () => {},
+  placeholder: '',
+};
+
+Input.propTypes = {
   id: PropTypes.string.isRequired,
   labelText: PropTypes.string,
+  placeholder: PropTypes.string,
   type: PropTypes.oneOf(['text', 'number', 'password', 'email']),
   value: PropTypes.string,
   onChange: PropTypes.func,
-}).isRequired;
+  onClear: PropTypes.func,
+};
 
 export default Input;

@@ -7,6 +7,7 @@ import Form from '../Shared/Form';
 import Input from '../Shared/Input';
 import inscription from '../../assets/images/inscription.jpg';
 import './styles.scss';
+import AutoSuggest from '../AutoSuggest';
 
 const initialInputs = {
   firstname: '',
@@ -34,6 +35,20 @@ const Inscription = () => {
     setInputs((state) => ({
       ...state,
       [event.target.name]: event.target.value,
+    }));
+  };
+
+  const clearInput = (id) => {
+    setInputs((state) => ({
+      ...state,
+      [id]: '',
+    }));
+  };
+
+  const setCity = (data) => {
+    setInputs((state) => ({
+      ...state,
+      city: data ? data.code_insee : '',
     }));
   };
 
@@ -82,6 +97,7 @@ const Inscription = () => {
             labelText="Prénom"
             value={inputs.firstname}
             onChange={handleChange}
+            onClear={clearInput}
           />
           <Input
             type="text"
@@ -89,20 +105,16 @@ const Inscription = () => {
             labelText="Nom"
             value={inputs.lastname}
             onChange={handleChange}
+            onClear={clearInput}
           />
-          <Input
-            type="text"
-            id="city"
-            labelText="Ville"
-            value={inputs.city}
-            onChange={handleChange}
-          />
+          <AutoSuggest limit={10} onSelected={setCity} inForm />
           <Input
             type="email"
             id="email"
             labelText="Email"
             value={inputs.email}
             onChange={handleChange}
+            onClear={clearInput}
           />
           <Input
             type="password"
@@ -110,6 +122,7 @@ const Inscription = () => {
             labelText="Mot de passe"
             value={inputs.password}
             onChange={handleChange}
+            onClear={clearInput}
           />
           <Input
             type="password"
@@ -117,6 +130,7 @@ const Inscription = () => {
             labelText="Confirmation du mot de passe"
             value={inputs.password_confirm}
             onChange={handleChange}
+            onClear={clearInput}
           />
           <button type="submit" className="inscription__form-group-button">
             S'enregistrer
