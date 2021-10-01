@@ -29,6 +29,7 @@ const Contact = () => {
 
   return (
     <div className="contact">
+      <div className="inscription__title">CONTACT</div>
       <Form>
         <Input
           id="name"

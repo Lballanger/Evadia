@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import useWindowSize from '../../hooks/useWindowSize';
 import cityStore from '../../store/city';
 import Map from '../Map';
+import paris from '../../assets/images/paris.jpg';
 
 import './styles.scss';
 
@@ -35,7 +36,7 @@ const Results = () => {
                 to="/criteria"
                 className="criteria__return__btn"
               >
-                Modifier critères
+                Modifiez vos critères
               </NavLink>
             </div>
             <div className="resultsNbr">
@@ -50,7 +51,7 @@ const Results = () => {
             <div className="result">
               <img
                 className="picture"
-                src={`../../assets/images/${city.city_name}.jpg`}
+                src=/* {`../../assets/images/${city.city_name}.jpg`} */ {paris}
                 alt="city"
               />
               <div className="result__info">

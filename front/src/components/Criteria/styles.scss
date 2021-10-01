@@ -197,6 +197,7 @@
         text-align: center;
         margin: 2rem;
         width: 20%;
+        
 
         &__btn {
           text-decoration: none;
@@ -425,6 +426,7 @@ label {
   font-size: 1rem;
   letter-spacing: 1px;
   cursor: pointer;
+  transition: 0.6s;
 }
 
 .criteria button:hover {
