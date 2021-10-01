@@ -62,14 +62,14 @@ const Dropdown = () => {
           <ul className="dropdown__ul">
             <li className="dropdown__list">
               <a className="active" href="/criteria">
-                Critères
+                Par critères
               </a>
             </li>
             <li className="dropdown__list">
               <a onClick={toRandom}>Aléatoire</a>
             </li>
             <li className="dropdown__list">
-              <a onClick={() => setIsModalOpen(true)}>Recherche ...</a>
+              <a onClick={() => setIsModalOpen(true)}>Par ville</a>
             </li>
           </ul>
         ) : null}
