@@ -11,4 +11,28 @@ CREATE TABLE private.taxation (
     year TEXT
 );
 
+CREATE OR REPLACE FUNCTION private.get_taxation (code TEXT) RETURNS JSON AS $$
+SELECT
+  json_agg(
+    json_build_object(
+      'id',
+      taxations.id,
+      'commune_code',
+      taxations.commune_code,
+      'housing_tax',
+      taxations.housing_tax,
+      'property_tax',
+      taxations.property_tax,
+      'land_property_tax',
+      taxations.land_property_tax,
+      'year',
+      taxations.year
+    )
+  )
+FROM
+  private.taxation AS taxations
+WHERE
+  taxations.commune_code = code;
+$$ LANGUAGE SQL STRICT;
+
 COMMIT;

@@ -2,7 +2,7 @@
 
 BEGIN;
 
+DROP FUNCTION private.get_internet;
 DROP TABLE private.internet;
-DROP TABLE private.get_internet;
 
 COMMIT;

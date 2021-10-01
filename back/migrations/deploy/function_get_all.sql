@@ -28,7 +28,7 @@ select
 FROM
   private.commune AS com
 where
-  com.code_insee = code;
+  com.code_insee = code
 $$ LANGUAGE SQL STRICT;
 
 COMMIT;

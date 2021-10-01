@@ -1,6 +1,6 @@
 -- Deploy on-demenage:health_institution to pg
 
-BEGIN.
+BEGIN;
 
 CREATE TABLE private.health_institution (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

@@ -25,4 +25,30 @@ CREATE TABLE private.school (
     type TEXT
 );
 
+CREATE OR REPLACE FUNCTION private.get_schools(code TEXT) RETURNS JSON AS $$
+SELECT
+  json_agg(
+    json_build_object(
+      'id',
+      schools.id,
+      'name',
+      schools.name,
+      'coordinates',
+      schools.coordinates,
+      'status',
+      schools.status,
+      'address',
+      schools.address,
+      'zip_code',
+      schools.zip_code,
+      'type',
+      schools.type
+    )
+  )
+FROM
+  private.school AS schools
+WHERE
+  schools.commune_code = code;
+$$ LANGUAGE SQL STRICT;
+
 COMMIT;

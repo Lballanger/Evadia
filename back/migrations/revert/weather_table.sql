@@ -2,6 +2,7 @@
 
 BEGIN;
 
+DROP FUNCTION private.get_weather;
 DROP TABLE private.weather;
 
 COMMIT;

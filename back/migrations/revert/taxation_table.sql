@@ -2,6 +2,7 @@
 
 BEGIN;
 
+DROP FUNCTION private.get_taxation;
 DROP TABLE private.taxation;
 
 COMMIT;

@@ -12,4 +12,30 @@ CREATE TABLE private.weather (
     date TIMESTAMPTZ
 );
 
+CREATE OR REPLACE FUNCTION private.get_weather(code TEXT) RETURNS JSON AS $$
+SELECT
+  json_agg(
+    json_build_object(
+      'id',
+      weather.id,
+      'commune_code',
+      weather.commune_code,
+      'coordinates',
+      weather.coordinates,
+      'temperature',
+      weather.temperature,
+      'humidity',
+      weather.humidity,
+      'wind',
+      weather.wind,
+      'date',
+      weather.date
+    )
+  )
+FROM
+  private.weather AS weather
+WHERE
+  weather.commune_code = code;
+$$ LANGUAGE SQL STRICT;
+
 COMMIT;

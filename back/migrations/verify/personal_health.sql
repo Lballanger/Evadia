@@ -3,5 +3,6 @@
 BEGIN;
 
 SELECT * FROM private.personal_health WHERE FALSE;
+SELECT * FROM private.personal_health('83061');
 
 ROLLBACK;
