@@ -132,7 +132,7 @@
     height: 100vh;
     padding: 2rem;
     visibility: none;
-    background-color: black;
+    backdrop-filter: blur(3px);
     opacity: 0.97;
     transition: all 0.8s ease-in-out;
     display: flex;
@@ -208,10 +208,11 @@
     padding: 2rem;
     font-size: 1.5rem;
     border-radius: 50px;
-    background: linear-gradient(145deg, #528fff, #528fff);
+    background: #1f9f87;
+    transition: 0.6s;
   }
   .header__item:hover {
-    background: linear-gradient(145deg, #526cff, #526cff);
+    background: darkcyan;
   }
 }
 
@@ -227,7 +228,7 @@
     height: 100vh;
     padding: 2rem;
     visibility: none;
-    background-color: black;
+    backdrop-filter: blur(3px);
     opacity: 0.97;
     transition: all 0.8s ease-in-out;
     display: flex;
@@ -303,9 +304,10 @@
     padding: 2rem;
     font-size: 1.5rem;
     border-radius: 50px;
-    background: linear-gradient(145deg, #528fff, #528fff);
+    background: #1f9f87;
+    transition: 0.6s;
   }
   .header__item:hover {
-    background: linear-gradient(145deg, #526cff, #526cff);
+    background: darkcyan;
   }
 }
