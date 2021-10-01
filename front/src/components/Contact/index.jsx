@@ -1,29 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Form from '../Shared/Form';
+import Input from '../Shared/Input';
+import Textarea from '../Shared/Textarea';
 
 import './styles.scss';
 
-const Contact = () => (
-  <div className="contact">
-    <form action="" methode="get" className="contact__form">
-      <div className="contact__form__div">
-        <input
-          className="email"
-          type="email"
-          name="email"
+const initialInputs = {
+  name: '',
+  email: '',
+  message: '',
+};
+
+const Contact = () => {
+  const [inputs, setInputs] = useState(initialInputs);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setInputs((state) => ({
+      ...state,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // TODO: Add logic - Send data to api
+  };
+
+  return (
+    <div className="contact">
+      <Form>
+        <Input
+          id="name"
+          value={inputs.name}
+          onChange={handleChange}
+          labelText="Votre nom"
+          placeholder="Entrez votre nom"
+          type="text"
+        />
+        <Input
           id="email"
-          placeholder="Votre Email"
+          value={inputs.email}
+          onChange={handleChange}
+          labelText="Votre email"
+          placeholder="ex: mon@email.com"
+          type="email"
         />
-        <textarea
-          className="textarea"
-          type="text-area"
-          placeholder="Votre Message"
-          rows="20"
-          cols="28"
+        <Textarea
+          id="message"
+          value={inputs.message}
+          onChange={handleChange}
+          labelText="Votre message"
         />
-        <input className="submit" type="submit" value="Envoyer" />
-      </div>
-    </form>
-  </div>
-);
+        <button type="submit" className="contact__form-group-button">
+          Envoyer
+        </button>
+        {/* <input className="submit" type="submit" value="Envoyer" /> */}
+      </Form>
+    </div>
+  );
+};
 
 export default Contact;
