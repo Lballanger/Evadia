@@ -3,11 +3,11 @@
   background-size: cover;
   background-position: center center;
   padding: 1rem 2rem;
-    
+
   &__title {
     font-size: 1.5rem;
     font-weight: bold;
-    margin-top: 6rem;;
+    margin-top: 6rem;
     margin-bottom: 3rem;
     text-align: center;
   }
@@ -51,7 +51,7 @@
   }
 
   &__link:hover {
-    color: darkcyan;;
+    color: darkcyan;
   }
 
   &__form__readLegals {
@@ -82,7 +82,40 @@
   }
 
   &__form-group-button:hover {
-    background-color: darkcyan;;
+    background-color: darkcyan;
+  }
+
+  .react-autosuggest__container {
+    position: relative;
+    width: 100%;
+
+    .react-autosuggest__suggestions-container--open {
+      position: absolute;
+      z-index: 99;
+      top: calc(100% - 0.8rem);
+      background: #fff;
+      box-shadow: 0 4px 10px -4px;
+      padding: 0.4rem;
+      width: 100%;
+      font-size: 1.2rem;
+      border-radius: 0.3rem;
+
+      .auto-suggest__result {
+        padding: 0.1rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        background: #f7f7f7;
+        margin-bottom: 0.1rem;
+        color: #333;
+        cursor: pointer;
+        border-radius: 0.1rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background: #d6d6d6;
+          color: rgb(37, 37, 37);
+        }
+      }
+    }
   }
 }
-
