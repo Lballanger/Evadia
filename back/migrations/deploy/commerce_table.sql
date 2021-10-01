@@ -10,4 +10,26 @@ CREATE TABLE private.commerce (
     type TEXT
 );
 
+CREATE OR REPLACE FUNCTION private.get_commerce (code TEXT) RETURNS JSON AS $$
+SELECT
+  json_agg(
+    json_build_object(
+      'id',
+      commerce.id,
+      'name',
+      commerce.name,
+      'coordinates',
+      commerce.coordinates,
+      'commune_code',
+      commerce.commune_code,
+      'type',
+      commerce.type
+    )
+  )
+FROM
+  private.commerce AS commerce
+WHERE
+  commerce.commune_code = code;
+$$ LANGUAGE SQL STRICT;
+
 COMMIT;
