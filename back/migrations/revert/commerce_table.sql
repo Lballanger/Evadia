@@ -3,5 +3,6 @@
 BEGIN;
 
 DROP TABLE private.commerce;
+DROP FUNCTION private.get_commerce;
 
 COMMIT;

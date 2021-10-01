@@ -3,5 +3,6 @@
 BEGIN;
 
 DROP TABLE private.internet;
+DROP TABLE private.get_internet;
 
 COMMIT;
