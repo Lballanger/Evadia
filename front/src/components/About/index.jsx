@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import './styles.scss';
+import { motion } from 'framer-motion';
 import avatar from '../../assets/images/avatar.png';
+import avatarFC from '../../assets/images/FC.png';
 
 const About = () => (
   <>
@@ -39,11 +41,20 @@ const About = () => (
       <div className="About__team">
         <div className="About__team__display">
           <div className="About__team__one">
-            <img src={avatar} className="About__team__avatar" alt="avatar" />
             <a
               href="https://github.com/GermainMichaud"
               className="About__team__a"
             >
+              <motion.img
+                whileHover={{
+                  scale: [1, 2, 2, 1, 1],
+                  rotate: [0, 0, 270, 270, 0],
+                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+                }}
+                src={avatar}
+                className="About__team__avatar"
+                alt="avatar"
+              />
               <p className="About__team__dev">Germain Michaud</p>
               <p className="About__team__role">
                 <span className="italic">Scrum Master</span>
@@ -52,8 +63,17 @@ const About = () => (
           </div>
 
           <div className="About__team__one">
-            <img src={avatar} className="About__team__avatar" alt="avatar" />
             <a href="https://github.com/AlisonSerra" className="About__team__a">
+              <motion.img
+                whileHover={{
+                  scale: [1, 2, 2, 1, 1],
+                  rotate: [0, 0, -270, -270, 0],
+                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+                }}
+                src={avatar}
+                className="About__team__avatar"
+                alt="avatar"
+              />
               <p className="About__team__dev">Alison Serra</p>
               <p className="About__team__role">
                 <span className="italic">Git Master</span>
@@ -62,24 +82,41 @@ const About = () => (
           </div>
 
           <div className="About__team__one">
-            <img src={avatar} className="About__team__avatar" alt="avatar" />
             <a
               href="https://github.com/Clementkieken"
               className="About__team__a"
             >
+              <motion.img
+                whileHover={{
+                  scale: [1, 2, 2, 1, 1],
+                  rotate: [0, 0, 270, 270, 0],
+                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+                }}
+                src={avatar}
+                className="About__team__avatar"
+                alt="avatar"
+              />
               <p className="About__team__dev">Clément Kieken</p>
               <p className="About__team__role">
                 <span className="italic">Product Owner</span>
               </p>
             </a>
           </div>
-
           <div className="About__team__one">
-            <img src={avatar} className="About__team__avatar" alt="avatar" />
             <a
               href="https://github.com/FrancoisCHARRON"
               className="About__team__a"
             >
+              <motion.img
+                whileHover={{
+                  scale: [1, 2, 2, 1, 1],
+                  rotate: [0, 0, -360, -360, 0],
+                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+                }}
+                src={avatarFC}
+                className="About__team__avatar"
+                alt="avatar"
+              />
               <p className="About__team__dev">François Charron</p>
               <p className="About__team__role">
                 <span className="italic">Lead Dev Front</span>
@@ -88,8 +125,17 @@ const About = () => (
           </div>
 
           <div className="About__team__one">
-            <img src={avatar} className="About__team__avatar" alt="avatar" />
             <a href="https://github.com/Lballanger" className="About__team__a">
+              <motion.img
+                whileHover={{
+                  scale: [1, 2, 2, 1, 1],
+                  rotate: [0, 0, 360, 360, 0],
+                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+                }}
+                src={avatar}
+                className="About__team__avatar"
+                alt="avatar"
+              />
               <p className="About__team__dev">Loïc Ballanger</p>
               <p className="About__team__role">
                 <span className="italic">Lead Dev Back</span>
