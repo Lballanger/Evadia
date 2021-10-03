@@ -20,22 +20,25 @@ const getRandomCity = async () => {
   return data;
 };
 
-const getCity = async (params) => {
+const getCity = async params => {
   const { data } = await instance.post('/search/city', params);
   return data;
 };
 
-const getCityByInsee = async (codeInsee) => {
+const getCityByInsee = async codeInsee => {
   const { data } = await instance.get(`/search/city/${codeInsee}`);
   return data;
 };
 
-const getCityWithCriteria = async (params) =>
+const getCityWithCriteria = async params =>
   instance.post('/search/criteria', params);
+
+const cityToFavorites = async (code_insee, boolean) =>
+  instance.post(`/search/city/${code_insee}/check?boolean=${boolean}`);
 
 const getUser = async () => instance.get('/user');
 
-const updateUser = async (params) => {
+const updateUser = async params => {
   const { data } = await instance.patch('/user', params);
   return data;
 };
@@ -45,10 +48,10 @@ const deleteUser = async () => {
   return data;
 };
 
-const forgotPassword = async (params) =>
+const forgotPassword = async params =>
   instance.post('/user/forgot-password', params);
 
-const doRegister = async (params) => {
+const doRegister = async params => {
   try {
     const { data } = await instance.post('/auth/register', params);
     instance.defaults.headers.authorization = `Bearer ${data.accessToken}`;
@@ -59,7 +62,7 @@ const doRegister = async (params) => {
   }
 };
 
-const doLogin = async (params) => {
+const doLogin = async params => {
   try {
     const { data } = await instance.post('/auth/login', params);
     instance.defaults.headers.authorization = `Bearer ${data.accessToken}`;
@@ -81,9 +84,9 @@ const doLogout = async () => {
 };
 
 instance.interceptors.response.use(
-  (response) => response,
+  response => response,
   // eslint-disable-next-line consistent-return
-  async (error) => {
+  async error => {
     const originalRequest = error.config;
     if (
       error.config.url !== '/auth/refresh-token' &&
@@ -113,6 +116,7 @@ export default {
   getCity,
   getCityByInsee,
   getCityWithCriteria,
+  cityToFavorites,
   getUser,
   updateUser,
   deleteUser,

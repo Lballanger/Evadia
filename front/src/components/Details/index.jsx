@@ -1,8 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { IoStar, IoStarOutline } from 'react-icons/io5';
 import Map from '../Map';
 import cityStore from '../../store/city';
+import userStore from '../../store/user';
 import useWindowSize from '../../hooks/useWindowSize';
 import API from '../../api';
 import Dropdown from './MenuMobile/Dropdown';
@@ -14,10 +16,35 @@ const Details = () => {
   const { codeInsee } = useParams();
   const history = useHistory();
   const { isMobile } = useWindowSize();
-  const city = cityStore((state) => state.city);
-  const setCity = cityStore((state) => state.setCity);
+  const city = cityStore(state => state.city);
+  const setCity = cityStore(state => state.setCity);
+  const user = userStore(state => state.user);
   const [dataForMap, setDataForMap] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const showFavorite = () => {
+    console.log(user);
+    if (user) {
+      const cityIsFavorite = user.favorites.find(
+        favorite => favorite.commune_id === city.code_insee
+      );
+      if (cityIsFavorite) {
+        return <IoStar className="favorite" color="#dcb525" size="1.5em" />;
+      }
+    }
+    return <IoStarOutline className="favorite" color="#dcb525" size="1.5em" />;
+  };
+
+  const toggleFavorite = async () => {
+    if (user) {
+      await API.cityToFavorites(city.code_insee, true);
+      await API.getUser();
+    } else {
+      alert(
+        'Vous devez être connecté pour pouvoir ajouter une ville en favoris'
+      );
+    }
+  };
 
   useEffect(() => {
     // eslint-disable-next-line consistent-return
@@ -26,7 +53,7 @@ const Details = () => {
         const data = await API.getCityByInsee(codeInsee);
         if (!data.city_name) throw new Error('City not found');
         setCity(data);
-        setDataForMap((state) => [
+        setDataForMap(state => [
           ...state,
           {
             city_name: data.city_name,
@@ -54,8 +81,12 @@ const Details = () => {
       <div className="details__card">
         <div className="details__card__titre">
           <p className="details__card__titre__p">{city.city_name}</p>
-          <button className="details__card__button" type="button">
-            Favoris
+          <button
+            className="details__card__button"
+            type="button"
+            onClick={toggleFavorite}
+          >
+            {showFavorite()}
           </button>
         </div>
         <div className="details__card__main">

@@ -6,13 +6,14 @@ import Map from '../Map';
 import paris from '../../assets/images/paris.jpg';
 
 import './styles.scss';
+import Item from './Item';
 
 const Results = () => {
   const { isMobile } = useWindowSize();
-  const cities = cityStore((state) => state.cities);
+  const cities = cityStore(state => state.cities);
 
-  const transformCoords = (data) =>
-    data.map((city) => ({
+  const transformCoords = data =>
+    data.map(city => ({
       city_name: city.city_name,
       population: city.population,
       coords: [city.coordinates.x, city.coordinates.y],
@@ -46,23 +47,8 @@ const Results = () => {
           </div>
         </div>
 
-        {cities.map((city) => (
-          <Link to={`/details/${city.code_insee}`}>
-            <div className="result">
-              <img
-                className="picture"
-                src=/* {`../../assets/images/${city.city_name}.jpg`} */ {paris}
-                alt="city"
-              />
-              <div className="result__info">
-                <p>{city.city_name}</p>
-                <div className="infos">
-                  <p>Nombre d'habitants : {city.population}</p>
-                  <p>info</p>
-                </div>
-              </div>
-            </div>
-          </Link>
+        {cities.map(city => (
+          <Item key={city.code_insee} city={city} />
         ))}
       </div>
     </>
