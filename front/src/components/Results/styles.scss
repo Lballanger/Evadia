@@ -44,12 +44,14 @@ a {
     
 
   .results {
+    display: flex;
     position: sticky;
       top: 0;
       margin: 0 -1rem 0.5rem -1rem;
       padding: 1rem;
       background: #fff;
       box-shadow: 0 2px 10px -8px;
+      justify-content: center;
   }
 
   .result {
@@ -100,6 +102,7 @@ a {
     border-radius: 3px;
     transition: 0.6s;
     margin-bottom: 1rem;
+    width: 15rem;
 }
 
 .resultsNbr {
@@ -133,20 +136,14 @@ a {
     border-radius: 0.4rem;
     box-shadow: 0 0px 14px -4px;
 
-    .results {
-      position: sticky;
-      top: 0;
-      margin: 0 -1rem 0.5rem -1rem;
-      padding: 1rem;
-      background: #fff;
-      box-shadow: 0 2px 10px -8px;
-    }
+    
     .result {
       border-radius: 0.3rem;
       background: #fff;
       box-shadow: 0 0px 10px -5px rgb(0 0 0 / 80%);
       display: flex;
       flex-direction: row;
+      margin-top: 1rem;
       margin-bottom: 1rem;
 	    align-items: center;
       height: auto;
@@ -177,16 +174,18 @@ a {
   
 
   .list__results {
-    position: fixed;
     z-index: 99;
     top: 6rem;
     bottom: 2rem;
-    width: 100%;
+    width: inherit;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 6rem;
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
     backdrop-filter: blur(3px);
     padding: 0 1rem 1rem;
-    overflow-y: scroll;
+    overflow-y: hidden;
     border-radius: 0.4rem;
     box-shadow: 0 0px 14px -4px;
     
@@ -206,7 +205,8 @@ a {
       box-shadow: 0 0px 10px -5px rgb(0 0 0 / 80%);
       display: flex;
       flex-direction: row;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
 	    align-items: center;
       height: auto;
       padding: 0.5rem;
@@ -216,6 +216,7 @@ a {
       .picture {
         width: auto;
         height: 4rem;
+        
       }
 
       .result__info {
