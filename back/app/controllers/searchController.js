@@ -88,19 +88,19 @@ const searchController = {
   addFavorite: async (request, response) => {
     try {
       const { insee } = request.params;
-      const { user } = request.user;
+      const { user: id } = request.user;
       const { boolean } = request.query;
-      const commune = await Commune.findByFavorite(insee, user);
+      const commune = await Commune.findByFavorite(insee, id);
       if (commune === null) {
         // if commune is not register in favorite then add
-        await Commune.add(insee, user, boolean);
+        await Commune.add(insee, id, boolean);
         // eslint-disable-next-line eqeqeq
       } else if (`${commune.is_favorite}` == boolean) {
         // delete if is true in coming and register as true (the opposite is true too)
-        await Commune.delete(insee, user);
+        await Commune.delete(insee, id);
       } else {
         // change if is true in coming and register as false (the opposite also work)
-        await Commune.update(insee, user, boolean);
+        await Commune.update(insee, id, boolean);
       }
       response.json(commune);
     } catch (error) {

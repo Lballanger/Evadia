@@ -47,7 +47,7 @@ router.post('/api/search/criteria', searchController.findByCriteria);
  * @group Search
  * @summary Add/Update/Delete the user favorite or blacklist
  */
-router.post('/api/search/city/:insee/check', searchController.addFavorite);
+router.post('/api/search/city/:insee/check', authMiddleware(), searchController.addFavorite);
 
 /**
  * Get data for the current connected user
