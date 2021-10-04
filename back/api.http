@@ -24,3 +24,27 @@ GET {{host}}/api/search/random
 
 ###
 POST {{host}}/api/search/city/54318/check?boolean=false
+
+### Get all messages
+GET {{host}}/api/messages?offset=5&limit=15
+
+### Get a message
+GET {{host}}/api/messages/15
+
+### Send contact message
+POST {{host}}/api/messages
+Content-Type: application/json
+
+{
+	"name": "TestName",
+	"email": "test@test.com",
+	"subject": "Sujet du message",
+	"message": "Message Test"
+}
+
+### Update a message
+PATCH {{host}}/api/messages/3
+Content-Type: "application/json"
+
+### Delete a message
+DELETE {{host}}/api/messages/10

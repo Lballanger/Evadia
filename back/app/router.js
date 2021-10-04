@@ -4,6 +4,7 @@ const searchController = require('./controllers/searchController');
 const authController = require('./controllers/authController');
 const userController = require('./controllers/userController');
 const { authMiddleware } = require('./middlewares/authMiddleware');
+const contactController = require('./controllers/contactController');
 
 // const communeSchema = require('./schemas/commune');
 // const { validateQuery } = require('./services/validator');
@@ -47,7 +48,17 @@ router.post('/api/search/criteria', searchController.findByCriteria);
  * @group Search
  * @summary Add/Update/Delete the user favorite or blacklist
  */
-router.post('/api/search/city/:insee/check', authMiddleware(), searchController.addFavorite);
+router.post(
+  '/api/search/city/:insee/check',
+  authMiddleware(),
+  searchController.addFavorite
+);
+
+router.get('/api/messages', contactController.getAll);
+router.get('/api/messages/:id', contactController.getOne);
+router.post('/api/messages', contactController.create);
+router.patch('/api/messages/:id', contactController.update);
+router.delete('/api/messages/:id', contactController.delete);
 
 /**
  * Get data for the current connected user
