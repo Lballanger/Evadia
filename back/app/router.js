@@ -40,7 +40,7 @@ router.get('/api/search/random', searchController.randomSearch);
  * @group Search
  * @summary Responds with a list of cities matching the criteria
  */
-router.post('/api/search/criteria', searchController.findByCriteria);
+router.post('/api/search/criteria', authMiddleware(),searchController.findByCriteria);
 
 /**
  * Add/Update/Delete the user favorite or blacklist
