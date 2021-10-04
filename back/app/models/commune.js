@@ -94,7 +94,7 @@ class Commune {
   static async findByCriteria(params) {
     try {
       const { rows } = await client.query(
-        'SELECT * FROM private.criteria($1)',
+        'SELECT * FROM private.member_criteria($1)',
         [params]
       );
       console.log(rows);
