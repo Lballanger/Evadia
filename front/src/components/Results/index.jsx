@@ -57,7 +57,7 @@ const Results = () => {
               <div className="result__info">
                 <p>{city.city_name}</p>
                 <div className="infos">
-                  <p>Nombre d'habitants : {city.population}</p>
+                  <p>Nombre d&apos;habitants : {city.population}</p>
                   <p>info</p>
                 </div>
               </div>
