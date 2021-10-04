@@ -11,8 +11,10 @@ exports.authMiddleware =
       const { authorization } = req.headers;
 
       // If Authorization have no value, return error message with status 401
-      if (!authorization)
+      if (!authorization) {
+        if(req.url == '/api/search/criteria' || req.url == `/api/search/city/${req.params.insee}`) return next();
         return res.status(401).json({ error: 'No token found' });
+      }
 
       // Extract token from authorization value ('Bearer the-token-here')
       const token = authorization.split(' ')[1];

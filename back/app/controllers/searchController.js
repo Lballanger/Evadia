@@ -67,11 +67,32 @@ const searchController = {
    * @param {Request} request
    * @param {Response} response
    */
-  findByCriteria: async (request, response) => {
+   findByCriteria: async (request, response) => {
+    const params = {...request.body};
+    const authorize = ['pharmacie', 'centre hospitalier', 'crèche'];
+    const temps = [];
+    let typeHealthInstitution = null;
+    
+    if (params.type_health_institution) {
+      typeHealthInstitution = params.type_health_institution.map( elem => elem.toLowerCase());
+    }
+
     try {
-      const params = request.body;
+      if (!request.user) {
+
+        delete params.type_personal_health;
+
+        for (const value of authorize) {
+          if (typeHealthInstitution && typeHealthInstitution.includes(value)) {
+            temps.push(value);
+          }
+        }
+        params.type_health_institution = temps;
+      }
+      console.log(params);
       const commune = await Commune.findByCriteria(params);
       response.json(commune);
+
     } catch (error) {
       console.log(error);
       response.status(500).json(error.message);

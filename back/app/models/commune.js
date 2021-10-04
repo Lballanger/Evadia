@@ -97,7 +97,6 @@ class Commune {
         'SELECT * FROM private.member_criteria($1)',
         [params]
       );
-      console.log(rows);
       return rows.map((row) => new Commune(row));
     } catch (error) {
       console.log(error);
