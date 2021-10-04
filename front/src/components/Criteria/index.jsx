@@ -3,26 +3,20 @@ import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import API from '../../api';
 import cityStore from '../../store/city';
+import departements from '../../assets/data/departements-region.json';
+import regionsWithDepartements from '../../assets/data/regions_with_departements.json';
 
 import './styles.scss';
+import criteriaStore from '../../store/criteria';
 
-const departements = [
-  ...Array.from({ length: 98 }, (_, i) =>
-    i + 1 > 9 ? (i + 1).toString() : `0${(i + 1).toString()}`
-  ),
-  '2A',
-  '2B',
-];
-const schools = ['Maternelle', 'Elementaire', 'Primaire', 'Collège', 'Lycée'];
+const schools = ['Ecole', 'Collège', 'Lycée'];
 
 const Criteria = () => {
   const history = useHistory();
   const setCities = cityStore((state) => state.setCities);
-  const [inputs, setInputs] = useState({
-    populationmin: 0,
-    populationmax: 500000,
-    codedepartement: null,
-  });
+  const criterias = criteriaStore((state) => state.criterias);
+  const setCriteria = criteriaStore((state) => state.setCriteria);
+  const [inputs, setInputs] = useState(criterias);
 
   const handleChange = (event) => {
     if (
@@ -35,6 +29,7 @@ const Criteria = () => {
       +event.target.value >= +inputs.populationmax
     )
       return;
+    console.log(event.target.value);
     setInputs((state) => ({
       ...state,
       [event.target.name]: event.target.value,
@@ -77,18 +72,20 @@ const Criteria = () => {
           </span>
           <input
             name="populationmin"
+            defaultValue={criterias.populationmin}
             value={inputs.populationmin}
             min="0"
-            max="4000000"
+            max="300000"
             step="100"
             type="range"
             onChange={handleChange}
           />
           <input
             name="populationmax"
+            defaultValue={criterias.populationmax}
             value={inputs.populationmax}
             min="0"
-            max="4000000"
+            max="300000"
             step="100"
             type="range"
             onChange={handleChange}
@@ -96,17 +93,48 @@ const Criteria = () => {
         </section>
         <br />
         <section className="departements">
-          <label htmlFor="codedepartement">Choisir un département</label>
+          <label htmlFor="code_departement">Choisir un département</label>
           <div className="select">
             <select
-              id="codedepartement"
-              name="codedepartement"
+              id="code_departement"
+              name="code_departement"
               onChange={handleChange}
+              multiple
             >
-              <option disabled>Choisir un code département</option>
-              {departements.map((code) => (
-                <option value={code} key={code}>
-                  {code}
+              <option value={null}>Choisir un département</option>
+              {departements.map((departement) => (
+                <option
+                  value={departement.num_dep}
+                  key={departement.num_dep}
+                  selected={criterias.code_departement.includes(
+                    departement.num_dep
+                  )}
+                >
+                  {departement.dep_name}
+                </option>
+              ))}
+            </select>
+            <span className="focus" />
+          </div>
+        </section>
+        <br />
+        <section className="regions">
+          <label htmlFor="code_region">Choisir une région</label>
+          <div className="select">
+            <select
+              id="code_region"
+              name="code_region"
+              onChange={handleChange}
+              multiple
+            >
+              <option value={null}>Choisir une région</option>
+              {regionsWithDepartements.map((region) => (
+                <option
+                  value={region.reg_code}
+                  key={region.reg_code}
+                  selected={criterias.code_region.includes(region.reg_code)}
+                >
+                  {region.reg_name}
                 </option>
               ))}
             </select>
@@ -117,11 +145,20 @@ const Criteria = () => {
         <section className="schools">
           <label htmlFor="type_ecole">Choisir le type d&apos;école</label>
           <div className="select">
-            <select id="type_select" name="type_ecole" onChange={handleChange}>
-              <option disabled>Type d&apos;école</option>
-              {schools.map((code) => (
-                <option value={code} key={code}>
-                  {code}
+            <select
+              id="type_select"
+              name="type_ecole"
+              onChange={handleChange}
+              multiple
+            >
+              <option value={null}>Type d&apos;école</option>
+              {schools.map((school_type) => (
+                <option
+                  value={school_type}
+                  key={school_type}
+                  selected={criterias.type_ecole.includes(school_type)}
+                >
+                  {school_type}
                 </option>
               ))}
             </select>
