@@ -13,3 +13,4 @@ taxation_table 2021-09-30T14:11:49Z LoicB <ballanger.loic@gmail.com> # Creation 
 function_criteria 2021-09-24T14:58:43Z LoicB <ballanger.loic@gmail.com> # Creation of the criteria function
 function_get_all 2021-10-01T14:18:03Z Alison <alison.serra@hotmail.fr> # Addinc a function for get all other function or almost
 function_details_visitors 2021-10-04T14:46:54Z LoicB <ballanger.loic@gmail.com> # Add a details_visitors function for visitors
+contact_table 2021-10-04T09:58:50Z Germain <gmichaud.dev@gmail.com> # Contact table
