@@ -2,6 +2,7 @@
 
 BEGIN;
 
--- XXX Add verifications here.
+select * from private.details_visitors('97307');
+
 
 ROLLBACK;
