@@ -72,24 +72,30 @@ const searchController = {
     const authorize = ['pharmacie', 'centre hospitalier', 'crèche'];
     const temps = [];
     let typeHealthInstitution = null;
-    
     if (params.type_health_institution) {
       typeHealthInstitution = params.type_health_institution.map( elem => elem.toLowerCase());
     }
-
+    
     try {
-      if (!request.user) {
 
+      // condition if the user is not connected
+      if (!request.user) {
+        //deleting the key for a visitor
         delete params.type_personal_health;
 
-        for (const value of authorize) {
-          if (typeHealthInstitution && typeHealthInstitution.includes(value)) {
-            temps.push(value);
-          }
+        if (typeHealthInstitution) {
+          for (const value of authorize) {
+            for (const elem of typeHealthInstitution) {
+              if (elem.includes(value)) {
+                const result = elem.includes(value);
+                temps.push(elem);
+              }  
+            }
+          }            
+          if (temps.length > 0 ) params.type_health_institution = temps;
+          console.log(params);
         }
-        params.type_health_institution = temps;
       }
-      console.log(params);
       const commune = await Commune.findByCriteria(params);
       response.json(commune);
 

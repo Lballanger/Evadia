@@ -8,7 +8,7 @@ module.exports = {
     next();
   },
 
-  valideBody: schema => (request, response, next) => {
+  validateBody: schema => (request, response, next) => {
     const {error} = schema.validate(request.body);
     if (error) {
       return response.status(400).json(error.message);

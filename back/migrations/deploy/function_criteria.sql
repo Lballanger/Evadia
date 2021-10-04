@@ -9,7 +9,7 @@ BEGIN;
 
 */
 
-CREATE OR REPLACE FUNCTION private.member_criteria(json) RETURNS SETOF private.commune AS $$
+CREATE OR REPLACE FUNCTION private.criteria(json) RETURNS SETOF private.commune AS $$
 	SELECT private.commune.* FROM private.commune
     -- Criterion between two population values
 	WHERE population::int BETWEEN (($1->>'populationmin')::int) AND (($1->>'populationmax')::int)

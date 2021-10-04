@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP FUNCTION private.member_criteria;
+DROP FUNCTION private.criteria;
 
 COMMIT;

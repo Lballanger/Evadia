@@ -6,8 +6,8 @@ const userController = require('./controllers/userController');
 const { authMiddleware } = require('./middlewares/authMiddleware');
 const contactController = require('./controllers/contactController');
 
-// const communeSchema = require('./schemas/commune');
-// const { validateQuery } = require('./services/validator');
+const {findByName, findByCriteria} = require('./schemas/commune');
+const { validateBody, validateQuery } = require('./services/validator');
 
 const router = Router();
 
@@ -19,7 +19,7 @@ const router = Router();
  * @group Search
  * @summary Responds with one city from database
  */
-router.get('/api/search/city', searchController.findByName);
+router.get('/api/search/city',validateQuery(findByName), searchController.findByName);
 /**
  * Responds with a city from database
  * @route GET /search/city/:insee
@@ -40,7 +40,7 @@ router.get('/api/search/random', searchController.randomSearch);
  * @group Search
  * @summary Responds with a list of cities matching the criteria
  */
-router.post('/api/search/criteria', authMiddleware(),searchController.findByCriteria);
+router.post('/api/search/criteria', authMiddleware(), validateBody(findByCriteria),searchController.findByCriteria);
 
 /**
  * Add/Update/Delete the user favorite or blacklist

@@ -3,6 +3,6 @@
 BEGIN;
 
 -- criteria function test
-SELECT * FROM private.member_criteria('{"populationmin": "4800","populationmax": "15000","codedepartement": "77"}');
+SELECT * FROM private.criteria('{"populationmin": "4800","populationmax": "15000","codedepartement": "77"}');
 
 ROLLBACK;
