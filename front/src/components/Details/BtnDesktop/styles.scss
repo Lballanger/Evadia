@@ -1,0 +1,33 @@
+@media screen and (min-width: 768px) {
+  .btn__desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 2px black solid;
+    padding-bottom: 4%;
+    padding-top: 4%;
+    background: rgb(72, 196, 236);
+    background: linear-gradient(
+      90deg,
+      rgba(72, 196, 236, 1) 0%,
+      rgba(67, 48, 189, 1) 100%
+    );
+
+    &__details__btn {
+      background-color: #11ffee00;
+      border: none;
+      cursor: pointer;
+    }
+
+    &__details__btn:hover {
+      background-color: rgb(44, 185, 56);
+      border-radius: 20%;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .btn__desktop {
+    display: none;
+  }
+}
