@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useRef, useState } from 'react';
+import Autosuggest from 'react-autosuggest';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
-import Autosuggest from 'react-autosuggest';
+
 const AutoSuggest = ({ onSelected, limit = 10 }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [value, setValue] = useState('');

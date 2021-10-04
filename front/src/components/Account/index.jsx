@@ -3,6 +3,18 @@ import Accordion from './Accordion';
 import './styles.scss';
 import userStore from '../../store/user';
 
+const styles = {
+  image: {
+    height: '10rem',
+    borderRadius: '10%',
+    outline: '5px solid rgb(79 146 186)',
+    boxShadow: '4px 0 10px',
+    zIndex: 2,
+    background: 'darkcyan',
+    padding: '0.5rem',
+  },
+};
+
 const Account = () => {
   const user = userStore((state) => state.user);
   const [favorites, setFavorites] = useState([]);
@@ -23,8 +35,9 @@ const Account = () => {
         <div className="account__avatar__display">
           <img
             className="account__avatar__img"
-            src="https://www.impressions-languedoc.eu/1967-large_default/dark-vador-casque.jpg"
-            alt="dark vador"
+            style={styles.image}
+            src={`https://eu.ui-avatars.com/api/?name=${user.firstname}+${user.lastname}&rounded=true&background=0dbca4&color=efefef&font-size=0.75`}
+            alt={`Profile of ${user.firstname} ${user.lastname}`}
           />
         </div>
         <div className="account__infos">
