@@ -10,15 +10,16 @@ import API from '../../api';
 import Dropdown from './MenuMobile/Dropdown';
 
 import './styles.scss';
+import BtnDesktop from './BtnDesktop/BtnDesktop';
 
 // eslint-disable-next-line react/prop-types
 const Details = () => {
   const { codeInsee } = useParams();
   const history = useHistory();
   const { isMobile } = useWindowSize();
-  const city = cityStore(state => state.city);
-  const setCity = cityStore(state => state.setCity);
-  const user = userStore(state => state.user);
+  const city = cityStore((state) => state.city);
+  const setCity = cityStore((state) => state.setCity);
+  const user = userStore((state) => state.user);
   const [dataForMap, setDataForMap] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,7 +27,7 @@ const Details = () => {
     console.log(user);
     if (user) {
       const cityIsFavorite = user.favorites.find(
-        favorite => favorite.commune_id === city.code_insee
+        (favorite) => favorite.commune_id === city.code_insee
       );
       if (cityIsFavorite) {
         return <IoStar className="favorite" color="#dcb525" size="1.5em" />;
@@ -53,7 +54,7 @@ const Details = () => {
         const data = await API.getCityByInsee(codeInsee);
         if (!data.city_name) throw new Error('City not found');
         setCity(data);
-        setDataForMap(state => [
+        setDataForMap((state) => [
           ...state,
           {
             city_name: data.city_name,
@@ -79,17 +80,18 @@ const Details = () => {
       </div>
 
       <div className="details__card">
-        <div className="details__card__titre">
-          <p className="details__card__titre__p">{city.city_name}</p>
-          <button
-            className="details__card__button"
-            type="button"
-            onClick={toggleFavorite}
-          >
-            {showFavorite()}
-          </button>
-        </div>
         <div className="details__card__main">
+          <BtnDesktop />
+          <div className="details__card__titre">
+            <p className="details__card__titre__p">{city.city_name}</p>
+            <button
+              className="details__card__button"
+              type="button"
+              onClick={toggleFavorite}
+            >
+              {showFavorite()}
+            </button>
+          </div>
           <ul className="details__card__main__ul">
             <li className="details__card__main__li">
               Code Postal : {city.code_postal[0]}
