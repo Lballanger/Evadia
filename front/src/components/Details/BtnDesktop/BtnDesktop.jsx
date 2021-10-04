@@ -7,6 +7,7 @@ import {
   IoSwapHorizontalOutline,
   IoLocateOutline,
 } from 'react-icons/io5';
+import { IconContext } from 'react-icons';
 import { useHistory } from 'react-router';
 import cityStore from '../../../store/city';
 import API from '../../../api';
@@ -45,15 +46,24 @@ const BtnDesktop = () => {
             className="btn__desktop__details__btn"
             type="button"
             onClick={toRandom}
+            title="Aléatoire"
           >
-            <IoRefreshCircleOutline />
+            <IconContext.Provider value={{ color: 'white', size: '1.5rem' }}>
+              <IoRefreshCircleOutline />
+            </IconContext.Provider>
           </button>
         </div>
 
         <div className="btn__desktop__details">
-          <button className="btn__desktop__details__btn" type="button">
+          <button
+            className="btn__desktop__details__btn"
+            type="button"
+            title="Retour aux critères"
+          >
             <a className="btn__desktop__details__active" href="/criteria">
-              <IoSwapHorizontalOutline />
+              <IconContext.Provider value={{ color: 'white', size: '1.5rem' }}>
+                <IoSwapHorizontalOutline />
+              </IconContext.Provider>
             </a>
           </button>
         </div>
@@ -63,8 +73,11 @@ const BtnDesktop = () => {
             className="btn__desktop__details__btn"
             type="button"
             onClick={history.goBack}
+            title="Retour aux résultats"
           >
-            <IoReturnDownBackOutline />
+            <IconContext.Provider value={{ color: 'white', size: '1.5rem' }}>
+              <IoReturnDownBackOutline />
+            </IconContext.Provider>
           </button>
         </div>
 
@@ -73,8 +86,11 @@ const BtnDesktop = () => {
             className="btn__desktop__details__btn"
             type="button"
             onClick={() => setIsModalOpen(true)}
+            title="Chercher une ville"
           >
-            <IoLocateOutline />
+            <IconContext.Provider value={{ color: 'white', size: '1.5rem' }}>
+              <IoLocateOutline />
+            </IconContext.Provider>
           </button>
         </div>
         {isModalOpen && (
