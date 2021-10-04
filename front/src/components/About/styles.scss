@@ -2,8 +2,8 @@
   &__container {
     margin-top: 6rem;
     padding-top: 2rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: rgb(27, 27, 27);
     border-radius: 1rem;
     width: 80%;
     margin-left: auto;
@@ -28,6 +28,7 @@
     margin-bottom: 1rem;
     margin-right: 2rem;
     color: rgb(255, 208, 0);
+    text-shadow: 2px 2px 8px rgb(0, 0, 0);
   }
   &__p {
     margin-left: 2rem;
@@ -75,13 +76,12 @@
       text-align: center;
       transition: 0.6s;
     }
-    
+
     &__avatar {
       width: 8rem;
       text-align: center;
       border-bottom: 2px solid black;
       border-radius: 20%;
-
     }
   }
 }
