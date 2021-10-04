@@ -15,6 +15,7 @@ CREATE OR REPLACE FUNCTION private.get_all(code TEXT) RETURNS TABLE (
   taxation JSON,
   weather JSON,
   internet JSON,
+  personal_health JSON,
   health_institution JSON
 ) AS $$
 select
@@ -24,6 +25,7 @@ select
   private.get_taxation(code) AS taxations,
   private.get_weather(code) AS weather,
   private.get_internet(code) AS internet,
+  private.personal_health(code) AS personal,
   private.get_health_institution(code) AS health_institution
 FROM
   private.commune AS com
