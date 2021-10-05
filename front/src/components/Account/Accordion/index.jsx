@@ -29,7 +29,13 @@ const Accordion = ({ title, data, className = '' }) => {
             <div>
               {title} ({data.length})
             </div>
-            <div>{isOpened ? <IoChevronUp /> : <IoChevronDown />}</div>
+            <div>
+              {isOpened ? (
+                <IoChevronUp style={{ fontSize: '2rem' }} />
+              ) : (
+                <IoChevronDown style={{ fontSize: '2rem' }} />
+              )}
+            </div>
           </button>
           {isOpened
             ? data.map((city) => (
@@ -56,6 +62,7 @@ const Accordion = ({ title, data, className = '' }) => {
 };
 
 Accordion.propTypes = {
+  className: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   data: PropTypes.arrayOf(
     PropTypes.shape({
