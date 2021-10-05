@@ -2,6 +2,7 @@ const User = require('../models/user');
 const { compare, hash } = require('../services/bcryptService');
 const jwtService = require('../services/jwtService');
 const userBlacklistService = require('../services/userBlacklistService');
+const { setex } = require('../redis_client');
 
 const authController = {
   login: async (request, response) => {
@@ -96,8 +97,12 @@ const authController = {
         return response
           .status(404)
           .json('User not found with this Email address');
-      // TODO: Generate token
-      // TODO: Store the token in Redis with expiration time
+      const token = await jwtService.generateToken(
+        { email: user.email },
+        false,
+        15 * 60
+      );
+      await setex(`password:user:${user.email}`, 15 * 60, token);
       // TODO: Send the mail
       return response.json('Email sent');
     } catch (error) {
