@@ -152,13 +152,13 @@ const Criteria = () => {
               multiple
             >
               <option value={null}>Type d&apos;école</option>
-              {schools.map((school_type) => (
+              {schools.map((schoolType) => (
                 <option
-                  value={school_type}
-                  key={school_type}
-                  selected={criterias.type_ecole.includes(school_type)}
+                  value={schoolType}
+                  key={schoolType}
+                  selected={criterias.type_ecole.includes(schoolType)}
                 >
-                  {school_type}
+                  {schoolType}
                 </option>
               ))}
             </select>
