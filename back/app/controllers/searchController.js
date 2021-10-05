@@ -133,7 +133,7 @@ const searchController = {
   addFavorite: async (request, response) => {
     try {
       const { insee } = request.params;
-      const { user: id } = request.user;
+      const { id } = request.user;
       const { boolean } = request.query;
       const commune = await Commune.findByFavorite(insee, id);
       if (commune === null) {
