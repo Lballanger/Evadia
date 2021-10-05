@@ -18,13 +18,14 @@
 
   &__infos {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.2);
-    width: 30rem;
-    height: 10rem;
-    padding: 2.5rem 0rem 0rem 0rem; 
+    width: 480px;
+    height: auto;
+    padding: 0;
     margin: 4.8rem 0rem 2.2rem 0.3rem;
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
@@ -32,12 +33,14 @@
     font-weight: bold;
 
     &__edit {
+      position: absolute;
+      bottom: 0;
+      right: 0;
       border: none;
       text-decoration: none;
       color: #fff;
       background-color: #38bd98;
       cursor: pointer;
-      margin: -0.5rem -0.1rem 1rem 24rem;
       padding: 1rem;
       border-radius: 20px 0px;
       transition: 0.6s;
@@ -52,6 +55,8 @@
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
+      padding: 3rem 3rem;
+      width: 100%;
             
     }
 
@@ -71,12 +76,23 @@
       border: none;
       text-decoration: none;
       background-color: rgb(226, 43, 43);
+      font-size: 10px;
+      font-weight: bold;
       cursor: pointer;
-      margin-bottom: 1rem;
-      margin-top: 1rem;
+      transition: 0.6s;
       padding: 0.5rem;
       border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+      backdrop-filter: blur(3px);
+      margin-top: 220px;
+
+
+      &:hover {
+        background-color: darkcyan;
+      }
     }
+
+    
   }
 
   &__container {
@@ -84,6 +100,38 @@
     padding-top: 8rem;
     justify-content: center;
   }
+
+  
+}
+
+.favoris .accordion__title {
+  background-color: #dcb425d3;
+  color: black;
+  font-weight: bold;
+  transition: 0.6s;
+}
+.favoris .accordion__title:hover {
+  background-color: darkcyan;
+}
+.favoris .accordion__content {
+  background-color: #dcb42571;
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(3px);
+}
+
+
+.blackList .accordion__title {
+  background-color: rgba(41, 39, 39, 0.829);
+  font-weight: bold;
+  transition: 0.6s;
+}
+.blackList .accordion__title:hover {
+  background-color: darkcyan;
+}
+.blackList .accordion__content {
+  background-color: rgba(41, 39, 39, 0.404);
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(3px);
 }
 
 @media screen and (max-width: 768px) {
@@ -106,6 +154,10 @@
       margin-top: 0.1rem;
       margin-left: 10.1rem;
     }
+    }
+        &__delete__btn {
+        margin-top: 10px;
+
     }
   }
 }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import API from '../../../api';
 import './styles.scss';
 
-const Accordion = ({ title, data }) => {
+const Accordion = ({ title, data, className = '' }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const remove = async (communeId, isFavorite) => {
@@ -14,17 +14,28 @@ const Accordion = ({ title, data }) => {
 
   return (
     <>
-      <div className="accordion">
+      <div className={`accordion ${className}`}>
         <div className="accordion__item">
           <button
             className="accordion__title"
             type="button"
             onClick={() => setIsOpened((state) => !state)}
+            style={
+              isOpened
+                ? { borderRadius: '10px 10px 0 0' }
+                : { borderRadius: '10px' }
+            }
           >
             <div>
               {title} ({data.length})
             </div>
-            <div>{isOpened ? <IoChevronUp /> : <IoChevronDown />}</div>
+            <div>
+              {isOpened ? (
+                <IoChevronUp style={{ fontSize: '2rem' }} />
+              ) : (
+                <IoChevronDown style={{ fontSize: '2rem' }} />
+              )}
+            </div>
           </button>
           {isOpened
             ? data.map((city) => (
@@ -51,6 +62,7 @@ const Accordion = ({ title, data }) => {
 };
 
 Accordion.propTypes = {
+  className: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   data: PropTypes.arrayOf(
     PropTypes.shape({
