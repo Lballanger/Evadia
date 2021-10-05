@@ -67,35 +67,36 @@ const searchController = {
    * @param {Request} request
    * @param {Response} response
    */
-   findByCriteria: async (request, response) => {
-    const params = {...request.body};
+  findByCriteria: async (request, response) => {
+
+    const params = { ...request.body };
     const authorize = ['pharmacie', 'centre hospitalier', 'crèche'];
     const temps = [];
     let typeHealthInstitution = null;
+
+    // Change to lower case
     if (params.type_health_institution) {
-      typeHealthInstitution = params.type_health_institution.map( elem => elem.toLowerCase());
+      typeHealthInstitution = params.type_health_institution.map(elem => elem.toLowerCase());
     }
-    
+
     try {
 
       // condition if the user is not connected
       if (!request.user) {
-        //deleting the key for a visitor
+
+        //default deleting type_personal_health key for a visitor
         delete params.type_personal_health;
 
         if (typeHealthInstitution) {
           for (const value of authorize) {
             for (const elem of typeHealthInstitution) {
-              if (elem.includes(value)) {
-                const result = elem.includes(value);
-                temps.push(elem);
-              }  
+              if (elem.includes(value)) temps.push(elem);
             }
-          }            
-          if (temps.length > 0 ) params.type_health_institution = temps;
-          console.log(params);
+          }
+          if (temps.length > 0) params.type_health_institution = temps;
         }
-      }
+      } else params.type_health_institution = typeHealthInstitution;
+
       const commune = await Commune.findByCriteria(params);
       response.json(commune);
 
