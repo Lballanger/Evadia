@@ -20,6 +20,11 @@ const Accordion = ({ title, data }) => {
             className="accordion__title"
             type="button"
             onClick={() => setIsOpened((state) => !state)}
+            style={
+              isOpened
+                ? { borderRadius: '10px 10px 0 0' }
+                : { borderRadius: '10px' }
+            }
           >
             <div>
               {title} ({data.length})
