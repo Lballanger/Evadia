@@ -8,12 +8,12 @@ module.exports = {
     next();
   },
 
-  validateBody: schema => (request, response, next) => {
-    const {error} = schema.validate(request.body);
+  // eslint-disable-next-line consistent-return
+  validateBody: (schema) => (request, response, next) => {
+    const { error } = schema.validate(request.body);
     if (error) {
       return response.status(400).json(error.message);
     }
     next();
-  }
+  },
 };
-
