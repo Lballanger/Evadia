@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import API from '../../../api';
 import './styles.scss';
 
-const Accordion = ({ title, data }) => {
+const Accordion = ({ title, data, className = '' }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const remove = async (communeId, isFavorite) => {
@@ -14,7 +14,7 @@ const Accordion = ({ title, data }) => {
 
   return (
     <>
-      <div className="accordion">
+      <div className={`accordion ${className}`}>
         <div className="accordion__item">
           <button
             className="accordion__title"

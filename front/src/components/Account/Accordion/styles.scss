@@ -20,14 +20,16 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
   cursor: pointer;
-  background-color: #21aeca;
+  //
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(3px);
   border: none;
-  
+  color: white;
+
+
 }
 
-.accordion__title:hover {
-  background-color: #3ab4cc;
-}
+
 
 .accordion__title,
 .accordion__content {
@@ -35,11 +37,13 @@ h1 {
 }
 
 .accordion__content {
-  background-color: #d23979;
+  
   display: flex;
   justify-content: space-between;
   border-radius: 0px 0px 0px 0px;
-
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(3px);
   
   &__li {
     margin-left: 1rem;

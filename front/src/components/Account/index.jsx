@@ -61,8 +61,8 @@ const Account = () => {
           </div>
         </div>
 
-        <Accordion title="Favoris" data={favorites} />
-        <Accordion title="Blacklisté" data={blacklist} />
+        <Accordion title="Favoris" data={favorites} className="favoris" />
+        <Accordion title="Blacklistés" data={blacklist} className="blackList" />
 
         <div className="account__delete">
           <button className="account__delete__btn" type="button">

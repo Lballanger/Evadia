@@ -89,6 +89,38 @@
     padding-top: 8rem;
     justify-content: center;
   }
+
+  
+}
+
+.favoris .accordion__title {
+  background-color: #dcb425d3;
+  color: black;
+  font-weight: bold;
+  transition: 0.6s;
+}
+.favoris .accordion__title:hover {
+  background-color: darkcyan;
+}
+.favoris .accordion__content {
+  background-color: #dcb42571;
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(3px);
+}
+
+
+.blackList .accordion__title {
+  background-color: rgba(41, 39, 39, 0.829);
+  font-weight: bold;
+  transition: 0.6s;
+}
+.blackList .accordion__title:hover {
+  background-color: darkcyan;
+}
+.blackList .accordion__content {
+  background-color: rgba(41, 39, 39, 0.404);
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(3px);
 }
 
 @media screen and (max-width: 768px) {
