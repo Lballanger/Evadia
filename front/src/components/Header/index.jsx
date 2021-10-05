@@ -188,7 +188,7 @@ const Header = ({ location: { pathname } }) => {
                 style={{
                   position: 'fixed',
                   inset: 0,
-                  backgroundColor: 'rgba(0,0,0,.95)',
+                  backgroundColor: 'rgba(220, 220, 220, 0.71)',
                 }}
               >
                 <ul
@@ -201,17 +201,33 @@ const Header = ({ location: { pathname } }) => {
                   <AnimatePresence initial="initial">
                     {user ? (
                       <>
-                        <NavLink
-                          className="header__link"
-                          type="button"
-                          to="/account"
+                        <motion.li
+                          initial={{ opacity: 0, x: 100, y: -100 }}
+                          animate={{
+                            opacity: 1,
+                            x: 0,
+                            y: 0,
+                            transition: { delay: 0.2 },
+                          }}
+                          exit={{
+                            opacity: 0,
+                            x: 100,
+                            y: -100,
+                            transition: { delay: 0 },
+                          }}
                         >
-                          <div className="header__links__display">
-                            <li className="header__item slideInDown-2">
-                              Bonjour {user.firstname}
-                            </li>
-                          </div>
-                        </NavLink>
+                          <NavLink
+                            className="header__link"
+                            type="button"
+                            to="/account"
+                          >
+                            <div className="header__links__display">
+                              <li className="header__item slideInDown-2">
+                                Mon profil
+                              </li>
+                            </div>
+                          </NavLink>
+                        </motion.li>
                       </>
                     ) : (
                       <>
