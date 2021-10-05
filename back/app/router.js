@@ -123,4 +123,12 @@ router.post(
   authController.refreshToken
 );
 
+router.post('/api/auth/forgot-password', authController.generatePasswordToken);
+
+router.post(
+  '/api/auth/new-password',
+  authMiddleware(),
+  authController.newPassword
+);
+
 module.exports = router;
