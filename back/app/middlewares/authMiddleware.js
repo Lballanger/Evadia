@@ -12,7 +12,11 @@ exports.authMiddleware =
 
       // If Authorization have no value, return error message with status 401
       if (!authorization) {
-        if(req.url == '/api/search/criteria' || req.url == `/api/search/city/${req.params.insee}`) return next();
+        if (
+          req.url === '/api/search/criteria' ||
+          req.url === `/api/search/city/${req.params.insee}`
+        )
+          return next();
         return res.status(401).json({ error: 'No token found' });
       }
 

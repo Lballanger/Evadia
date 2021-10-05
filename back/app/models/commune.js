@@ -53,10 +53,9 @@ class Commune {
    */
   static async findByCodeInsee(codeInsee) {
     try {
-      const { rows } = await client.query(
-        'SELECT * FROM private.get_all($1)',
-        [codeInsee]
-      );
+      const { rows } = await client.query('SELECT * FROM private.get_all($1)', [
+        codeInsee,
+      ]);
       return new Commune(rows[0]);
     } catch (error) {
       console.log(error);
@@ -72,7 +71,7 @@ class Commune {
    * @returns {Array<Commune>} new instance of city found or null
    * @throws {Error} if the query didn't match any city in the database
    */
-   static async findDetailsForVisitor(codeInsee) {
+  static async findDetailsForVisitor(codeInsee) {
     try {
       const { rows } = await client.query(
         'SELECT * FROM private.details_visitors($1)',

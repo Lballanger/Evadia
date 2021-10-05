@@ -49,7 +49,7 @@ const searchController = {
             }
           }
           if (temps.length > 0) commune.health_institution = temps;
-        } 
+        }
       } else {
         commune = await Commune.findByCodeInsee(insee);
       }
@@ -85,7 +85,6 @@ const searchController = {
    * @param {Response} response
    */
   findByCriteria: async (request, response) => {
-
     const params = { ...request.body };
     const authorize = ['pharmacie', 'centre hospitalier', 'crèche'];
     const temps = [];
@@ -93,15 +92,15 @@ const searchController = {
 
     // Change to lower case
     if (params.type_health_institution) {
-      typeHealthInstitution = params.type_health_institution.map(elem => elem.toLowerCase());
+      typeHealthInstitution = params.type_health_institution.map((elem) =>
+        elem.toLowerCase()
+      );
     }
 
     try {
-
       // condition if the user is not connected
       if (!request.user) {
-
-        //default deleting type_personal_health key for a visitor
+        // default deleting type_personal_health key for a visitor
         delete params.type_personal_health;
 
         if (typeHealthInstitution) {
@@ -116,7 +115,6 @@ const searchController = {
 
       const commune = await Commune.findByCriteria(params);
       response.json(commune);
-
     } catch (error) {
       console.log(error);
       response.status(500).json(error.message);

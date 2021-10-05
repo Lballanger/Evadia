@@ -88,6 +88,22 @@ const authController = {
       return response.status(500).json(error.message);
     }
   },
+  generatePasswordToken: async (request, response) => {
+    const { email } = request.body;
+    try {
+      const user = await User.getByEmail(email);
+      if (!user)
+        return response
+          .status(404)
+          .json('User not found with this Email address');
+      // TODO: Generate token
+      // TODO: Store the token in Redis with expiration time
+      // TODO: Send the mail
+      return response.json('Email sent');
+    } catch (error) {
+      return response.status(500).json(error.message);
+    }
+  },
 };
 
 module.exports = authController;
