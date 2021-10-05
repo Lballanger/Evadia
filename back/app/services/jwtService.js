@@ -24,13 +24,15 @@ const jwtService = {
    * @param {boolean} isRefresh If true, it will use the JWT_REFRESH_TOKEN - Default: false (JWT_TOKEN)
    * @returns {string} Return a token
    */
-  generateToken: async (payload, isRefresh = false) => {
-    const expiresIn = parseInt(
-      isRefresh
-        ? process.env.JWT_REFRESH_SECRET_DURATION
-        : process.env.JWT_SECRET_DURATION,
-      10
-    );
+  generateToken: async (payload, isRefresh = false, expirationTime = null) => {
+    const expiresIn =
+      expirationTime ||
+      parseInt(
+        isRefresh
+          ? process.env.JWT_REFRESH_SECRET_DURATION
+          : process.env.JWT_SECRET_DURATION,
+        10
+      );
     const token = jwt.sign(
       payload,
       isRefresh ? process.env.JWT_REFRESH_SECRET : process.env.JWT_SECRET,
