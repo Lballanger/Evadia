@@ -35,7 +35,24 @@ const searchController = {
   findByInsee: async (request, response) => {
     try {
       const { insee } = request.params;
-      const commune = await Commune.findByCodeInsee(insee);
+      let commune = null;
+      // if the user is not logged in, he cannot have all the details
+      if (!request.user) {
+        const authorize = ['pharmacie', 'centre hospitalier', 'crèche'];
+        const temps = [];
+        commune = await Commune.findDetailsForVisitor(insee);
+        // see if it exists
+        if (commune.health_institution) {
+          for (const value of authorize) {
+            for (const elem of commune.health_institution) {
+              if (elem.categorie.includes(value)) temps.push(elem);
+            }
+          }
+          if (temps.length > 0) commune.health_institution = temps;
+        } 
+      } else {
+        commune = await Commune.findByCodeInsee(insee);
+      }
       response.json(commune);
     } catch (error) {
       console.log(error);

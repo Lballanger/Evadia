@@ -54,7 +54,28 @@ class Commune {
   static async findByCodeInsee(codeInsee) {
     try {
       const { rows } = await client.query(
-        'SELECT * FROM private.commune WHERE code_insee = $1',
+        'SELECT * FROM private.get_all($1)',
+        [codeInsee]
+      );
+      return new Commune(rows[0]);
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
+  }
+
+  /**
+   * Fetch a city by its code_insee
+   * @param {string} code_insee
+   * @async
+   * @static
+   * @returns {Array<Commune>} new instance of city found or null
+   * @throws {Error} if the query didn't match any city in the database
+   */
+   static async findDetailsForVisitor(codeInsee) {
+    try {
+      const { rows } = await client.query(
+        'SELECT * FROM private.details_visitors($1)',
         [codeInsee]
       );
       return new Commune(rows[0]);

@@ -14,7 +14,7 @@ const router = Router();
 // /search
 
 /**
- * Responds with one city from database
+ * Responds with one city from database on the map
  * @route GET /search/city
  * @group Search
  * @summary Responds with one city from database
