@@ -29,6 +29,7 @@ const contactController = {
           error: true,
           message: 'Something goes wrong with provided data',
         });
+
       return response.status(201).json(message);
     } catch (error) {
       return response.status(500).json(error.message);
