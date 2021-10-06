@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
@@ -23,24 +24,78 @@ const Inscription = () => {
   const history = useHistory();
   const [inputs, setInputs] = useState({ ...initialInputs });
   const [errors, setErrors] = useState({});
+  const [isValidForm, setIsValidForm] = useState(false);
   const { isMobile } = useWindowSize();
   const { toastDispatch } = useToastContext();
 
   const handleChange = async (event) => {
-    if (errors) {
+    if (Object.keys(errors).length) {
       setErrors((state) => {
         const copy = { ...state };
         delete copy[event.target.name];
         return copy;
       });
     }
-    setInputs((state) => ({
-      ...state,
-      [event.target.name]: event.target.value,
-    }));
+    const errorsObj = { ...errors };
+    const emailTest =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const passwordTest =
+      /^.*(?=.{8,120})(?!.*\s)(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\!\@\#\$\%\^\&\*\(\)\-\=\¡\£\_\+\`\~\.\,\<\>\/\?\;\:\'\"\\\|\[\]\{\}]).*$/;
+    switch (event.target.name) {
+      case 'firstname':
+        if (event.target.value.trim().length < 2)
+          errorsObj.firstname =
+            'Votre prénom doit avoir au minimum 2 caractères';
+        else if (errorsObj.firstname) delete errorsObj.firstname;
+        break;
+      case 'lastname':
+        if (event.target.value.trim().length < 2)
+          errorsObj.lastname = 'Votre nom doit avoir au minimum 2 caractères';
+        else if (errorsObj.lastname) delete errorsObj.lastname;
+        break;
+      case 'email':
+        if (!emailTest.test(event.target.value))
+          errorsObj.email = "Votre email n'est pas valide";
+        else if (errorsObj.email) delete errorsObj.email;
+        break;
+      case 'password':
+        if (!passwordTest.test(event.target.value))
+          errorsObj.password =
+            'Votre mot de passe doit contenir uniquement des lettres et majuscules';
+        else if (errorsObj.password) delete errorsObj.password;
+        break;
+      case 'password_confirm':
+        if (inputs.password.length && event.target.value !== inputs.password)
+          errorsObj.password_confirm =
+            'La confirmation du mot de passe ne correspond pas au mot de passe saisi';
+        else if (errorsObj.password_confirm) delete errorsObj.password_confirm;
+        break;
+      default:
+        break;
+    }
+    if (!event.target.value.trim().length) delete errorsObj[event.target.name];
+    setErrors(errorsObj);
+    const errorsLength = Object.keys(errorsObj).length;
+    setInputs((state) => {
+      let valid = true;
+      Object.values(state).forEach((value) => {
+        if (!value.length) valid = false;
+      });
+      if (!event.target.value.length) valid = false;
+      if (errorsLength > 0 || !valid) {
+        setIsValidForm(false);
+      } else {
+        setIsValidForm(true);
+      }
+      return {
+        ...state,
+        [event.target.name]: event.target.value,
+      };
+    });
   };
 
   const clearInput = (id) => {
+    if (errors[id]) delete errors[id];
     setInputs((state) => ({
       ...state,
       [id]: '',
@@ -108,6 +163,7 @@ const Inscription = () => {
             value={inputs.firstname}
             onChange={handleChange}
             onClear={clearInput}
+            error={errors.firstname}
           />
           <Input
             type="text"
@@ -116,6 +172,7 @@ const Inscription = () => {
             value={inputs.lastname}
             onChange={handleChange}
             onClear={clearInput}
+            error={errors.lastname}
           />
           <AutoSuggest limit={10} onSelected={setCity} inForm />
           <Input
@@ -125,6 +182,7 @@ const Inscription = () => {
             value={inputs.email}
             onChange={handleChange}
             onClear={clearInput}
+            error={errors.email}
           />
           <Input
             type="password"
@@ -133,6 +191,7 @@ const Inscription = () => {
             value={inputs.password}
             onChange={handleChange}
             onClear={clearInput}
+            error={errors.password}
           />
           <Input
             type="password"
@@ -141,8 +200,15 @@ const Inscription = () => {
             value={inputs.password_confirm}
             onChange={handleChange}
             onClear={clearInput}
+            error={errors.password_confirm}
+            disabled={!inputs.password.length || !!errors.password}
+            title="Vous devez saisir un mot de passe"
           />
-          <button type="submit" className="inscription__form-group-button">
+          <button
+            type="submit"
+            className="inscription__form-group-button"
+            disabled={!isValidForm}
+          >
             S'enregistrer
           </button>
         </Form>

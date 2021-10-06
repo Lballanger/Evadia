@@ -79,10 +79,18 @@
     border-radius: 3px;
     margin: 0.6rem 0;
     transition: 0.6s;
-  }
 
-  &__form-group-button:hover {
-    background-color: darkcyan;
+    &:hover {
+      background-color: darkcyan;
+    }
+
+    &:disabled {
+      cursor: auto;
+      background-color: #85e2c8;
+      &:hover {
+        background-color: #85e2c8;
+      }
+    }
   }
 
   .react-autosuggest__container {
