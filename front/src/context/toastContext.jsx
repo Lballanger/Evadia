@@ -22,6 +22,7 @@ export const toastReducer = (state, action) => {
           id: new Date().getTime(),
           type: action.payload.type,
           content: action.payload.content,
+          duration: action.payload.duration || null,
         },
       ];
     case REMOVE_TOAST:

@@ -8,6 +8,7 @@ import Input from '../Shared/Input';
 import inscription from '../../assets/images/inscription.jpg';
 import './styles.scss';
 import AutoSuggest from '../AutoSuggest';
+import { ADD_TOAST, useToastContext } from '../../context/toastContext';
 
 const initialInputs = {
   firstname: '',
@@ -23,6 +24,7 @@ const Inscription = () => {
   const [inputs, setInputs] = useState({ ...initialInputs });
   const [errors, setErrors] = useState({});
   const { isMobile } = useWindowSize();
+  const { toastDispatch } = useToastContext();
 
   const handleChange = async (event) => {
     if (errors) {
@@ -77,11 +79,19 @@ const Inscription = () => {
         const data = await API.doRegister(inputs);
         // eslint-disable-next-line no-console
         console.log(data);
+        toastDispatch({
+          type: ADD_TOAST,
+          payload: { type: 'success', content: 'Votre compte a bien été créé' },
+        });
         setInputs({ ...initialInputs });
         history.push('/');
-      } catch (err) {
+      } catch (error) {
         // eslint-disable-next-line no-console
-        console.log('Error register', err);
+        console.log('Error register', error);
+        toastDispatch({
+          type: ADD_TOAST,
+          payload: { type: 'error', content: error.message },
+        });
       }
     }
   };

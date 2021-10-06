@@ -21,13 +21,22 @@ import './index.scss';
 import NewPassword from '../NewPassword';
 import ForgottenPassword from '../ForgottenPassword';
 import userStore from '../../store/user';
+import { ADD_TOAST, useToastContext } from '../../context/toastContext';
 
 const App = () => {
   const setUser = userStore((state) => state.setUser);
   const { data, isError, error, isLoading } = useUser();
+  const { toastDispatch } = useToastContext();
   useEffect(() => {
     if (data) {
       setUser(data.data);
+      toastDispatch({
+        type: ADD_TOAST,
+        payload: {
+          type: 'success',
+          content: 'Vous êtes connecté',
+        },
+      });
     } else if (isError) {
       console.log('APP USER ERROR: ', error);
       setUser(null);
