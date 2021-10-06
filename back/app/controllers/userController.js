@@ -48,7 +48,7 @@ const userController = {
       user.role = userRole;
       user.password = hashedPassword;
   
-      await new User(user).update();
+      await user.update();
       // TODO: if password changed, revoke/logout user
       return response.json({ firstname, lastname, email, role:userRole });
     } catch (error) {
@@ -59,9 +59,12 @@ const userController = {
   delete: async (request, response) => {
     const { id } = request.user;
     try {
-      await User.delete(id);
+      const user = await User.getById(id);
+      if (!user) return response.status(404).json('User not found');
+
+      await user.delete();
       // TODO: revoke user token
-      return response.status(204);
+      return response.json('User deleted').status(204);
     } catch (error) {
       return response.status(500).json(error.message);
     }

@@ -40,7 +40,7 @@ class User {
       if (result.rows.length === 0) {
         return null;
       }
-      return result.rows[0];
+      return new User(result.rows[0]);
     } catch (err) {
       throw new Error(err);
     }
