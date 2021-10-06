@@ -58,7 +58,7 @@ const doRegister = async (params) => {
     localStorage.setItem(LOCAL_REFRESH_KEY, data.refreshToken);
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.response.data);
   }
 };
 
@@ -69,7 +69,7 @@ const doLogin = async (params) => {
     localStorage.setItem(LOCAL_REFRESH_KEY, data.refreshToken);
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.response.data);
   }
 };
 

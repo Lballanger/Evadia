@@ -1,41 +1,20 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IoClose } from 'react-icons/io5';
+import Item from './Item';
 
-const Toast = ({ toast = [], onClose }) => {
-  const renderItem = (content) => {
-    if (typeof content === 'function') return content();
-    return <p>{content}</p>;
-  };
-
-  return (
-    <div className="toast">
-      <div className="toast__container">
-        {toast.map((t) => (
-          <div
-            key={t.id}
-            className={`toast__container__item ${t.type ? t.type : ''}`}
-          >
-            <span
-              role="img"
-              aria-label="close toast"
-              className="toast__close"
-              onClick={() => onClose(t.id)}
-            >
-              <IoClose />
-            </span>
-            {renderItem(t.content)}
-          </div>
-        ))}
-      </div>
+const Toast = ({ toast = [], onClose, duration = 3000 }) => (
+  <div className="toast">
+    <div className="toast__container">
+      {toast.map((t) => (
+        <Item key={t.id} toast={t} duration={duration} onClose={onClose} />
+      ))}
     </div>
-  );
-};
+  </div>
+);
 
 Toast.defaultProps = {
   toast: [],
+  duration: 2000,
 };
 
 Toast.propTypes = {
@@ -47,6 +26,7 @@ Toast.propTypes = {
     })
   ),
   onClose: PropTypes.func.isRequired,
+  duration: PropTypes.number,
 };
 
 export default Toast;
