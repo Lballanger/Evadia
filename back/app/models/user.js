@@ -103,7 +103,7 @@ class User {
   async update() {
     try {
       const { rows } = await client.query(
-        'UPDATE private."user" SET firstname = $1, lastname = $2, password = $3, city = $4 role = $5 WHERE id = $6 RETURNING *',
+        'UPDATE private."user" SET firstname = $1, lastname = $2, password = $3, city = $4, role = $5 WHERE id = $6 RETURNING *',
         [
           this.firstname,
           this.lastname,

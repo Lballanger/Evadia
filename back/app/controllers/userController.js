@@ -23,23 +23,36 @@ const userController = {
   update: async (request, response) => {
     const { id } = request.user;
     const { firstname, lastname, email, password, role } = request.body;
+  
     try {
       const user = await User.getById(id);
       if (!user) return response.status(404).json('User not found');
       let hashedPassword = user.password;
-      if (!(await compare(password, user.password))) {
+      if (password && !(await compare(password, user.password))) {
         hashedPassword = await hash(password);
       }
-      await User.update(id, {
-        firstname,
-        lastname,
-        email,
-        password: hashedPassword,
-        role,
-      });
+  
+      const userRole = user.role;
+      
+      delete user.favorites;
+      delete user.email_verified_at;
+  
+      user.city = user.city.code_insee;
+  
+      for (const key in request.body) {
+        if (user[key] !== request.body[key] && request.body[key] !== undefined) {
+          user[key] = request.body[key]
+        }
+      }
+      
+      user.role = userRole;
+      user.password = hashedPassword;
+  
+      await new User(user).update();
       // TODO: if password changed, revoke/logout user
-      return response.json({ firstname, lastname, email, role });
+      return response.json({ firstname, lastname, email, role:userRole });
     } catch (error) {
+      console.log(error);
       return response.status(500).json(error.message);
     }
   },
