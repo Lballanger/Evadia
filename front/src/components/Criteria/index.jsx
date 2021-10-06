@@ -67,7 +67,7 @@ const Criteria = () => {
           <label className="rangeValues">Choisir la population</label>
           <br />
           <br />
-          <span>
+          <span className="range-slider__span">
             Minimum: {inputs.populationmin} - Maximum: {inputs.populationmax}
           </span>
           <input
