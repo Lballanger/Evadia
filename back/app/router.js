@@ -7,6 +7,7 @@ const { authMiddleware } = require('./middlewares/authMiddleware');
 const contactController = require('./controllers/contactController');
 
 const { findByName, findByCriteria } = require('./schemas/commune');
+const { login, register, forgotPassword } = require('./schemas/user');
 const { validateBody, validateQuery } = require('./services/validator');
 
 const router = Router();
@@ -99,7 +100,7 @@ router.delete('/api/user', authMiddleware(), userController.delete);
  * @group Auth
  * @summary Return user data and token if user successfully connected or error message
  */
-router.post('/api/auth/login', authController.login);
+router.post('/api/auth/login', validateBody(login), authController.login);
 
 /**
  * Sign user in
@@ -107,7 +108,11 @@ router.post('/api/auth/login', authController.login);
  * @group Auth
  * @summary Return user data and token if user successfully created and if email not already store in the database otherwise return an error message
  */
-router.post('/api/auth/register', authController.register);
+router.post(
+  '/api/auth/register',
+  validateBody(register),
+  authController.register
+);
 
 /**
  * Sign user out
@@ -123,7 +128,11 @@ router.post(
   authController.refreshToken
 );
 
-router.post('/api/auth/forgot-password', authController.generatePasswordToken);
+router.post(
+  '/api/auth/forgot-password',
+  validateBody(forgotPassword),
+  authController.generatePasswordToken
+);
 
 router.post(
   '/api/auth/new-password',
