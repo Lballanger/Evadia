@@ -3,6 +3,7 @@ const { compare, hash } = require('../services/bcryptService');
 const jwtService = require('../services/jwtService');
 const userBlacklistService = require('../services/userBlacklistService');
 const { setex, del } = require('../redis_client');
+const mailer = require('../services/nodemailer');
 
 const authController = {
   login: async (request, response) => {
@@ -90,7 +91,7 @@ const authController = {
     }
   },
   generatePasswordToken: async (request, response) => {
-    const { email } = request.body;
+    const { email, redirectUrl} = request.body;
     try {
       const user = await User.getByEmail(email);
       if (!user)
@@ -104,6 +105,14 @@ const authController = {
       );
       await setex(`password:user:${user.email}`, 15 * 60, token);
       // TODO: Send the mail
+      const params = {
+        email : user.email,
+        type : 'reset',
+        username: user.firstname,
+        urlLink: redirectUrl+"?token="+token,
+        revokeLink : null
+      }
+      await mailer(params);
       return response.json('Email sent');
     } catch (error) {
       return response.status(500).json(error.message);
