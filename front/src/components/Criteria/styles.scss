@@ -187,6 +187,7 @@
     &__submit {
       display: flex;
       justify-content: center;
+      
 
       &__display {
         border-radius: 50px;
@@ -255,18 +256,21 @@
 
 .rangeValues {
   position: relative;
-  left: 75px
 }
 
 section.range-slider {
   position: relative;
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  align-items: left;
 }
 
 section.range-slider input {
   position: absolute;
   left: 0px;
   top: 30px;
-  width: 338px;
+  width: 36vh;
   height:20px;
   margin: 0;
   padding: 0;
@@ -285,6 +289,7 @@ section.range-slider input::-webkit-slider-runnable-track  {
   height: 15px;
   cursor: pointer;
   box-shadow: 0 0.1em 0.5em rgba(0, 0, 0, 0.2);
+  transition: 0.6s;
 }
 
 section.range-slider input::-webkit-slider-thumb {
@@ -307,12 +312,7 @@ background: darkcyan
 
 .range-slider__span {
   display: flex;
-  margin-top: 20px;
-  margin-left: 30px;
-}
-
-.rangeValues {
-  margin-bottom: 1rem;
+  margin-top: 5px;
 }
 
 select {
@@ -442,10 +442,17 @@ label {
 }
 
 .criteria button {
+  position:static;
+  display: flex;
+  width: 220px;
+  margin-left:auto;
+  margin-right: auto;
+  justify-content:center;
+  align-items:center;
   margin-top: 2rem;
   padding: 1rem 1.3rem;
   border: none;
-  border-radius: 0.3rem;
+  border-radius: 10px;
   font-weight: 600;
   color: #fff;
   background: #1f9f87;

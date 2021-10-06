@@ -64,7 +64,9 @@ const Criteria = () => {
           </div>
         </div> */}
         <section className="range-slider">
-          <label className="rangeValues">Choisir la population</label>
+          <label className="rangeValues">
+            Choisir le nombre d&apos;habitants
+          </label>
           <br />
           <br />
           <span className="range-slider__span">
@@ -101,7 +103,7 @@ const Criteria = () => {
               onChange={handleChange}
               multiple
             >
-              <option value={null}>Choisir un département</option>
+              <option value={null}>Aucun département</option>
               {departements.map((departement) => (
                 <option
                   value={departement.num_dep}
@@ -127,7 +129,7 @@ const Criteria = () => {
               onChange={handleChange}
               multiple
             >
-              <option value={null}>Choisir une région</option>
+              <option value={null}>Aucune Région</option>
               {regionsWithDepartements.map((region) => (
                 <option
                   value={region.reg_code}
@@ -151,7 +153,7 @@ const Criteria = () => {
               onChange={handleChange}
               multiple
             >
-              <option value={null}>Type d&apos;école</option>
+              <option value={null}>Aucun établissement</option>
               {schools.map((schoolType) => (
                 <option
                   value={schoolType}
