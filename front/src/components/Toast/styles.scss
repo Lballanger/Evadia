@@ -9,6 +9,7 @@
   right: 10px;
   width: 300px;
   max-height: calc(100vh - 100px);
+  z-index: 99;
 
   &__container {
     display: flex;

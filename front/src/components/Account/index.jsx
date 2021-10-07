@@ -4,6 +4,7 @@ import Accordion from './Accordion';
 
 import './styles.scss';
 import userStore from '../../store/user';
+import cityStore from '../../store/city';
 
 const styles = {
   image: {
@@ -19,17 +20,18 @@ const styles = {
 
 const Account = () => {
   const user = userStore((state) => state.user);
+  const favoritesStore = cityStore((state) => state.favorites);
   const [favorites, setFavorites] = useState([]);
   const [blacklist, setBlacklist] = useState([]);
 
   useEffect(() => {
-    if (user) {
-      const userFavorites = user.favorites.filter((city) => city.is_favorite);
-      const userBlacklist = user.favorites.filter((city) => !city.is_favorite);
-      setFavorites(userFavorites);
-      setBlacklist(userBlacklist);
-    }
-  }, [user]);
+    const userFavorites = favoritesStore.filter((city) => city.is_favorite);
+    const userBlacklist = favoritesStore.filter(
+      (city) => !city.is_favorite && city.is_favorite !== null
+    );
+    setFavorites(userFavorites);
+    setBlacklist(userBlacklist);
+  }, [favoritesStore]);
 
   return (
     <>
