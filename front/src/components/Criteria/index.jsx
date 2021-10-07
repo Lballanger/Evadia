@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import API from '../../api';
 import cityStore from '../../store/city';
 import departements from '../../assets/data/departements-region.json';
@@ -17,6 +20,25 @@ const Criteria = () => {
   const criterias = criteriaStore((state) => state.criterias);
   const setCriteria = criteriaStore((state) => state.setCriteria);
   const [inputs, setInputs] = useState(criterias);
+
+  const [isOn, setIsOn] = useState({
+    pharmacy: false,
+    doctor: false,
+    cardiologistic: false,
+  });
+
+  const handleToggle = (category) => {
+    setIsOn((state) => ({
+      ...state,
+      [category]: !state[category],
+    }));
+  };
+
+  const spring = {
+    type: 'spring',
+    stiffness: 300,
+    damping: 5,
+  };
 
   const handleChange = (event) => {
     if (
@@ -52,120 +74,177 @@ const Criteria = () => {
     <section className="criteria__container">
       <h1>Rechercher des villes selon vos critères</h1>
       <form onSubmit={handleSumbit} className="criteria">
-        {/* <div className="criteria__inputs">
-          <div className="criteria__inputs__toggle">
-            <div className="criteria__inputs__toggle__1">
-              <label className="switch">
-                <input type="checkbox" />
-                <div />
+        <div className="criteria__form__container">
+          <div>
+            <section className="range-slider">
+              <label className="rangeValues">
+                Choisir le nombre d&apos;habitants
               </label>
-              <span className="criteria__inputs__toggle__name">Critère 1</span>
+              <br />
+              <br />
+              <span className="range-slider__span">
+                Minimum: {inputs.populationmin} - Maximum:{' '}
+                {inputs.populationmax}
+              </span>
+              <div className="range-slider__input">
+                <input
+                  name="populationmin"
+                  defaultValue={criterias.populationmin}
+                  value={inputs.populationmin}
+                  min="0"
+                  max="300000"
+                  step="100"
+                  type="range"
+                  onChange={handleChange}
+                />
+                <input
+                  name="populationmax"
+                  defaultValue={criterias.populationmax}
+                  value={inputs.populationmax}
+                  min="0"
+                  max="300000"
+                  step="100"
+                  type="range"
+                  onChange={handleChange}
+                />
+              </div>
+            </section>
+            <br />
+            <div className="localisation">
+              <section className="departements">
+                <label htmlFor="code_departement">Choisir un département</label>
+                <div className="select">
+                  <select
+                    id="code_departement"
+                    name="code_departement"
+                    onChange={handleChange}
+                    multiple
+                  >
+                    <option value={null}>Aucun département</option>
+                    {departements.map((departement) => (
+                      <option
+                        value={departement.num_dep}
+                        key={departement.num_dep}
+                        selected={criterias.code_departement.includes(
+                          departement.num_dep
+                        )}
+                      >
+                        {departement.dep_name}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="focus" />
+                </div>
+              </section>
+              <br />
+              <section className="regions">
+                <label htmlFor="code_region">Choisir une région</label>
+                <div className="select">
+                  <select
+                    id="code_region"
+                    name="code_region"
+                    onChange={handleChange}
+                    multiple
+                  >
+                    <option value={null}>Aucune Région</option>
+                    {regionsWithDepartements.map((region) => (
+                      <option
+                        value={region.reg_code}
+                        key={region.reg_code}
+                        selected={criterias.code_region.includes(
+                          region.reg_code
+                        )}
+                      >
+                        {region.reg_name}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="focus" />
+                </div>
+              </section>
             </div>
-          </div>
-        </div> */}
-        <section className="range-slider">
-          <label className="rangeValues">
-            Choisir le nombre d&apos;habitants
-          </label>
-          <br />
-          <br />
-          <span className="range-slider__span">
-            Minimum: {inputs.populationmin} - Maximum: {inputs.populationmax}
-          </span>
-          <input
-            name="populationmin"
-            defaultValue={criterias.populationmin}
-            value={inputs.populationmin}
-            min="0"
-            max="300000"
-            step="100"
-            type="range"
-            onChange={handleChange}
-          />
-          <input
-            name="populationmax"
-            defaultValue={criterias.populationmax}
-            value={inputs.populationmax}
-            min="0"
-            max="300000"
-            step="100"
-            type="range"
-            onChange={handleChange}
-          />
-        </section>
-        <br />
-        <section className="departements">
-          <label htmlFor="code_departement">Choisir un département</label>
-          <div className="select">
-            <select
-              id="code_departement"
-              name="code_departement"
-              onChange={handleChange}
-              multiple
-            >
-              <option value={null}>Aucun département</option>
-              {departements.map((departement) => (
-                <option
-                  value={departement.num_dep}
-                  key={departement.num_dep}
-                  selected={criterias.code_departement.includes(
-                    departement.num_dep
-                  )}
+            <br />
+            <section className="schools">
+              <label htmlFor="type_ecole">Choisir le type d&apos;école</label>
+              <div className="select">
+                <select
+                  id="type_select"
+                  name="type_ecole"
+                  onChange={handleChange}
+                  multiple
                 >
-                  {departement.dep_name}
-                </option>
-              ))}
-            </select>
-            <span className="focus" />
+                  <option value={null}>Aucun établissement</option>
+                  {schools.map((schoolType) => (
+                    <option
+                      value={schoolType}
+                      key={schoolType}
+                      selected={criterias.type_ecole.includes(schoolType)}
+                    >
+                      {schoolType}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </section>
           </div>
-        </section>
-        <br />
-        <section className="regions">
-          <label htmlFor="code_region">Choisir une région</label>
-          <div className="select">
-            <select
-              id="code_region"
-              name="code_region"
-              onChange={handleChange}
-              multiple
-            >
-              <option value={null}>Aucune Région</option>
-              {regionsWithDepartements.map((region) => (
-                <option
-                  value={region.reg_code}
-                  key={region.reg_code}
-                  selected={criterias.code_region.includes(region.reg_code)}
+          <section className="health">
+            <h2>Santé</h2>
+            <div className="Pharmacy">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.pharmacy}
+                  onClick={() => handleToggle('pharmacy')}
                 >
-                  {region.reg_name}
-                </option>
-              ))}
-            </select>
-            <span className="focus" />
-          </div>
-        </section>
-        <br />
-        <section className="schools">
-          <label htmlFor="type_ecole">Choisir le type d&apos;école</label>
-          <div className="select">
-            <select
-              id="type_select"
-              name="type_ecole"
-              onChange={handleChange}
-              multiple
-            >
-              <option value={null}>Aucun établissement</option>
-              {schools.map((schoolType) => (
-                <option
-                  value={schoolType}
-                  key={schoolType}
-                  selected={criterias.type_ecole.includes(schoolType)}
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Pharmacies</span>
+              </div>
+            </div>
+            <div className="doctor">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.doctor}
+                  onClick={() => handleToggle('doctor')}
                 >
-                  {schoolType}
-                </option>
-              ))}
-            </select>
-          </div>
-        </section>
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Médecins généraliste</span>
+              </div>
+            </div>
+            <div className="cardiologist">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.cardiologist}
+                  onClick={() => handleToggle('cardiologist')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Cardiologues</span>
+              </div>
+            </div>
+          </section>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
+            mollitia eveniet repellat ab molestiae natus in quisquam obcaecati
+            commodi. Minima accusamus amet, repellendus architecto nihil illum?
+            Eius dolorum esse perspiciatis.
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
+            mollitia eveniet repellat ab molestiae natus in quisquam obcaecati
+            commodi. Minima accusamus amet, repellendus architecto nihil illum?
+            Eius dolorum esse perspiciatis.
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
+            mollitia eveniet repellat ab molestiae natus in quisquam obcaecati
+            commodi. Minima accusamus amet, repellendus architecto nihil illum?
+            Eius dolorum esse perspiciatis.
+          </p>
+        </div>
         <button type="submit">Lancer la recherche</button>
       </form>
     </section>
