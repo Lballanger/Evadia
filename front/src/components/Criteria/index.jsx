@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import API from '../../api';
 import cityStore from '../../store/city';
 import departements from '../../assets/data/departements-region.json';
@@ -17,6 +20,14 @@ const Criteria = () => {
   const criterias = criteriaStore((state) => state.criterias);
   const setCriteria = criteriaStore((state) => state.setCriteria);
   const [inputs, setInputs] = useState(criterias);
+  const [isOn, setIsOn] = useState(false);
+  const toggleSwitch = () => setIsOn(!isOn);
+
+  const spring = {
+    type: 'spring',
+    stiffness: 300,
+    damping: 5,
+  };
 
   const handleChange = (event) => {
     if (
@@ -52,17 +63,6 @@ const Criteria = () => {
     <section className="criteria__container">
       <h1>Rechercher des villes selon vos critères</h1>
       <form onSubmit={handleSumbit} className="criteria">
-        {/* <div className="criteria__inputs">
-          <div className="criteria__inputs__toggle">
-            <div className="criteria__inputs__toggle__1">
-              <label className="switch">
-                <input type="checkbox" />
-                <div />
-              </label>
-              <span className="criteria__inputs__toggle__name">Critère 1</span>
-            </div>
-          </div>
-        </div> */}
         <section className="range-slider">
           <label className="rangeValues">
             Choisir le nombre d&apos;habitants
@@ -164,6 +164,14 @@ const Criteria = () => {
                 </option>
               ))}
             </select>
+          </div>
+        </section>
+        <section className="test">
+          <div className="choice">
+            <div className="switch" data-isOn={isOn} onClick={toggleSwitch}>
+              <motion.div className="handle" layout transition={spring} />
+            </div>
+            <span>Critère</span>
           </div>
         </section>
         <button type="submit">Lancer la recherche</button>
