@@ -16,6 +16,7 @@ import Inscription from '../Inscription';
 import Notfound from '../Notfound';
 import API from '../../api';
 import { useUser } from '../../hooks/useAuth';
+import useCity from '../../store/city';
 
 import './index.scss';
 import NewPassword from '../NewPassword';
@@ -25,11 +26,19 @@ import { ADD_TOAST, useToastContext } from '../../context/toastContext';
 
 const App = () => {
   const setUser = userStore((state) => state.setUser);
+  const setFavorites = useCity((state) => state.setFavorites);
   const { data, isError, error, isLoading } = useUser();
   const { toastDispatch } = useToastContext();
+
+  const getFavorites = async () => {
+    const favorites = await API.getUserFavorites();
+    setFavorites(favorites);
+  };
+
   useEffect(() => {
     if (data) {
       setUser(data.data);
+      getFavorites();
       toastDispatch({
         type: ADD_TOAST,
         payload: {
@@ -42,10 +51,6 @@ const App = () => {
       setUser(null);
     }
   }, [data, isError]);
-
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
 
   return (
     <>

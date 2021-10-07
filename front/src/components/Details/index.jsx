@@ -11,39 +11,64 @@ import Dropdown from './MenuMobile/Dropdown';
 
 import './styles.scss';
 import BtnDesktop from './BtnDesktop/BtnDesktop';
+import { ADD_TOAST, useToastContext } from '../../context/toastContext';
 
 // eslint-disable-next-line react/prop-types
 const Details = () => {
   const { codeInsee } = useParams();
   const history = useHistory();
   const { isMobile } = useWindowSize();
+  const { toastDispatch } = useToastContext();
   const city = cityStore((state) => state.city);
   const setCity = cityStore((state) => state.setCity);
+  const addToFavorites = cityStore((state) => state.addToFavorites);
+  const removeFromFavorites = cityStore((state) => state.removeFromFavorites);
   const user = userStore((state) => state.user);
   const [dataForMap, setDataForMap] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const showFavorite = () => {
-    console.log(user);
-    if (user) {
-      const cityIsFavorite = user.favorites.find(
-        (favorite) => favorite.commune_id === city.code_insee
-      );
-      if (cityIsFavorite) {
-        return <IoStar className="favorite" color="#dcb525" size="1.5em" />;
-      }
+    if (city.is_favorite) {
+      return <IoStar className="favorite" color="#dcb525" size="1.5em" />;
     }
     return <IoStarOutline className="favorite" color="#dcb525" size="1.5em" />;
   };
 
   const toggleFavorite = async () => {
     if (user) {
-      await API.cityToFavorites(city.code_insee, true);
-      await API.getUser();
+      const { data } = await API.cityToFavorites(city.code_insee, true);
+      if (data.status === 'added') {
+        addToFavorites(city, true);
+        toastDispatch({
+          type: ADD_TOAST,
+          payload: {
+            type: 'success',
+            content: `${city.city_name} a bien été ajouté à vos favoris`,
+            duration: 10000,
+          },
+        });
+      } else if (data.status === 'removed') {
+        removeFromFavorites(city, true);
+        toastDispatch({
+          type: ADD_TOAST,
+          payload: {
+            type: 'success',
+            // eslint-disable-next-line no-extra-boolean-cast
+            content: `${city.city_name} a été retiré de vos favoris`,
+            duration: 10000,
+          },
+        });
+      }
     } else {
-      alert(
-        'Vous devez être connecté pour pouvoir ajouter une ville en favoris'
-      );
+      toastDispatch({
+        type: ADD_TOAST,
+        payload: {
+          type: 'info',
+          content:
+            'Vous devez être connecté pour pouvoir ajouter une ville en favoris',
+          duration: 10000,
+        },
+      });
     }
   };
 

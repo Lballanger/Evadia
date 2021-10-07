@@ -38,6 +38,11 @@ const cityToFavorites = async (codeInsee, boolean) =>
 
 const getUser = async () => instance.get('/user');
 
+const getUserFavorites = async () => {
+  const { data } = await instance.get('/user/bookmarks');
+  return data;
+};
+
 const updateUser = async (params) => {
   const { data } = await instance.patch('/user', params);
   return data;
@@ -127,6 +132,7 @@ export default {
   getCityWithCriteria,
   cityToFavorites,
   getUser,
+  getUserFavorites,
   updateUser,
   deleteUser,
   forgotPassword,

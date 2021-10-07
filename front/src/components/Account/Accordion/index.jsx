@@ -2,14 +2,25 @@ import React, { useState } from 'react';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import PropTypes from 'prop-types';
 import API from '../../../api';
+import cityStore from '../../../store/city';
 import './styles.scss';
+import { ADD_TOAST, useToastContext } from '../../../context/toastContext';
 
 const Accordion = ({ title, data, className = '' }) => {
   const [isOpened, setIsOpened] = useState(false);
+  const removeFromFavorites = cityStore((state) => state.removeFromFavorites);
+  const { toastDispatch } = useToastContext();
 
   const remove = async (communeId, isFavorite) => {
-    await API.cityToFavorites(communeId, isFavorite);
-    // Message & remove
+    const { data: response } = await API.cityToFavorites(communeId, isFavorite);
+    removeFromFavorites({ code_insee: communeId });
+    toastDispatch({
+      type: ADD_TOAST,
+      payload: {
+        type: 'success',
+        content: response.message,
+      },
+    });
   };
 
   return (
@@ -67,13 +78,14 @@ Accordion.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       commune_id: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
+      created_at: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       is_favorite: PropTypes.bool.isRequired,
       details: PropTypes.shape({
         city_name: PropTypes.string.isRequired,
         population: PropTypes.number.isRequired,
-        coordinates: PropTypes.string.isRequired,
+        coordinates: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+          .isRequired,
       }).isRequired,
     })
   ).isRequired,
