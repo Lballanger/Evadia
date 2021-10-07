@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+// import toast from 'react-hot-toast';
 import Header from '../Header';
 import Footer from '../Footer';
 import Homepage from '../Homepage';
@@ -36,14 +37,8 @@ const App = () => {
   useEffect(() => {
     if (data) {
       setUser(data.data);
+      // toast.success('Vous êtes connecté');
       getFavorites();
-      // toastDispatch({
-      //   type: ADD_TOAST,
-      //   payload: {
-      //     type: 'success',
-      //     content: 'Vous êtes connecté',
-      //   },
-      // });
     } else if (isError) {
       console.log('APP USER ERROR: ', error);
       setUser(null);

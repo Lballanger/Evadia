@@ -8,6 +8,7 @@ import {
   GiShop,
   GiMoneyStack,
 } from 'react-icons/gi';
+import toast from 'react-hot-toast';
 import Map from '../Map';
 import cityStore from '../../store/city';
 import userStore from '../../store/user';
@@ -43,36 +44,15 @@ const Details = () => {
       const { data } = await API.cityToFavorites(city.code_insee, true);
       if (data.status === 'added') {
         addToFavorites(city, true);
-        // toastDispatch({
-        //   type: ADD_TOAST,
-        //   payload: {
-        //     type: 'success',
-        //     content: `${city.city_name} a bien été ajouté à vos favoris`,
-        //     duration: 10000,
-        //   },
-        // });
+        toast.success(`${city.city_name} a bien été ajouté à vos favoris`);
       } else if (data.status === 'removed') {
         removeFromFavorites(city, true);
-        // toastDispatch({
-        //   type: ADD_TOAST,
-        //   payload: {
-        //     type: 'success',
-        //     // eslint-disable-next-line no-extra-boolean-cast
-        //     content: `${city.city_name} a été retiré de vos favoris`,
-        //     duration: 10000,
-        //   },
-        // });
+        toast.success(`${city.city_name} a été retiré de vos favoris`);
       }
     } else {
-      // toastDispatch({
-      //   type: ADD_TOAST,
-      //   payload: {
-      //     type: 'info',
-      //     content:
-      //       'Vous devez être connecté pour pouvoir ajouter une ville en favoris',
-      //     duration: 10000,
-      //   },
-      // });
+      toast.error(
+        `Vous devez être connecté pour pouvoir ajouter une ville en favoris`
+      );
     }
   };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { QueryClientProvider, setLogger } from 'react-query';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import clientQuery from './hooks';
 
 import App from './components/App';
@@ -16,7 +17,8 @@ ReactDOM.render(
   <Router>
     <React.StrictMode>
       <QueryClientProvider client={clientQuery}>
-          <App />
+        <Toaster position="top-center" />
+        <App />
       </QueryClientProvider>
     </React.StrictMode>
   </Router>,

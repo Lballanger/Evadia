@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import API from '../../api';
 import userStore from '../../store/user';
 import Form from '../Shared/Form';
@@ -39,25 +40,12 @@ const Contact = () => {
     // TODO: Add logic - Send data to api
     try {
       const data = await API.doContact(inputs);
-      // toastDispatch({
-      //   type: ADD_TOAST,
-      //   payload: {
-      //     type: 'success',
-      //     content: 'Nous avons bien reçu votre message',
-      //   },
-      // });
+      toast.success('Nous avons bien reçu votre message');
       setInputs({ ...initialInputs });
       console.log(data);
     } catch (error) {
       console.log('error contact', error);
-      // toastDispatch({
-      //   type: ADD_TOAST,
-      //   payload: {
-      //     type: 'error',
-      //     content: error.message,
-      //     duration: 3000,
-      //   },
-      // });
+      toast.error(error.message);
     }
   };
 

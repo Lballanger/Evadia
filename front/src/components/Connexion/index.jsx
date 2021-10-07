@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 import './styles.scss';
 import Form from '../Shared/Form';
 import Input from '../Shared/Input';
 import API from '../../api';
 import userStore from '../../store/user';
+import cityStore from '../../store/city';
 import useWindowSize from '../../hooks/useWindowSize';
 import login from '../../assets/images/Login.png';
 
@@ -18,6 +20,7 @@ const Connexion = () => {
   const history = useHistory();
   const [inputs, setInputs] = useState({ ...initialInputs });
   const setUser = userStore((state) => state.setUser);
+  const setFavorites = cityStore((state) => state.setFavorites);
   const { isMobile } = useWindowSize();
 
   const inputChange = (event) => {
@@ -31,19 +34,14 @@ const Connexion = () => {
     event.preventDefault();
     try {
       const data = await API.doLogin(inputs);
-      // toastDispatch({
-      //   type: ADD_TOAST,
-      //   payload: { type: 'success', content: 'Vous êtes connecté' },
-      // });
+      toast.success('Vous êtes connecté');
+      setFavorites(data.favorites);
       setUser(data);
       setInputs({ ...initialInputs });
       history.push('/');
     } catch (error) {
       console.log(error);
-      // toastDispatch({
-      //   type: ADD_TOAST,
-      //   payload: { type: 'error', content: error.message },
-      // });
+      toast.error(error.message);
     }
   };
 

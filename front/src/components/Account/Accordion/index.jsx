@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import PropTypes from 'prop-types';
+import toast from 'react-hot-toast';
 import API from '../../../api';
 import cityStore from '../../../store/city';
 import './styles.scss';
@@ -12,13 +13,7 @@ const Accordion = ({ title, data, className = '' }) => {
   const remove = async (communeId, isFavorite) => {
     const { data: response } = await API.cityToFavorites(communeId, isFavorite);
     removeFromFavorites({ code_insee: communeId });
-    // toastDispatch({
-    //   type: ADD_TOAST,
-    //   payload: {
-    //     type: 'success',
-    //     content: response.message,
-    //   },
-    // });
+    toast.success(response.message, { duration: 2000 });
   };
 
   return (

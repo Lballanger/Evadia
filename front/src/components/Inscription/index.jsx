@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import API from '../../api';
 import useWindowSize from '../../hooks/useWindowSize';
 import Form from '../Shared/Form';
@@ -9,6 +10,7 @@ import Input from '../Shared/Input';
 import inscription from '../../assets/images/inscription.jpg';
 import './styles.scss';
 import AutoSuggest from '../AutoSuggest';
+import userStore from '../../store/user';
 
 const initialInputs = {
   firstname: '',
@@ -25,6 +27,7 @@ const Inscription = () => {
   const [errors, setErrors] = useState({});
   const [isValidForm, setIsValidForm] = useState(false);
   const { isMobile } = useWindowSize();
+  const setUser = userStore((state) => state.setUser);
 
   const handleChange = async (event) => {
     if (Object.keys(errors).length) {
@@ -131,20 +134,17 @@ const Inscription = () => {
       try {
         const data = await API.doRegister(inputs);
         // eslint-disable-next-line no-console
-        console.log(data);
-        // toastDispatch({
-        //   type: ADD_TOAST,
-        //   payload: { type: 'success', content: 'Votre compte a bien été créé' },
-        // });
+        if (data.email) {
+          const { data: userData } = await API.getUser();
+          setUser(userData);
+        }
+        toast.success('Votre compte a bien été créé');
         setInputs({ ...initialInputs });
         history.push('/');
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log('Error register', error);
-        // toastDispatch({
-        //   type: ADD_TOAST,
-        //   payload: { type: 'error', content: error.message },
-        // });
+        toast.error(error.message);
       }
     }
   };

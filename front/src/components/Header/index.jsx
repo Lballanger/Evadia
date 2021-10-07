@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { NavLink, withRouter, useHistory } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { IoCaretDownOutline, IoCaretUpOutline } from 'react-icons/io5';
+import toast from 'react-hot-toast';
 import logo from '../../assets/images/logo.png';
 import useWindowSize from '../../hooks/useWindowSize';
 import userStore from '../../store/user';
@@ -64,14 +65,7 @@ const Header = ({ location: { pathname } }) => {
   const handleLogout = async () => {
     const data = await API.doLogout();
     if (data.success) {
-      // toastDispatch({
-      //   type: ADD_TOAST,
-      //   payload: {
-      //     type: 'info',
-      //     content: 'Vous vous êtes déconnecté',
-      //     duration: 6000,
-      //   },
-      // });
+      toast.success('Vous vous êtes déconnecté');
       if (pathname === '/account') history.push('/');
       console.log('Reset user data');
       setUser(null);
