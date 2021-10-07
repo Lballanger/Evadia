@@ -48,3 +48,6 @@ Content-Type: "application/json"
 
 ### Delete a message
 DELETE {{host}}/api/messages/10
+
+###
+GET {{host}}/api/user/bookmarks
