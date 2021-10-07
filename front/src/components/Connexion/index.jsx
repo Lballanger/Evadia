@@ -8,7 +8,6 @@ import API from '../../api';
 import userStore from '../../store/user';
 import useWindowSize from '../../hooks/useWindowSize';
 import login from '../../assets/images/Login.png';
-import { useToastContext, ADD_TOAST } from '../../context/toastContext';
 
 const initialInputs = {
   email: '',
@@ -20,7 +19,6 @@ const Connexion = () => {
   const [inputs, setInputs] = useState({ ...initialInputs });
   const setUser = userStore((state) => state.setUser);
   const { isMobile } = useWindowSize();
-  const { toastDispatch } = useToastContext();
 
   const inputChange = (event) => {
     setInputs((state) => ({
@@ -33,19 +31,19 @@ const Connexion = () => {
     event.preventDefault();
     try {
       const data = await API.doLogin(inputs);
-      toastDispatch({
-        type: ADD_TOAST,
-        payload: { type: 'success', content: 'Vous êtes connecté' },
-      });
+      // toastDispatch({
+      //   type: ADD_TOAST,
+      //   payload: { type: 'success', content: 'Vous êtes connecté' },
+      // });
       setUser(data);
       setInputs({ ...initialInputs });
       history.push('/');
     } catch (error) {
       console.log(error);
-      toastDispatch({
-        type: ADD_TOAST,
-        payload: { type: 'error', content: error.message },
-      });
+      // toastDispatch({
+      //   type: ADD_TOAST,
+      //   payload: { type: 'error', content: error.message },
+      // });
     }
   };
 

@@ -17,14 +17,12 @@ import Dropdown from './MenuMobile/Dropdown';
 
 import './styles.scss';
 import BtnDesktop from './BtnDesktop/BtnDesktop';
-import { ADD_TOAST, useToastContext } from '../../context/toastContext';
 
 // eslint-disable-next-line react/prop-types
 const Details = () => {
   const { codeInsee } = useParams();
   const history = useHistory();
   const { isMobile } = useWindowSize();
-  const { toastDispatch } = useToastContext();
   const city = cityStore((state) => state.city);
   const setCity = cityStore((state) => state.setCity);
   const addToFavorites = cityStore((state) => state.addToFavorites);
@@ -45,36 +43,36 @@ const Details = () => {
       const { data } = await API.cityToFavorites(city.code_insee, true);
       if (data.status === 'added') {
         addToFavorites(city, true);
-        toastDispatch({
-          type: ADD_TOAST,
-          payload: {
-            type: 'success',
-            content: `${city.city_name} a bien été ajouté à vos favoris`,
-            duration: 10000,
-          },
-        });
+        // toastDispatch({
+        //   type: ADD_TOAST,
+        //   payload: {
+        //     type: 'success',
+        //     content: `${city.city_name} a bien été ajouté à vos favoris`,
+        //     duration: 10000,
+        //   },
+        // });
       } else if (data.status === 'removed') {
         removeFromFavorites(city, true);
-        toastDispatch({
-          type: ADD_TOAST,
-          payload: {
-            type: 'success',
-            // eslint-disable-next-line no-extra-boolean-cast
-            content: `${city.city_name} a été retiré de vos favoris`,
-            duration: 10000,
-          },
-        });
+        // toastDispatch({
+        //   type: ADD_TOAST,
+        //   payload: {
+        //     type: 'success',
+        //     // eslint-disable-next-line no-extra-boolean-cast
+        //     content: `${city.city_name} a été retiré de vos favoris`,
+        //     duration: 10000,
+        //   },
+        // });
       }
     } else {
-      toastDispatch({
-        type: ADD_TOAST,
-        payload: {
-          type: 'info',
-          content:
-            'Vous devez être connecté pour pouvoir ajouter une ville en favoris',
-          duration: 10000,
-        },
-      });
+      // toastDispatch({
+      //   type: ADD_TOAST,
+      //   payload: {
+      //     type: 'info',
+      //     content:
+      //       'Vous devez être connecté pour pouvoir ajouter une ville en favoris',
+      //     duration: 10000,
+      //   },
+      // });
     }
   };
 

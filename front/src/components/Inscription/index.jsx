@@ -9,7 +9,6 @@ import Input from '../Shared/Input';
 import inscription from '../../assets/images/inscription.jpg';
 import './styles.scss';
 import AutoSuggest from '../AutoSuggest';
-import { ADD_TOAST, useToastContext } from '../../context/toastContext';
 
 const initialInputs = {
   firstname: '',
@@ -26,7 +25,6 @@ const Inscription = () => {
   const [errors, setErrors] = useState({});
   const [isValidForm, setIsValidForm] = useState(false);
   const { isMobile } = useWindowSize();
-  const { toastDispatch } = useToastContext();
 
   const handleChange = async (event) => {
     if (Object.keys(errors).length) {
@@ -134,19 +132,19 @@ const Inscription = () => {
         const data = await API.doRegister(inputs);
         // eslint-disable-next-line no-console
         console.log(data);
-        toastDispatch({
-          type: ADD_TOAST,
-          payload: { type: 'success', content: 'Votre compte a bien été créé' },
-        });
+        // toastDispatch({
+        //   type: ADD_TOAST,
+        //   payload: { type: 'success', content: 'Votre compte a bien été créé' },
+        // });
         setInputs({ ...initialInputs });
         history.push('/');
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log('Error register', error);
-        toastDispatch({
-          type: ADD_TOAST,
-          payload: { type: 'error', content: error.message },
-        });
+        // toastDispatch({
+        //   type: ADD_TOAST,
+        //   payload: { type: 'error', content: error.message },
+        // });
       }
     }
   };

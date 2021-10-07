@@ -9,7 +9,6 @@ import userStore from '../../store/user';
 import './styles.scss';
 import API from '../../api';
 import UserMenu from './UserMenu';
-import { ADD_TOAST, useToastContext } from '../../context/toastContext';
 
 const styles = {
   btnNav: {
@@ -51,7 +50,6 @@ const Header = ({ location: { pathname } }) => {
   const setUser = userStore((state) => state.setUser);
   const [showLinks, setShowLinks] = useState(false);
   const [profileMenu, setProfileMenu] = useState(false);
-  const { toastDispatch } = useToastContext();
 
   const handleShowLinks = () => {
     setShowLinks(!showLinks);
@@ -66,14 +64,14 @@ const Header = ({ location: { pathname } }) => {
   const handleLogout = async () => {
     const data = await API.doLogout();
     if (data.success) {
-      toastDispatch({
-        type: ADD_TOAST,
-        payload: {
-          type: 'info',
-          content: 'Vous vous êtes déconnecté',
-          duration: 6000,
-        },
-      });
+      // toastDispatch({
+      //   type: ADD_TOAST,
+      //   payload: {
+      //     type: 'info',
+      //     content: 'Vous vous êtes déconnecté',
+      //     duration: 6000,
+      //   },
+      // });
       if (pathname === '/account') history.push('/');
       console.log('Reset user data');
       setUser(null);

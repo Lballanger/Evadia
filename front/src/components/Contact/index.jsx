@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import API from '../../api';
-import { ADD_TOAST, useToastContext } from '../../context/toastContext';
 import userStore from '../../store/user';
 import Form from '../Shared/Form';
 import Input from '../Shared/Input';
@@ -19,7 +18,6 @@ const initialInputs = {
 const Contact = () => {
   const user = userStore((state) => state.user);
   const [inputs, setInputs] = useState(initialInputs);
-  const { toastDispatch } = useToastContext();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -41,25 +39,25 @@ const Contact = () => {
     // TODO: Add logic - Send data to api
     try {
       const data = await API.doContact(inputs);
-      toastDispatch({
-        type: ADD_TOAST,
-        payload: {
-          type: 'success',
-          content: 'Nous avons bien reçu votre message',
-        },
-      });
+      // toastDispatch({
+      //   type: ADD_TOAST,
+      //   payload: {
+      //     type: 'success',
+      //     content: 'Nous avons bien reçu votre message',
+      //   },
+      // });
       setInputs({ ...initialInputs });
       console.log(data);
     } catch (error) {
       console.log('error contact', error);
-      toastDispatch({
-        type: ADD_TOAST,
-        payload: {
-          type: 'error',
-          content: error.message,
-          duration: 3000,
-        },
-      });
+      // toastDispatch({
+      //   type: ADD_TOAST,
+      //   payload: {
+      //     type: 'error',
+      //     content: error.message,
+      //     duration: 3000,
+      //   },
+      // });
     }
   };
 

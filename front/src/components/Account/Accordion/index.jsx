@@ -4,23 +4,21 @@ import PropTypes from 'prop-types';
 import API from '../../../api';
 import cityStore from '../../../store/city';
 import './styles.scss';
-import { ADD_TOAST, useToastContext } from '../../../context/toastContext';
 
 const Accordion = ({ title, data, className = '' }) => {
   const [isOpened, setIsOpened] = useState(false);
   const removeFromFavorites = cityStore((state) => state.removeFromFavorites);
-  const { toastDispatch } = useToastContext();
 
   const remove = async (communeId, isFavorite) => {
     const { data: response } = await API.cityToFavorites(communeId, isFavorite);
     removeFromFavorites({ code_insee: communeId });
-    toastDispatch({
-      type: ADD_TOAST,
-      payload: {
-        type: 'success',
-        content: response.message,
-      },
-    });
+    // toastDispatch({
+    //   type: ADD_TOAST,
+    //   payload: {
+    //     type: 'success',
+    //     content: response.message,
+    //   },
+    // });
   };
 
   return (
