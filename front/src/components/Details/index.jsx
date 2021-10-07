@@ -92,15 +92,40 @@ const Details = () => {
               {showFavorite()}
             </button>
           </div>
-          <ul className="details__card__main__ul">
-            <li className="details__card__main__li">
-              Code Postal : {city.code_postal[0]}
-            </li>
-            <li className="details__card__main__li">Internet : Fibre</li>
-            <li className="details__card__main__li">
-              Population: {city.population}
-            </li>
-          </ul>
+          <div className="details__card__main__info">
+            <ul className="details__card__main__ul">
+              <li className="details__card__main__li">
+                Code Postal : {city.code_postal[0]}
+              </li>
+              <li className="details__card__main__li">Internet : Fibre</li>
+              <li className="details__card__main__li">
+                Population: {city.population}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="details__card__main__display">
+          <div className="details__card__main__display__parent">
+            <div className="details__card__main__display__cadres">
+              Etablissement de santé
+            </div>
+          </div>
+
+          <div className="details__card__main__display__parent">
+            <div className="details__card__main__display__cadres">
+              Personnel de santé
+            </div>
+          </div>
+
+          <div className="details__card__main__display__parent">
+            <div className="details__card__main__display__cadres">
+              Commerces
+            </div>
+          </div>
+
+          <div className="details__card__main__display__parent">
+            <div className="details__card__main__display__cadres">Taxation</div>
+          </div>
         </div>
       </div>
 
