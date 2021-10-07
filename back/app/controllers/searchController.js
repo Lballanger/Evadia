@@ -151,7 +151,7 @@ const searchController = {
         // change if is true in coming and register as false (the opposite also work)
         await Commune.update(insee, id, boolean);
         response.json(
-          `La commune ${insee} à bien été modifié dans vos bookmarks`
+          `La commune ${insee} à bien été modifié dans vos bookmarks en ${boolean}`
         );
       }
     } catch (error) {
