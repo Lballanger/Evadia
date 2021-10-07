@@ -141,7 +141,7 @@ const Details = () => {
               <GiHealthNormal
                 className="details__card__main__display__cadres__icon"
                 color="green"
-                size="2rem"
+                size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
                 Etablissement de santé
@@ -154,7 +154,7 @@ const Details = () => {
               <GiHealing
                 className="details__card__main__display__cadres__icon"
                 color="green"
-                size="2rem"
+                size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
                 Personnel de santé
@@ -167,7 +167,7 @@ const Details = () => {
               <GiShop
                 className="details__card__main__display__cadres__icon"
                 color="green"
-                size="2rem"
+                size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
                 Commerces
@@ -180,7 +180,7 @@ const Details = () => {
               <GiMoneyStack
                 className="details__card__main__display__cadres__icon"
                 color="green"
-                size="2rem"
+                size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
                 Taxation
@@ -193,7 +193,7 @@ const Details = () => {
               <GiShop
                 className="details__card__main__display__cadres__icon"
                 color="green"
-                size="2rem"
+                size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
                 Autre catégorie
@@ -206,7 +206,7 @@ const Details = () => {
               <GiShop
                 className="details__card__main__display__cadres__icon"
                 color="green"
-                size="2rem"
+                size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
                 Autre catégorie 2
@@ -219,7 +219,7 @@ const Details = () => {
               <GiShop
                 className="details__card__main__display__cadres__icon"
                 color="green"
-                size="2rem"
+                size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
                 Autre catégorie 3
@@ -232,7 +232,7 @@ const Details = () => {
               <GiShop
                 className="details__card__main__display__cadres__icon"
                 color="green"
-                size="2rem"
+                size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
                 Autre catégorie 4
@@ -245,7 +245,7 @@ const Details = () => {
               <GiShop
                 className="details__card__main__display__cadres__icon"
                 color="green"
-                size="2rem"
+                size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
                 Autre catégorie 5
@@ -258,7 +258,7 @@ const Details = () => {
               <GiShop
                 className="details__card__main__display__cadres__icon"
                 color="green"
-                size="2rem"
+                size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
                 Autre catégorie 6
