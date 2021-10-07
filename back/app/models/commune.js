@@ -226,7 +226,7 @@ class Commune {
         [user]
       );
       if (rows.length > 0) {
-        return new Commune(rows[0]);
+        return new Commune(rows);
       }
       return null;
     } catch (error) {
