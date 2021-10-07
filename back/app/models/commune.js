@@ -127,6 +127,7 @@ class Commune {
   /**
    * Fetch a city by its code_insee and user_id
    * @param {string} code_insee
+   * @param {integer} user
    * @async
    * @static
    * @returns {Array<Commune>} new instance of city found or null
@@ -173,7 +174,6 @@ class Commune {
    * Delete a city from favorite/blacklist for a user
    * @param {string} code_insee
    * @param {integer} user
-   * @param {boolean} boolean
    * @async
    * @static
    * @throws {Error} if the query didn't match any city in the database
@@ -205,6 +205,30 @@ class Commune {
         'UPDATE private.user_has_commune SET is_favorite=$3 WHERE commune_code_insee=$1 AND user_id=$2',
         [insee, user, boolean]
       );
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
+  }
+
+  /**
+   * Fetch a city by its user_id
+   * @param {string} user_id
+   * @async
+   * @static
+   * @returns {Array<Commune>} new instance of city found or null
+   * @throws {Error} if the query didn't match any city in the database
+   */
+  static async bookmarks(user) {
+    try {
+      const { rows } = await client.query(
+        'SELECT * FROM private.user_has_commune WHERE user_id=$1',
+        [user]
+      );
+      if (rows.length > 0) {
+        return new Commune(rows[0]);
+      }
+      return null;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);

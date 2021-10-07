@@ -95,6 +95,14 @@ router.patch('/api/user', authMiddleware(), userController.update);
 router.delete('/api/user', authMiddleware(), userController.delete);
 
 /**
+ * Get favorite and blacklist for the current connected user
+ * @route GET /user
+ * @group Auth
+ * @summary Return data for the current connected user or error message if not connected with valid token
+ */
+router.get('/api/user/bookmarks', authMiddleware(), userController.bookmarks);
+
+/**
  * Log user in
  * @route POST /auth/login
  * @group Auth
