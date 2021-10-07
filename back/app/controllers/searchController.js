@@ -137,15 +137,23 @@ const searchController = {
       if (commune === null) {
         // if commune is not register in favorite then add
         await Commune.add(insee, id, boolean);
+        response.json(
+          `La commune ${insee} à bien été rajouté dans vos bookmarks`
+        );
         // eslint-disable-next-line eqeqeq
       } else if (`${commune.is_favorite}` == boolean) {
         // delete if is true in coming and register as true (the opposite is true too)
         await Commune.delete(insee, id);
+        response.json(
+          `La commune ${insee} à bien été supprimé de vos bookmarks`
+        );
       } else {
         // change if is true in coming and register as false (the opposite also work)
         await Commune.update(insee, id, boolean);
+        response.json(
+          `La commune ${insee} à bien été modifié dans vos bookmarks`
+        );
       }
-      response.json(commune);
     } catch (error) {
       console.log(error);
       response.status(500).json(error.message);
