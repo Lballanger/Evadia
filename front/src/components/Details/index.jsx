@@ -2,6 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { IoStar, IoStarOutline } from 'react-icons/io5';
+import {
+  GiHealthNormal,
+  GiHealing,
+  GiShop,
+  GiMoneyStack,
+} from 'react-icons/gi';
 import Map from '../Map';
 import cityStore from '../../store/city';
 import userStore from '../../store/user';
@@ -107,24 +113,132 @@ const Details = () => {
         <div className="details__card__main__display">
           <div className="details__card__main__display__parent">
             <div className="details__card__main__display__cadres">
-              Etablissement de santé
+              <GiHealthNormal
+                className="details__card__main__display__cadres__icon"
+                color="green"
+                size="2rem"
+              />
+              <span className="details__card__main__display__cadres__text">
+                Etablissement de santé
+              </span>
             </div>
           </div>
 
           <div className="details__card__main__display__parent">
             <div className="details__card__main__display__cadres">
-              Personnel de santé
+              <GiHealing
+                className="details__card__main__display__cadres__icon"
+                color="green"
+                size="2rem"
+              />
+              <span className="details__card__main__display__cadres__text">
+                Personnel de santé
+              </span>
             </div>
           </div>
 
           <div className="details__card__main__display__parent">
             <div className="details__card__main__display__cadres">
-              Commerces
+              <GiShop
+                className="details__card__main__display__cadres__icon"
+                color="green"
+                size="2rem"
+              />
+              <span className="details__card__main__display__cadres__text">
+                Commerces
+              </span>
             </div>
           </div>
 
           <div className="details__card__main__display__parent">
-            <div className="details__card__main__display__cadres">Taxation</div>
+            <div className="details__card__main__display__cadres">
+              <GiMoneyStack
+                className="details__card__main__display__cadres__icon"
+                color="green"
+                size="2rem"
+              />
+              <span className="details__card__main__display__cadres__text">
+                Taxation
+              </span>
+            </div>
+          </div>
+
+          <div className="details__card__main__display__parent">
+            <div className="details__card__main__display__cadres">
+              <GiShop
+                className="details__card__main__display__cadres__icon"
+                color="green"
+                size="2rem"
+              />
+              <span className="details__card__main__display__cadres__text">
+                Autre catégorie
+              </span>
+            </div>
+          </div>
+
+          <div className="details__card__main__display__parent">
+            <div className="details__card__main__display__cadres">
+              <GiShop
+                className="details__card__main__display__cadres__icon"
+                color="green"
+                size="2rem"
+              />
+              <span className="details__card__main__display__cadres__text">
+                Autre catégorie 2
+              </span>
+            </div>
+          </div>
+
+          <div className="details__card__main__display__parent">
+            <div className="details__card__main__display__cadres">
+              <GiShop
+                className="details__card__main__display__cadres__icon"
+                color="green"
+                size="2rem"
+              />
+              <span className="details__card__main__display__cadres__text">
+                Autre catégorie 3
+              </span>
+            </div>
+          </div>
+
+          <div className="details__card__main__display__parent">
+            <div className="details__card__main__display__cadres">
+              <GiShop
+                className="details__card__main__display__cadres__icon"
+                color="green"
+                size="2rem"
+              />
+              <span className="details__card__main__display__cadres__text">
+                Autre catégorie 4
+              </span>
+            </div>
+          </div>
+
+          <div className="details__card__main__display__parent">
+            <div className="details__card__main__display__cadres">
+              <GiShop
+                className="details__card__main__display__cadres__icon"
+                color="green"
+                size="2rem"
+              />
+              <span className="details__card__main__display__cadres__text">
+                Autre catégorie 5
+              </span>
+            </div>
+          </div>
+
+          <div className="details__card__main__display__parent">
+            <div className="details__card__main__display__cadres">
+              <GiShop
+                className="details__card__main__display__cadres__icon"
+                color="green"
+                size="2rem"
+              />
+              <span className="details__card__main__display__cadres__text">
+                Autre catégorie 6
+              </span>
+            </div>
           </div>
         </div>
       </div>
