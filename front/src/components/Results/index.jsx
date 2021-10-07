@@ -20,13 +20,13 @@ const Results = () => {
 
   return (
     <>
-      {!isMobile && (
+      {/* {!isMobile && (
         <Map
           cities={transformCoords(cities)}
           center={[cities[0].coordinates.x, cities[0].coordinates.y]}
           className="fixed-map"
         />
-      )}
+      )} */}
       <div className={`list__results${isMobile ? '' : ' with-map'}`}>
         <div className="results">
           <div className="results__criteria">

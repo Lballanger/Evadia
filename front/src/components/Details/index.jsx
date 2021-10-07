@@ -18,18 +18,19 @@ import Dropdown from './MenuMobile/Dropdown';
 
 import './styles.scss';
 import BtnDesktop from './BtnDesktop/BtnDesktop';
+import mapStore from '../../store/map';
 
 // eslint-disable-next-line react/prop-types
 const Details = () => {
   const { codeInsee } = useParams();
   const history = useHistory();
-  const { isMobile } = useWindowSize();
   const city = cityStore((state) => state.city);
   const setCity = cityStore((state) => state.setCity);
   const addToFavorites = cityStore((state) => state.addToFavorites);
   const removeFromFavorites = cityStore((state) => state.removeFromFavorites);
   const user = userStore((state) => state.user);
-  const [dataForMap, setDataForMap] = useState([]);
+  const setMarkers = mapStore((state) => state.setMarkers);
+  const setMapCenter = mapStore((state) => state.setMapCenter);
   const [loading, setLoading] = useState(true);
 
   const showFavorite = () => {
@@ -63,14 +64,29 @@ const Details = () => {
         const data = await API.getCityByInsee(codeInsee);
         if (!data.city_name) throw new Error('City not found');
         setCity(data);
-        setDataForMap((state) => [
-          ...state,
+        const commerceMarkers =
+          data.commerce !== null
+            ? [...data.commerce].map((commerce) => {
+                const coords = commerce.coordinates
+                  .slice(1, -1)
+                  .split(',')
+                  .map((val) => +val);
+                return {
+                  type: commerce.type,
+                  name: commerce.name,
+                  coords,
+                };
+              })
+            : [];
+        setMarkers([
+          ...commerceMarkers,
           {
-            city_name: data.city_name,
-            population: data.population,
+            name: data.city_name,
+            type: 'city',
             coords: [data.coordinates.x, data.coordinates.y],
           },
         ]);
+        setMapCenter(data.coordinates.x, data.coordinates.y);
       } catch (error) {
         return history.push('/404');
       } finally {
@@ -245,12 +261,6 @@ const Details = () => {
           </div>
         </div>
       </div>
-
-      {!isMobile && (
-        <div className="details__map">
-          <Map cities={dataForMap} center={dataForMap[0].coords} zoom={11} />
-        </div>
-      )}
     </div>
   );
 };

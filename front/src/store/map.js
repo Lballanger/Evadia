@@ -3,21 +3,18 @@ import { devtools } from 'zustand/middleware';
 
 const mapStore = create(
   devtools((set) => ({
-    map: {
-      center: {
-        lat: 46.82414087601361,
-        lng: 2.6038539530657316,
-      },
-      zoom: 7,
+    center: {
+      lat: 46.82414087601361,
+      lng: 2.6038539530657316,
     },
+    zoom: 12,
     markers: [],
     setMapCenter: (lat, lng) =>
       set((state) => ({
         ...state,
-        map: { ...state.map, center: { lat, lng } },
+        center: { lat, lng },
       })),
-    setMapZoom: (zoom) =>
-      set((state) => ({ ...state, map: { ...state.map, zoom } })),
+    setMapZoom: (zoom) => set((state) => ({ ...state, zoom })),
     setMarkers: (markers) => set((state) => ({ ...state, markers })),
   }))
 );

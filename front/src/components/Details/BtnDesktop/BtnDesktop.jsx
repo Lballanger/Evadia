@@ -24,6 +24,7 @@ const BtnDesktop = () => {
   // Méthode pour le bouton Aléatoire du petit menu.
   const toRandom = async () => {
     const data = await API.getRandomCity();
+    console.log('toRandom', data);
     setCity(data[0]);
     history.push(`/details/${data[0].code_insee}`);
   };

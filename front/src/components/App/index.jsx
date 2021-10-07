@@ -23,11 +23,14 @@ import './index.scss';
 import NewPassword from '../NewPassword';
 import ForgottenPassword from '../ForgottenPassword';
 import userStore from '../../store/user';
+import Map from '../Map';
+import useWindowSize from '../../hooks/useWindowSize';
 
 const App = () => {
   const setUser = userStore((state) => state.setUser);
   const setFavorites = useCity((state) => state.setFavorites);
   const { data, isError, error, isLoading } = useUser();
+  const { isMobile } = useWindowSize();
 
   const getFavorites = async () => {
     const favorites = await API.getUserFavorites();
@@ -49,6 +52,7 @@ const App = () => {
     <>
       <Header />
       <main>
+        {!isMobile ? <Map /> : null}
         <Switch>
           <Route path="/" exact>
             <Homepage />
