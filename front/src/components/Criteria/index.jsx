@@ -29,6 +29,16 @@ const Criteria = () => {
     pharmacy: false,
     doctor: false,
     cardiologistic: false,
+    hospital: false,
+    dentist: false,
+    dermatologist: false,
+    ophtalmologist: false,
+    pediatrician: false,
+    pulmonologist: false,
+    psychiatrist: false,
+    midwife: false,
+    healthCenter: false,
+    nursery: false,
   });
 
   const handleToggle = (category) => {
@@ -208,7 +218,7 @@ const Criteria = () => {
             </section>
           </div>
           <section className="health">
-            <h2>Santé</h2>
+            <label />
             <div className="Pharmacy">
               <div className="choice">
                 <div
@@ -221,6 +231,18 @@ const Criteria = () => {
                 <span>Pharmacies</span>
               </div>
             </div>
+            <div className="hospital">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.hospital}
+                  onClick={() => handleToggle('hospital')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Centres Hospitaliers</span>
+              </div>
+            </div>
             <div className="doctor">
               <div className="choice">
                 <div
@@ -230,7 +252,31 @@ const Criteria = () => {
                 >
                   <motion.div className="handle" layout transition={spring} />
                 </div>
-                <span>Médecins généraliste</span>
+                <span>Médecins généralistes</span>
+              </div>
+            </div>
+            <div className="nursery">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.nursery}
+                  onClick={() => handleToggle('nursery')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Crèches/Garderies</span>
+              </div>
+            </div>
+            <div className="dentist">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.dentist}
+                  onClick={() => handleToggle('dentist')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Dentistes</span>
               </div>
             </div>
             <div className="cardiologist">
@@ -243,6 +289,90 @@ const Criteria = () => {
                   <motion.div className="handle" layout transition={spring} />
                 </div>
                 <span>Cardiologues</span>
+              </div>
+            </div>
+            <div className="dermatologist">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.dermatologist}
+                  onClick={() => handleToggle('dermatologist')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Dermatologues</span>
+              </div>
+            </div>
+            <div className="ophtalmologist">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.ophtalmologist}
+                  onClick={() => handleToggle('ophtalmologist')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Ophtalmologues</span>
+              </div>
+            </div>
+            <div className="pediatrician">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.pediatrician}
+                  onClick={() => handleToggle('pediatrician')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Pédiatres</span>
+              </div>
+            </div>
+            <div className="pulmonologist">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.pulmonologist}
+                  onClick={() => handleToggle('pulmonologist')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Pneumologues</span>
+              </div>
+            </div>
+            <div className="psychiatrist">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.psychiatrist}
+                  onClick={() => handleToggle('psychiatrist')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Psychiatres</span>
+              </div>
+            </div>
+            <div className="midwife">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.midwife}
+                  onClick={() => handleToggle('midwife')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Sages-femmes</span>
+              </div>
+            </div>
+            <div className="healthCenter">
+              <div className="choice">
+                <div
+                  className="switch"
+                  data-isOn={isOn.healthCenter}
+                  onClick={() => handleToggle('healthCenter')}
+                >
+                  <motion.div className="handle" layout transition={spring} />
+                </div>
+                <span>Centres de soins</span>
               </div>
             </div>
           </section>
