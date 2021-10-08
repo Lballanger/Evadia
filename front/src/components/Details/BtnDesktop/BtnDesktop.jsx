@@ -31,6 +31,7 @@ const BtnDesktop = () => {
 
   // Méthode pour le bouton Recherche Ville du petit menu.
   const goToDetails = (commune) => {
+    setIsModalOpen(false);
     history.push(`/details/${commune.code_insee}`);
   };
 
@@ -94,22 +95,22 @@ const BtnDesktop = () => {
             </IconContext.Provider>
           </button>
         </div>
-        {isModalOpen && (
-          <>
-            <div className="overlay" onClick={handleCloseModal} />
-            <div className="modal">
-              <AutoSuggest onSelected={goToDetails} limit={5} />
-              <button
-                type="button"
-                onClick={handleCloseModal}
-                className="modal__close"
-              >
-                X
-              </button>
-            </div>
-          </>
-        )}
       </div>
+      {isModalOpen && (
+        <>
+          <div className="overlay" onClick={handleCloseModal} />
+          <div className="modal">
+            <AutoSuggest onSelected={goToDetails} limit={5} />
+            <button
+              type="button"
+              onClick={handleCloseModal}
+              className="modal__close"
+            >
+              X
+            </button>
+          </div>
+        </>
+      )}
     </>
   );
 };

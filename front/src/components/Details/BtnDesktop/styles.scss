@@ -7,11 +7,7 @@
     padding-bottom: 4%;
     padding-top: 4%;
     background: rgb(72, 196, 236);
-    background: linear-gradient(
-      90deg,
-      rgba(72, 196, 236, 1) 0%,
-      rgba(67, 48, 189, 1) 100%
-    );
+    background: linear-gradient(90deg, rgba(72, 196, 236, 1) 0%, rgba(67, 48, 189, 1) 100%);
 
     &__details__btn {
       background-color: #11ffee00;
@@ -29,5 +25,16 @@
 @media screen and (max-width: 767px) {
   .btn__desktop {
     display: none;
+  }
+}
+
+.overlay {
+  z-index: 98;
+}
+.modal {
+  z-index: 99;
+  .auto-suggest ~ div {
+    height: auto;
+    overflow-y: auto;
   }
 }
