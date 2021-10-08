@@ -17,7 +17,7 @@ ReactDOM.render(
   <Router>
     <React.StrictMode>
       <QueryClientProvider client={clientQuery}>
-        <Toaster position="top-center" />
+        <Toaster position="bottom-center" />
         <App />
       </QueryClientProvider>
     </React.StrictMode>

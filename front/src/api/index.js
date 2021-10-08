@@ -90,7 +90,7 @@ const doLogout = async () => {
 
 const doContact = async (params) => {
   try {
-    const { data } = await instance.post('/contact', params);
+    const { data } = await instance.post('/messages', params);
     return data;
   } catch (error) {
     throw new Error(error.message);

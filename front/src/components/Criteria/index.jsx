@@ -6,6 +6,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import API from '../../api';
 import cityStore from '../../store/city';
+import mapStore from '../../store/map';
 import departements from '../../assets/data/departements-region.json';
 import regionsWithDepartements from '../../assets/data/regions_with_departements.json';
 
@@ -19,6 +20,9 @@ const Criteria = () => {
   const setCities = cityStore((state) => state.setCities);
   const criterias = criteriaStore((state) => state.criterias);
   const setCriteria = criteriaStore((state) => state.setCriteria);
+  const setMarkers = mapStore((state) => state.setMarkers);
+  const setMapZoom = mapStore((state) => state.setMapZoom);
+  const setMapCenter = mapStore((state) => state.setMapCenter);
   const [inputs, setInputs] = useState(criterias);
 
   const [isOn, setIsOn] = useState({
@@ -51,7 +55,6 @@ const Criteria = () => {
       +event.target.value >= +inputs.populationmax
     )
       return;
-    console.log(event.target.value);
     setInputs((state) => ({
       ...state,
       [event.target.name]: event.target.value,
@@ -61,8 +64,25 @@ const Criteria = () => {
   const handleSumbit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await API.getCityWithCriteria(inputs);
+      const items = {
+        populationmin: '400',
+        populationmax: '1000',
+        code_departement: ['39', '01'],
+        code_region: ['27', '84'],
+        type_ecole: ['Ecole'],
+        // type_personal_health: [],
+        // type_health_institution: [],
+      };
+      const { data } = await API.getCityWithCriteria(items);
       setCities(data);
+      const cityMarkers = data.map((city) => ({
+        name: city.city_name,
+        type: 'city',
+        coords: [city.coordinates.x, city.coordinates.y],
+      }));
+      setMarkers(cityMarkers);
+      setMapZoom(7);
+      setMapCenter(data[0].coordinates.x, data[0].coordinates.y);
       history.push('/results');
     } catch (error) {
       console.log('Error get by criteria: ', error.response.data);
@@ -226,24 +246,9 @@ const Criteria = () => {
               </div>
             </div>
           </section>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
-            mollitia eveniet repellat ab molestiae natus in quisquam obcaecati
-            commodi. Minima accusamus amet, repellendus architecto nihil illum?
-            Eius dolorum esse perspiciatis.
-          </p>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
-            mollitia eveniet repellat ab molestiae natus in quisquam obcaecati
-            commodi. Minima accusamus amet, repellendus architecto nihil illum?
-            Eius dolorum esse perspiciatis.
-          </p>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
-            mollitia eveniet repellat ab molestiae natus in quisquam obcaecati
-            commodi. Minima accusamus amet, repellendus architecto nihil illum?
-            Eius dolorum esse perspiciatis.
-          </p>
+          <p />
+          <p />
+          <p />
         </div>
         <button type="submit">Lancer la recherche</button>
       </form>

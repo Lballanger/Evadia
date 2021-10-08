@@ -31,6 +31,7 @@ const Details = () => {
   const user = userStore((state) => state.user);
   const setMarkers = mapStore((state) => state.setMarkers);
   const setMapCenter = mapStore((state) => state.setMapCenter);
+  const setMapZoom = mapStore((state) => state.setMapZoom);
   const [loading, setLoading] = useState(true);
 
   const showFavorite = () => {
@@ -87,6 +88,7 @@ const Details = () => {
           },
         ]);
         setMapCenter(data.coordinates.x, data.coordinates.y);
+        setMapZoom(12);
       } catch (error) {
         return history.push('/404');
       } finally {
