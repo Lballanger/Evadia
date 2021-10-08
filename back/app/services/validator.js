@@ -16,4 +16,13 @@ module.exports = {
     }
     next();
   },
+
+  // eslint-disable-next-line consistent-return
+  validateParams: (schema) => (request, response, next) => {
+    const { error } = schema.validate(request.params);
+    if (error) {
+      return response.status(400).json(error.message);
+    }
+    next();
+  },
 };

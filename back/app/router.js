@@ -6,9 +6,14 @@ const userController = require('./controllers/userController');
 const { authMiddleware } = require('./middlewares/authMiddleware');
 const contactController = require('./controllers/contactController');
 
-const { findByName, findByCriteria } = require('./schemas/commune');
+const { findCodeInsee, findByCriteria, boolean } = require('./schemas/commune');
 const { login, register, forgotPassword } = require('./schemas/user');
-const { validateBody, validateQuery } = require('./services/validator');
+const { findId } = require('./schemas/contact');
+const {
+  validateBody,
+  validateQuery,
+  validateParams,
+} = require('./services/validator');
 
 const router = Router();
 
@@ -22,7 +27,7 @@ const router = Router();
  */
 router.get(
   '/api/search/city',
-  validateQuery(findByName),
+  validateQuery(findCodeInsee),
   searchController.findByName
 );
 /**
@@ -31,7 +36,11 @@ router.get(
  * @group Search
  * @summary Responds with a city from database
  */
-router.get('/api/search/city/:insee', searchController.findByInsee);
+router.get(
+  '/api/search/city/:insee',
+  validateParams(findCodeInsee),
+  searchController.findByInsee
+);
 /**
  * Responds with one random city from database
  * @route GET /search/random
@@ -61,14 +70,28 @@ router.post(
 router.post(
   '/api/search/city/:insee/check',
   authMiddleware(),
+  validateParams(findCodeInsee),
+  validateQuery(boolean),
   searchController.addFavorite
 );
 
 router.get('/api/messages', contactController.getAll);
-router.get('/api/messages/:id', contactController.getOne);
+router.get(
+  '/api/messages/:id',
+  validateParams(findId),
+  contactController.getOne
+);
 router.post('/api/messages', contactController.create);
-router.patch('/api/messages/:id', contactController.update);
-router.delete('/api/messages/:id', contactController.delete);
+router.patch(
+  '/api/messages/:id',
+  validateParams(findId),
+  contactController.update
+);
+router.delete(
+  '/api/messages/:id',
+  validateParams(findId),
+  contactController.delete
+);
 
 /**
  * Get data for the current connected user
