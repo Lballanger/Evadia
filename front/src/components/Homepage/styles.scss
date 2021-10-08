@@ -25,8 +25,10 @@
       text-shadow: 2px 2px 5px rgba(14, 31, 14, 0.5);
       // -webkit-animation: tracking-in-expand-fwd-top 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
       //     animation: tracking-in-expand-fwd-top 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-      -webkit-animation: tracking-in-expand-fwd-top 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-      animation: tracking-in-expand-fwd-top 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+      -webkit-animation: tracking-in-expand-fwd-top 1s
+        cubic-bezier(0.215, 0.61, 0.355, 1) both;
+      animation: tracking-in-expand-fwd-top 1s
+        cubic-bezier(0.215, 0.61, 0.355, 1) both;
     }
 
     // &__h1:before {
@@ -107,15 +109,17 @@
     &__evadia {
       text-transform: uppercase;
       text-align: center;
-      color: #54e35d;
+      color: #38bd98;
       margin-bottom: 6rem;
       font-weight: bold;
       font-size: 3.5rem;
-      text-shadow: 1px 1px 3px rgba(39, 39, 39, 0.7);
+      text-shadow: 2px 2px 3px rgba(39, 39, 39, 1);
       // -webkit-animation: tracking-in-expand-fwd-top 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
       //     animation: tracking-in-expand-fwd-top 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-      -webkit-animation: tracking-in-expand-fwd-top 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-      animation: tracking-in-expand-fwd-top 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+      -webkit-animation: tracking-in-expand-fwd-top 1s
+        cubic-bezier(0.215, 0.61, 0.355, 1) both;
+      animation: tracking-in-expand-fwd-top 1s
+        cubic-bezier(0.215, 0.61, 0.355, 1) both;
     }
     &__h1 {
       text-align: center;
@@ -147,14 +151,17 @@
         text-align: center;
         font-size: 1.5rem;
         border-radius: 20px;
-        background: linear-gradient(145deg, #ffd452, #e6b245);
-        box-shadow: 5px 5px 0px #d9a841, -5px -5px 0px #ffe459;
+        // background: linear-gradient(145deg, #4edab2, #2b9476);
+        // box-shadow: 5px 5px 0px #38bd98, -5px -5px 0px #2b9476;
+        background: linear-gradient(145deg, #4eda88, #2b9453);
+        box-shadow: 5px 5px 0px #2d8351, -5px -5px 0px #4ec77d;
         width: 100%;
+        color: black;
 
         &__button {
           text-decoration: none;
           color: inherit;
-          width: 25%;
+          width: 20%;
           cursor: pointer;
         }
       }
@@ -163,7 +170,7 @@
         border-radius: 20px;
         background: #ffc64d;
         box-shadow: inset 5px 5px 0px #d9a841, inset -5px -5px 0px #ffe459;
-        color: white;
+        color: rgb(217, 255, 220);
       }
     }
   }
