@@ -67,7 +67,6 @@ const Header = ({ location: { pathname } }) => {
     if (data.success) {
       toast.success('Vous vous êtes déconnecté');
       if (pathname === '/account') history.push('/');
-      console.log('Reset user data');
       setUser(null);
     }
   };
@@ -78,7 +77,6 @@ const Header = ({ location: { pathname } }) => {
   };
 
   useEffect(() => {
-    console.log(pathname);
     closeMenu();
   }, [isMobile, pathname]);
 
