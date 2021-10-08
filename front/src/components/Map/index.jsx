@@ -84,9 +84,7 @@ const Map = ({ location: { pathname } }) => {
             position={marker.coords}
             icon={iconPerson}
           >
-            <Popup>
-              {marker.name} {JSON.stringify(center)}
-            </Popup>
+            <Popup>{marker.name}</Popup>
           </Marker>
         ))}
       </MapContainer>
