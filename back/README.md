@@ -1,6 +1,6 @@
 # projet-15-on-demenage
 
-[ReadMe Français](github.com/O-clock-Uther/projet-15-on-demenage/tree/main/back/README-FR.md) <!--link to modify-->
+[ReadMe Français](https://github.com/O-clock-Uther/projet-15-on-demenage/blob/back/back/README-FR.md) <!--link to modify-->
 
 ---
 
