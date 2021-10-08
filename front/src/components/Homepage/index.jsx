@@ -42,7 +42,7 @@ const Homepage = () => {
         <h1 className="homepage__container__h1">Evadez-vous avec </h1>
         <span className="homepage__container__evadia">Evadia</span>
         <h2 className="homepage__container__h2">
-          Trouvez la ville de vos rêves pour un déménagement, un week-end, et
+          Trouvez la ville de vos rêves pour un week-end, un déménagement et
           bien plus encore !
         </h2>
         <div className="homepage__container__search">
