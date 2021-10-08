@@ -54,7 +54,14 @@ const deleteUser = async () => {
 };
 
 const forgotPassword = async (params) =>
-  instance.post('/user/forgot-password', params);
+  instance.post('/auth/forgot-password', params);
+
+const sendNewPassword = async (params, token) =>
+  instance.post('/auth/new-password', params, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
 
 const doRegister = async (params) => {
   try {
@@ -136,6 +143,7 @@ export default {
   updateUser,
   deleteUser,
   forgotPassword,
+  sendNewPassword,
   doLogin,
   doRegister,
   doLogout,

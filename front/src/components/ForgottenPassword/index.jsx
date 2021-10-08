@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import API from '../../api';
 import Form from '../Shared/Form';
 import Input from '../Shared/Input';
@@ -10,9 +11,14 @@ const ForgottenPassword = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const data = await API.forgotPassword({ email });
+      const data = await API.forgotPassword({
+        email,
+        redirectUrl: 'http://localhost:3000/new-password',
+      });
       if (!data || data.status !== 200) throw new Error('User not found');
-      alert(data.data);
+      toast.success(`Un email avec un lien a été envoyé à l'adresse ${email}`, {
+        duration: 10000,
+      });
     } catch (error) {
       alert(error.message);
     }

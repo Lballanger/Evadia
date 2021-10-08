@@ -20,7 +20,7 @@ import { useUser } from '../../hooks/useAuth';
 import useCity from '../../store/city';
 
 import './index.scss';
-import NewPassword from '../NewPassword';
+import NewPassword from '../ForgottenPassword/NewPassword';
 import ForgottenPassword from '../ForgottenPassword';
 import userStore from '../../store/user';
 import Map from '../Map';
@@ -90,6 +90,9 @@ const App = () => {
           </Route>
           <Route path="/forgottenPassword" exact>
             <ForgottenPassword />
+          </Route>
+          <Route path="/new-password" exact>
+            <NewPassword />
           </Route>
           <Route>
             <Notfound />
