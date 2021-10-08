@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-useless-escape */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
@@ -41,7 +42,7 @@ const Inscription = () => {
     const emailTest =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const passwordTest =
-      /^.*(?=.{8,120})(?!.*\s)(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\!\@\#\$\%\^\&\*\(\)\-\=\¡\£\_\+\`\~\.\,\<\>\/\?\;\:\'\"\\\|\[\]\{\}]).*$/;
+      /^.*(?=.{6,120})(?!.*\s)(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\!\@\#\$\%\^\&\*\(\)\-\=\¡\£\_\+\`\~\.\,\<\>\/\?\;\:\'\"\\\|\[\]\{\}]).*$/;
     switch (event.target.name) {
       case 'firstname':
         if (event.target.value.trim().length < 2)
@@ -62,7 +63,7 @@ const Inscription = () => {
       case 'password':
         if (!passwordTest.test(event.target.value))
           errorsObj.password =
-            'Votre mot de passe doit contenir uniquement des lettres et majuscules';
+            'Votre mot de passe doit doit avoir au minimum 6 caractères contenir au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial (!@#$%^&*()-=¡£_+`~.,<>/?;:\'"\\|[]{})';
         else if (errorsObj.password) delete errorsObj.password;
         break;
       case 'password_confirm':
@@ -172,7 +173,12 @@ const Inscription = () => {
             onClear={clearInput}
             error={errors.lastname}
           />
-          <AutoSuggest limit={10} onSelected={setCity} inForm />
+          <div className="form__auto-suggest">
+            <label htmlFor="city" className="inscription__label">
+              Votre ville
+            </label>
+            <AutoSuggest limit={10} onSelected={setCity} inForm />
+          </div>
           <Input
             type="email"
             id="email"
