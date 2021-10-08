@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { IoStar, IoStarOutline } from 'react-icons/io5';
+import { IoStar, IoStarOutline, IoSchool } from 'react-icons/io5';
 import {
   GiHealthNormal,
   GiHealing,
@@ -122,7 +122,12 @@ const Details = () => {
               <li className="details__card__main__li">
                 Code Postal : {city.code_postal[0]}
               </li>
-              <li className="details__card__main__li">Internet : Fibre</li>
+              <li className="details__card__main__li">
+                Internet (couverture) :{' '}
+                {city.internet
+                  ? `${city.internet[0].coverage}%`
+                  : 'Non renseigné'}
+              </li>
               <li className="details__card__main__li">
                 Population: {city.population}
               </li>
@@ -130,7 +135,11 @@ const Details = () => {
           </div>
         </div>
         <div className="details__card__main__display">
-          <div className="details__card__main__display__parent">
+          <div
+            className={`details__card__main__display__parent ${
+              !city.health_institution ? 'disabled' : ''
+            }`}
+          >
             <div className="details__card__main__display__cadres">
               <GiHealthNormal
                 className="details__card__main__display__cadres__icon"
@@ -143,7 +152,11 @@ const Details = () => {
             </div>
           </div>
 
-          <div className="details__card__main__display__parent">
+          <div
+            className={`details__card__main__display__parent ${
+              !city.health_personal ? 'disabled' : ''
+            }`}
+          >
             <div className="details__card__main__display__cadres">
               <GiHealing
                 className="details__card__main__display__cadres__icon"
@@ -156,7 +169,11 @@ const Details = () => {
             </div>
           </div>
 
-          <div className="details__card__main__display__parent">
+          <div
+            className={`details__card__main__display__parent ${
+              !city.commerce ? 'disabled' : ''
+            }`}
+          >
             <div className="details__card__main__display__cadres">
               <GiShop
                 className="details__card__main__display__cadres__icon"
@@ -169,7 +186,11 @@ const Details = () => {
             </div>
           </div>
 
-          <div className="details__card__main__display__parent">
+          <div
+            className={`details__card__main__display__parent ${
+              !city.taxation ? 'disabled' : ''
+            }`}
+          >
             <div className="details__card__main__display__cadres">
               <GiMoneyStack
                 className="details__card__main__display__cadres__icon"
@@ -182,80 +203,19 @@ const Details = () => {
             </div>
           </div>
 
-          <div className="details__card__main__display__parent">
+          <div
+            className={`details__card__main__display__parent ${
+              !city.schools ? 'disabled' : ''
+            }`}
+          >
             <div className="details__card__main__display__cadres">
-              <GiShop
+              <IoSchool
                 className="details__card__main__display__cadres__icon"
                 color="green"
                 size="2.6rem"
               />
               <span className="details__card__main__display__cadres__text">
-                Autre catégorie
-              </span>
-            </div>
-          </div>
-
-          <div className="details__card__main__display__parent">
-            <div className="details__card__main__display__cadres">
-              <GiShop
-                className="details__card__main__display__cadres__icon"
-                color="green"
-                size="2.6rem"
-              />
-              <span className="details__card__main__display__cadres__text">
-                Autre catégorie 2
-              </span>
-            </div>
-          </div>
-
-          <div className="details__card__main__display__parent">
-            <div className="details__card__main__display__cadres">
-              <GiShop
-                className="details__card__main__display__cadres__icon"
-                color="green"
-                size="2.6rem"
-              />
-              <span className="details__card__main__display__cadres__text">
-                Autre catégorie 3
-              </span>
-            </div>
-          </div>
-
-          <div className="details__card__main__display__parent">
-            <div className="details__card__main__display__cadres">
-              <GiShop
-                className="details__card__main__display__cadres__icon"
-                color="green"
-                size="2.6rem"
-              />
-              <span className="details__card__main__display__cadres__text">
-                Autre catégorie 4
-              </span>
-            </div>
-          </div>
-
-          <div className="details__card__main__display__parent">
-            <div className="details__card__main__display__cadres">
-              <GiShop
-                className="details__card__main__display__cadres__icon"
-                color="green"
-                size="2.6rem"
-              />
-              <span className="details__card__main__display__cadres__text">
-                Autre catégorie 5
-              </span>
-            </div>
-          </div>
-
-          <div className="details__card__main__display__parent">
-            <div className="details__card__main__display__cadres">
-              <GiShop
-                className="details__card__main__display__cadres__icon"
-                color="green"
-                size="2.6rem"
-              />
-              <span className="details__card__main__display__cadres__text">
-                Autre catégorie 6
+                Ecoles
               </span>
             </div>
           </div>
