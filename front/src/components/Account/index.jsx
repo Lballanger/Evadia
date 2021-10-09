@@ -68,7 +68,7 @@ const Account = () => {
         <div className="account__container">
           <div className="account__avatar__display">
             <motion.img
-              // whileHover={{ rotate: 360 }}
+              whileHover={{ rotate: 360 }}
               transition={{ duration: 1 }}
               className="account__avatar__img"
               style={styles.image}
