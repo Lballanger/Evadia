@@ -523,7 +523,7 @@ label {
 }
 
 .criteria button {
-  display: flex;
+  //display: flex;
   width: 16rem;
   height: 3rem;
   margin-left:auto;
@@ -536,18 +536,28 @@ label {
   border-radius: 20px;
   font-weight: 600;
   color: #fff;
-  background: #1f9f87;
+  background: #04AA6D;
   font-size: 1rem;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: 0.6s;
+  transition: all 0.4s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border: none;
+  box-shadow: 0 5px #1f5f35;
 }
 
 .criteria button:hover {
-  background: darkcyan;
+  box-shadow: 0 3px #1f5f35;
+  background-color: darkcyan;
+  top: 1px;
 }
 
-
+.criteria button:active {
+  box-shadow: 0 0 #57cc99;
+  top: 5px;
+}
 
 .choice {
   display: flex;
@@ -588,5 +598,6 @@ label {
     background-color: #1f9f87;
   }
 }
+
 
 
