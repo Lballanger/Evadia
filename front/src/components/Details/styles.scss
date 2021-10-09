@@ -70,6 +70,13 @@
           background-position: right bottom;
         }
       }
+
+      &.active {
+        & > div {
+          background-position: left bottom;
+          transform: scale(1.07);
+        }
+      }
     }
 
     &__cadres {
