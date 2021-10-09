@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
@@ -9,16 +11,24 @@ import {
   GiMoneyStack,
 } from 'react-icons/gi';
 import toast from 'react-hot-toast';
-import Map from '../Map';
 import cityStore from '../../store/city';
 import userStore from '../../store/user';
-import useWindowSize from '../../hooks/useWindowSize';
 import API from '../../api';
 import Dropdown from './MenuMobile/Dropdown';
 
 import './styles.scss';
 import BtnDesktop from './BtnDesktop/BtnDesktop';
 import mapStore from '../../store/map';
+
+const initialCardsState = {
+  schools: false,
+  commerce: false,
+  taxation: false,
+  health_institution: false,
+  personal_health: false,
+};
+
+let markers = [];
 
 // eslint-disable-next-line react/prop-types
 const Details = () => {
@@ -33,6 +43,49 @@ const Details = () => {
   const setMapCenter = mapStore((state) => state.setMapCenter);
   const setMapZoom = mapStore((state) => state.setMapZoom);
   const [loading, setLoading] = useState(true);
+  const [cards, setCards] = useState(initialCardsState);
+
+  const handleCards = (name) => {
+    setCards((state) => {
+      const data = city[name];
+      // eslint-disable-next-line no-restricted-syntax
+      if (!markers.length) {
+        markers.push({
+          name: city.city_name,
+          type: 'city',
+          coords: [city.coordinates.x, city.coordinates.y],
+          key: 'city',
+        });
+      }
+      if (!state[name] === true) {
+        const newData =
+          data !== null
+            ? [...data].map((marker) => {
+                const coords = marker.coordinates
+                  .slice(1, -1)
+                  .split(',')
+                  .map((val) => +val);
+                return {
+                  type: marker.type,
+                  name: marker.name,
+                  coords,
+                  key: name,
+                };
+              })
+            : [];
+        markers = [...markers, ...newData];
+      } else {
+        markers = markers.filter((marker) => marker.key !== name);
+      }
+      setMarkers(markers);
+      // if (markers.length)
+      //   setMapCenter(markers[0].coords[0], markers[0].coords[1]);
+      return {
+        ...state,
+        [name]: !state[name],
+      };
+    });
+  };
 
   const showFavorite = () => {
     if (city.is_favorite) {
@@ -140,7 +193,8 @@ const Details = () => {
           <div
             className={`details__card__main__display__parent ${
               !city.health_institution ? 'disabled' : ''
-            }`}
+            } ${cards.health_institution ? 'active' : ''}`}
+            onClick={() => handleCards('health_institution')}
           >
             <div className="details__card__main__display__cadres">
               <GiHealthNormal
@@ -156,8 +210,9 @@ const Details = () => {
 
           <div
             className={`details__card__main__display__parent ${
-              !city.health_personal ? 'disabled' : ''
-            }`}
+              !city.personal_health ? 'disabled' : ''
+            } ${cards.personal_health ? 'active' : ''}`}
+            onClick={() => handleCards('personal_health')}
           >
             <div className="details__card__main__display__cadres">
               <GiHealing
@@ -174,7 +229,8 @@ const Details = () => {
           <div
             className={`details__card__main__display__parent ${
               !city.commerce ? 'disabled' : ''
-            }`}
+            } ${cards.commerce ? 'active' : ''}`}
+            onClick={() => handleCards('commerce')}
           >
             <div className="details__card__main__display__cadres">
               <GiShop
@@ -191,7 +247,8 @@ const Details = () => {
           <div
             className={`details__card__main__display__parent ${
               !city.taxation ? 'disabled' : ''
-            }`}
+            } ${cards.taxation ? 'active' : ''}`}
+            onClick={() => handleCards('taxation')}
           >
             <div className="details__card__main__display__cadres">
               <GiMoneyStack
@@ -208,7 +265,8 @@ const Details = () => {
           <div
             className={`details__card__main__display__parent ${
               !city.schools ? 'disabled' : ''
-            }`}
+            } ${cards.schools ? 'active' : ''}`}
+            onClick={() => handleCards('schools')}
           >
             <div className="details__card__main__display__cadres">
               <IoSchool
