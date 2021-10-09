@@ -105,280 +105,270 @@ const Criteria = () => {
       <h1>Rechercher des villes selon vos critères</h1>
       <form onSubmit={handleSumbit} className="criteria">
         <div className="criteria__form__container">
-          <div>
-            <section className="range-slider">
-              <label className="rangeValues">
-                Choisir le nombre d&apos;habitants
-              </label>
-              <br />
-              <br />
-              <span className="range-slider__span">
-                Minimum: {inputs.populationmin} - Maximum:{' '}
-                {inputs.populationmax}
-              </span>
-              <div className="range-slider__input">
-                <input
-                  name="populationmin"
-                  defaultValue={criterias.populationmin}
-                  value={inputs.populationmin}
-                  min="0"
-                  max="300000"
-                  step="100"
-                  type="range"
-                  onChange={handleChange}
-                />
-                <input
-                  name="populationmax"
-                  defaultValue={criterias.populationmax}
-                  value={inputs.populationmax}
-                  min="0"
-                  max="300000"
-                  step="100"
-                  type="range"
-                  onChange={handleChange}
-                />
-              </div>
-            </section>
+          <section className="range-slider">
+            <label className="rangeValues">
+              Choisir le nombre d&apos;habitants
+            </label>
             <br />
-            <div className="localisation">
-              <section className="departements">
-                <label htmlFor="code_departement">Choisir un département</label>
-                <div className="select">
-                  <select
-                    id="code_departement"
-                    name="code_departement"
-                    onChange={handleChange}
-                    multiple
-                  >
-                    <option value={null}>Aucun département</option>
-                    {departements.map((departement) => (
-                      <option
-                        value={departement.num_dep}
-                        key={departement.num_dep}
-                        selected={criterias.code_departement.includes(
-                          departement.num_dep
-                        )}
-                      >
-                        {departement.dep_name}
-                      </option>
-                    ))}
-                  </select>
-                  <span className="focus" />
-                </div>
-              </section>
-              <br />
-              <section className="regions">
-                <label htmlFor="code_region">Choisir une région</label>
-                <div className="select">
-                  <select
-                    id="code_region"
-                    name="code_region"
-                    onChange={handleChange}
-                    multiple
-                  >
-                    <option value={null}>Aucune Région</option>
-                    {regionsWithDepartements.map((region) => (
-                      <option
-                        value={region.reg_code}
-                        key={region.reg_code}
-                        selected={criterias.code_region.includes(
-                          region.reg_code
-                        )}
-                      >
-                        {region.reg_name}
-                      </option>
-                    ))}
-                  </select>
-                  <span className="focus" />
-                </div>
-              </section>
-            </div>
             <br />
-            <section className="schools">
-              <label htmlFor="type_ecole">Choisir le type d&apos;école</label>
-              <div className="select">
-                <select
-                  id="type_select"
-                  name="type_ecole"
-                  onChange={handleChange}
-                  multiple
-                >
-                  <option value={null}>Aucun établissement</option>
-                  {schools.map((schoolType) => (
-                    <option
-                      value={schoolType}
-                      key={schoolType}
-                      selected={criterias.type_ecole.includes(schoolType)}
-                    >
-                      {schoolType}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </section>
-          </div>
-          <section className="health">
-            <label />
-            <div className="Pharmacy">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.pharmacy}
-                  onClick={() => handleToggle('pharmacy')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Pharmacies</span>
-              </div>
-            </div>
-            <div className="hospital">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.hospital}
-                  onClick={() => handleToggle('hospital')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Centres Hospitaliers</span>
-              </div>
-            </div>
-            <div className="doctor">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.doctor}
-                  onClick={() => handleToggle('doctor')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Médecins généralistes</span>
-              </div>
-            </div>
-            <div className="nursery">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.nursery}
-                  onClick={() => handleToggle('nursery')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Crèches/Garderies</span>
-              </div>
-            </div>
-            <div className="dentist">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.dentist}
-                  onClick={() => handleToggle('dentist')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Dentistes</span>
-              </div>
-            </div>
-            <div className="cardiologist">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.cardiologist}
-                  onClick={() => handleToggle('cardiologist')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Cardiologues</span>
-              </div>
-            </div>
-            <div className="dermatologist">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.dermatologist}
-                  onClick={() => handleToggle('dermatologist')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Dermatologues</span>
-              </div>
-            </div>
-            <div className="ophtalmologist">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.ophtalmologist}
-                  onClick={() => handleToggle('ophtalmologist')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Ophtalmologues</span>
-              </div>
-            </div>
-            <div className="pediatrician">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.pediatrician}
-                  onClick={() => handleToggle('pediatrician')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Pédiatres</span>
-              </div>
-            </div>
-            <div className="pulmonologist">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.pulmonologist}
-                  onClick={() => handleToggle('pulmonologist')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Pneumologues</span>
-              </div>
-            </div>
-            <div className="psychiatrist">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.psychiatrist}
-                  onClick={() => handleToggle('psychiatrist')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Psychiatres</span>
-              </div>
-            </div>
-            <div className="midwife">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.midwife}
-                  onClick={() => handleToggle('midwife')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Sages-femmes</span>
-              </div>
-            </div>
-            <div className="healthCenter">
-              <div className="choice">
-                <div
-                  className="switch"
-                  data-isOn={isOn.healthCenter}
-                  onClick={() => handleToggle('healthCenter')}
-                >
-                  <motion.div className="handle" layout transition={spring} />
-                </div>
-                <span>Centres de soins</span>
-              </div>
+            <span className="range-slider__span">
+              Minimum: {inputs.populationmin} - Maximum: {inputs.populationmax}
+            </span>
+            <div className="range-slider__input">
+              <input
+                name="populationmin"
+                defaultValue={criterias.populationmin}
+                value={inputs.populationmin}
+                min="0"
+                max="300000"
+                step="100"
+                type="range"
+                onChange={handleChange}
+              />
+              <input
+                name="populationmax"
+                defaultValue={criterias.populationmax}
+                value={inputs.populationmax}
+                min="0"
+                max="300000"
+                step="100"
+                type="range"
+                onChange={handleChange}
+              />
             </div>
           </section>
-          <p />
-          <p />
-          <p />
+          <br />
+
+          <section className="departements">
+            <label htmlFor="code_departement">Choisir un département</label>
+            <div className="select">
+              <select
+                id="code_departement"
+                name="code_departement"
+                onChange={handleChange}
+                multiple
+              >
+                <option value={null}>Aucun département</option>
+                {departements.map((departement) => (
+                  <option
+                    value={departement.num_dep}
+                    key={departement.num_dep}
+                    selected={criterias.code_departement.includes(
+                      departement.num_dep
+                    )}
+                  >
+                    {departement.dep_name}
+                  </option>
+                ))}
+              </select>
+              <span className="focus" />
+            </div>
+          </section>
+          <br />
+          <section className="regions">
+            <label htmlFor="code_region">Choisir une région</label>
+            <div className="select">
+              <select
+                id="code_region"
+                name="code_region"
+                onChange={handleChange}
+                multiple
+              >
+                <option value={null}>Aucune Région</option>
+                {regionsWithDepartements.map((region) => (
+                  <option
+                    value={region.reg_code}
+                    key={region.reg_code}
+                    selected={criterias.code_region.includes(region.reg_code)}
+                  >
+                    {region.reg_name}
+                  </option>
+                ))}
+              </select>
+              <span className="focus" />
+            </div>
+          </section>
+
+          <br />
+          <section className="schools">
+            <label htmlFor="type_ecole">Choisir le type d&apos;école</label>
+            <div className="select">
+              <select
+                id="type_select"
+                name="type_ecole"
+                onChange={handleChange}
+                multiple
+              >
+                <option value={null}>Aucun établissement</option>
+                {schools.map((schoolType) => (
+                  <option
+                    value={schoolType}
+                    key={schoolType}
+                    selected={criterias.type_ecole.includes(schoolType)}
+                  >
+                    {schoolType}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </section>
+
+          <div className="pharmacy">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.pharmacy}
+                onClick={() => handleToggle('pharmacy')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Pharmacies</span>
+            </div>
+          </div>
+          <div className="hospital">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.hospital}
+                onClick={() => handleToggle('hospital')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Centres Hospitaliers</span>
+            </div>
+          </div>
+          <div className="doctor">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.doctor}
+                onClick={() => handleToggle('doctor')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Médecins généralistes</span>
+            </div>
+          </div>
+          <div className="nursery">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.nursery}
+                onClick={() => handleToggle('nursery')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Crèches/Garderies</span>
+            </div>
+          </div>
+          <div className="dentist">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.dentist}
+                onClick={() => handleToggle('dentist')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Dentistes</span>
+            </div>
+          </div>
+          <div className="cardiologist">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.cardiologist}
+                onClick={() => handleToggle('cardiologist')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Cardiologues</span>
+            </div>
+          </div>
+          <div className="dermatologist">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.dermatologist}
+                onClick={() => handleToggle('dermatologist')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Dermatologues</span>
+            </div>
+          </div>
+          <div className="ophtalmologist">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.ophtalmologist}
+                onClick={() => handleToggle('ophtalmologist')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Ophtalmologues</span>
+            </div>
+          </div>
+          <div className="pediatrician">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.pediatrician}
+                onClick={() => handleToggle('pediatrician')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Pédiatres</span>
+            </div>
+          </div>
+          <div className="pulmonologist">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.pulmonologist}
+                onClick={() => handleToggle('pulmonologist')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Pneumologues</span>
+            </div>
+          </div>
+          <div className="psychiatrist">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.psychiatrist}
+                onClick={() => handleToggle('psychiatrist')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Psychiatres</span>
+            </div>
+          </div>
+          <div className="midwife">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.midwife}
+                onClick={() => handleToggle('midwife')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Sages-femmes</span>
+            </div>
+          </div>
+          <div className="healthCenter">
+            <div className="choice">
+              <div
+                className="switch"
+                data-isOn={isOn.healthCenter}
+                onClick={() => handleToggle('healthCenter')}
+              >
+                <motion.div className="handle" layout transition={spring} />
+              </div>
+              <span>Centres de soins</span>
+            </div>
+          </div>
         </div>
         <button type="submit">Lancer la recherche</button>
       </form>
