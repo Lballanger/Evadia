@@ -172,16 +172,17 @@ const Criteria = () => {
             </label>
             <br />
             <br />
-            <span className="range-slider__span">
-              Minimum: {inputs.populationmin} - Maximum: {inputs.populationmax}
-            </span>
+            <div className="range-slider__span">
+              <span>{inputs.populationmin}</span>
+              <span>{inputs.populationmax}</span>
+            </div>
             <div className="range-slider__input">
               <input
                 name="populationmin"
                 defaultValue={criterias.populationmin}
                 value={inputs.populationmin}
                 min="0"
-                max="300000"
+                max="2500000"
                 step="100"
                 type="range"
                 onChange={handleChange}
@@ -191,7 +192,7 @@ const Criteria = () => {
                 defaultValue={criterias.populationmax}
                 value={inputs.populationmax}
                 min="0"
-                max="300000"
+                max="2500000"
                 step="100"
                 type="range"
                 onChange={handleChange}
