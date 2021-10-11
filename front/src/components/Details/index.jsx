@@ -8,11 +8,16 @@ import cityStore from '../../store/city';
 import userStore from '../../store/user';
 import API from '../../api';
 import Dropdown from './MenuMobile/Dropdown';
+import useWindowSize from '../../hooks/useWindowSize';
 
 import './styles.scss';
 import BtnDesktop from './BtnDesktop/BtnDesktop';
 import mapStore from '../../store/map';
 import Card from './Card';
+import DropdownEtablissement from './DropdownCriteria/etablissment';
+import DropdownPersonnel from './DropdownCriteria/personnel';
+import DropdownShop from './DropdownCriteria/commerces';
+import DropdownSchool from './DropdownCriteria/school';
 
 const initialCardsState = {
   schools: false,
@@ -84,6 +89,7 @@ const Details = () => {
   const setMapZoom = mapStore((state) => state.setMapZoom);
   const [loading, setLoading] = useState(true);
   const [cards, setCards] = useState(initialCardsState);
+  const { isMobile, isTablet } = useWindowSize();
 
   const handleCards = (name) => {
     setCards((state) => {
@@ -216,46 +222,75 @@ const Details = () => {
             <ul className="details__card__main__ul">
               <li className="details__card__main__li">
                 <span className="details__card__main__li__infos">
-                  Code Postal :
+                  Code Postal
                 </span>{' '}
-                {city.code_postal[0]}
+                : {city.code_postal[0]}
               </li>
               <li className="details__card__main__li">
                 <span className="details__card__main__li__infos">
-                  Couverture Internet :{' '}
-                </span>
+                  Couverture Internet
+                </span>{' '}
+                :{' '}
                 {city.internet
                   ? `${city.internet[0].coverage}%`
                   : 'Non renseigné'}
               </li>
               <li className="details__card__main__li">
                 <span className="details__card__main__li__infos">
-                  Population :
+                  Population
                 </span>{' '}
-                {city.population}
+                : {city.population}
               </li>
               <li className="details__card__main__li">
                 <span className="details__card__main__li__infos">
-                  Taxe foncière :
+                  Taxe foncière
                 </span>{' '}
-                données dynamique à intégrer.
+                : données dynamique à intégrer.
               </li>
             </ul>
           </div>
         </div>
-        <div className="details__card__main__display">
-          {buttons.map((btn) => (
-            <Card
-              key={btn.key}
-              cardName={btn.cardName}
-              handleCards={() => handleCards(btn.key)}
-              isActive={!!cards[btn.key]}
-              isDisabled={!city[btn.key]}
-            >
-              {btn.icon()}
-            </Card>
-          ))}
-        </div>
+
+        {isMobile || isTablet ? (
+          <div className="details__card__main__display__list">
+            <ul className="details__card__main__ul">
+              <li className="details__card__main__li">
+                <span className="details__card__main__li__infos">
+                  <DropdownEtablissement />
+                </span>
+              </li>
+              <li className="details__card__main__li">
+                <span className="details__card__main__li__infos">
+                  <DropdownPersonnel />
+                </span>
+              </li>
+              <li className="details__card__main__li">
+                <span className="details__card__main__li__infos">
+                  <DropdownShop />
+                </span>
+              </li>
+              <li className="details__card__main__li">
+                <span className="details__card__main__li__infos">
+                  <DropdownSchool />
+                </span>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <div className="details__card__main__display">
+            {buttons.map((btn) => (
+              <Card
+                key={btn.key}
+                cardName={btn.cardName}
+                handleCards={() => handleCards(btn.key)}
+                isActive={!!cards[btn.key]}
+                isDisabled={!city[btn.key]}
+              >
+                {btn.icon()}
+              </Card>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
