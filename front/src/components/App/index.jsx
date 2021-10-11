@@ -75,7 +75,7 @@ const App = () => {
             component={ForgottenPassword}
           />
           <Route path="/new-password" exact component={NewPassword} />
-          <Route path="/js" exact component={EasterEgg} />
+          <Route path="/808" exact component={EasterEgg} />
           <Route component={Notfound} />
         </Switch>
       </main>

@@ -245,7 +245,10 @@ const Details = () => {
                 <span className="details__card__main__li__infos">
                   Taxe foncière
                 </span>{' '}
-                : {city.property_tax}
+                :{' '}
+                {/* {city.taxation
+                  ? `${city.taxation[1].housing_tax}%`
+                  : 'Non renseigné'} */}
               </li>
             </ul>
           </div>
