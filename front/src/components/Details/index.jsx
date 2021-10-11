@@ -43,7 +43,7 @@ const buttons = [
   },
   {
     cardName: 'Personnel de santé',
-    key: 'health_institution',
+    key: 'personal_health',
     icon: () => (
       <GiHealing
         className="details__card__main__display__cadres__icon"
