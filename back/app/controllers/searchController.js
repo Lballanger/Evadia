@@ -10,9 +10,7 @@ const searchController = {
    */
   findByName: async (request, response) => {
     try {
-      console.log('test');
       if (request.query.ville) {
-        console.log('query = ', request.query.ville);
         const { name } = request.query.ville;
         const commune = await Commune.findByName(name);
         response.json(commune);

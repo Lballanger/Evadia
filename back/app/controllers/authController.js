@@ -106,11 +106,12 @@ const authController = {
       await setex(`password:user:${user.email}`, 15 * 60, token);
       // TODO: Send the mail
       const params = {
-        email : user.email,
+        sender : user.email,
         type : 'reset',
         username: user.firstname,
         urlLink: redirectUrl+"?token="+token,
-        revokeLink : null
+        revokeLink : null,
+        subject: null
       }
       await mailer(params);
       return response.json('Email sent');

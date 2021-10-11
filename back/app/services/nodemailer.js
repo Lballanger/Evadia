@@ -4,8 +4,8 @@ const mailOptions = {
 };
 
 module.exports = sendingMail = async (params) => {
-  
-    const { email, type, username, urlLink, revokeLink } = params;
+
+    const { sender, type, username, urlLink, revokeLink, subject, message, email} = params;
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -13,9 +13,9 @@ module.exports = sendingMail = async (params) => {
         pass: process.env.NODEMAILER_PASSWORD,
       },
     });
-    mailOptions.to = email;
+    mailOptions.to = sender;
     mailOptions.subject =
-      type === "reset" ? "Réinitialisation du mot de passe" : "Welcome";
+      type === "reset" ? "Réinitialisation du mot de passe" : subject;
     mailOptions.html =
       type === "reset"
         ? require("../templates/resetPassword")(
@@ -24,7 +24,7 @@ module.exports = sendingMail = async (params) => {
             urlLink
             //revokeLink
           )
-        : require("../templates/resetPassword")(email, username);
+        : require("../templates/messageContact")(params);
     mailOptions.attachments = [
       {
         filename: 'bee.png',

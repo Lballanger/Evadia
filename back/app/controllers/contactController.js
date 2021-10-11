@@ -1,5 +1,6 @@
 const Contact = require('../models/contact');
 const sanitizer = require('sanitizer');
+const mailer = require('../services/nodemailer');
 
 const contactController = {
   getAll: async (request, response) => {
@@ -25,9 +26,7 @@ const contactController = {
     let { body } = request;
 
     for (let propName in request.body) {
-      console.log('Sanitizer avant :', request.body[propName]);
       request.body[propName] = sanitizer.escape(request.body[propName]);
-      console.log('Sanitizer après :', request.body[propName]);
   };
 
     try {
@@ -37,6 +36,18 @@ const contactController = {
           error: true,
           message: 'Something goes wrong with provided data',
         });
+
+      console.log(message);
+      // TODO: Send the mail
+      const params = {
+        sender : 'evadia.apo@gmail.com',
+        email: message.email,
+        type : 'contact',
+        username: message.name,
+        subject:  message.subject,
+        message: message.message
+      }
+      await mailer(params);
 
       return response.status(201).json(message);
     } catch (error) {
