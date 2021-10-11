@@ -80,7 +80,7 @@
         font-size: 1.5rem;
         letter-spacing: 1px;
         cursor: pointer;
-        transition: all 0.06s 0s ease-out;
+        transition: all 0.4s  ease;
         position: relative;
         display: inline-block;
         outline: none;
@@ -102,7 +102,7 @@
       &__link:hover {
         color: white;
         box-shadow: 0 3px #d9a841;
-        background: #ffe459;
+        background: linear-gradient(145deg, #ffe459, #95880e);
         top: 3px;
         color: black;
       }
