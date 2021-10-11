@@ -29,66 +29,65 @@ const schoolsSelect = [
   },
 ];
 
-const departementsSelect = departements.map((departement) => ({
+const departementsSelect = departements.map(departement => ({
   label: departement.dep_name,
   value: departement.num_dep.toString(),
 }));
-const regionsSelect = regionsWithDepartements.map((region) => ({
+const regionsSelect = regionsWithDepartements.map(region => ({
   label: region.reg_name,
   value: region.reg_code.toString(),
 }));
 
 const Criteria = () => {
   const history = useHistory();
-  const setCities = cityStore((state) => state.setCities);
-  const criterias = criteriaStore((state) => state.criterias);
-  const setCriteria = criteriaStore((state) => state.setCriteria);
-  const setMarkers = mapStore((state) => state.setMarkers);
-  const setMapZoom = mapStore((state) => state.setMapZoom);
-  const setMapCenter = mapStore((state) => state.setMapCenter);
+  const setCities = cityStore(state => state.setCities);
+  const criterias = criteriaStore(state => state.criterias);
+  const setCriteria = criteriaStore(state => state.setCriteria);
+  const setMarkers = mapStore(state => state.setMarkers);
+  const setMapZoom = mapStore(state => state.setMapZoom);
+  const setMapCenter = mapStore(state => state.setMapCenter);
   // const [inputs, setInputs] = useState(criterias);
-  const [departementSelected, setDepartementSelected] = useState([]);
-  const [regionsSelected, setRegionsSelected] = useState([]);
-  const [schoolsSelected, setSchoolsSelected] = useState([]);
+  const [departementSelected, setDepartementSelected] = useState(
+    criterias.code_departement
+  );
+  const [regionsSelected, setRegionsSelected] = useState(criterias.code_region);
+  const [schoolsSelected, setSchoolsSelected] = useState(criterias.type_ecole);
 
-  const [inputs, setInputs] = useState({
-    populationmin: '0',
-    populationmax: '3000',
-    code_departement: [],
-    code_region: [],
-    type_ecole: [],
-    type_personal_health: [],
-    type_health_institution: [],
-  });
+  const updateDepartements = e => {
+    setDepartementSelected(e);
+    setCriteria('code_departement', e);
+  };
 
-  const [isOnHealthPersonal, setIsOnHealthPersonal] = useState({
-    doctor: false,
-    cardiologistic: false,
-    dentist: false,
-    dermatologist: false,
-    ophtalmologist: false,
-    pediatrician: false,
-    pulmonologist: false,
-    psychiatrist: false,
-    midwife: false,
-  });
+  const updateRegions = e => {
+    setRegionsSelected(e);
+    setCriteria('code_region', e);
+  };
 
-  const [isOnHealthInstitute, setIsOnHealthInstitute] = useState({
-    hospital: false,
-    healthCenter: false,
-    nursery: false,
-    pharmacy: false,
-  });
+  const updateSchools = e => {
+    setSchoolsSelected(e);
+    setCriteria('type_ecole', e);
+  };
 
-  const handleToggle = (category) => {
-    setIsOnHealthInstitute((state) => ({
-      ...state,
-      [category]: !state[category],
-    }));
-    setIsOnHealthPersonal((state) => ({
-      ...state,
-      [category]: !state[category],
-    }));
+  const [isOnHealthPersonal, setIsOnHealthPersonal] = useState(
+    criterias.type_personal_health
+  );
+
+  const [isOnHealthInstitute, setIsOnHealthInstitute] = useState(
+    criterias.type_health_institution
+  );
+
+  const handleInstituteToggle = category => {
+    setCriteria('type_health_institution', {
+      ...criterias.type_health_institution,
+      [category]: !criterias.type_health_institution[category],
+    });
+  };
+
+  const handlePersonalToggle = category => {
+    setCriteria('type_personal_health', {
+      ...criterias.type_personal_health,
+      [category]: !criterias.type_personal_health[category],
+    });
   };
 
   const spring = {
@@ -97,46 +96,43 @@ const Criteria = () => {
     damping: 5,
   };
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     if (
       event.target.name === 'populationmax' &&
-      +event.target.value <= +inputs.populationmin
+      +event.target.value <= +criterias.populationmin
     )
       return;
     if (
       event.target.name === 'populationmin' &&
-      +event.target.value >= +inputs.populationmax
+      +event.target.value >= +criterias.populationmax
     )
       return;
-    setInputs((state) => ({
-      ...state,
-      [event.target.name]: event.target.value,
-    }));
+    setCriteria(event.target.name, event.target.value);
   };
 
-  const handleSumbit = async (event) => {
+  const handleSumbit = async event => {
     event.preventDefault();
     const healthInstituteKeys = Object.keys(isOnHealthInstitute);
     const healthPersonalKeys = Object.keys(isOnHealthPersonal);
     const healthPersonal = healthPersonalKeys.filter(
-      (key) => isOnHealthPersonal[key]
+      key => isOnHealthPersonal[key]
     );
     const healthInstitute = healthInstituteKeys.filter(
-      (key) => healthInstituteKeys[key]
+      key => healthInstituteKeys[key]
     );
     try {
       const items = {
-        populationmin: inputs.populationmin,
-        populationmax: inputs.populationmax,
+        populationmin: criterias.populationmin,
+        populationmax: criterias.populationmax,
       };
       if (departementSelected.length) {
-        items.code_departement = departementSelected.map((dep) => dep.value);
+        items.code_departement = departementSelected.map(dep => dep.value);
       }
       if (regionsSelected.length) {
-        items.code_region = regionsSelected.map((dep) => dep.value);
+        items.code_region = regionsSelected.map(dep => dep.value);
       }
       if (schoolsSelected.length) {
-        items.type_ecole = schoolsSelected.map((dep) => dep.value);
+        items.type_ecole = schoolsSelected.map(dep => dep.value);
       }
       if (healthPersonal.length) {
         items.type_personal_health = healthPersonal;
@@ -146,7 +142,7 @@ const Criteria = () => {
       }
       const { data } = await API.getCityWithCriteria(items);
       setCities(data);
-      const cityMarkers = data.map((city) => ({
+      const cityMarkers = data.map(city => ({
         name: city.city_name,
         type: 'city',
         coords: [city.coordinates.x, city.coordinates.y],
@@ -173,13 +169,13 @@ const Criteria = () => {
             <br />
             <br />
             <span className="range-slider__span">
-              Minimum: {inputs.populationmin} - Maximum: {inputs.populationmax}
+              Minimum: {criterias.populationmin} - Maximum:{' '}
+              {criterias.populationmax}
             </span>
             <div className="range-slider__input">
               <input
                 name="populationmin"
-                defaultValue={criterias.populationmin}
-                value={inputs.populationmin}
+                value={criterias.populationmin}
                 min="0"
                 max="300000"
                 step="100"
@@ -188,8 +184,7 @@ const Criteria = () => {
               />
               <input
                 name="populationmax"
-                defaultValue={criterias.populationmax}
-                value={inputs.populationmax}
+                value={criterias.populationmax}
                 min="0"
                 max="300000"
                 step="100"
@@ -208,7 +203,7 @@ const Criteria = () => {
               <MultiSelect
                 options={departementsSelect}
                 value={departementSelected}
-                onChange={setDepartementSelected}
+                onChange={updateDepartements}
                 labelledBy="Select"
                 overrideStrings={{
                   allItemsAreSelected: 'Tous les départements',
@@ -231,7 +226,7 @@ const Criteria = () => {
               <MultiSelect
                 options={regionsSelect}
                 value={regionsSelected}
-                onChange={setRegionsSelected}
+                onChange={updateRegions}
                 labelledBy="Select"
                 overrideStrings={{
                   allItemsAreSelected: 'Toutes les régions',
@@ -255,7 +250,7 @@ const Criteria = () => {
               <MultiSelect
                 options={schoolsSelect}
                 value={schoolsSelected}
-                onChange={setSchoolsSelected}
+                onChange={updateSchools}
                 labelledBy="Select"
                 overrideStrings={{
                   allItemsAreSelected: "Tous les types d'établissements",
@@ -274,8 +269,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthInstitute.pharmacy}
-                onClick={() => handleToggle('pharmacy')}
+                data-isOn={criterias.type_health_institution.pharmacy}
+                onClick={() => handleInstituteToggle('pharmacy')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -286,8 +281,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthInstitute.hospital}
-                onClick={() => handleToggle('hospital')}
+                data-isOn={criterias.type_health_institution.hospital}
+                onClick={() => handleInstituteToggle('hospital')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -298,8 +293,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthPersonal.doctor}
-                onClick={() => handleToggle('doctor')}
+                data-isOn={criterias.type_personal_health.doctor}
+                onClick={() => handlePersonalToggle('doctor')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -310,8 +305,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthInstitute.nursery}
-                onClick={() => handleToggle('nursery')}
+                data-isOn={criterias.type_health_institution.nursery}
+                onClick={() => handleInstituteToggle('nursery')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -322,8 +317,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthPersonal.dentist}
-                onClick={() => handleToggle('dentist')}
+                data-isOn={criterias.type_personal_health.dentist}
+                onClick={() => handlePersonalToggle('dentist')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -334,8 +329,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthPersonal.cardiologist}
-                onClick={() => handleToggle('cardiologist')}
+                data-isOn={criterias.type_personal_health.cardiologist}
+                onClick={() => handlePersonalToggle('cardiologist')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -346,8 +341,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthPersonal.dermatologist}
-                onClick={() => handleToggle('dermatologist')}
+                data-isOn={criterias.type_personal_health.dermatologist}
+                onClick={() => handlePersonalToggle('dermatologist')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -358,8 +353,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthPersonal.ophtalmologist}
-                onClick={() => handleToggle('ophtalmologist')}
+                data-isOn={criterias.type_personal_health.ophtalmologist}
+                onClick={() => handlePersonalToggle('ophtalmologist')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -370,8 +365,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthPersonal.pediatrician}
-                onClick={() => handleToggle('pediatrician')}
+                data-isOn={criterias.type_personal_health.pediatrician}
+                onClick={() => handlePersonalToggle('pediatrician')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -382,8 +377,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthPersonal.pulmonologist}
-                onClick={() => handleToggle('pulmonologist')}
+                data-isOn={criterias.type_personal_health.pulmonologist}
+                onClick={() => handlePersonalToggle('pulmonologist')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -394,8 +389,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthPersonal.psychiatrist}
-                onClick={() => handleToggle('psychiatrist')}
+                data-isOn={criterias.type_personal_health.psychiatrist}
+                onClick={() => handlePersonalToggle('psychiatrist')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -406,8 +401,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthPersonal.midwife}
-                onClick={() => handleToggle('midwife')}
+                data-isOn={criterias.type_personal_health.midwife}
+                onClick={() => handlePersonalToggle('midwife')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -418,8 +413,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOnHealthInstitute.healthCenter}
-                onClick={() => handleToggle('healthCenter')}
+                data-isOn={criterias.type_health_institution.healthCenter}
+                onClick={() => handleInstituteToggle('healthCenter')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
