@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.scss';
 import { motion } from 'framer-motion';
 import avatar from '../../assets/images/avatar.png';
-import avatarFC from '../../assets/images/FC.png';
+import avatarFC from '../../assets/images/FC.jpg';
 
 const About = () => (
   <>
