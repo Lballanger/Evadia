@@ -1,15 +1,8 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { IoStar, IoStarOutline, IoSchool } from 'react-icons/io5';
-import {
-  GiHealthNormal,
-  GiHealing,
-  GiShop,
-  GiMoneyStack,
-} from 'react-icons/gi';
+import { GiHealthNormal, GiHealing, GiShop } from 'react-icons/gi';
 import toast from 'react-hot-toast';
 import cityStore from '../../store/city';
 import userStore from '../../store/user';
@@ -19,16 +12,63 @@ import Dropdown from './MenuMobile/Dropdown';
 import './styles.scss';
 import BtnDesktop from './BtnDesktop/BtnDesktop';
 import mapStore from '../../store/map';
+import Card from './Card';
 
 const initialCardsState = {
   schools: false,
   commerce: false,
-  taxation: false,
   health_institution: false,
   personal_health: false,
 };
 
 let markers = [];
+
+const buttons = [
+  {
+    cardName: 'Etablissement de santé',
+    key: 'health_institution',
+    icon: () => (
+      <GiHealthNormal
+        className="details__card__main__display__cadres__icon"
+        color="green"
+        size="2.6rem"
+      />
+    ),
+  },
+  {
+    cardName: 'Personnel de santé',
+    key: 'health_institution',
+    icon: () => (
+      <GiHealing
+        className="details__card__main__display__cadres__icon"
+        color="green"
+        size="2.6rem"
+      />
+    ),
+  },
+  {
+    cardName: 'Commerces',
+    key: 'commerce',
+    icon: () => (
+      <GiShop
+        className="details__card__main__display__cadres__icon"
+        color="green"
+        size="2.6rem"
+      />
+    ),
+  },
+  {
+    cardName: 'Ecoles',
+    key: 'schools',
+    icon: () => (
+      <IoSchool
+        className="details__card__main__display__cadres__icon"
+        color="green"
+        size="2.6rem"
+      />
+    ),
+  },
+];
 
 // eslint-disable-next-line react/prop-types
 const Details = () => {
@@ -175,110 +215,46 @@ const Details = () => {
           <div className="details__card__main__info">
             <ul className="details__card__main__ul">
               <li className="details__card__main__li">
-                Code Postal : {city.code_postal[0]}
+                <span className="details__card__main__li__infos">
+                  Code Postal :
+                </span>{' '}
+                {city.code_postal[0]}
               </li>
               <li className="details__card__main__li">
-                Internet (couverture) :{' '}
+                <span className="details__card__main__li__infos">
+                  Couverture Internet :{' '}
+                </span>
                 {city.internet
                   ? `${city.internet[0].coverage}%`
                   : 'Non renseigné'}
               </li>
               <li className="details__card__main__li">
-                Population: {city.population}
+                <span className="details__card__main__li__infos">
+                  Population :
+                </span>{' '}
+                {city.population}
+              </li>
+              <li className="details__card__main__li">
+                <span className="details__card__main__li__infos">
+                  Taxe foncière :
+                </span>{' '}
+                données dynamique à intégrer.
               </li>
             </ul>
           </div>
         </div>
         <div className="details__card__main__display">
-          <div
-            className={`details__card__main__display__parent ${
-              !city.health_institution ? 'disabled' : ''
-            } ${cards.health_institution ? 'active' : ''}`}
-            onClick={() => handleCards('health_institution')}
-          >
-            <div className="details__card__main__display__cadres">
-              <GiHealthNormal
-                className="details__card__main__display__cadres__icon"
-                color="green"
-                size="2.6rem"
-              />
-              <span className="details__card__main__display__cadres__text">
-                Etablissement de santé
-              </span>
-            </div>
-          </div>
-
-          <div
-            className={`details__card__main__display__parent ${
-              !city.personal_health ? 'disabled' : ''
-            } ${cards.personal_health ? 'active' : ''}`}
-            onClick={() => handleCards('personal_health')}
-          >
-            <div className="details__card__main__display__cadres">
-              <GiHealing
-                className="details__card__main__display__cadres__icon"
-                color="green"
-                size="2.6rem"
-              />
-              <span className="details__card__main__display__cadres__text">
-                Personnel de santé
-              </span>
-            </div>
-          </div>
-
-          <div
-            className={`details__card__main__display__parent ${
-              !city.commerce ? 'disabled' : ''
-            } ${cards.commerce ? 'active' : ''}`}
-            onClick={() => handleCards('commerce')}
-          >
-            <div className="details__card__main__display__cadres">
-              <GiShop
-                className="details__card__main__display__cadres__icon"
-                color="green"
-                size="2.6rem"
-              />
-              <span className="details__card__main__display__cadres__text">
-                Commerces
-              </span>
-            </div>
-          </div>
-
-          <div
-            className={`details__card__main__display__parent ${
-              !city.taxation ? 'disabled' : ''
-            } ${cards.taxation ? 'active' : ''}`}
-            onClick={() => handleCards('taxation')}
-          >
-            <div className="details__card__main__display__cadres">
-              <GiMoneyStack
-                className="details__card__main__display__cadres__icon"
-                color="green"
-                size="2.6rem"
-              />
-              <span className="details__card__main__display__cadres__text">
-                Taxation
-              </span>
-            </div>
-          </div>
-
-          <div
-            className={`details__card__main__display__parent ${
-              !city.schools ? 'disabled' : ''
-            } ${cards.schools ? 'active' : ''}`}
-            onClick={() => handleCards('schools')}
-          >
-            <div className="details__card__main__display__cadres">
-              <IoSchool
-                className="details__card__main__display__cadres__icon"
-                color="green"
-                size="2.6rem"
-              />
-              <span className="details__card__main__display__cadres__text">
-                Ecoles
-              </span>
-            </div>
-          </div>
+          {buttons.map((btn) => (
+            <Card
+              key={btn.key}
+              cardName={btn.cardName}
+              handleCards={() => handleCards(btn.key)}
+              isActive={!!cards[btn.key]}
+              isDisabled={!city[btn.key]}
+            >
+              {btn.icon()}
+            </Card>
+          ))}
         </div>
       </div>
     </div>
