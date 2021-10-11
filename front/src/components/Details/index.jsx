@@ -228,7 +228,7 @@ const Details = () => {
               </li>
               <li className="details__card__main__li">
                 <span className="details__card__main__li__infos">
-                  Couverture Internet
+                  Couverture Fibre Internet
                 </span>{' '}
                 :{' '}
                 {city.internet
