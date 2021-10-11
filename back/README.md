@@ -2,6 +2,8 @@
 
 [ReadMe Français](https://github.com/O-clock-Uther/projet-15-on-demenage/blob/back/back/README-FR.md) <!--link to modify-->
 
+[API doc](https://documenter.getpostman.com/view/17789631/UUy67562)
+
 ---
 
 ![GitHub forks](https://img.shields.io/github/forks/GermainMichaud/blog-api?style=flat-square)
@@ -169,21 +171,25 @@ sqitch add <migration_name> -m "your_commit_message"
 
 - [x] Initialize project
 - [ ] Create migrations
-  - [ ] Post
-  - [ ] Category
+  - [ ] Commune
   - [ ] User
+  - [ ] User_has_commune
+  - [ ] ...
 - [ ] Create models
-  - [ ] Post
-  - [ ] Category
+  - [ ] Commune
   - [ ] User
+  - [ ] User_has_commune
+  - [ ] ...
 - [ ] Create controllers
-  - [ ] Post
-  - [ ] Category
+  - [ ] Commune
   - [ ] User
+  - [ ] User_has_commune
+  - [ ] ...
 - [ ] Create routes
-  - [ ] Post
-  - [ ] Category
+  - [ ] Commune
   - [ ] User
+  - [ ] User_has_commune
+  - [ ] ...
 - [ ] Create authentication
   - [ ] Controller
   - [ ] Middleware
