@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const schema = {
   findId: Joi.object({
-    id: Joi.integer().required(),
+    id: Joi.number().required(),
   }),
 };
 

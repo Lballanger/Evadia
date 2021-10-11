@@ -1,4 +1,5 @@
 const Contact = require('../models/contact');
+const sanitizer = require('sanitizer');
 
 const contactController = {
   getAll: async (request, response) => {
@@ -21,7 +22,14 @@ const contactController = {
     }
   },
   create: async (request, response) => {
-    const { body } = request;
+    let { body } = request;
+
+    for (let propName in request.body) {
+      console.log('Sanitizer avant :', request.body[propName]);
+      request.body[propName] = sanitizer.escape(request.body[propName]);
+      console.log('Sanitizer après :', request.body[propName]);
+  };
+
     try {
       const message = await new Contact(body).create();
       if (!message)
