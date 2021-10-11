@@ -15,21 +15,21 @@ SELECT
   json_agg(
     json_build_object(
       'id',
-      commerce.id,
+      com.id,
       'name',
-      commerce.name,
+      com.name,
       'coordinates',
-      commerce.coordinates,
+      com.coordinates,
       'commune_code',
-      commerce.commune_code,
+      com.commune_code,
       'type',
-      commerce.type
+      com.type
     )
   )
 FROM
-  private.commerce AS commerce
+  (SELECT * FROM private.commerce AS commerce
 WHERE
-  commerce.commune_code = code;
+  commerce.commune_code = code ORDER BY RANDOM() LIMIT 50) AS com
 $$ LANGUAGE SQL STRICT;
 
 COMMIT;
