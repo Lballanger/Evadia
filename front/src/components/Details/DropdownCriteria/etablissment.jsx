@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useRef } from 'react';
-import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5';
+import { IoChevronDownOutline } from 'react-icons/io5';
 import useClickOutside from '../../../hooks/useClickOutside';
 
 import './styles.scss';
@@ -32,9 +32,9 @@ const DropdownEtablissement = () => {
         </div>
         {displayMenu ? (
           <ul className="details__dropdown__ul">
-            <li className="details__dropdown__li">
-              42 établissements de santé trouvés
-            </li>
+            <li className="details__dropdown__li">5 pharmacies</li>
+            <li className="details__dropdown__li">2 crèches</li>
+            <li className="details__dropdown__li">1 centre de soin</li>
           </ul>
         ) : null}
       </div>

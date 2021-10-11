@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useRef } from 'react';
-import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5';
+import { IoChevronDownOutline } from 'react-icons/io5';
 import useClickOutside from '../../../hooks/useClickOutside';
 
 import './styles.scss';
