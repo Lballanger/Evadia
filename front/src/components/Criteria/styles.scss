@@ -13,9 +13,8 @@
     background-color: rgba($color: #000000, $alpha: 0.2);
     padding: 2rem;
     border-radius: 20px;
-
+    margin-top: -2rem;
     
-
     &__h1 {
       font-size: 2rem;
       font-style: bold;
@@ -57,6 +56,8 @@
           padding-top: 1rem;
           text-align: center;
         }
+
+        
       }
     }
     &__submit {
@@ -84,6 +85,12 @@
         box-shadow: inset 5px 5px 0px #25c047, inset -5px -5px 0px #31ff5f;
       }
     }
+  }
+
+
+
+  .schools {
+    margin-bottom: 2rem;
   }
 }
 
@@ -156,17 +163,23 @@
     width: 100%;
     //height: 100vw;
 
-    label {
-  font-weight: bold; 
-  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-  color: white;
-  margin-bottom: 0.6rem;
-  white-space: nowrap;
-  }
+    &__form__label {
+      font-weight: bold; 
+      text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+      color: white;
+      margin-bottom: 0.6rem;
+      white-space: nowrap;
+    }
 
-  span {
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-  }
+    &__form__multiselect {
+      position: relative;
+      max-width: 300px;
+      // z-index: 99;
+    }
+
+    span {
+      text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    }
   
       
     &__form__container {
@@ -260,12 +273,12 @@
 }
 
 .departements {
-  grid-area: 4 / 1 / 5 / 1; 
+  grid-area: 3 / 1 / 4 / 1; 
   height: 25%; 
 }
 
 .schools {
-  grid-area: 6 / 1 / 7 / 1;
+  grid-area: 4 / 1 / 5 / 1;
   height: 25%; 
 }
 
@@ -337,6 +350,9 @@ section.range-slider {
 
   span {
   width: 100%;
+  white-space: nowrap;
+  margin-top: -0.3rem;
+  font-size: 0.9rem;
   }
 }
 
@@ -513,16 +529,24 @@ select[multiple] {
   background-image: linear-gradient(to top, #ddd, #eee 33%);
 }
 
-label {
+// label {
+//   font-size: 1.125rem;
+//   font-weight: 500;
+// }
+
+// .select + label {
+//   margin-top: 2rem;
+// }
+.criteria__form__label {
   font-size: 1.125rem;
   font-weight: 500;
 }
 
-.select + label {
+.select + .criteria__form__label {
   margin-top: 2rem;
 }
 
-.criteria button {
+.criteria button[type="submit"] {
   width: 16rem;
   height: 3rem;
   margin-left:auto;
@@ -541,19 +565,19 @@ label {
   cursor: pointer;
   transition: all 0.4s ease;
   position: relative;
-  display: inline-block;
+  display: block;
   outline: none;
   border: none;
   box-shadow: 0 5px #1f5f35;
 }
 
-.criteria button:hover {
+.criteria button[type="submit"]:hover {
   box-shadow: 0 3px #1f5f35;
   background-color: darkcyan;
   top: 1px;
 }
 
-.criteria button:active {
+.criteria button[type="submit"]:active {
   box-shadow: 0 0 #57cc99;
   top: 5px;
 }
@@ -572,8 +596,8 @@ label {
 
 
 .switch {
-  width: 70px;
-  height: 40px;
+  width: 60px;
+  height: 30px;
   background-color: rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: flex-start;
@@ -583,8 +607,8 @@ label {
   margin-right: 10px;
 
   .handle {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background-color:rgb(185, 39, 39);
     border-radius: 40px;
   }

@@ -211,12 +211,12 @@
         font-size: 1.5rem;
         letter-spacing: 1px;
         cursor: pointer;
-        transition: all 0.06s 0s ease-out;
+        transition: all 0.4s  ease;
         position: relative;
         display: inline-block;
         outline: none;
         border: none;
-        box-shadow: 0 7px #1f5f35;
+        box-shadow: 4px 7px #1f5f35;
         &__button {
           width: 20%;
           color: inherit;
@@ -228,8 +228,8 @@
       }
       
       &__link:hover {
-        box-shadow: 0 3px #d9a841;
-        background: #ffe459;
+        box-shadow: 3px 3px #7e611f;
+        background: linear-gradient(145deg, #ffe459, #95880e);
         top: 3px;
         color: black;
         

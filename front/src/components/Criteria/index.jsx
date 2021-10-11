@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { MultiSelect } from 'react-multi-select-component';
 import API from '../../api';
 import cityStore from '../../store/city';
 import mapStore from '../../store/map';
@@ -13,7 +14,29 @@ import regionsWithDepartements from '../../assets/data/regions_with_departements
 import './styles.scss';
 import criteriaStore from '../../store/criteria';
 
-const schools = ['Ecole', 'Collège', 'Lycée'];
+const schoolsSelect = [
+  {
+    label: 'Ecole',
+    value: 'Ecole',
+  },
+  {
+    label: 'Collège',
+    value: 'Collège',
+  },
+  {
+    label: 'Lycée',
+    value: 'Lycée',
+  },
+];
+
+const departementsSelect = departements.map((departement) => ({
+  label: departement.dep_name,
+  value: departement.num_dep.toString(),
+}));
+const regionsSelect = regionsWithDepartements.map((region) => ({
+  label: region.reg_name,
+  value: region.reg_code.toString(),
+}));
 
 const Criteria = () => {
   const history = useHistory();
@@ -23,13 +46,24 @@ const Criteria = () => {
   const setMarkers = mapStore((state) => state.setMarkers);
   const setMapZoom = mapStore((state) => state.setMapZoom);
   const setMapCenter = mapStore((state) => state.setMapCenter);
-  const [inputs, setInputs] = useState(criterias);
+  // const [inputs, setInputs] = useState(criterias);
+  const [departementSelected, setDepartementSelected] = useState([]);
+  const [regionsSelected, setRegionsSelected] = useState([]);
+  const [schoolsSelected, setSchoolsSelected] = useState([]);
 
-  const [isOn, setIsOn] = useState({
-    pharmacy: false,
+  const [inputs, setInputs] = useState({
+    populationmin: '0',
+    populationmax: '3000',
+    code_departement: [],
+    code_region: [],
+    type_ecole: [],
+    type_personal_health: [],
+    type_health_institution: [],
+  });
+
+  const [isOnHealthPersonal, setIsOnHealthPersonal] = useState({
     doctor: false,
     cardiologistic: false,
-    hospital: false,
     dentist: false,
     dermatologist: false,
     ophtalmologist: false,
@@ -37,12 +71,21 @@ const Criteria = () => {
     pulmonologist: false,
     psychiatrist: false,
     midwife: false,
+  });
+
+  const [isOnHealthInstitute, setIsOnHealthInstitute] = useState({
+    hospital: false,
     healthCenter: false,
     nursery: false,
+    pharmacy: false,
   });
 
   const handleToggle = (category) => {
-    setIsOn((state) => ({
+    setIsOnHealthInstitute((state) => ({
+      ...state,
+      [category]: !state[category],
+    }));
+    setIsOnHealthPersonal((state) => ({
       ...state,
       [category]: !state[category],
     }));
@@ -73,16 +116,34 @@ const Criteria = () => {
 
   const handleSumbit = async (event) => {
     event.preventDefault();
+    const healthInstituteKeys = Object.keys(isOnHealthInstitute);
+    const healthPersonalKeys = Object.keys(isOnHealthPersonal);
+    const healthPersonal = healthPersonalKeys.filter(
+      (key) => isOnHealthPersonal[key]
+    );
+    const healthInstitute = healthInstituteKeys.filter(
+      (key) => healthInstituteKeys[key]
+    );
     try {
       const items = {
-        populationmin: '400',
-        populationmax: '1000',
-        code_departement: ['39', '01'],
-        code_region: ['27', '84'],
-        type_ecole: ['Ecole'],
-        // type_personal_health: [],
-        // type_health_institution: [],
+        populationmin: inputs.populationmin,
+        populationmax: inputs.populationmax,
       };
+      if (departementSelected.length) {
+        items.code_departement = departementSelected.map((dep) => dep.value);
+      }
+      if (regionsSelected.length) {
+        items.code_region = regionsSelected.map((dep) => dep.value);
+      }
+      if (schoolsSelected.length) {
+        items.type_ecole = schoolsSelected.map((dep) => dep.value);
+      }
+      if (healthPersonal.length) {
+        items.type_personal_health = healthPersonal;
+      }
+      if (healthInstitute.length) {
+        items.type_health_institution = healthInstitute;
+      }
       const { data } = await API.getCityWithCriteria(items);
       setCities(data);
       const cityMarkers = data.map((city) => ({
@@ -106,7 +167,7 @@ const Criteria = () => {
       <form onSubmit={handleSumbit} className="criteria">
         <div className="criteria__form__container">
           <section className="range-slider">
-            <label className="rangeValues">
+            <label className="criteria__form__label rangeValues">
               Choisir le nombre d&apos;habitants
             </label>
             <br />
@@ -140,76 +201,72 @@ const Criteria = () => {
           <br />
 
           <section className="departements">
-            <label htmlFor="code_departement">Choisir un département</label>
-            <div className="select">
-              <select
-                id="code_departement"
-                name="code_departement"
-                onChange={handleChange}
-                multiple
-              >
-                <option value={null}>Aucun département</option>
-                {departements.map((departement) => (
-                  <option
-                    value={departement.num_dep}
-                    key={departement.num_dep}
-                    selected={criterias.code_departement.includes(
-                      departement.num_dep
-                    )}
-                  >
-                    {departement.dep_name}
-                  </option>
-                ))}
-              </select>
-              <span className="focus" />
+            <label className="criteria__form__label" htmlFor="code_departement">
+              Choisir un département
+            </label>
+            <div className="criteria__form__multiselect">
+              <MultiSelect
+                options={departementsSelect}
+                value={departementSelected}
+                onChange={setDepartementSelected}
+                labelledBy="Select"
+                overrideStrings={{
+                  allItemsAreSelected: 'Tous les départements',
+                  clearSearch: 'Vider la recherche',
+                  noOptions: "Pas d'options",
+                  search: 'Rechercher',
+                  selectAll: 'Tout sélectionner',
+                  selectAllFiltered: 'Tout sélectionner (Filtré)',
+                  selectSomeItems: 'Tout sélectionner...',
+                }}
+              />
             </div>
           </section>
           <br />
           <section className="regions">
-            <label htmlFor="code_region">Choisir une région</label>
-            <div className="select">
-              <select
-                id="code_region"
-                name="code_region"
-                onChange={handleChange}
-                multiple
-              >
-                <option value={null}>Aucune Région</option>
-                {regionsWithDepartements.map((region) => (
-                  <option
-                    value={region.reg_code}
-                    key={region.reg_code}
-                    selected={criterias.code_region.includes(region.reg_code)}
-                  >
-                    {region.reg_name}
-                  </option>
-                ))}
-              </select>
-              <span className="focus" />
+            <label className="criteria__form__label" htmlFor="code_region">
+              Choisir une région
+            </label>
+            <div className="criteria__form__multiselect">
+              <MultiSelect
+                options={regionsSelect}
+                value={regionsSelected}
+                onChange={setRegionsSelected}
+                labelledBy="Select"
+                overrideStrings={{
+                  allItemsAreSelected: 'Toutes les régions',
+                  clearSearch: 'Vider la recherche',
+                  noOptions: "Pas d'options",
+                  search: 'Rechercher',
+                  selectAll: 'Tout sélectionner',
+                  selectAllFiltered: 'Tout sélectionner (Filtré)',
+                  selectSomeItems: 'Tout sélectionner...',
+                }}
+              />
             </div>
           </section>
 
           <br />
           <section className="schools">
-            <label htmlFor="type_ecole">Choisir le type d&apos;école</label>
-            <div className="select">
-              <select
-                id="type_select"
-                name="type_ecole"
-                onChange={handleChange}
-                multiple
-              >
-                <option value={null}>Aucun établissement</option>
-                {schools.map((schoolType) => (
-                  <option
-                    value={schoolType}
-                    key={schoolType}
-                    selected={criterias.type_ecole.includes(schoolType)}
-                  >
-                    {schoolType}
-                  </option>
-                ))}
-              </select>
+            <label className="criteria__form__label" htmlFor="type_ecole">
+              Choisir le type d&apos;école
+            </label>
+            <div className="criteria__form__multiselect">
+              <MultiSelect
+                options={schoolsSelect}
+                value={schoolsSelected}
+                onChange={setSchoolsSelected}
+                labelledBy="Select"
+                overrideStrings={{
+                  allItemsAreSelected: "Tous les types d'établissements",
+                  clearSearch: 'Vider la recherche',
+                  noOptions: "Pas d'options",
+                  search: 'Rechercher',
+                  selectAll: 'Tout sélectionner',
+                  selectAllFiltered: 'Tout sélectionner (Filtré)',
+                  selectSomeItems: 'Tout sélectionner...',
+                }}
+              />
             </div>
           </section>
 
@@ -217,7 +274,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.pharmacy}
+                data-isOn={isOnHealthInstitute.pharmacy}
                 onClick={() => handleToggle('pharmacy')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -229,7 +286,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.hospital}
+                data-isOn={isOnHealthInstitute.hospital}
                 onClick={() => handleToggle('hospital')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -241,7 +298,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.doctor}
+                data-isOn={isOnHealthPersonal.doctor}
                 onClick={() => handleToggle('doctor')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -253,7 +310,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.nursery}
+                data-isOn={isOnHealthInstitute.nursery}
                 onClick={() => handleToggle('nursery')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -265,7 +322,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.dentist}
+                data-isOn={isOnHealthPersonal.dentist}
                 onClick={() => handleToggle('dentist')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -277,7 +334,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.cardiologist}
+                data-isOn={isOnHealthPersonal.cardiologist}
                 onClick={() => handleToggle('cardiologist')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -289,7 +346,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.dermatologist}
+                data-isOn={isOnHealthPersonal.dermatologist}
                 onClick={() => handleToggle('dermatologist')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -301,7 +358,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.ophtalmologist}
+                data-isOn={isOnHealthPersonal.ophtalmologist}
                 onClick={() => handleToggle('ophtalmologist')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -313,7 +370,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.pediatrician}
+                data-isOn={isOnHealthPersonal.pediatrician}
                 onClick={() => handleToggle('pediatrician')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -325,7 +382,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.pulmonologist}
+                data-isOn={isOnHealthPersonal.pulmonologist}
                 onClick={() => handleToggle('pulmonologist')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -337,7 +394,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.psychiatrist}
+                data-isOn={isOnHealthPersonal.psychiatrist}
                 onClick={() => handleToggle('psychiatrist')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -349,7 +406,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.midwife}
+                data-isOn={isOnHealthPersonal.midwife}
                 onClick={() => handleToggle('midwife')}
               >
                 <motion.div className="handle" layout transition={spring} />
@@ -361,7 +418,7 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={isOn.healthCenter}
+                data-isOn={isOnHealthInstitute.healthCenter}
                 onClick={() => handleToggle('healthCenter')}
               >
                 <motion.div className="handle" layout transition={spring} />
