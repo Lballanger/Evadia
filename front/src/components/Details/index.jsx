@@ -2,12 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { IoStar, IoStarOutline, IoSchool } from 'react-icons/io5';
-import {
-  GiHealthNormal,
-  GiHealing,
-  GiShop,
-  GiMoneyStack,
-} from 'react-icons/gi';
+import { GiHealthNormal, GiHealing, GiShop } from 'react-icons/gi';
 import toast from 'react-hot-toast';
 import cityStore from '../../store/city';
 import userStore from '../../store/user';
@@ -22,7 +17,6 @@ import Card from './Card';
 const initialCardsState = {
   schools: false,
   commerce: false,
-  taxation: false,
   health_institution: false,
   personal_health: false,
 };
@@ -57,17 +51,6 @@ const buttons = [
     key: 'commerce',
     icon: () => (
       <GiShop
-        className="details__card__main__display__cadres__icon"
-        color="green"
-        size="2.6rem"
-      />
-    ),
-  },
-  {
-    cardName: 'Impôts',
-    key: 'taxation',
-    icon: () => (
-      <GiMoneyStack
         className="details__card__main__display__cadres__icon"
         color="green"
         size="2.6rem"
@@ -232,16 +215,30 @@ const Details = () => {
           <div className="details__card__main__info">
             <ul className="details__card__main__ul">
               <li className="details__card__main__li">
-                Code Postal : {city.code_postal[0]}
+                <span className="details__card__main__li__infos">
+                  Code Postal :
+                </span>{' '}
+                {city.code_postal[0]}
               </li>
               <li className="details__card__main__li">
-                Internet (couverture) :{' '}
+                <span className="details__card__main__li__infos">
+                  Couverture Internet :{' '}
+                </span>
                 {city.internet
                   ? `${city.internet[0].coverage}%`
                   : 'Non renseigné'}
               </li>
               <li className="details__card__main__li">
-                Population: {city.population}
+                <span className="details__card__main__li__infos">
+                  Population :
+                </span>{' '}
+                {city.population}
+              </li>
+              <li className="details__card__main__li">
+                <span className="details__card__main__li__infos">
+                  Taxe foncière :
+                </span>{' '}
+                données dynamique à intégrer.
               </li>
             </ul>
           </div>
