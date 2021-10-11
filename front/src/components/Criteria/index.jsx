@@ -8,11 +8,11 @@ import { MultiSelect } from 'react-multi-select-component';
 import API from '../../api';
 import cityStore from '../../store/city';
 import mapStore from '../../store/map';
+import criteriaStore from '../../store/criteria';
 import departements from '../../assets/data/departements-region.json';
 import regionsWithDepartements from '../../assets/data/regions_with_departements.json';
 
 import './styles.scss';
-import criteriaStore from '../../store/criteria';
 
 const schoolsSelect = [
   {
@@ -46,35 +46,18 @@ const Criteria = () => {
   const setMarkers = mapStore(state => state.setMarkers);
   const setMapZoom = mapStore(state => state.setMapZoom);
   const setMapCenter = mapStore(state => state.setMapCenter);
-  // const [inputs, setInputs] = useState(criterias);
-  const [departementSelected, setDepartementSelected] = useState(
-    criterias.code_departement
-  );
-  const [regionsSelected, setRegionsSelected] = useState(criterias.code_region);
-  const [schoolsSelected, setSchoolsSelected] = useState(criterias.type_ecole);
 
   const updateDepartements = e => {
-    setDepartementSelected(e);
     setCriteria('code_departement', e);
   };
 
   const updateRegions = e => {
-    setRegionsSelected(e);
     setCriteria('code_region', e);
   };
 
   const updateSchools = e => {
-    setSchoolsSelected(e);
     setCriteria('type_ecole', e);
   };
-
-  const [isOnHealthPersonal, setIsOnHealthPersonal] = useState(
-    criterias.type_personal_health
-  );
-
-  const [isOnHealthInstitute, setIsOnHealthInstitute] = useState(
-    criterias.type_health_institution
-  );
 
   const handleInstituteToggle = category => {
     setCriteria('type_health_institution', {
@@ -112,27 +95,29 @@ const Criteria = () => {
 
   const handleSumbit = async event => {
     event.preventDefault();
-    const healthInstituteKeys = Object.keys(isOnHealthInstitute);
-    const healthPersonalKeys = Object.keys(isOnHealthPersonal);
+    const healthInstituteKeys = Object.keys(criterias.type_health_institution);
+    const healthPersonalKeys = Object.keys(criterias.type_personal_health);
     const healthPersonal = healthPersonalKeys.filter(
-      key => isOnHealthPersonal[key]
+      key => criterias.type_personal_health[key]
     );
     const healthInstitute = healthInstituteKeys.filter(
-      key => healthInstituteKeys[key]
+      key => criterias.type_health_institution[key]
     );
     try {
       const items = {
         populationmin: criterias.populationmin,
         populationmax: criterias.populationmax,
       };
-      if (departementSelected.length) {
-        items.code_departement = departementSelected.map(dep => dep.value);
+      if (criterias.code_departement.length) {
+        items.code_departement = criterias.code_departement.map(
+          dep => dep.value
+        );
       }
-      if (regionsSelected.length) {
-        items.code_region = regionsSelected.map(dep => dep.value);
+      if (criterias.code_region.length) {
+        items.code_region = criterias.code_region.map(dep => dep.value);
       }
-      if (schoolsSelected.length) {
-        items.type_ecole = schoolsSelected.map(dep => dep.value);
+      if (criterias.type_ecole.length) {
+        items.type_ecole = criterias.type_ecole.map(dep => dep.value);
       }
       if (healthPersonal.length) {
         items.type_personal_health = healthPersonal;
@@ -202,7 +187,7 @@ const Criteria = () => {
             <div className="criteria__form__multiselect">
               <MultiSelect
                 options={departementsSelect}
-                value={departementSelected}
+                value={criterias.code_departement}
                 onChange={updateDepartements}
                 labelledBy="Select"
                 overrideStrings={{
@@ -225,7 +210,7 @@ const Criteria = () => {
             <div className="criteria__form__multiselect">
               <MultiSelect
                 options={regionsSelect}
-                value={regionsSelected}
+                value={criterias.code_region}
                 onChange={updateRegions}
                 labelledBy="Select"
                 overrideStrings={{
@@ -249,7 +234,7 @@ const Criteria = () => {
             <div className="criteria__form__multiselect">
               <MultiSelect
                 options={schoolsSelect}
-                value={schoolsSelected}
+                value={criterias.type_ecole}
                 onChange={updateSchools}
                 labelledBy="Select"
                 overrideStrings={{
