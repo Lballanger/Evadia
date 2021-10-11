@@ -15,6 +15,7 @@ import Connexion from '../Connexion';
 import Account from '../Account';
 import Inscription from '../Inscription';
 import Notfound from '../Notfound';
+import EasterEgg from '../EasterEgg';
 import API from '../../api';
 import { useUser } from '../../hooks/useAuth';
 import useCity from '../../store/city';
@@ -54,49 +55,28 @@ const App = () => {
       <main>
         {!isMobile ? <Map /> : null}
         <Switch>
-          <Route path="/" exact>
-            <Homepage />
-          </Route>
-          <Route path="/contact" exact>
-            <Contact />
-          </Route>
-          <Route path="/about" exact>
-            <About />
-          </Route>
-          <Route path="/legals" exact>
-            <Legals />
-          </Route>
-          <Route path="/criteria" exact>
-            <Criteria />
-          </Route>
-          <Route path="/results" exact>
-            <Results />
-          </Route>
-          <Route path="/details/:codeInsee" exact>
-            <Details />
-          </Route>
-          <Route path="/connexion" exact>
-            <Connexion />
-          </Route>
+          <Route path="/" exact component={Homepage} />
+          <Route path="/contact" exact component={Contact} />
+          <Route path="/about" exact component={About} />
+          <Route path="/legals" exact component={Legals} />
+          <Route path="/criteria" exact component={Criteria} />
+          <Route path="/results" exact component={Results} />
+          <Route path="/details/:codeInsee" exact component={Details} />
+          <Route path="/connexion" exact component={Connexion} />
           <Route path="/account" exact>
             <ProtectedRoute component={Account} />
             {/* <Account /> */}
           </Route>
-          <Route path="/inscription" exact>
-            <Inscription />
-          </Route>
-          <Route path="/newpassword" exact>
-            <NewPassword />
-          </Route>
-          <Route path="/forgottenPassword" exact>
-            <ForgottenPassword />
-          </Route>
-          <Route path="/new-password" exact>
-            <NewPassword />
-          </Route>
-          <Route>
-            <Notfound />
-          </Route>
+          <Route path="/inscription" exact component={Inscription} />
+          <Route path="/newpassword" exact component={NewPassword} />
+          <Route
+            path="/forgottenPassword"
+            exact
+            component={ForgottenPassword}
+          />
+          <Route path="/new-password" exact component={NewPassword} />
+          <Route path="/js" exact component={EasterEgg} />
+          <Route component={Notfound} />
         </Switch>
       </main>
       <Footer />
