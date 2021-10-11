@@ -32,7 +32,9 @@ const DropdownSchool = () => {
         </div>
         {displayMenu ? (
           <ul className="details__dropdown__ul">
-            <li className="details__dropdown__li">42 écoles trouvées</li>
+            <li className="details__dropdown__li">3 écoles primaires</li>
+            <li className="details__dropdown__li">2 collèges</li>
+            <li className="details__dropdown__li">1 lycée</li>
           </ul>
         ) : null}
       </div>

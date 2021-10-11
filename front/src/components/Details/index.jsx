@@ -245,7 +245,7 @@ const Details = () => {
                 <span className="details__card__main__li__infos">
                   Taxe foncière
                 </span>{' '}
-                : données dynamique à intégrer.
+                : {city.property_tax}
               </li>
             </ul>
           </div>
