@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import avatar from '../../assets/images/avatar.png';
 import avatarFC from '../../assets/images/FC.jpg';
 import avatarCK from '../../assets/images/CK.jpg';
+import avatarLB from '../../assets/images/LB.png';
 
 const About = () => (
   <>
@@ -158,8 +159,8 @@ const About = () => (
                   ease: 'easeInOut',
                   times: [0, 0.2, 0.5, 0.8, 3],
                 }}
-                src={avatar}
-                className="About__team__avatar"
+                src={avatarLB}
+                className="About__team__avatarLB"
                 alt="avatar"
               />
               <p className="About__team__dev">Loïc Ballanger</p>

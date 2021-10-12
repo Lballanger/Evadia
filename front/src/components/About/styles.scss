@@ -78,14 +78,21 @@
     }
 
     &__avatarFC {
-      width: 90px;
+      width: 100px;
       height: 120px;
       text-align: center;
       border-bottom: 2px solid black;
       border-radius: 20%;
     }
     &__avatarCK {
-      width: 80px;
+      width: 90px;
+      height: 120px;
+      text-align: center;
+      border-bottom: 2px solid black;
+      border-radius: 20%;
+    }
+    &__avatarLB {
+      width: 105px;
       height: 120px;
       text-align: center;
       border-bottom: 2px solid black;
