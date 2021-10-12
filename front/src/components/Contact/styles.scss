@@ -3,12 +3,21 @@
 // @media screen and (min-width: 320px) and (max-width: 480px) {
 .contact {
   padding: 6rem 1rem;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 4rem;;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+  }
   &__form__div {
     width: fit-content;
     height: fit-content;
     padding: 20% 6%;
 
-    .email {
+      .email {
       font-size: large;
       outline: none;
       padding: 0 0.35rem;
