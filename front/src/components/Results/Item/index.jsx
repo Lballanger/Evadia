@@ -6,24 +6,21 @@ import userStore from '../../../store/user';
 import paris from '../../../assets/images/paris.jpg';
 
 const Item = ({ city }) => {
-  const user = userStore(state => state.user);
+  const user = userStore((state) => state.user);
 
   const showFavorite = () => {
-    console.log(user);
     if (user) {
       const cityIsFavorite = user.favorites.find(
-        favorite => favorite.commune_id === city.code_insee
+        (favorite) => favorite.commune_id === city.code_insee
       );
       if (cityIsFavorite) {
         return <IoStar className="favorite" color="#dcb525" size="1.5em" />;
-      } else {
-        return (
-          <IoStarOutline className="favorite" color="#dcb525" size="1.5em" />
-        );
       }
-    } else {
-      return null;
+      return (
+        <IoStarOutline className="favorite" color="#dcb525" size="1.5em" />
+      );
     }
+    return null;
   };
 
   return (
@@ -49,6 +46,7 @@ const Item = ({ city }) => {
 };
 
 Item.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   city: PropTypes.object.isRequired,
 };
 

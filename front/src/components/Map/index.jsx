@@ -57,10 +57,6 @@ const Map = ({ location: { pathname } }) => {
     }
   }, [center, zoom]);
 
-  useEffect(() => {
-    console.log(markers);
-  }, [markers]);
-
   const getIcon = (type) => {
     switch (type) {
       case 'city':
