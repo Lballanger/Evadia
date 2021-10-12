@@ -13,6 +13,7 @@
 
   &__h1 {
     margin: 2rem 0 2rem 0;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
   }
 
   &__h2 {
@@ -20,6 +21,8 @@
     text-transform: uppercase;
     margin: 1rem;
     font-size: 2rem;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    color: white;
   }
   &__h3 {
     font-size: 1.5rem;

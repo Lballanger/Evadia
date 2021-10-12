@@ -144,7 +144,7 @@ const Criteria = () => {
 
   return (
     <section className="criteria__container">
-      <h1>Rechercher des villes selon vos critères</h1>
+      <h1 className="font-link">Rechercher des villes selon vos critères</h1>
       <form onSubmit={handleSumbit} className="criteria">
         <div className="criteria__form__container">
           <section className="range-slider">

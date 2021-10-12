@@ -26,7 +26,9 @@ const ForgottenPassword = () => {
 
   return (
     <div className="forgoten-password">
-      <div className="forgoten-password__title">MOT DE PASSE OUBLIE</div>
+      <div className="font-link">
+        <div className="forgoten-password__title">MOT DE PASSE OUBLIE</div>
+      </div>
       <section className="forgoten-password__section">
         <Form onSubmit={handleSubmit}>
           <Input

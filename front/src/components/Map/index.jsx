@@ -62,97 +62,97 @@ const Map = ({ location: { pathname } }) => {
       case 'city':
         return new L.Icon({
           iconUrl: CityIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'baby':
         return new L.Icon({
           iconUrl: BabyIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'bakery':
         return new L.Icon({
           iconUrl: BakeryIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'bank':
         return new L.Icon({
           iconUrl: BankIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'books':
         return new L.Icon({
           iconUrl: BooksIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'cloths':
         return new L.Icon({
           iconUrl: ClothsIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'fast_food':
         return new L.Icon({
           iconUrl: FastFoodIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'healthInstitution':
         return new L.Icon({
           iconUrl: HealthInstitutionIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'supermarket':
         return new L.Icon({
           iconUrl: MarketIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'nurse':
         return new L.Icon({
           iconUrl: NurseIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'restauration':
         return new L.Icon({
           iconUrl: RestaurantIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'school':
         return new L.Icon({
           iconUrl: SchoolIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'toilet':
         return new L.Icon({
           iconUrl: ToiletIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'animal':
         return new L.Icon({
           iconUrl: AnimalIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       case 'vehicle':
         return new L.Icon({
           iconUrl: VehicleIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
       default:
         return new L.Icon({
           iconUrl: MarketIcon,
-          iconSize: new L.Point(30, 30),
+          iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
     }

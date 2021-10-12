@@ -7,7 +7,9 @@ const Legals = () => (
   <div className="legals">
     <div className="About__container">
       <h1 className="About__h1">Mentions Légales</h1>
-      <h2 className="About__h2">Evadia</h2>
+      <div className="font-link">
+        <h2 className="About__h2">Evadia</h2>
+      </div>
       <p className="About__p">
         En vertu de l&apos;article 6 de la loi n° 2004-575 du 21 juin 2004 pour
         la confiance dans l&apos;économie numérique, il est précisé aux

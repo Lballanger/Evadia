@@ -12,7 +12,9 @@ const About = () => (
   <>
     <div className="About__container">
       <h1 className="About__h1">A propos</h1>
-      <h2 className="About__h2">Evadia</h2>
+      <div className="font-link">
+        <h2 className="About__h2">Evadia</h2>
+      </div>
       <h3 className="About__h3">Qu'est-ce qu'est EVADIA ?</h3>
       <p className="About__p">
         EVADIA est un projet de fin d'année de 5 étudiants de la promo Uther

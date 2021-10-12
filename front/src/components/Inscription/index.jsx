@@ -152,7 +152,9 @@ const Inscription = () => {
 
   return (
     <div className="inscription">
-      <div className="inscription__title">INSCRIPTION</div>
+      <div className="font-link">
+        <div className="inscription__title">INSCRIPTION</div>
+      </div>
       <section className="inscription__section">
         <Form onSubmit={handleSubmit}>
           <Input

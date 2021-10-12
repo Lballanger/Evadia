@@ -90,7 +90,7 @@ const Header = ({ location: { pathname } }) => {
       >
         <img src={logo} className="header__logo" alt="Logo Evadia" />
         <h1 className="header__h1">
-          <strong>Evadia</strong>
+          <strong className="font-link">Evadia</strong>
         </h1>
       </NavLink>
 

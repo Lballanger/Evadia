@@ -47,7 +47,9 @@ const Connexion = () => {
 
   return (
     <div className="connexion">
-      <div className="connexion__title">CONNEXION</div>
+      <div className="font-link">
+        <div className="connexion__title">CONNEXION</div>
+      </div>
       <section className="connexion__section">
         {!isMobile && (
           <div>
