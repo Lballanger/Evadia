@@ -4,16 +4,21 @@
   .criteria__container {
     display: flex;
     flex-direction: column;
-    // background: rgba(255, 255, 255, 0.514);
     min-height: 100vh;
     color: #000;
     padding: 6rem 1rem;
-  }
+
+    h1 { 
+      width: 100%;
+    
+    }
+    }
   .criteria {
     background-color: rgba($color: #000000, $alpha: 0.2);
     padding: 2rem;
     border-radius: 20px;
     margin-top: -2rem;
+    width: 350px;
     
     &__h1 {
       font-size: 2rem;
@@ -23,6 +28,15 @@
       margin-top: 0rem;
       padding-bottom: 1.5rem;
       border-bottom: black solid 2px;
+    }
+
+    &__form__label {
+      font-weight: bold; 
+      text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+      color: white;
+      margin-bottom: 0.6rem;
+      white-space: nowrap;
+      width: 100%;
     }
 
     &__inputs {
@@ -85,14 +99,34 @@
         box-shadow: inset 5px 5px 0px #25c047, inset -5px -5px 0px #31ff5f;
       }
     }
+
+    section.range-slider {
+          
+      span {
+      margin-top: -0.3rem;
+      font-size: 0.9rem;
+      color: white;
+      width: 15%;
+      left: 0;
+      right: 0; 
+      }
+    }
+    
+    .range-slider__span {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-left: auto;
+    }
   }
-
-
-
+  
   .schools {
     margin-bottom: 2rem;
   }
+
 }
+
+
 
 /** Switch
  -------------------------------------*/
@@ -141,7 +175,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    //max-height: 100vh;
     padding: 6rem 1rem;
     max-width:1600px;
     margin: 0 auto;
@@ -264,24 +297,37 @@
         box-shadow: inset 5px 5px 0px #25c047, inset -5px -5px 0px #31ff5f;
       }
     }
+    .regions {
+      width: 270px;
+    }
+    
+    .departements {
+      height: 25%;
+      width: 270px; 
+    }
+
+    .schools {
+      width: 270px;
+    }
   }
+  
 }
 
 .regions {
   grid-area: 2 / 1 / 3 / 1;
-  width: 270px;
+  width: 100%;
 }
 
 .departements {
   grid-area: 3 / 1 / 4 / 1; 
   height: 25%;
-  width: 270px; 
+  width: 100%; 
 }
 
 .schools {
   grid-area: 4 / 1 / 5 / 1;
   height: 25%; 
-  width: 270px;
+  width: 100%;
 }
 
 .pharmacy {
@@ -354,7 +400,7 @@ section.range-slider {
   margin-top: -0.3rem;
   font-size: 0.9rem;
   color: white;
-  width: 100%;
+  width: 15%;
   margin-left: 4px;
   margin-right: 19px
   }
@@ -365,8 +411,6 @@ section.range-slider {
   width: 100%;
   justify-content: space-between;
   margin-left: auto;
-  
-
 }
 
 .range-slider__input {

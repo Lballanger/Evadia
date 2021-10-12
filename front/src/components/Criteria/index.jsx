@@ -29,44 +29,44 @@ const schoolsSelect = [
   },
 ];
 
-const departementsSelect = departements.map(departement => ({
+const departementsSelect = departements.map((departement) => ({
   label: departement.dep_name,
   value: departement.num_dep.toString(),
 }));
-const regionsSelect = regionsWithDepartements.map(region => ({
+const regionsSelect = regionsWithDepartements.map((region) => ({
   label: region.reg_name,
   value: region.reg_code.toString(),
 }));
 
 const Criteria = () => {
   const history = useHistory();
-  const setCities = cityStore(state => state.setCities);
-  const criterias = criteriaStore(state => state.criterias);
-  const setCriteria = criteriaStore(state => state.setCriteria);
-  const setMarkers = mapStore(state => state.setMarkers);
-  const setMapZoom = mapStore(state => state.setMapZoom);
-  const setMapCenter = mapStore(state => state.setMapCenter);
+  const setCities = cityStore((state) => state.setCities);
+  const criterias = criteriaStore((state) => state.criterias);
+  const setCriteria = criteriaStore((state) => state.setCriteria);
+  const setMarkers = mapStore((state) => state.setMarkers);
+  const setMapZoom = mapStore((state) => state.setMapZoom);
+  const setMapCenter = mapStore((state) => state.setMapCenter);
 
-  const updateDepartements = e => {
+  const updateDepartements = (e) => {
     setCriteria('code_departement', e);
   };
 
-  const updateRegions = e => {
+  const updateRegions = (e) => {
     setCriteria('code_region', e);
   };
 
-  const updateSchools = e => {
+  const updateSchools = (e) => {
     setCriteria('type_ecole', e);
   };
 
-  const handleInstituteToggle = category => {
+  const handleInstituteToggle = (category) => {
     setCriteria('type_health_institution', {
       ...criterias.type_health_institution,
       [category]: !criterias.type_health_institution[category],
     });
   };
 
-  const handlePersonalToggle = category => {
+  const handlePersonalToggle = (category) => {
     setCriteria('type_personal_health', {
       ...criterias.type_personal_health,
       [category]: !criterias.type_personal_health[category],
@@ -79,7 +79,7 @@ const Criteria = () => {
     damping: 5,
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     if (
       event.target.name === 'populationmax' &&
       +event.target.value <= +criterias.populationmin
@@ -93,15 +93,15 @@ const Criteria = () => {
     setCriteria(event.target.name, event.target.value);
   };
 
-  const handleSumbit = async event => {
+  const handleSumbit = async (event) => {
     event.preventDefault();
     const healthInstituteKeys = Object.keys(criterias.type_health_institution);
     const healthPersonalKeys = Object.keys(criterias.type_personal_health);
     const healthPersonal = healthPersonalKeys.filter(
-      key => criterias.type_personal_health[key]
+      (key) => criterias.type_personal_health[key]
     );
     const healthInstitute = healthInstituteKeys.filter(
-      key => criterias.type_health_institution[key]
+      (key) => criterias.type_health_institution[key]
     );
     try {
       const items = {
@@ -110,14 +110,14 @@ const Criteria = () => {
       };
       if (criterias.code_departement.length) {
         items.code_departement = criterias.code_departement.map(
-          dep => dep.value
+          (dep) => dep.value
         );
       }
       if (criterias.code_region.length) {
-        items.code_region = criterias.code_region.map(dep => dep.value);
+        items.code_region = criterias.code_region.map((dep) => dep.value);
       }
       if (criterias.type_ecole.length) {
-        items.type_ecole = criterias.type_ecole.map(dep => dep.value);
+        items.type_ecole = criterias.type_ecole.map((dep) => dep.value);
       }
       if (healthPersonal.length) {
         items.type_personal_health = healthPersonal;
@@ -127,7 +127,7 @@ const Criteria = () => {
       }
       const { data } = await API.getCityWithCriteria(items);
       setCities(data);
-      const cityMarkers = data.map(city => ({
+      const cityMarkers = data.map((city) => ({
         name: city.city_name,
         type: 'city',
         coords: [city.coordinates.x, city.coordinates.y],
@@ -153,10 +153,10 @@ const Criteria = () => {
             </label>
             <br />
             <br />
-            <span className="range-slider__span">
-              Minimum: {criterias.populationmin} - Maximum:{' '}
-              {criterias.populationmax}
-            </span>
+            <div className="range-slider__span">
+              <span>{criterias.populationmin}</span>
+              <span>{criterias.populationmax}</span>
+            </div>
             <div className="range-slider__input">
               <input
                 name="populationmin"
@@ -179,30 +179,6 @@ const Criteria = () => {
             </div>
           </section>
           <br />
-
-          <section className="departements">
-            <label className="criteria__form__label" htmlFor="code_departement">
-              Choisir un département
-            </label>
-            <div className="criteria__form__multiselect">
-              <MultiSelect
-                options={departementsSelect}
-                value={criterias.code_departement}
-                onChange={updateDepartements}
-                labelledBy="Select"
-                overrideStrings={{
-                  allItemsAreSelected: 'Tous les départements',
-                  clearSearch: 'Vider la recherche',
-                  noOptions: "Pas d'options",
-                  search: 'Rechercher',
-                  selectAll: 'Tout sélectionner',
-                  selectAllFiltered: 'Tout sélectionner (Filtré)',
-                  selectSomeItems: 'Tout sélectionner...',
-                }}
-              />
-            </div>
-          </section>
-          <br />
           <section className="regions">
             <label className="criteria__form__label" htmlFor="code_region">
               Choisir une région
@@ -215,6 +191,29 @@ const Criteria = () => {
                 labelledBy="Select"
                 overrideStrings={{
                   allItemsAreSelected: 'Toutes les régions',
+                  clearSearch: 'Vider la recherche',
+                  noOptions: "Pas d'options",
+                  search: 'Rechercher',
+                  selectAll: 'Tout sélectionner',
+                  selectAllFiltered: 'Tout sélectionner (Filtré)',
+                  selectSomeItems: 'Tout sélectionner...',
+                }}
+              />
+            </div>
+          </section>
+          <br />
+          <section className="departements">
+            <label className="criteria__form__label" htmlFor="code_departement">
+              Choisir un département
+            </label>
+            <div className="criteria__form__multiselect">
+              <MultiSelect
+                options={departementsSelect}
+                value={criterias.code_departement}
+                onChange={updateDepartements}
+                labelledBy="Select"
+                overrideStrings={{
+                  allItemsAreSelected: 'Tous les départements',
                   clearSearch: 'Vider la recherche',
                   noOptions: "Pas d'options",
                   search: 'Rechercher',
