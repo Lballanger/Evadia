@@ -6,11 +6,6 @@
 
 ---
 
-![GitHub forks](https://img.shields.io/github/forks/GermainMichaud/blog-api?style=flat-square)
-![Version](https://img.shields.io/github/package-json/v/GermainMichaud/blog-api?style=flat-square)
-
----
-
 ## Contenue
 
 - [projet-15-on-demenage](#projet-15-on-demenage)
@@ -169,32 +164,12 @@ sqitch add <nom_de_la_migration> -m "votre_message_de_commit"
 
 ## Todo
 
-- [x] Initialiser le projet
-- [ ] Créer les migrations
-  - [ ] Commune
-  - [ ] User
-  - [ ] User_has_commune
+- [x] Initialize project
+- [ ] Create migrations
+  - [ ] Weather
+  - [ ] Hospital ?
   - [ ] ...
-- [ ] Créer models
-  - [ ] Commune
-  - [ ] User
-  - [ ] User_has_commune
-  - [ ] ...
-- [ ] Créer controllers
-  - [ ] Commune
-  - [ ] User
-  - [ ] User_has_commune
-  - [ ] ...
-- [ ] Créer routes
-  - [ ] Commune
-  - [ ] User
-  - [ ] User_has_commune
-  - [ ] ...
-- [ ] Créer authentication
-  - [ ] Controller
-  - [ ] Middleware
-  - [ ] ...
-- [ ] Créer test
+- [ ] Create test
 - [ ] ...
 
 ## License
