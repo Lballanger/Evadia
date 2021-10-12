@@ -103,6 +103,25 @@
     min-height: 100vh;
   }
 
+  .background_video_cross {
+    // background-image: url("../../assets/images/cross.png");
+    // background-repeat: repeat;
+    // position: fixed;
+    // z-index: -1;
+    // width: 100%;
+    // object-fit: cover;
+    // min-height: 100vh;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      background-image: url("../../assets/images/cross_2.svg");
+      background-repeat: repeat;
+      inset: 0;
+    }
+  }
+
   .homepage__container {
     display: flex;
     flex-direction: column;

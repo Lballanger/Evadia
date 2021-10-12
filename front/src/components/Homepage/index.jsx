@@ -4,7 +4,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import backgroundVideo from '../../assets/video/timelapse_light_grid_4.webm';
+import backgroundVideo from '../../assets/video/timelapse_no_grid.webm';
 import API from '../../api';
 
 import './styles.scss';
@@ -34,9 +34,11 @@ const Homepage = () => {
   return (
     <>
       <div className="background_video">
-        <video autoPlay loop muted id="video">
-          <source src={backgroundVideo} type="video/mp4" />
-        </video>
+        <span className="background_video_cross">
+          <video autoPlay loop muted id="video">
+            <source src={backgroundVideo} type="video/mp4" />
+          </video>
+        </span>
       </div>
       <div className="homepage__container">
         <h1 className="homepage__container__h1">
