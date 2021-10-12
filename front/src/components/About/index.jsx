@@ -4,6 +4,7 @@ import './styles.scss';
 import { motion } from 'framer-motion';
 import avatar from '../../assets/images/avatar.png';
 import avatarFC from '../../assets/images/FC.jpg';
+import avatarCK from '../../assets/images/CK.jpg';
 
 const About = () => (
   <>
@@ -107,8 +108,8 @@ const About = () => (
                   ease: 'easeInOut',
                   times: [0, 0.2, 0.5, 0.8, 3],
                 }}
-                src={avatar}
-                className="About__team__avatar"
+                src={avatarCK}
+                className="About__team__avatarCK"
                 alt="avatar"
               />
               <p className="About__team__dev">Clément Kieken</p>
@@ -134,7 +135,7 @@ const About = () => (
                   times: [0, 0.2, 0.5, 0.8, 3],
                 }}
                 src={avatarFC}
-                className="About__team__avatar"
+                className="About__team__avatarFC"
                 alt="avatar"
               />
               <p className="About__team__dev">François Charron</p>
