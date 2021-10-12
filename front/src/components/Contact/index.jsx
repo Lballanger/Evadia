@@ -61,8 +61,8 @@ const Contact = () => {
 
   return (
     <div className="contact">
-      <div className="font-link">
-        <div className="inscription__title">CONTACT</div>
+      <div className="koho">
+        <div className="contact__title">CONTACT</div>
       </div>
       <Form onSubmit={handleSubmit}>
         <Input

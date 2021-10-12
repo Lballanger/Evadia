@@ -11,7 +11,9 @@ import avatarAS from '../../assets/images/AS.jpg';
 const About = () => (
   <>
     <div className="About__container">
-      <h1 className="About__h1">A propos</h1>
+      <div className="koho">
+        <h1 className="About__h1">A PROPOS</h1>
+      </div>
       <div className="font-link">
         <h2 className="About__h2">Evadia</h2>
       </div>

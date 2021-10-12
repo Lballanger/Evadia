@@ -26,7 +26,7 @@ const ForgottenPassword = () => {
 
   return (
     <div className="forgoten-password">
-      <div className="font-link">
+      <div className="koho">
         <div className="forgoten-password__title">MOT DE PASSE OUBLIE</div>
       </div>
       <section className="forgoten-password__section">

@@ -47,7 +47,7 @@ const Connexion = () => {
 
   return (
     <div className="connexion">
-      <div className="font-link">
+      <div className="koho">
         <div className="connexion__title">CONNEXION</div>
       </div>
       <section className="connexion__section">

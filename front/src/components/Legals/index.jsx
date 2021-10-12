@@ -6,7 +6,9 @@ import './styles.scss';
 const Legals = () => (
   <div className="legals">
     <div className="About__container">
-      <h1 className="About__h1">Mentions Légales</h1>
+      <div className="koho">
+        <h1 className="About__h1">Mentions Légales</h1>
+      </div>
       <div className="font-link">
         <h2 className="About__h2">Evadia</h2>
       </div>

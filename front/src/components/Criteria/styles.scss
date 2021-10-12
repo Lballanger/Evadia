@@ -10,9 +10,10 @@
 
     h1 { 
       width: 100%;
+      text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    }
+    }
     
-    }
-    }
   .criteria {
     background-color: rgba($color: #000000, $alpha: 0.2);
     padding: 2rem;
@@ -184,7 +185,8 @@
     margin-top: 1rem;
     margin-bottom: 2rem;
     max-width:1600px;
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    
   }
 
   .criteria {
@@ -210,12 +212,7 @@
       max-width: 300px;
       // z-index: 99;
     }
-
-    span {
-      text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-    }
-  
-      
+          
     &__form__container {
       display: grid;
       grid-template-columns: 1fr 0.4fr repeat(3, 1.2fr);
@@ -642,7 +639,6 @@ select[multiple] {
   margin-bottom: 8px;
 
   span {
-    font-weight: bold;
     font-size: 1.1rem;
   }
 }

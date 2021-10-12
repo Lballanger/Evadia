@@ -152,7 +152,7 @@ const Inscription = () => {
 
   return (
     <div className="inscription">
-      <div className="font-link">
+      <div className="koho">
         <div className="inscription__title">INSCRIPTION</div>
       </div>
       <section className="inscription__section">
