@@ -6,11 +6,6 @@
 
 ---
 
-![GitHub forks](https://img.shields.io/github/forks/GermainMichaud/blog-api?style=flat-square)
-![Version](https://img.shields.io/github/package-json/v/GermainMichaud/blog-api?style=flat-square)
-
----
-
 ## Content
 
 - [projet-15-on-demenage](#projet-15-on-demenage)
@@ -171,28 +166,8 @@ sqitch add <migration_name> -m "your_commit_message"
 
 - [x] Initialize project
 - [ ] Create migrations
-  - [ ] Commune
-  - [ ] User
-  - [ ] User_has_commune
-  - [ ] ...
-- [ ] Create models
-  - [ ] Commune
-  - [ ] User
-  - [ ] User_has_commune
-  - [ ] ...
-- [ ] Create controllers
-  - [ ] Commune
-  - [ ] User
-  - [ ] User_has_commune
-  - [ ] ...
-- [ ] Create routes
-  - [ ] Commune
-  - [ ] User
-  - [ ] User_has_commune
-  - [ ] ...
-- [ ] Create authentication
-  - [ ] Controller
-  - [ ] Middleware
+  - [ ] Weather
+  - [ ] Hospital ?
   - [ ] ...
 - [ ] Create test
 - [ ] ...
