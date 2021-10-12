@@ -15,6 +15,7 @@
 
     &__evadia {
       // position: relative;
+      font-family: "Cagliostro";
       margin-bottom: 3rem;
       text-align: center;
       font-size: 2rem;
@@ -65,10 +66,10 @@
       &__link {
         width: 100%;
         padding: 1rem 1.3rem;
-        margin-left:auto;
+        margin-left: auto;
         margin-right: auto;
-        justify-content:center;
-        align-items:center;
+        justify-content: center;
+        align-items: center;
         margin-top: 2rem;
         background-color: white;
         text-align: center;
@@ -80,7 +81,7 @@
         font-size: 1.5rem;
         letter-spacing: 1px;
         cursor: pointer;
-        transition: all 0.4s  ease;
+        transition: all 0.4s ease;
         position: relative;
         display: inline-block;
         outline: none;
@@ -96,7 +97,6 @@
         &__button:active {
           top: 30px;
         }
-
       }
 
       &__link:hover {
@@ -190,16 +190,16 @@
       // &__link:hover {
       //   border-radius: 20px;
       //   background: #ffc64d;
-        // box-shadow: inset 5px 5px 0px #d9a841, inset -5px -5px 0px #ffe459;
+      // box-shadow: inset 5px 5px 0px #d9a841, inset -5px -5px 0px #ffe459;
       // color: rgb(217, 255, 220);
       // }
       &__link {
         width: 100%;
         padding: 1rem 1.3rem;
-        margin-left:auto;
+        margin-left: auto;
         margin-right: auto;
-        justify-content:center;
-        align-items:center;
+        justify-content: center;
+        align-items: center;
         margin-top: 2rem;
         background-color: white;
         text-align: center;
@@ -211,7 +211,7 @@
         font-size: 1.5rem;
         letter-spacing: 1px;
         cursor: pointer;
-        transition: all 0.4s  ease;
+        transition: all 0.4s ease;
         position: relative;
         display: inline-block;
         outline: none;
@@ -226,19 +226,16 @@
           top: 30px;
         }
       }
-      
+
       &__link:hover {
         box-shadow: 3px 3px #7e611f;
         background: linear-gradient(145deg, #ffe459, #95880e);
         top: 3px;
         color: black;
-        
       }
     }
   }
 }
-
-
 
 @-webkit-keyframes tracking-in-expand-fwd-top {
   0% {

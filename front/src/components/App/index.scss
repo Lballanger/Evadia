@@ -1,10 +1,16 @@
+@font-face {
+  font-family: "Cagliostro";
+  src: url("https://fonts.googleapis.com/css2?family=Cagliostro&display=swap");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Cagliostro" "Droid Sans", "Cagliostro",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('../../assets/images/bckgrnd_blue.jpg');
+  background-image: url("../../assets/images/bckgrnd_blue.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -20,7 +26,8 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 ul {
