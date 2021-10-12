@@ -4,6 +4,9 @@ import './styles.scss';
 import { motion } from 'framer-motion';
 import avatar from '../../assets/images/avatar.png';
 import avatarFC from '../../assets/images/FC.jpg';
+import avatarCK from '../../assets/images/CK.jpg';
+import avatarLB from '../../assets/images/LB.png';
+import avatarAS from '../../assets/images/AS.jpg';
 
 const About = () => (
   <>
@@ -80,8 +83,8 @@ const About = () => (
                   ease: 'easeInOut',
                   times: [0, 0.2, 0.5, 0.8, 3],
                 }}
-                src={avatar}
-                className="About__team__avatar"
+                src={avatarAS}
+                className="About__team__avatarAS"
                 alt="avatar"
               />
               <p className="About__team__dev">Alison Serra</p>
@@ -107,8 +110,8 @@ const About = () => (
                   ease: 'easeInOut',
                   times: [0, 0.2, 0.5, 0.8, 3],
                 }}
-                src={avatar}
-                className="About__team__avatar"
+                src={avatarCK}
+                className="About__team__avatarCK"
                 alt="avatar"
               />
               <p className="About__team__dev">Clément Kieken</p>
@@ -134,7 +137,7 @@ const About = () => (
                   times: [0, 0.2, 0.5, 0.8, 3],
                 }}
                 src={avatarFC}
-                className="About__team__avatar"
+                className="About__team__avatarFC"
                 alt="avatar"
               />
               <p className="About__team__dev">François Charron</p>
@@ -157,8 +160,8 @@ const About = () => (
                   ease: 'easeInOut',
                   times: [0, 0.2, 0.5, 0.8, 3],
                 }}
-                src={avatar}
-                className="About__team__avatar"
+                src={avatarLB}
+                className="About__team__avatarLB"
                 alt="avatar"
               />
               <p className="About__team__dev">Loïc Ballanger</p>

@@ -153,10 +153,10 @@ const Criteria = () => {
             </label>
             <br />
             <br />
-            <span className="range-slider__span">
-              Minimum: {criterias.populationmin} - Maximum:{' '}
-              {criterias.populationmax}
-            </span>
+            <div className="range-slider__span">
+              <span>{criterias.populationmin}</span>
+              <span>{criterias.populationmax}</span>
+            </div>
             <div className="range-slider__input">
               <input
                 name="populationmin"
@@ -179,30 +179,6 @@ const Criteria = () => {
             </div>
           </section>
           <br />
-
-          <section className="departements">
-            <label className="criteria__form__label" htmlFor="code_departement">
-              Choisir un département
-            </label>
-            <div className="criteria__form__multiselect">
-              <MultiSelect
-                options={departementsSelect}
-                value={criterias.code_departement}
-                onChange={updateDepartements}
-                labelledBy="Select"
-                overrideStrings={{
-                  allItemsAreSelected: 'Tous les départements',
-                  clearSearch: 'Vider la recherche',
-                  noOptions: "Pas d'options",
-                  search: 'Rechercher',
-                  selectAll: 'Tout sélectionner',
-                  selectAllFiltered: 'Tout sélectionner (Filtré)',
-                  selectSomeItems: 'Tout sélectionner...',
-                }}
-              />
-            </div>
-          </section>
-          <br />
           <section className="regions">
             <label className="criteria__form__label" htmlFor="code_region">
               Choisir une région
@@ -215,6 +191,29 @@ const Criteria = () => {
                 labelledBy="Select"
                 overrideStrings={{
                   allItemsAreSelected: 'Toutes les régions',
+                  clearSearch: 'Vider la recherche',
+                  noOptions: "Pas d'options",
+                  search: 'Rechercher',
+                  selectAll: 'Tout sélectionner',
+                  selectAllFiltered: 'Tout sélectionner (Filtré)',
+                  selectSomeItems: 'Tout sélectionner...',
+                }}
+              />
+            </div>
+          </section>
+          <br />
+          <section className="departements">
+            <label className="criteria__form__label" htmlFor="code_departement">
+              Choisir un département
+            </label>
+            <div className="criteria__form__multiselect">
+              <MultiSelect
+                options={departementsSelect}
+                value={criterias.code_departement}
+                onChange={updateDepartements}
+                labelledBy="Select"
+                overrideStrings={{
+                  allItemsAreSelected: 'Tous les départements',
                   clearSearch: 'Vider la recherche',
                   noOptions: "Pas d'options",
                   search: 'Rechercher',
