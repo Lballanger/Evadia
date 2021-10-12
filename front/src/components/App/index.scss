@@ -1,13 +1,12 @@
-@font-face {
-  font-family: "Cagliostro";
-  src: url("https://fonts.googleapis.com/css2?family=Cagliostro&display=swap");
+.font-link {
+  font-family: "Cagliostro", regular;
 }
 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Cagliostro" "Droid Sans", "Cagliostro",
-    "Helvetica Neue", sans-serif;
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url("../../assets/images/bckgrnd_blue.jpg");

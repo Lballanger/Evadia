@@ -13,16 +13,18 @@
     max-height: 100vh;
     padding-top: 25%;
 
-    &__evadia {
-      // position: relative;
-      font-family: "Cagliostro";
-      margin-bottom: 3rem;
+    &__h1 {
       text-align: center;
+      margin-bottom: 1rem;
       font-size: 2rem;
+      text-shadow: 2px 2px 5px rgba(14, 31, 14, 0.7);
+      margin-bottom: 3rem;
+      font-family: "Cagliostro";
+      text-align: center;
+      font-size: 4rem;
       text-transform: uppercase;
       font-weight: bold;
-      font-size: 2.5rem;
-      color: #54e35d;
+      color: #ffffff;
       text-shadow: 2px 2px 5px rgba(14, 31, 14, 0.5);
       // -webkit-animation: tracking-in-expand-fwd-top 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
       //     animation: tracking-in-expand-fwd-top 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
@@ -30,26 +32,6 @@
         cubic-bezier(0.215, 0.61, 0.355, 1) both;
       animation: tracking-in-expand-fwd-top 1s
         cubic-bezier(0.215, 0.61, 0.355, 1) both;
-    }
-
-    // &__h1:before {
-    //   z-index: -1;
-    //   content: "";
-    //   display: block;
-    //   position: absolute;
-    //   inset: 0;
-    //   background-color: rgba(54, 54, 54, 0.9);
-    //   width: auto;
-    //   filter: blur(70px);
-    // }
-
-    &__h1 {
-      // position: relative;
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 2rem;
-      color: white;
-      text-shadow: 2px 2px 5px rgba(14, 31, 14, 0.7);
     }
     &__h2 {
       display: none;
@@ -127,14 +109,14 @@
     justify-content: space-between;
     padding-top: 10%;
 
-    &__evadia {
-      text-transform: uppercase;
+    &__h1 {
+      color: white;
+      margin-bottom: 5rem;
       text-align: center;
-      color: #38bd98;
-      margin-bottom: 6rem;
+      text-transform: uppercase;
       font-weight: bold;
-      font-size: 3.5rem;
-      text-shadow: 2px 2px 3px rgba(39, 39, 39, 1);
+      font-size: 7rem;
+      text-shadow: 2px 2px 5px rgba(14, 31, 14, 0.5);
       // -webkit-animation: tracking-in-expand-fwd-top 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
       //     animation: tracking-in-expand-fwd-top 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
       -webkit-animation: tracking-in-expand-fwd-top 1s
@@ -142,19 +124,12 @@
       animation: tracking-in-expand-fwd-top 1s
         cubic-bezier(0.215, 0.61, 0.355, 1) both;
     }
-    &__h1 {
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 3rem;
-      color: white;
-      text-shadow: 1px 1px 20px rgba(39, 39, 39, 0.7);
-    }
     &__h2 {
       text-align: center;
       font-size: 2rem;
       margin-bottom: 6rem;
       color: white;
-      text-shadow: 1px 1px 18px rgb(44, 44, 44);
+      text-shadow: 2px 2px 18px rgb(44, 44, 44);
     }
     &__search {
       display: flex;
