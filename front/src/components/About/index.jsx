@@ -7,6 +7,8 @@ import avatarFC from '../../assets/images/FC.jpg';
 import avatarCK from '../../assets/images/CK.jpg';
 import avatarLB from '../../assets/images/LB.png';
 import avatarAS from '../../assets/images/AS.jpg';
+import git from '../../assets/images/git.png';
+import linkedin from '../../assets/images/linkedin.png';
 
 const About = () => (
   <>
@@ -44,131 +46,242 @@ const About = () => (
       <div className="About__team">
         <div className="About__team__display">
           <div className="About__team__one">
-            <a
-              href="https://github.com/GermainMichaud"
-              className="About__team__a"
-            >
-              <motion.img
-                whileHover={{
-                  scale: [1, 2, 2, 1, 1],
-                  rotate: [0, 0, -360, -360, -360],
-                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
-                }}
-                transition={{
-                  duration: 2,
-                  ease: 'easeInOut',
-                  times: [0, 0.2, 0.5, 0.8, 3],
-                }}
-                src={avatar}
-                className="About__team__avatar"
-                alt="avatar"
-              />
-              <p className="About__team__dev">Germain Michaud</p>
-              <p className="About__team__role">
-                <span className="italic">Scrum Master</span>
-              </p>
-            </a>
+            <motion.img
+              whileHover={{
+                scale: [1, 2, 2, 1, 1],
+                rotate: [0, 0, -360, -360, -360],
+                borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+              }}
+              transition={{
+                duration: 2,
+                ease: 'easeInOut',
+                times: [0, 0.2, 0.5, 0.8, 3],
+              }}
+              src={avatar}
+              className="About__team__avatar"
+              alt="avatar"
+            />
+            <p className="About__team__dev">Germain Michaud</p>
+            <p className="About__team__role">
+              <span className="italic">Scrum Master</span>
+            </p>
+            <div className="About__team__links">
+              <a
+                href="https://github.com/GermainMichaud"
+                className="About__team__a"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={git}
+                  alt="github"
+                  className="About__team__links__git"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/germainmichaud/"
+                className="About__team__a"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={linkedin}
+                  alt="linkedin"
+                  className="About__team__links__git"
+                />
+              </a>
+            </div>
           </div>
 
           <div className="About__team__one">
-            <a href="https://github.com/AlisonSerra" className="About__team__a">
-              <motion.img
-                whileHover={{
-                  scale: [1, 2, 2, 1, 1],
-                  rotate: [0, 0, -360, -360, -360],
-                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
-                }}
-                transition={{
-                  duration: 2,
-                  ease: 'easeInOut',
-                  times: [0, 0.2, 0.5, 0.8, 3],
-                }}
-                src={avatarAS}
-                className="About__team__avatarAS"
-                alt="avatar"
-              />
-              <p className="About__team__dev">Alison Serra</p>
-              <p className="About__team__role">
-                <span className="italic">Git Master</span>
-              </p>
-            </a>
+            <motion.img
+              whileHover={{
+                scale: [1, 2, 2, 1, 1],
+                rotate: [0, 0, -360, -360, -360],
+                borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+              }}
+              transition={{
+                duration: 2,
+                ease: 'easeInOut',
+                times: [0, 0.2, 0.5, 0.8, 3],
+              }}
+              src={avatarAS}
+              className="About__team__avatarAS"
+              alt="avatar"
+            />
+            <p className="About__team__dev">Alison Serra</p>
+            <p className="About__team__role">
+              <span className="italic">Git Master</span>
+            </p>
+            <div className="About__team__links">
+              <a
+                href="https://github.com/AlisonSerra"
+                className="About__team__a"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={git}
+                  alt="github"
+                  className="About__team__links__git"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/alison-serra/"
+                className="About__team__a"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={linkedin}
+                  alt="linkedin"
+                  className="About__team__links__git"
+                />
+              </a>
+            </div>
           </div>
 
           <div className="About__team__one">
-            <a
-              href="https://github.com/Clementkieken"
-              className="About__team__a"
-            >
-              <motion.img
-                whileHover={{
-                  scale: [1, 2, 2, 1, 1],
-                  rotate: [0, 0, -360, -360, -360],
-                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
-                }}
-                transition={{
-                  duration: 2,
-                  ease: 'easeInOut',
-                  times: [0, 0.2, 0.5, 0.8, 3],
-                }}
-                src={avatarCK}
-                className="About__team__avatarCK"
-                alt="avatar"
-              />
-              <p className="About__team__dev">Clément Kieken</p>
-              <p className="About__team__role">
-                <span className="italic">Product Owner</span>
-              </p>
-            </a>
+            <motion.img
+              whileHover={{
+                scale: [1, 2, 2, 1, 1],
+                rotate: [0, 0, -360, -360, -360],
+                borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+              }}
+              transition={{
+                duration: 2,
+                ease: 'easeInOut',
+                times: [0, 0.2, 0.5, 0.8, 3],
+              }}
+              src={avatarCK}
+              className="About__team__avatarCK"
+              alt="avatar"
+            />
+            <p className="About__team__dev">Clément Kieken</p>
+            <p className="About__team__role">
+              <span className="italic">Product Owner</span>
+            </p>
+            <div className="About__team__links">
+              <a
+                href="https://github.com/Clementkieken"
+                className="About__team__a"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={git}
+                  alt="github"
+                  className="About__team__links__git"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/clement-kieken-1504b168/"
+                className="About__team__a"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={linkedin}
+                  alt="linkedin"
+                  className="About__team__links__git"
+                />
+              </a>
+            </div>
           </div>
           <div className="About__team__one">
-            <a
-              href="https://github.com/FrancoisCHARRON"
-              className="About__team__a"
-            >
-              <motion.img
-                whileHover={{
-                  scale: [1, 2, 2, 1, 1],
-                  rotate: [0, 0, -360, -360, -360],
-                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
-                }}
-                transition={{
-                  duration: 2,
-                  ease: 'easeInOut',
-                  times: [0, 0.2, 0.5, 0.8, 3],
-                }}
-                src={avatarFC}
-                className="About__team__avatarFC"
-                alt="avatar"
-              />
-              <p className="About__team__dev">François Charron</p>
-              <p className="About__team__role">
-                <span className="italic">Lead Dev Front</span>
-              </p>
-            </a>
+            <motion.img
+              whileHover={{
+                scale: [1, 2, 2, 1, 1],
+                rotate: [0, 0, -360, -360, -360],
+                borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+              }}
+              transition={{
+                duration: 2,
+                ease: 'easeInOut',
+                times: [0, 0.2, 0.5, 0.8, 3],
+              }}
+              src={avatarFC}
+              className="About__team__avatarFC"
+              alt="avatar"
+            />
+            <p className="About__team__dev">François Charron</p>
+            <p className="About__team__role">
+              <span className="italic">Lead Dev Front</span>
+            </p>
+            <div className="About__team__links">
+              <a
+                href="https://github.com/FrancoisCHARRON"
+                className="About__team__a"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={git}
+                  alt="github"
+                  className="About__team__links__git"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/fran%C3%A7ois-charron/"
+                className="About__team__a"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={linkedin}
+                  alt="linkedin"
+                  className="About__team__links__git"
+                />
+              </a>
+            </div>
           </div>
 
           <div className="About__team__one">
-            <a href="https://github.com/Lballanger" className="About__team__a">
-              <motion.img
-                whileHover={{
-                  scale: [1, 2, 2, 1, 1],
-                  rotate: [0, 0, -360, -360, -360],
-                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
-                }}
-                transition={{
-                  duration: 2,
-                  ease: 'easeInOut',
-                  times: [0, 0.2, 0.5, 0.8, 3],
-                }}
-                src={avatarLB}
-                className="About__team__avatarLB"
-                alt="avatar"
-              />
-              <p className="About__team__dev">Loïc Ballanger</p>
-              <p className="About__team__role">
-                <span className="italic">Lead Dev Back</span>
-              </p>
-            </a>
+            <motion.img
+              whileHover={{
+                scale: [1, 2, 2, 1, 1],
+                rotate: [0, 0, -360, -360, -360],
+                borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+              }}
+              transition={{
+                duration: 2,
+                ease: 'easeInOut',
+                times: [0, 0.2, 0.5, 0.8, 3],
+              }}
+              src={avatarLB}
+              className="About__team__avatarLB"
+              alt="avatar"
+            />
+            <p className="About__team__dev">Loïc Ballanger</p>
+            <p className="About__team__role">
+              <span className="italic">Lead Dev Back</span>
+            </p>
+            <div className="About__team__links">
+              <a
+                href="https://github.com/Lballanger"
+                className="About__team__a"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={git}
+                  alt="github"
+                  className="About__team__links__git"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/loicballanger/"
+                className="About__team__a"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={linkedin}
+                  alt="linkedin"
+                  className="About__team__links__git"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
