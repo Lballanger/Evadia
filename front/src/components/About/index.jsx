@@ -67,7 +67,7 @@ const About = () => (
             />
             <p className="About__team__dev">Germain Michaud</p>
             <p className="About__team__role">
-              <span className="italic">Scrum Master</span>
+              <span className="italic">Scrum Master / Dev FullStack</span>
             </p>
             <div className="About__team__links">
               <a
@@ -115,7 +115,7 @@ const About = () => (
             />
             <p className="About__team__dev">Alison Serra</p>
             <p className="About__team__role">
-              <span className="italic">Git Master</span>
+              <span className="italic">Git Master / Dev Back</span>
             </p>
             <div className="About__team__links">
               <a
@@ -163,7 +163,7 @@ const About = () => (
             />
             <p className="About__team__dev">Clément Kieken</p>
             <p className="About__team__role">
-              <span className="italic">Product Owner</span>
+              <span className="italic">Product Owner / Dev Front</span>
             </p>
             <div className="About__team__links">
               <a
