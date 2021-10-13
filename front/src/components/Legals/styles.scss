@@ -18,7 +18,7 @@
 //   }
 // }
 
-.About {
+.Legals {
   &__container {
     margin-top: 6rem;
     padding-top: 2rem;
@@ -39,7 +39,8 @@
     text-align: center;
     text-transform: uppercase;
     margin: 1rem;
-    font-size: 2rem;
+    font-size: 3rem;
+    color: white;
   }
   &__h3 {
     font-size: 1.5rem;
@@ -54,6 +55,7 @@
     margin-left: 2rem;
     margin-right: 2rem;
     text-justify: auto;
+    padding-bottom: 1rem;
   }
   &__team {
     display: flex;
@@ -111,12 +113,12 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
-  .About__container {
+  .Legals__container {
     margin-left: 0rem;
     margin-right: 0rem;
     width: 100%;
   }
-  .About__team {
+  .Legals__team {
     &__display {
       display: flex;
       flex-direction: row;
