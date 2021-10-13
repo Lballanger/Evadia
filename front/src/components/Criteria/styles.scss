@@ -8,19 +8,19 @@
     color: #000;
     padding: 6rem 1rem;
 
-    h1 { 
+    h1 {
       width: 100%;
-      text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     }
-    }
-    
+  }
+
   .criteria {
     background-color: rgba($color: #000000, $alpha: 0.2);
     padding: 2rem;
     border-radius: 20px;
     margin-top: -2rem;
     width: 350px;
-    
+
     &__h1 {
       font-size: 2rem;
       font-style: bold;
@@ -32,8 +32,8 @@
     }
 
     &__form__label {
-      font-weight: bold; 
-      text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+      font-weight: bold;
+      text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
       color: white;
       margin-bottom: 0.6rem;
       white-space: nowrap;
@@ -71,8 +71,6 @@
           padding-top: 1rem;
           text-align: center;
         }
-
-        
       }
     }
     &__submit {
@@ -102,17 +100,16 @@
     }
 
     section.range-slider {
-          
       span {
-      margin-top: -0.3rem;
-      font-size: 0.9rem;
-      color: white;
-      width: 15%;
-      left: 0;
-      right: 0; 
+        margin-top: -0.3rem;
+        font-size: 0.9rem;
+        color: white;
+        width: 15%;
+        left: 0;
+        right: 0;
       }
     }
-    
+
     .range-slider__span {
       display: flex;
       width: 100%;
@@ -120,14 +117,11 @@
       margin-left: auto;
     }
   }
-  
+
   .schools {
     margin-bottom: 2rem;
   }
-
 }
-
-
 
 /** Switch
  -------------------------------------*/
@@ -177,16 +171,15 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 6rem 1rem;
-    max-width:1600px;
+    max-width: 1600px;
     margin: 0 auto;
   }
 
   .criteria__container h1 {
     margin-top: 1rem;
     margin-bottom: 2rem;
-    max-width:1600px;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
-    
+    max-width: 1600px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
   }
 
   .criteria {
@@ -200,8 +193,8 @@
     //height: 100vw;
 
     &__form__label {
-      font-weight: bold; 
-      text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+      font-weight: bold;
+      text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
       color: white;
       margin-bottom: 0.6rem;
       white-space: nowrap;
@@ -212,7 +205,7 @@
       max-width: 300px;
       // z-index: 99;
     }
-          
+
     &__form__container {
       display: grid;
       grid-template-columns: 1fr 0.4fr repeat(3, 1.2fr);
@@ -222,7 +215,6 @@
       width: 100%;
       height: 100%;
     }
-    
 
     &__h1 {
       font-size: 2rem;
@@ -271,7 +263,6 @@
     &__submit {
       display: flex;
       justify-content: center;
-      
 
       &__display {
         border-radius: 50px;
@@ -282,7 +273,6 @@
         text-align: center;
         margin: 2rem;
         width: 20%;
-        
 
         &__btn {
           text-decoration: none;
@@ -298,17 +288,16 @@
     .regions {
       width: 270px;
     }
-    
+
     .departements {
       height: 25%;
-      width: 270px; 
+      width: 270px;
     }
 
     .schools {
       width: 270px;
     }
   }
-  
 }
 
 .regions {
@@ -317,14 +306,14 @@
 }
 
 .departements {
-  grid-area: 3 / 1 / 4 / 1; 
+  grid-area: 3 / 1 / 4 / 1;
   height: 25%;
-  width: 100%; 
+  width: 100%;
 }
 
 .schools {
   grid-area: 4 / 1 / 5 / 1;
-  height: 25%; 
+  height: 25%;
   width: 100%;
 }
 
@@ -380,11 +369,6 @@
   grid-area: 5 / 3 / 5 /3;
 }
 
-
-
-
-
-
 section.range-slider {
   grid-area: 1 / 1 / 2 / 1;
   position: relative;
@@ -392,15 +376,14 @@ section.range-slider {
   width: 100%;
   flex-direction: column;
   align-items: left;
-  
 
   span {
-  margin-top: -0.3rem;
-  font-size: 0.9rem;
-  color: white;
-  width: 15%;
-  margin-left: 4px;
-  margin-right: 19px
+    margin-top: -0.3rem;
+    font-size: 0.9rem;
+    color: white;
+    width: 15%;
+    margin-left: 4px;
+    margin-right: 19px;
   }
 }
 
@@ -421,7 +404,7 @@ section.range-slider input {
   left: 0px;
   top: 30px;
   width: 100%;
-  height:20px;
+  height: 20px;
   margin: 0;
   padding: 0;
   background-color: transparent;
@@ -429,10 +412,10 @@ section.range-slider input {
 }
 
 section.range-slider input:focus {
-outline: none;
+  outline: none;
 }
 
-section.range-slider input::-webkit-slider-runnable-track  {
+section.range-slider input::-webkit-slider-runnable-track {
   border: 1px solid #363636a1;
   border-radius: 20px;
   width: 100%;
@@ -445,7 +428,7 @@ section.range-slider input::-webkit-slider-runnable-track  {
 section.range-slider input::-webkit-slider-thumb {
   position: relative;
   z-index: 1;
-  background: #04AA6D;
+  background: #04aa6d;
   margin-top: -7.5px;
   width: 30px;
   height: 30px;
@@ -457,9 +440,8 @@ section.range-slider input::-webkit-slider-thumb {
 }
 
 section.range-slider input:hover::-webkit-slider-runnable-track {
-background: darkcyan
+  background: darkcyan;
 }
-
 
 select {
   // A reset of styles, including removing the default dropdown arrow
@@ -490,7 +472,7 @@ select {
 .select {
   display: grid;
   width: 100%;
-  grid-template-areas: "select";
+  grid-template-areas: 'select';
   align-items: center;
   position: relative;
 
@@ -500,7 +482,6 @@ select {
   }
 
   min-width: 15ch;
-  
 
   border: 1px solid var(--select-border);
   border-radius: 0.25em;
@@ -517,7 +498,7 @@ select {
 
   // Custom arrow
   &:not(.select--multiple)::after {
-    content: "";
+    content: '';
     justify-self: end;
     width: 0.8em;
     height: 0.5em;
@@ -596,20 +577,17 @@ select[multiple] {
   margin-top: 2rem;
 }
 
-.criteria button[type="submit"] {
-  width: 16rem;
-  height: 3rem;
-  margin-left:auto;
-  margin-right: auto;
-  justify-content:center;
-  align-items:center;
+.criteria button[type='submit'] {
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
   margin-top: 2rem;
   padding: 1rem 1.3rem;
   border: none;
   border-radius: 20px;
   font-weight: 600;
   color: #fff;
-  background: #04AA6D;
+  background: #04aa6d;
   font-size: 1rem;
   letter-spacing: 1px;
   cursor: pointer;
@@ -619,15 +597,24 @@ select[multiple] {
   outline: none;
   border: none;
   box-shadow: 0 5px #1f5f35;
+
+  &.loading {
+    border-radius: 50%;
+    color: #fff;
+    padding: 0.5rem;
+    box-shadow: none;
+    cursor: wait;
+    pointer-events: none;
+  }
 }
 
-.criteria button[type="submit"]:hover {
+.criteria button[type='submit']:hover {
   box-shadow: 0 3px #1f5f35;
   background-color: darkcyan;
   top: 1px;
 }
 
-.criteria button[type="submit"]:active {
+.criteria button[type='submit']:active {
   box-shadow: 0 0 #57cc99;
   top: 5px;
 }
@@ -643,7 +630,6 @@ select[multiple] {
   }
 }
 
-
 .switch {
   width: 60px;
   height: 30px;
@@ -651,25 +637,22 @@ select[multiple] {
   display: flex;
   justify-content: flex-start;
   border-radius: 50px;
-  padding:5px;
+  padding: 5px;
   cursor: pointer;
   margin-right: 10px;
 
   .handle {
     width: 20px;
     height: 20px;
-    background-color:rgb(185, 39, 39);
+    background-color: rgb(185, 39, 39);
     border-radius: 40px;
   }
 }
 
-.switch[data-isOn="true"] {
+.switch[data-isOn='true'] {
   justify-content: flex-end;
 
   .handle {
     background-color: #1f9f87;
   }
 }
-
-
-

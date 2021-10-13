@@ -2,27 +2,27 @@ import create from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 const initialCriteria = {
-  populationmin: 0,
-  populationmax: 100000,
+  populationmin: '0',
+  populationmax: '100000',
   code_departement: [],
   code_region: [],
   type_ecole: [],
   type_personal_health: {
-    doctor: false,
-    cardiologistic: false,
-    dentist: false,
-    dermatologist: false,
-    ophtalmologist: false,
-    pediatrician: false,
-    pulmonologist: false,
-    psychiatrist: false,
-    midwife: false,
+    'médecin généraliste': false,
+    cardiologue: false,
+    'chirurgien-dentiste': false,
+    'dermatologue et vénérologue': false,
+    ophtalmologiste: false,
+    pédiatre: false,
+    pneumologue: false,
+    psychiatre: false,
+    'sage-femme': false,
   },
   type_health_institution: {
-    hospital: false,
-    healthCenter: false,
-    nursery: false,
-    pharmacy: false,
+    'centre hospitalier': false,
+    'centre de soins': false,
+    'crèche et garderie': false,
+    pharmacie: false,
   },
 };
 
