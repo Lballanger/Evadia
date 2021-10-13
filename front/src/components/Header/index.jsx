@@ -38,7 +38,7 @@ const styles = {
   image: {
     height: '30px',
     borderRadius: '50%',
-    outline: '5px solid rgb(79 146 186)',
+    border: '1px solid rgb(79 146 186)',
     boxShadow: '4px 0 10px',
     zIndex: 2,
   },

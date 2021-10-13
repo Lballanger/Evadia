@@ -14,7 +14,7 @@ const styles = {
   image: {
     height: '6rem',
     borderRadius: '50%',
-    outline: '5px solid rgb(79 146 186)',
+    border: '1px solid rgb(79 146 186)',
     boxShadow: '0px 0 15px',
     zIndex: 2,
     background: 'darkcyan',
