@@ -11,9 +11,9 @@ const instance = axios.create({
   },
 });
 
-instance.defaults.headers.authorization = `Bearer ${
-  localStorage.getItem(LOCAL_REFRESH_KEY) || null
-}`;
+// instance.defaults.headers.authorization = `Bearer ${
+//   localStorage.getItem(LOCAL_REFRESH_KEY) || null
+// }`;
 
 const getRandomCity = async () => {
   const { data } = await instance.get('/search/random');
@@ -88,6 +88,7 @@ const doLogin = async (params) => {
 const doLogout = async () => {
   try {
     const { data } = await instance.post('/auth/logout');
+    instance.defaults.headers.authorization = `Bearer null`;
     localStorage.removeItem(LOCAL_REFRESH_KEY);
     return data;
   } catch (error) {

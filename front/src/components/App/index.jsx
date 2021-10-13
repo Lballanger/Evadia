@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 // import toast from 'react-hot-toast';
 import Header from '../Header';
@@ -30,8 +30,10 @@ import useWindowSize from '../../hooks/useWindowSize';
 const App = () => {
   const setUser = userStore((state) => state.setUser);
   const setFavorites = useCity((state) => state.setFavorites);
-  const { data, isError, error, isLoading } = useUser();
+  const { data, failureCount } = useUser();
   const { isMobile } = useWindowSize();
+  const [isFirstTry, setIsFirstTry] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getFavorites = async () => {
     const favorites = await API.getUserFavorites();
@@ -39,17 +41,27 @@ const App = () => {
   };
 
   useEffect(() => {
+    if (isFirstTry) {
+      setIsFirstTry(false);
+    }
     if (data) {
       setUser(data.data);
       // toast.success('Vous êtes connecté');
       getFavorites();
-    } else if (isError) {
-      console.log('APP USER ERROR: ', error);
-      setUser(null);
     }
-  }, [data, isError]);
+    // if (isFetching) {
+    //   setUser(null);
+    // }
+    console.log(failureCount);
+    if (!isFirstTry) {
+      setIsLoading(false);
+    }
+  }, [data, failureCount]);
 
-  return (
+  return isLoading ? (
+    // TODO: Create a beautiful loading screen
+    <div>APP LOADING....</div>
+  ) : (
     <>
       <Header />
       <main>
