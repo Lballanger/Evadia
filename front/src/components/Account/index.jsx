@@ -7,6 +7,7 @@ import './styles.scss';
 import userStore from '../../store/user';
 import cityStore from '../../store/city';
 import AutoSuggest from '../AutoSuggest';
+import DeleteAccount from './DeleteAccount';
 import API from '../../api';
 
 const styles = {
@@ -158,9 +159,7 @@ const Account = () => {
         <Accordion title="Blacklistés" data={blacklist} className="blackList" />
 
         <div className="account__delete">
-          <button className="account__delete__btn" type="button">
-            Supprimer mon compte
-          </button>
+          <DeleteAccount />
         </div>
       </div>
     </>
