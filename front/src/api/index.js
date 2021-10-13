@@ -33,10 +33,18 @@ const getCityByInsee = async (codeInsee) => {
 const getCityWithCriteria = async (params) =>
   instance.post('/search/criteria', params);
 
+const cityToBan = async (codeInsee, boolean) =>
+  instance.post(`/search/city/${codeInsee}/check?boolean=${boolean}`);
+
 const cityToFavorites = async (codeInsee, boolean) =>
   instance.post(`/search/city/${codeInsee}/check?boolean=${boolean}`);
 
 const getUser = async () => instance.get('/user');
+
+const getUserBan = async () => {
+  const { data } = await instance.get('/user/bookmarks');
+  return data;
+};
 
 const getUserFavorites = async () => {
   const { data } = await instance.get('/user/bookmarks');
@@ -138,8 +146,10 @@ export default {
   getCityByInsee,
   getCityWithCriteria,
   cityToFavorites,
+  cityToBan,
   getUser,
   getUserFavorites,
+  getUserBan,
   updateUser,
   deleteUser,
   forgotPassword,

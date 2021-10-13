@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { IoStar, IoStarOutline, IoSchool } from 'react-icons/io5';
+import { IoStar, IoStarOutline, IoSchool, IoBanOutline } from 'react-icons/io5';
 import { GiHealthNormal, GiHealing, GiShop } from 'react-icons/gi';
 import toast from 'react-hot-toast';
 import cityStore from '../../store/city';
@@ -81,6 +81,8 @@ const Details = () => {
   const history = useHistory();
   const city = cityStore((state) => state.city);
   const setCity = cityStore((state) => state.setCity);
+  const addToBan = cityStore((state) => state.addToBan);
+  const removeFromBan = cityStore((state) => state.removeFromBan);
   const addToFavorites = cityStore((state) => state.addToFavorites);
   const removeFromFavorites = cityStore((state) => state.removeFromFavorites);
   const user = userStore((state) => state.user);
@@ -131,6 +133,30 @@ const Details = () => {
         [name]: !state[name],
       };
     });
+  };
+
+  const showBan = () => {
+    if (city.isBan) {
+      return <IoBanOutline className="ban" size="1.5em" />;
+    }
+    return <IoBanOutline className="ban" color="#F56262" size="1.5em" />;
+  };
+
+  const toggleBan = async () => {
+    if (user) {
+      const { data } = await API.cityToBan(city.code_insee, true);
+      if (data.status === 'added') {
+        addToBan(city, true);
+        toast.success(`${city.city_name} a bien été ajouté à votre blacklist`);
+      } else if (data.status === 'removed') {
+        removeFromBan(city, true);
+        toast.success(`${city.city_name} a été retiré de votre blacklist`);
+      }
+    } else {
+      toast.error(
+        `Vous devez être connecté pour pouvoir ajouter une ville à votre blacklist`
+      );
+    }
   };
 
   const showFavorite = () => {
@@ -216,6 +242,13 @@ const Details = () => {
               onClick={toggleFavorite}
             >
               {showFavorite()}
+            </button>
+            <button
+              className="details__card__button"
+              type="button"
+              onClick={toggleBan}
+            >
+              {showBan()}
             </button>
           </div>
           <div className="details__card__main__info">
