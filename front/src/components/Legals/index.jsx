@@ -15,10 +15,8 @@ const Legals = () => (
       <p className="Legals__p">
         En vertu de l&apos;article 6 de la loi n° 2004-575 du 21 juin 2004 pour
         la confiance dans l&apos;économie numérique, il est précisé aux
-        utilisateurs du site internet{' '}
-        <a href="http://134.122.95.34">http://134.122.95.34</a> l&apos;identité
-        des différents intervenants dans le cadre de sa réalisation et de son
-        suivi:
+        utilisateurs du site internet l&apos;identité des différents
+        intervenants dans le cadre de sa réalisation et de son suivi:
       </p>
       <p className="Legals__p">Contact : evadia.apo@gmail.com</p>
       <h2 className="Legals__h3">Hébergeur :</h2>
@@ -74,17 +72,13 @@ const Legals = () => (
 
       <p className="Legals__p">
         Evadia ne pourra être tenu pour responsable des dommages directs et
-        indirects causés au matériel de l’utilisateur, lors de l’accès au site 
-        <a href="http://134.122.95.34">http://134.122.95.34 </a>
+        indirects causés au matériel de l’utilisateur, lors de l’accès au site
         décline toute responsabilité quant à l’utilisation qui pourrait être
-        faite des informations et contenus présents sur 
-        <a href="http://134.122.95.34">http://134.122.95.34 </a>
-        s’engage à sécuriser au mieux le site 
-        <a href="http://134.122.95.34"> http://134.122.95.34</a>, cependant sa
-        responsabilité ne pourra être mise en cause si des données indésirables
-        sont importées et installées sur son site à son insu. Des espaces
-        interactifs (espace contact ou commentaires) sont à la disposition des
-        utilisateurs.
+        faite des informations et contenus présents sur  s’engage à sécuriser au
+        mieux le site  , cependant sa responsabilité ne pourra être mise en
+        cause si des données indésirables sont importées et installées sur son
+        site à son insu. Des espaces interactifs (espace contact ou
+        commentaires) sont à la disposition des utilisateurs.
       </p>
       <p className="Legals__p">
         Evadia se réserve le droit de supprimer, sans mise en demeure préalable,
@@ -102,11 +96,10 @@ const Legals = () => (
       </h3>
       <p className="Legals__p">
         Conformément aux dispositions de la loi 78-17 du 6 janvier 1978
-        modifiée, l’utilisateur du site 
-        <a href="http://134.122.95.34"> http://134.122.95.34</a> dispose d’un
-        droit d’accès, de modification et de suppression des informations
-        collectées. Pour exercer ce droit, envoyez un message à notre Délégué à
-        la Protection des Données: evadia.apo@gmail.com.
+        modifiée, l’utilisateur du site   dispose d’un droit d’accès, de
+        modification et de suppression des informations collectées. Pour exercer
+        ce droit, envoyez un message à notre Délégué à la Protection des
+        Données: evadia.apo@gmail.com.
       </p>
       <p className="Legals__p">
         Pour plus d&apos;informations sur la façon dont nous traitons vos
@@ -116,13 +109,9 @@ const Legals = () => (
 
       <h3 className="Legals__h3">5 - Liens hypertextes et cookies</h3>
       <p className="Legals__p">
-        Le site <a href="http://134.122.95.34">http://134.122.95.34</a> contient
-        des liens hypertextes vers d’autres sites et dégage toute responsabilité
-        à propos de ces liens externes ou des liens créés par d’autres sites
-        vers 
-        <a href="http://134.122.95.34"> http://134.122.95.34</a>. La navigation
-        sur le site 
-        <a href="http://134.122.95.34"> http://134.122.95.34</a> est susceptible
+        Le site contient des liens hypertextes vers d’autres sites et dégage
+        toute responsabilité à propos de ces liens externes ou des liens créés
+        par d’autres sites vers  . La navigation sur le site   est susceptible
         de provoquer l’installation de cookie(s) sur l’ordinateur de
         l’utilisateur.
       </p>
@@ -142,9 +131,8 @@ const Legals = () => (
         6 - Droit applicable et attribution de juridiction
       </h3>
       <p className="Legals__p">
-        Tout litige en relation avec l’utilisation du site 
-        <a href="http://134.122.95.34"> http://134.122.95.34</a> est soumis au
-        droit français.
+        Tout litige en relation avec l’utilisation du site est soumis au droit
+        français.
       </p>
     </div>
   </div>
