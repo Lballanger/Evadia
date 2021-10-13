@@ -2,11 +2,12 @@
 import React from 'react';
 import './styles.scss';
 import { motion } from 'framer-motion';
-import avatar from '../../assets/images/avatar.png';
+// import avatar from '../../assets/images/avatar.png';
 import avatarFC from '../../assets/images/FC.jpg';
 import avatarCK from '../../assets/images/CK.jpg';
 import avatarLB from '../../assets/images/LB.png';
 import avatarAS from '../../assets/images/AS.jpg';
+import avatarGM from '../../assets/images/GM.png';
 import git from '../../assets/images/git.png';
 import linkedin from '../../assets/images/linkedin.png';
 
@@ -61,8 +62,8 @@ const About = () => (
                 ease: 'easeInOut',
                 times: [0, 0.2, 0.5, 0.8, 3],
               }}
-              src={avatar}
-              className="About__team__avatar"
+              src={avatarGM}
+              className="About__team__avatarGM"
               alt="avatar"
             />
             <p className="About__team__dev">Germain Michaud</p>
@@ -101,7 +102,7 @@ const About = () => (
             <motion.img
               whileHover={{
                 scale: [1, 2, 2, 1, 1],
-                rotate: [0, 0, -360, -360, -360],
+                rotate: [0, 0, 360, 360, 360],
                 borderRadius: ['20%', '20%', '50%', '50%', '20%'],
               }}
               transition={{
@@ -196,7 +197,7 @@ const About = () => (
             <motion.img
               whileHover={{
                 scale: [1, 2, 2, 1, 1],
-                rotate: [0, 0, -360, -360, -360],
+                rotate: [0, 0, 360, 360, 360],
                 borderRadius: ['20%', '20%', '50%', '50%', '20%'],
               }}
               transition={{
