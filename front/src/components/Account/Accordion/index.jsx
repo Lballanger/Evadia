@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import API from '../../../api';
 import cityStore from '../../../store/city';
 import './styles.scss';
@@ -46,7 +47,9 @@ const Accordion = ({ title, data, className = '' }) => {
                 <div className="accordion__content" key={city.id}>
                   <ul className="accordion__content__ul">
                     <li className="accordion__content__li">
-                      {city.details.city_name}
+                      <Link to={`/details/${city.commune_id}`}>
+                        {city.details.city_name}
+                      </Link>
                     </li>
                   </ul>
                   <button
