@@ -82,7 +82,7 @@ const searchController = {
    * @param {Request} request
    * @param {Response} response
    */
-  findByCriteria: async (request, response) => {
+   findByCriteria: async (request, response) => {
     const params = { ...request.body };
     const authorize = ['pharmacie', 'centre hospitalier', 'crèche'];
     const temps = [];
@@ -95,22 +95,40 @@ const searchController = {
       );
     }
 
+    if (params.type_personal_health) {
+      params.type_personal_health = params.type_personal_health.map((elem) =>
+        elem.toLowerCase()
+      );
+    }
+
+    if (params.type_ecole) {
+      params.type_ecole = params.type_ecole.map((elem) =>
+        elem.toLowerCase()
+      );
+    }
+    
     try {
       // condition if the user is not connected
       if (!request.user) {
         // default deleting type_personal_health key for a visitor
         delete params.type_personal_health;
-
+        
         if (typeHealthInstitution) {
           for (const value of authorize) {
             for (const elem of typeHealthInstitution) {
-              if (elem.includes(value)) temps.push(elem);
+              if (elem.includes(value)) {
+                temps.push(elem);
+              }
             }
           }
-          if (temps.length > 0) params.type_health_institution = temps;
+          if (temps.length > 0) {
+            params.type_health_institution = temps;
+          } else {
+            delete params.type_health_institution;
+          }
         }
       } else params.type_health_institution = typeHealthInstitution;
-
+      
       const commune = await Commune.findByCriteria(params);
       response.json(commune);
     } catch (error) {
