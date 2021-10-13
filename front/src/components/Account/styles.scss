@@ -107,9 +107,10 @@
   }
 
   &__delete {
+    position: relative;
     left: 0;
     right: 0;
-    bottom: 40px;
+    bottom: 5px;
     display: flex;
     justify-content: center;
 

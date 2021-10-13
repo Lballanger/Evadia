@@ -2,11 +2,11 @@
 import React from 'react';
 import './styles.scss';
 import { motion } from 'framer-motion';
-import avatar from '../../assets/images/avatar.png';
 import avatarFC from '../../assets/images/FC.jpg';
 import avatarCK from '../../assets/images/CK.jpg';
 import avatarLB from '../../assets/images/LB.png';
 import avatarAS from '../../assets/images/AS.jpg';
+import avatarGM from '../../assets/images/GM.png';
 import git from '../../assets/images/git.png';
 import linkedin from '../../assets/images/linkedin.png';
 
@@ -19,7 +19,7 @@ const About = () => (
       <div className="font-link">
         <h2 className="About__h2">Evadia</h2>
       </div>
-      <h3 className="About__h3">Qu'est-ce qu'est EVADIA ?</h3>
+      <h3 className="About__h3">Qu'est-ce qu'EVADIA ?</h3>
       <p className="About__p">
         EVADIA est un projet de fin d'année de 5 étudiants de la promo Uther
         d'O'Clock. Réalisé en 4 semaines, de A à Z, il a nécessité le savoir de
@@ -32,18 +32,18 @@ const About = () => (
         Nous sommes partis de la problématique que quand une personne souhaite
         déménager dans une autre ville, pour diverses raisons, il lui est bien
         souvent difficile de trouver certaines informations essentielles
-        facilement. Ces informations, tel que la météo à l'année, la taille de
-        la population d'une commune, les écoles ou encore les hôpitaux proches,
-        sont toutes regroupées sur notre site. Nous planifions d'or et déjà de
-        rajouter davantage de critères comme l'éligibilité de la fibre, liker un
-        lieu et une messagerie interne entre utilisateurs.
+        facilement. Ces informations, telles que la taille de la population
+        d'une commune, les écoles ou encore les hôpitaux proches, sont toutes
+        regroupées sur notre site. Nous planifions d'ors et déjà de rajouter
+        davantage de critères telle qu'une messagerie interne entre
+        utilisateurs.
       </p>
       <h3 className="About__h3">Comment avons-nous procédé ?</h3>
       <p className="About__p">
         L'équipe du Back, Alison Serra (qui est à l'initiative du projet), Loïc
         Ballanger et Germain Michaud ont récupéré une quantité folle
-        d'informations à travers des API gouvernementales afin de créer leur
-        propre API, celle que nous utilisons pour la quasi-intégralité du site.
+        d'informations à travers différentes API libre de droits afin de créer
+        leur propre base de données.
       </p>
 
       <h3 className="About__h3">L'équipe</h3>
@@ -61,8 +61,8 @@ const About = () => (
                 ease: 'easeInOut',
                 times: [0, 0.2, 0.5, 0.8, 3],
               }}
-              src={avatar}
-              className="About__team__avatar"
+              src={avatarGM}
+              className="About__team__avatarGM"
               alt="avatar"
             />
             <p className="About__team__dev">Germain Michaud</p>
@@ -101,7 +101,7 @@ const About = () => (
             <motion.img
               whileHover={{
                 scale: [1, 2, 2, 1, 1],
-                rotate: [0, 0, -360, -360, -360],
+                rotate: [0, 0, 360, 360, 360],
                 borderRadius: ['20%', '20%', '50%', '50%', '20%'],
               }}
               transition={{
@@ -196,7 +196,7 @@ const About = () => (
             <motion.img
               whileHover={{
                 scale: [1, 2, 2, 1, 1],
-                rotate: [0, 0, -360, -360, -360],
+                rotate: [0, 0, 360, 360, 360],
                 borderRadius: ['20%', '20%', '50%', '50%', '20%'],
               }}
               transition={{
