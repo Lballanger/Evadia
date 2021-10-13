@@ -83,31 +83,45 @@ const searchController = {
    * @param {Response} response
    */
   findByCriteria: async (request, response) => {
-    const params = { ...request.body };
+    const params = {
+      populationmin: '0',
+      populationmax: '10000',
+      type_ecole: [],
+      type_health_institution: [],
+      type_personal_health: [],
+      ...request.body,
+    };
     const authorize = ['pharmacie', 'centre hospitalier', 'crèche'];
     const temps = [];
     let typeHealthInstitution = null;
 
-    // Change to lower case
-    if (params.type_health_institution) {
-      typeHealthInstitution = params.type_health_institution.map((elem) =>
-        elem.toLowerCase()
-      );
+    // For each array, format all data to lowerCase
+    for (const key in params) {
+      if (Array.isArray(params[key])) {
+        params[key] = params[key].map((value) => value.toLowerCase());
+        if (!params[key].length) delete params[key];
+      }
+    }
+
+    // Remove type_health_institution and type_personal_health if both are empty
+    if (params.type_health_institution.length) {
+      typeHealthInstitution = params.type_health_institution;
     }
 
     try {
       // condition if the user is not connected
       if (!request.user) {
         // default deleting type_personal_health key for a visitor
-        delete params.type_personal_health;
+        if (params.type_personal_health) delete params.type_personal_health;
 
-        if (typeHealthInstitution) {
+        if (typeHealthInstitution.length) {
           for (const value of authorize) {
             for (const elem of typeHealthInstitution) {
               if (elem.includes(value)) temps.push(elem);
             }
           }
           if (temps.length > 0) params.type_health_institution = temps;
+          else delete params.type_health_institution;
         }
       } else params.type_health_institution = typeHealthInstitution;
 
