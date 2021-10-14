@@ -121,7 +121,7 @@ const Header = ({ location: { pathname } }) => {
                 >
                   <img
                     style={styles.image}
-                    src={`https://eu.ui-avatars.com/api/?name=${user.firstname}+${user.lastname}&rounded=true&background=0dbca4&color=efefef&font-size=0.75`}
+                    src={`https://eu.ui-avatars.com/api/?name=${user.firstname}+${user.lastname}&rounded=true&background=0dbca4&color=efefef&font-size=0.63`}
                     alt={`Profile of ${user.firstname} ${user.lastname}`}
                   />
                   {profileMenu ? (
