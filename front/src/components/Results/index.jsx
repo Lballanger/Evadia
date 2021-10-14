@@ -4,6 +4,7 @@ import useWindowSize from '../../hooks/useWindowSize';
 import cityStore from '../../store/city';
 import Map from '../Map';
 import paris from '../../assets/images/paris.jpg';
+import backgroundResults from '../../assets/images/backgroundResults.jpg';
 
 import './styles.scss';
 
@@ -51,7 +52,9 @@ const Results = () => {
             <div className="result">
               <img
                 className="picture"
-                src=/* {`../../assets/images/${city.city_name}.jpg`} */ {paris}
+                src=/* {`../../assets/images/${city.city_name}.jpg`} */ {
+                  backgroundResults
+                }
                 alt="city"
               />
               <div className="result__info">
