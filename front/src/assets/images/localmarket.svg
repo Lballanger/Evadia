@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="282.5" height="457.444" viewBox="0 0 282.5 457.444">
+  <defs>
+    <filter id="Icon_ionic-ios-pin" x="0" y="0" width="282.5" height="457.444" filterUnits="userSpaceOnUse">
+      <feOffset dx="14" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="localmarket" transform="translate(-32 -22.5)">
+    <g transform="matrix(1, 0, 0, 1, 32, 22.5)" filter="url(#Icon_ionic-ios-pin)">
+      <path id="Icon_ionic-ios-pin-2" data-name="Icon ionic-ios-pin" d="M156.875,3.375c-82.26,0-128,61.98-128,138.342,0,107.611,128,292.1,128,292.1s127-184.491,127-292.1C283.875,65.355,239.135,3.375,156.875,3.375Z" transform="translate(-28.88 7.13)" fill="#86bf23"/>
+    </g>
+    <path id="Icon_material-local-grocery-store" data-name="Icon material-local-grocery-store" d="M44.672,118.126a14.391,14.391,0,1,0,14.391,14.391A14.372,14.372,0,0,0,44.672,118.126ZM1.5,3V17.391H15.891L41.794,72,32.08,89.632a13.912,13.912,0,0,0-1.8,6.908,14.433,14.433,0,0,0,14.391,14.391h86.344V96.54H47.694a1.781,1.781,0,0,1-1.8-1.8l.216-.863,6.476-11.728h53.606a14.322,14.322,0,0,0,12.592-7.411l25.759-46.7a7.03,7.03,0,0,0,.863-3.454,7.217,7.217,0,0,0-7.2-7.2H31.793L25.029,3ZM116.626,118.126a14.391,14.391,0,1,0,14.391,14.391A14.372,14.372,0,0,0,116.626,118.126Z" transform="translate(86.602 95.79)" fill="#fff"/>
+  </g>
+</svg>
