@@ -14,7 +14,8 @@ const cityStore = create(
       );
       const cityWithFavorite = {
         ...city,
-        is_favorite: isFavorite ? isFavorite.is_favorite : null,
+        is_favorite:
+          isFavorite && isFavorite.is_favorite ? isFavorite.is_favorite : null,
       };
       return set((state) => ({ ...state, city: cityWithFavorite }));
     },
@@ -26,28 +27,32 @@ const cityStore = create(
         );
         return {
           ...city,
-          is_favorite: isFavorite ? isFavorite.is_favorite : null,
+          is_favorite:
+            isFavorite && isFavorite.is_favorite
+              ? isFavorite.is_favorite
+              : null,
         };
       });
       return set((state) => ({ ...state, cities: citiesWithFavorite }));
     },
     setFavorites: (favorites) => set((state) => ({ ...state, favorites })),
-    addToFavorites: (city) => {
+    addToFavorites: (city, isFav) => {
       const favorites = [...get().favorites];
       const cityState = { ...get().city };
       const favorite = favorites.find(
         (fav) => fav.commune_id === city.code_insee
       );
+      console.log(favorite);
       if (favorite && favorite.is_favorite === false) {
         const favoriteIndex = favorites.findIndex(
           (fav) => fav.commune_id === city.code_insee
         );
-        favorites[favoriteIndex].is_favorite = true;
+        favorites[favoriteIndex].is_favorite = isFav;
       } else if (!favorite) {
         favorites.push({
           id: new Date().getTime(),
           commune_id: city.code_insee,
-          is_favorite: true,
+          is_favorite: isFav,
           details: {
             city_name: city.city_name,
             population: city.population,
@@ -60,7 +65,7 @@ const cityStore = create(
         return set((state) => ({
           ...state,
           favorites,
-          city: { ...state.city, is_favorite: true },
+          city: { ...state.city, is_favorite: isFav },
         }));
       }
       return set((state) => ({
@@ -83,6 +88,28 @@ const cityStore = create(
       return set((state) => ({
         ...state,
         favorites,
+      }));
+    },
+    updateFromFavorite: (city) => {
+      const favorites = [...get().favorites];
+      const updatedFavorites = favorites.map((favorite) => {
+        const favoriteCopy = { ...favorite };
+        if (favoriteCopy.commune_id === city.code_insee) {
+          favoriteCopy.is_favorite = !favoriteCopy.is_favorite;
+        }
+        return favoriteCopy;
+      });
+      const cityState = { ...get().city };
+      if (city.code_insee === cityState.code_insee) {
+        return set((state) => ({
+          ...state,
+          favorites: updatedFavorites,
+          city: { ...state.city, is_favorite: !state.city.is_favorite },
+        }));
+      }
+      return set((state) => ({
+        ...state,
+        favorites: updatedFavorites,
       }));
     },
   }))

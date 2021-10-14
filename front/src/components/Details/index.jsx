@@ -83,6 +83,7 @@ const Details = () => {
   const setCity = cityStore((state) => state.setCity);
   const addToFavorites = cityStore((state) => state.addToFavorites);
   const removeFromFavorites = cityStore((state) => state.removeFromFavorites);
+  const updateFromFavorite = cityStore((state) => state.updateFromFavorite);
   const user = userStore((state) => state.user);
   const setMarkers = mapStore((state) => state.setMarkers);
   const setMapCenter = mapStore((state) => state.setMapCenter);
@@ -134,47 +135,49 @@ const Details = () => {
   };
 
   const showBan = () => {
-    if (!city.is_favorite) {
+    if (city.is_favorite === false) {
       return <IoBanOutline className="ban" color="#F56262" size="1.5em" />;
     }
     return <IoBanOutline className="ban" color="#628AF5" size="1.5em" />;
   };
 
-  const toggleBan = async () => {
-    if (user) {
-      const { data } = await API.cityToFavorites(city.code_insee, false);
-      if (data.status === 'added') {
-        toast.success(`${city.city_name} a bien été ajouté à votre blacklist`);
-      } else if (data.status === 'removed') {
-        toast.success(`${city.city_name} a été retiré de votre blacklist`);
-      }
-    } else {
-      toast.error(
-        `Vous devez être connecté pour pouvoir ajouter une ville à votre blacklist`
-      );
-    }
-  };
-
   const showFavorite = () => {
-    if (city.is_favorite) {
+    if (city.is_favorite && city.is_favorite === true) {
       return <IoStar className="favorite" color="#dcb525" size="1.5em" />;
     }
     return <IoStarOutline className="favorite" color="#dcb525" size="1.5em" />;
   };
 
-  const toggleFavorite = async () => {
+  const toggleFavorite = async (isFav) => {
     if (user) {
-      const { data } = await API.cityToFavorites(city.code_insee, true);
+      const { data } = await API.cityToFavorites(city.code_insee, isFav);
       if (data.status === 'added') {
-        addToFavorites(city, true);
-        toast.success(`${city.city_name} a bien été ajouté à vos favoris`);
+        addToFavorites(city, isFav);
+        toast.success(
+          `${city.city_name} a bien été ajouté à ${
+            isFav ? 'vos favoris' : 'votre blacklist'
+          }`
+        );
       } else if (data.status === 'removed') {
-        removeFromFavorites(city, true);
-        toast.success(`${city.city_name} a été retiré de vos favoris`);
+        removeFromFavorites(city, isFav);
+        toast.success(
+          `${city.city_name} a été retiré de ${
+            isFav ? 'vos favoris' : 'votre blacklist'
+          }`
+        );
+      } else if (data.status === 'updated') {
+        updateFromFavorite(city);
+        toast.success(
+          `${city.city_name} a été déplacé dans ${
+            isFav ? 'vos favoris' : 'votre blacklist'
+          }`
+        );
       }
     } else {
       toast.error(
-        `Vous devez être connecté pour pouvoir ajouter une ville en favoris`
+        `Vous devez être connecté pour pouvoir ajouter une ville en ${
+          isFav ? 'favoris' : 'blacklisté'
+        }`
       );
     }
   };
@@ -235,14 +238,14 @@ const Details = () => {
             <button
               className="details__card__button"
               type="button"
-              onClick={toggleFavorite}
+              onClick={() => toggleFavorite(true)}
             >
               {showFavorite()}
             </button>
             <button
               className="details__card__button"
               type="button"
-              onClick={toggleBan}
+              onClick={() => toggleFavorite(false)}
             >
               {showBan()}
             </button>
@@ -275,9 +278,13 @@ const Details = () => {
                   Taxe foncière
                 </span>{' '}
                 :{' '}
-                {/* {city.taxation
-                  ? `${city.taxation[1].housing_tax}%`
-                  : 'Non renseigné'} */}
+                {city.taxation
+                  ? city.taxation.map((tax) => (
+                      <p key={tax.id}>
+                        {tax.year} | <strong>{tax.housing_tax}</strong>
+                      </p>
+                    ))
+                  : 'Non renseigné'}
               </li>
             </ul>
           </div>

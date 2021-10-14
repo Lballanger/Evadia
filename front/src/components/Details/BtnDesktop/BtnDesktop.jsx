@@ -49,7 +49,7 @@ const BtnDesktop = () => {
             onClick={toRandom}
             title="Aléatoire"
           >
-            <IconContext.Provider value={{ color: 'white', size: '1.5rem' }}>
+            <IconContext.Provider value={{ color: '#666', size: '1.5rem' }}>
               <IoRefreshCircleOutline />
             </IconContext.Provider>
           </button>
@@ -62,7 +62,7 @@ const BtnDesktop = () => {
             title="Retour aux critères"
           >
             <a className="btn__desktop__details__active" href="/criteria">
-              <IconContext.Provider value={{ color: 'white', size: '1.5rem' }}>
+              <IconContext.Provider value={{ color: '#666', size: '1.5rem' }}>
                 <IoSwapHorizontalOutline />
               </IconContext.Provider>
             </a>
@@ -76,7 +76,7 @@ const BtnDesktop = () => {
             onClick={history.goBack}
             title="Retour aux résultats"
           >
-            <IconContext.Provider value={{ color: 'white', size: '1.5rem' }}>
+            <IconContext.Provider value={{ color: '#666', size: '1.5rem' }}>
               <IoReturnDownBackOutline />
             </IconContext.Provider>
           </button>
@@ -89,7 +89,7 @@ const BtnDesktop = () => {
             onClick={() => setIsModalOpen(true)}
             title="Chercher une ville"
           >
-            <IconContext.Provider value={{ color: 'white', size: '1.5rem' }}>
+            <IconContext.Provider value={{ color: '#666', size: '1.5rem' }}>
               <IoLocateOutline />
             </IconContext.Provider>
           </button>
