@@ -2,11 +2,11 @@
 import React from 'react';
 import './styles.scss';
 import { motion } from 'framer-motion';
-import avatarFC from '../../assets/images/FC.jpg';
-import avatarCK from '../../assets/images/CK.jpg';
-import avatarLB from '../../assets/images/LB.png';
-import avatarAS from '../../assets/images/AS.jpg';
-import avatarGM from '../../assets/images/GM.png';
+import avatarFC from '../../assets/images/FC_small.jpg';
+import avatarCK from '../../assets/images/CK_small.jpg';
+import avatarLB from '../../assets/images/LB_small.jpg';
+import avatarAS from '../../assets/images/AS_small.jpg';
+import avatarGM from '../../assets/images/GM_small.jpg';
 import git from '../../assets/images/git.png';
 import linkedin from '../../assets/images/linkedin.png';
 
