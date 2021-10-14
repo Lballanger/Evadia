@@ -1,6 +1,16 @@
 const jwtService = require('../services/jwtService');
 const blacklistService = require('../services/userBlacklistService');
 
+const authorizePass = (req, next) => {
+    if (
+        req.url === '/api/search/criteria' ||
+        req.url === `/api/search/city/${req.params.insee}`
+      ) {
+        return next();
+      }
+      return res.status(401).json({ error: 'No token found' });
+}
+
 // eslint-disable-next-line consistent-return
 exports.authMiddleware =
   (isRefresh = false) =>
@@ -12,21 +22,16 @@ exports.authMiddleware =
 
       // If Authorization have no value, return error message with status 401
       if (!authorization) {
-        if (
-          req.url === '/api/search/criteria' ||
-          req.url === `/api/search/city/${req.params.insee}`
-        )
-          return next();
-        return res.status(401).json({ error: 'No token found' });
+        authorizePass(req, next);
       }
 
       // Extract token from authorization value ('Bearer the-token-here')
       const token = authorization.split(' ')[1];
 
       // If no token found, return error message with status 401
-      if (token == null)
-        return res.status(401).json({ error: 'No token found' });
-
+      if (!token) {
+        authorizePass(req, next);
+      }
       // Decode the token
       const decoded = await jwtService.validateToken(token, isRefresh);
 

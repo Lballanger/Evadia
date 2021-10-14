@@ -88,6 +88,8 @@ const searchController = {
     const params = {
       populationmin: '0',
       populationmax: '10000',
+      code_departement: [],
+      code_region: [],
       type_ecole: [],
       type_health_institution: [],
       type_personal_health: [],
@@ -106,7 +108,7 @@ const searchController = {
     }
 
     // Remove type_health_institution and type_personal_health if both are empty
-    if (params.type_health_institution.length) {
+    if (params.type_health_institution && params.type_health_institution.length) {
       typeHealthInstitution = params.type_health_institution;
     }
 
@@ -116,7 +118,7 @@ const searchController = {
         // default deleting type_personal_health key for a visitor
         if (params.type_personal_health) delete params.type_personal_health;
 
-        if (typeHealthInstitution.length) {
+        if (typeHealthInstitution && typeHealthInstitution.length) {
           for (const value of authorize) {
             for (const elem of typeHealthInstitution) {
               if (elem.includes(value)) {
