@@ -179,7 +179,7 @@
     margin-top: 1rem;
     margin-bottom: 2rem;
     max-width: 1600px;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
   }
 
   .criteria {
@@ -260,6 +260,21 @@
       }
     }
 
+    &__h2 {
+      // display: none;
+
+      &__disconnect {
+        font-size: 1.3rem;
+        text-align: center;
+        padding-bottom: 1.3rem;
+        color: rgb(12, 12, 12);
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+        font-family: "koho";
+        &__locked {
+          color: rgb(37, 21, 180);
+        }
+      }
+    }
     &__submit {
       display: flex;
       justify-content: center;
@@ -472,7 +487,7 @@ select {
 .select {
   display: grid;
   width: 100%;
-  grid-template-areas: 'select';
+  grid-template-areas: "select";
   align-items: center;
   position: relative;
 
@@ -498,7 +513,7 @@ select {
 
   // Custom arrow
   &:not(.select--multiple)::after {
-    content: '';
+    content: "";
     justify-self: end;
     width: 0.8em;
     height: 0.5em;
@@ -577,7 +592,7 @@ select[multiple] {
   margin-top: 2rem;
 }
 
-.criteria button[type='submit'] {
+.criteria button[type="submit"] {
   margin: 0 auto;
   justify-content: center;
   align-items: center;
@@ -608,13 +623,13 @@ select[multiple] {
   }
 }
 
-.criteria button[type='submit']:hover {
+.criteria button[type="submit"]:hover {
   box-shadow: 0 3px #1f5f35;
   background-color: darkcyan;
   top: 1px;
 }
 
-.criteria button[type='submit']:active {
+.criteria button[type="submit"]:active {
   box-shadow: 0 0 #57cc99;
   top: 5px;
 }
@@ -624,9 +639,29 @@ select[multiple] {
   align-items: center;
   width: 100%;
   margin-bottom: 8px;
+  user-select: none;
 
   span {
     font-size: 1.1rem;
+  }
+
+  &__blocked {
+    pointer-events: none;
+    color: rgb(80, 80, 80);
+    position: relative;
+
+    .switch {
+      .handle {
+        background-color: rgb(77, 77, 77);
+      }
+    }
+  }
+  &__locked {
+    position: absolute;
+    left: 2rem;
+    color: rgb(255, 225, 57);
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px blue;
   }
 }
 
@@ -649,7 +684,7 @@ select[multiple] {
   }
 }
 
-.switch[data-isOn='true'] {
+.switch[data-isOn="true"] {
   justify-content: flex-end;
 
   .handle {

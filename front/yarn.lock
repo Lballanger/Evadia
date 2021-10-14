@@ -1867,7 +1867,7 @@ react-leaflet@^3.2.1:
 
 react-multi-select-component@^4.1.13:
   version "4.1.13"
-  resolved "https://registry.yarnpkg.com/react-multi-select-component/-/react-multi-select-component-4.1.13.tgz#d0f57d5df386f40496ea82208be74323106ad9b7"
+  resolved "https://registry.npmjs.org/react-multi-select-component/-/react-multi-select-component-4.1.13.tgz"
   integrity sha512-+pCqnW7wsoQSGEVChWNg/8hmHoza8cvkzBoVXzo1a9pYI/Cp0onOyJ1yyqNvE62y5EIpTwsnD/qFgljZQwxG6A==
 
 react-query@^3.24.4:
