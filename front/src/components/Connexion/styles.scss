@@ -86,7 +86,7 @@
   }
 
   &__form-group-button {
-    margin: 1rem auto;
+  margin: 1rem auto;
   justify-content: center;
   align-items: center;
   padding: 0.8rem 1.1rem;
@@ -107,14 +107,14 @@
   }
 
   &__form-group-button:hover {
-    box-shadow: 0 3px #1f5f35;
+  box-shadow: 0 3px #1f5f35;
   background-color: darkcyan;
   top: 1px;
   }
 
   &__form-group-button:active {
-    box-shadow: 0 0 #57cc99;
-    top: 5px;
+  box-shadow: 0 0 #57cc99;
+  top: 5px;
   }
 
   &__form__email {
