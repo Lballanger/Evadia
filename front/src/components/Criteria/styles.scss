@@ -30,7 +30,21 @@
       padding-bottom: 1.5rem;
       border-bottom: black solid 2px;
     }
+    &__h2 {
+      // display: none;
 
+      &__disconnect {
+        font-size: 1.3rem;
+        text-align: center;
+        padding-bottom: 1.3rem;
+        color: rgb(12, 12, 12);
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+        font-family: "koho";
+        &__locked {
+          color: rgb(185, 39, 39);
+        }
+      }
+    }
     &__form__label {
       font-weight: bold;
       text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
@@ -271,7 +285,7 @@
         text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
         font-family: "koho";
         &__locked {
-          color: rgb(37, 21, 180);
+          color: rgb(185, 39, 39);
         }
       }
     }
@@ -341,11 +355,11 @@
 }
 
 .doctor {
-  grid-area: 1 / 5 / 1 / 5;
+  grid-area: 2 / 3 / 2 / 3;
 }
 
 .nursery {
-  grid-area: 2 / 3 / 2 / 3;
+  grid-area: 1 / 5 / 1 / 5;
 }
 
 .midwife {
@@ -659,9 +673,8 @@ select[multiple] {
   &__locked {
     position: absolute;
     left: 2rem;
-    color: rgb(255, 225, 57);
+    color: rgb(185, 39, 39);
     font-size: 1.5rem;
-    text-shadow: 0 0 10px blue;
   }
 }
 
@@ -679,7 +692,7 @@ select[multiple] {
   .handle {
     width: 20px;
     height: 20px;
-    background-color: rgb(185, 39, 39);
+    background-color: rgb(77, 77, 77);
     border-radius: 40px;
   }
 }

@@ -269,12 +269,8 @@ const Criteria = () => {
             </div>
           </section>
 
-          <div
-            className="pharmacy"
-            title={user ? '' : 'Vous devez vous connecter'}
-          >
-            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
-              {!user ? <IoLockClosed className="choice__locked" /> : null}
+          <div className="pharmacy">
+            <div className="choice">
               <div
                 className="switch"
                 data-isOn={criterias.type_health_institution.pharmacie}
@@ -286,12 +282,8 @@ const Criteria = () => {
             </div>
           </div>
 
-          <div
-            className="hospital"
-            title={user ? '' : 'Vous devez vous connecter'}
-          >
-            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
-              {!user ? <IoLockClosed className="choice__locked" /> : null}
+          <div className="hospital">
+            <div className="choice">
               <div
                 className="switch"
                 data-isOn={
@@ -324,12 +316,8 @@ const Criteria = () => {
             </div>
           </div>
 
-          <div
-            className="nursery"
-            title={user ? '' : 'Vous devez vous connecter'}
-          >
-            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
-              {!user ? <IoLockClosed className="choice__locked" /> : null}
+          <div className="nursery">
+            <div className="choice">
               <div
                 className="switch"
                 data-isOn={
