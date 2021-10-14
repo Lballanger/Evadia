@@ -16,17 +16,13 @@ CREATE OR REPLACE FUNCTION private.criteria(json) RETURNS SETOF private.commune 
 	AND (CASE 
         -- Test for the presence of the code_departement key and array in the json
 		WHEN (($1->'code_departement')::text IS NOT NULL) = true AND (json_typeof($1->'code_departement')::text) = 'array'
-			THEN private.commune.code_departement IN (
-				SELECT private.commune.code_insee FROM private.commune 
-				WHERE private.commune.code_departement IN (SELECT json_array_elements_text($1->'code_departement')))
+			THEN code_departement IN (SELECT json_array_elements_text($1->'code_departement'))
 		ELSE true
 		END)
 	AND (CASE 
         -- Test for the presence of the code_region key and array in the json
 		WHEN (($1->'code_region')::text IS NOT NULL) = true AND (json_typeof($1->'code_region')::text) = 'array'
-			THEN private.commune.code_region IN (
-				SELECT private.commune.code_insee FROM private.commune 
-				WHERE private.commune.code_region IN (SELECT json_array_elements_text($1->'code_region')))
+			THEN code_region IN (SELECT json_array_elements_text($1->'code_region'))
 		ELSE true
 		END)
 	AND (CASE 
