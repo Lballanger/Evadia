@@ -32,15 +32,18 @@ const Legals = () => (
         <strong>API utilisé :</strong>
       </p>
       <p className="Legals__p">
+        API Découpage Administratif - (API Geo) : Open Data Commons Open
+        Database License (OdbL)
+      </p>
+      <p className="Legals__p">
+        Arrondissements municipaux millésimés : Licence Ouverte v1.0
+      </p>
+      <p className="Legals__p">
         Annuaire de l&apos;éducation : Licence Ouverte v2.0 (Etalab)
       </p>
       <p className="Legals__p">
         Base Nationale des Commerces Ouverte : Open Data Commons Open Database
         License (OdbL)
-      </p>
-      <p className="Legals__p">
-        API Découpage Administratif - (API Geo) : Open Data Commons Open
-        Database License (OdbL)
       </p>
       <p className="Legals__p">
         Etablissements du domaine sanitaire et social - Millésimé : Licence
@@ -49,6 +52,14 @@ const Legals = () => (
       <p className="Legals__p">
         Annuaire Santé : Liste, localisation et tarifs des professionnels de
         santé : Licence Ouverte v1.0
+      </p>
+      <p className="Legals__p">
+        Le marché du haut et très haut débit fixe (déploiements) : Open Data
+        Commons Open Database License (OdbL)
+      </p>
+      <p className="Legals__p">
+        Fiscalité locale des Communes - Millésimé - France : Licence Ouverte
+        v2.0 (Etalab)
       </p>
       <h3 className="Legals__h3">
         2 - Propriété intellectuelle et contrefaçons
