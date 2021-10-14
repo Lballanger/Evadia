@@ -60,7 +60,15 @@ const App = () => {
 
   return isLoading ? (
     // TODO: Create a beautiful loading screen
-    <div>APP LOADING....</div>
+    <div className="loading">
+      <div className="loadingio-spinner-ball-9gurzzc50hk">
+        <div className="ldio-biwfkwl6g9l">
+          <div />
+        </div>
+      </div>
+      <style type="text/css" />
+      <span>Chargement en cours....</span>
+    </div>
   ) : (
     <>
       <Header />
