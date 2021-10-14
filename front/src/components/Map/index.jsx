@@ -174,9 +174,9 @@ const Map = ({ location: { pathname } }) => {
       <MapContainer
         center={center}
         zoom={zoom}
-        scrollWheelZoom={false}
+        scrollWheelZoom
         className="map__container"
-        zoomControl={false}
+        zoomControl
         doubleClickZoom
         whenCreated={setMapView}
       >
