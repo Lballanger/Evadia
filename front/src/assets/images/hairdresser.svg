@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="282.5" height="457.444" viewBox="0 0 282.5 457.444">
+  <defs>
+    <filter id="Icon_ionic-ios-pin" x="0" y="0" width="282.5" height="457.444" filterUnits="userSpaceOnUse">
+      <feOffset dx="14" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="hairdresser" transform="translate(-32 -22.5)">
+    <g transform="matrix(1, 0, 0, 1, 32, 22.5)" filter="url(#Icon_ionic-ios-pin)">
+      <path id="Icon_ionic-ios-pin-2" data-name="Icon ionic-ios-pin" d="M156.875,3.375c-82.26,0-128,61.98-128,138.342,0,107.611,128,292.1,128,292.1s127-184.491,127-292.1C283.875,65.355,239.135,3.375,156.875,3.375Z" transform="translate(-28.88 7.13)" fill="#ac4f1e"/>
+    </g>
+    <g id="Icon_feather-scissors" data-name="Icon feather-scissors" transform="translate(86.866 94.29)">
+      <path id="Tracé_7" data-name="Tracé 7" d="M52.7,28.6A24.1,24.1,0,1,1,28.6,4.5,24.1,24.1,0,0,1,52.7,28.6Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
+      <path id="Tracé_8" data-name="Tracé 8" d="M52.7,46.6A24.1,24.1,0,1,1,28.6,22.5,24.1,24.1,0,0,1,52.7,46.6Z" transform="translate(0 78.394)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
+      <path id="Tracé_9" data-name="Tracé 9" d="M107.61,6,12.18,101.43" transform="translate(33.448 6.533)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
+      <path id="Tracé_10" data-name="Tracé 10" d="M21.7,21.72,66.127,66.061" transform="translate(74.932 74.997)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
+      <path id="Tracé_11" data-name="Tracé 11" d="M12.18,12.18,43.347,43.347" transform="translate(33.448 33.448)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
+    </g>
+  </g>
+</svg>

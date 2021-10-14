@@ -28,6 +28,14 @@ import SchoolIcon from '../../assets/images/school.svg';
 import ToiletIcon from '../../assets/images/toilet.svg';
 import AnimalIcon from '../../assets/images/animal.svg';
 import VehicleIcon from '../../assets/images/vehicle.svg';
+import PostIcon from '../../assets/images/post.svg';
+import BarIcon from '../../assets/images/bar.svg';
+import TobaccoIcon from '../../assets/images/tobacco.svg';
+import LocalMarketIcon from '../../assets/images/localmarket.svg';
+import FloristIcon from '../../assets/images/florist.svg';
+import HairdresserIcon from '../../assets/images/hairdresser.svg';
+import OpticianIcon from '../../assets/images/optician.svg';
+import BeautyIcon from '../../assets/images/beauty.svg';
 import 'leaflet/dist/leaflet.css';
 import './styles.scss';
 import mapStore from '../../store/map';
@@ -132,7 +140,7 @@ const Map = ({ location: { pathname } }) => {
           iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
-      case 'school':
+      case 'Ecole':
         return new L.Icon({
           iconUrl: SchoolIcon,
           iconSize: new L.Point(40, 40),
@@ -153,6 +161,55 @@ const Map = ({ location: { pathname } }) => {
       case 'vehicle':
         return new L.Icon({
           iconUrl: VehicleIcon,
+          iconSize: new L.Point(40, 40),
+          shadowSize: 10,
+        });
+      case 'post_office':
+        return new L.Icon({
+          iconUrl: PostIcon,
+          iconSize: new L.Point(40, 40),
+          shadowSize: 10,
+        });
+      case 'bar':
+        return new L.Icon({
+          iconUrl: BarIcon,
+          iconSize: new L.Point(40, 40),
+          shadowSize: 10,
+        });
+      case 'tobacco':
+        return new L.Icon({
+          iconUrl: TobaccoIcon,
+          iconSize: new L.Point(40, 40),
+          shadowSize: 10,
+        });
+      case 'caterer':
+      case 'butcher':
+        return new L.Icon({
+          iconUrl: LocalMarketIcon,
+          iconSize: new L.Point(40, 40),
+          shadowSize: 10,
+        });
+      case 'florist':
+        return new L.Icon({
+          iconUrl: FloristIcon,
+          iconSize: new L.Point(40, 40),
+          shadowSize: 10,
+        });
+      case 'hairdresser':
+        return new L.Icon({
+          iconUrl: HairdresserIcon,
+          iconSize: new L.Point(40, 40),
+          shadowSize: 10,
+        });
+      case 'optician':
+        return new L.Icon({
+          iconUrl: OpticianIcon,
+          iconSize: new L.Point(40, 40),
+          shadowSize: 10,
+        });
+      case 'beauty':
+        return new L.Icon({
+          iconUrl: BeautyIcon,
           iconSize: new L.Point(40, 40),
           shadowSize: 10,
         });
