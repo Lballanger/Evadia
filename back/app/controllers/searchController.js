@@ -130,7 +130,7 @@ const searchController = {
           else delete params.type_health_institution;
         }
       } else params.type_health_institution = typeHealthInstitution;
-
+      console.log(params);
       const commune = await Commune.findByCriteria(params);
       response.json(commune);
     } catch (error) {

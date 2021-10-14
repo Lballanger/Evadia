@@ -6,9 +6,9 @@ const authorizePass = (req, next) => {
         req.url === '/api/search/criteria' ||
         req.url === `/api/search/city/${req.params.insee}`
       ) {
-        return next();
+        return true;
       }
-      return res.status(401).json({ error: 'No token found' });
+      return false;
 }
 
 // eslint-disable-next-line consistent-return
@@ -22,7 +22,8 @@ exports.authMiddleware =
 
       // If Authorization have no value, return error message with status 401
       if (!authorization) {
-        authorizePass(req, next);
+        if (authorizePass(req)) return next();
+        return res.status(401).json({ error: 'No token found' });
       }
 
       // Extract token from authorization value ('Bearer the-token-here')
@@ -30,14 +31,17 @@ exports.authMiddleware =
 
       // If no token found, return error message with status 401
       if (!token) {
-        authorizePass(req, next);
+        if (authorizePass(req)) return next();
+        return res.status(401).json({ error: 'No token found' });
       }
       // Decode the token
       const decoded = await jwtService.validateToken(token, isRefresh);
 
       // If decode is null, return error message with status 401
-      if (decoded == null)
+      if (decoded == null) {
+        if (authorizePass(req)) return next();
         return res.status(401).json({ error: 'Invalid or expired token' });
+      }
 
       if (await blacklistService.getUser(decoded.id)) {
         return res.status(401).json({ error: 'You must to be logged' });
