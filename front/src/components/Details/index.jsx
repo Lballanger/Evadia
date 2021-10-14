@@ -284,7 +284,7 @@ const Details = () => {
                         {tax.year} | <strong>{tax.housing_tax}</strong>
                       </p>
                     ))
-                  : 'Non renseigné'}
+                  : 'réservé aux membres'}
               </li>
             </ul>
           </div>
