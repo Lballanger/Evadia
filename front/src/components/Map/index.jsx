@@ -1,6 +1,6 @@
 /* eslint-disable no-lone-blocks */
 /* eslint-disable react/react-in-jsx-scope */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -11,6 +11,8 @@ import {
 import L from 'leaflet';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
+import 'react-leaflet-markercluster/dist/styles.min.css';
 import CityIcon from '../../assets/images/city.svg';
 import BabyIcon from '../../assets/images/baby.svg';
 import BakeryIcon from '../../assets/images/bakery.svg';
@@ -41,6 +43,11 @@ const Map = ({ location: { pathname } }) => {
   const zoom = mapStore((state) => state.zoom);
   const [mapView, setMapView] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [mapKey, setMapKey] = useState(new Date().getTime());
+
+  useEffect(() => {
+    setMapKey(new Date().getTime());
+  }, [markers]);
 
   useEffect(() => {
     const path = pathname.split('/')[1];
@@ -176,7 +183,7 @@ const Map = ({ location: { pathname } }) => {
         zoom={zoom}
         scrollWheelZoom
         className="map__container"
-        zoomControl
+        zoomControl={false}
         doubleClickZoom
         whenCreated={setMapView}
       >
@@ -185,16 +192,22 @@ const Map = ({ location: { pathname } }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ZoomControl position="bottomright" />
-        {markers.map((marker, index) => (
-          <Marker
-            // eslint-disable-next-line react/no-array-index-key
-            key={`${marker.name}-${index}`}
-            position={marker.coords}
-            icon={getIcon(marker.type)}
-          >
-            <Popup>{marker.name}</Popup>
-          </Marker>
-        ))}
+        <MarkerClusterGroup
+          key={mapKey}
+          spiderfyDistanceMultiplier={1}
+          showCoverageOnHover={false}
+        >
+          {markers.map((marker, index) => (
+            <Marker
+              // eslint-disable-next-line react/no-array-index-key
+              key={`${marker.name}-${index}`}
+              position={marker.coords}
+              icon={getIcon(marker.type)}
+            >
+              <Popup>{marker.name}</Popup>
+            </Marker>
+          ))}
+        </MarkerClusterGroup>
       </MapContainer>
     </div>
   );
