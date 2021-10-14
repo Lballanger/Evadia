@@ -58,7 +58,9 @@ const Results = () => {
                 alt="city"
               />
               <div className="result__info">
-                <p>{city.city_name}</p>
+                <p>
+                  {city.city_name} - {city.code_postal[0]}
+                </p>
                 <div className="infos">
                   <p>Nombre d&apos;habitants : {city.population}</p>
                 </div>

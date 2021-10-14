@@ -73,7 +73,7 @@ const Account = () => {
               transition={{ duration: 1 }}
               className="account__avatar__img"
               style={styles.image}
-              src={`https://eu.ui-avatars.com/api/?name=${user.firstname}+${user.lastname}&rounded=true&background=0dbca4&color=efefef&font-size=0.75`}
+              src={`https://eu.ui-avatars.com/api/?name=${user.firstname}+${user.lastname}&rounded=true&background=0dbca4&color=efefef&font-size=0.6`}
               alt={`Profile of ${user.firstname} ${user.lastname}`}
             />
           </div>
