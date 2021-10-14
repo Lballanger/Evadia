@@ -5,12 +5,14 @@ import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MultiSelect } from 'react-multi-select-component';
+import { IoLockClosed } from 'react-icons/io5';
 import API from '../../api';
 import cityStore from '../../store/city';
 import mapStore from '../../store/map';
 import criteriaStore from '../../store/criteria';
 import departements from '../../assets/data/departements-region.json';
 import regionsWithDepartements from '../../assets/data/regions_with_departements.json';
+import userStore from '../../store/user';
 
 import './styles.scss';
 import Loader from '../Shared/Loader';
@@ -41,6 +43,7 @@ const regionsSelect = regionsWithDepartements.map((region) => ({
 
 const Criteria = () => {
   const history = useHistory();
+  const user = userStore((state) => state.user);
   const setCities = cityStore((state) => state.setCities);
   const criterias = criteriaStore((state) => state.criterias);
   const setCriteria = criteriaStore((state) => state.setCriteria);
@@ -151,6 +154,17 @@ const Criteria = () => {
   return (
     <section className="criteria__container">
       <h1 className="koho">Recherche selon vos critères</h1>
+      <div className={`${!user ? 'criteria__h2__disconnect' : 'criteria__h2'}`}>
+        {!user ? (
+          <h2 className="criteria__h2__disconnect">
+            {!user ? (
+              <IoLockClosed className="criteria__h2__disconnect__locked" />
+            ) : null}
+            Vous devez être connecté pour accéder à ces critères.
+          </h2>
+        ) : null}
+      </div>
+
       <form onSubmit={handleSumbit} className="criteria">
         <div className="criteria__form__container">
           <section className="range-slider">
@@ -255,8 +269,12 @@ const Criteria = () => {
             </div>
           </section>
 
-          <div className="pharmacy">
-            <div className="choice">
+          <div
+            className="pharmacy"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={criterias.type_health_institution.pharmacie}
@@ -267,8 +285,13 @@ const Criteria = () => {
               <span>Pharmacies</span>
             </div>
           </div>
-          <div className="hospital">
-            <div className="choice">
+
+          <div
+            className="hospital"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={
@@ -281,8 +304,13 @@ const Criteria = () => {
               <span>Centres Hospitaliers</span>
             </div>
           </div>
-          <div className="doctor">
-            <div className="choice">
+
+          <div
+            className="doctor"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={
@@ -295,8 +323,13 @@ const Criteria = () => {
               <span>Médecins généralistes</span>
             </div>
           </div>
-          <div className="nursery">
-            <div className="choice">
+
+          <div
+            className="nursery"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={
@@ -309,8 +342,13 @@ const Criteria = () => {
               <span>Crèches/Garderies</span>
             </div>
           </div>
-          <div className="dentist">
-            <div className="choice">
+
+          <div
+            className="dentist"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={
@@ -323,8 +361,13 @@ const Criteria = () => {
               <span>Dentistes</span>
             </div>
           </div>
-          <div className="cardiologist">
-            <div className="choice">
+
+          <div
+            className="cardiologist"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={criterias.type_personal_health.cardiologue}
@@ -335,8 +378,13 @@ const Criteria = () => {
               <span>Cardiologues</span>
             </div>
           </div>
-          <div className="dermatologist">
-            <div className="choice">
+
+          <div
+            className="dermatologist"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={
@@ -351,8 +399,13 @@ const Criteria = () => {
               <span>Dermatologues</span>
             </div>
           </div>
-          <div className="ophtalmologist">
-            <div className="choice">
+
+          <div
+            className="ophtalmologist"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={criterias.type_personal_health.ophtalmologiste}
@@ -363,8 +416,13 @@ const Criteria = () => {
               <span>Ophtalmologues</span>
             </div>
           </div>
-          <div className="pediatrician">
-            <div className="choice">
+
+          <div
+            className="pediatrician"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={criterias.type_personal_health.pédiatre}
@@ -375,8 +433,13 @@ const Criteria = () => {
               <span>Pédiatres</span>
             </div>
           </div>
-          <div className="pulmonologist">
-            <div className="choice">
+
+          <div
+            className="pulmonologist"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={criterias.type_personal_health.pneumologue}
@@ -387,8 +450,13 @@ const Criteria = () => {
               <span>Pneumologues</span>
             </div>
           </div>
-          <div className="psychiatrist">
-            <div className="choice">
+
+          <div
+            className="psychiatrist"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={criterias.type_personal_health.psychiatre}
@@ -399,8 +467,13 @@ const Criteria = () => {
               <span>Psychiatres</span>
             </div>
           </div>
-          <div className="midwife">
-            <div className="choice">
+
+          <div
+            className="midwife"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={criterias.type_personal_health['Sage-femme']}
@@ -411,8 +484,13 @@ const Criteria = () => {
               <span>Sages-femmes</span>
             </div>
           </div>
-          <div className="healthCenter">
-            <div className="choice">
+
+          <div
+            className="healthCenter"
+            title={user ? '' : 'Vous devez vous connecter'}
+          >
+            <div className={`choice ${!user ? 'choice__blocked' : ''}`}>
+              {!user ? <IoLockClosed className="choice__locked" /> : null}
               <div
                 className="switch"
                 data-isOn={criterias.type_health_institution['Centre de soins']}
