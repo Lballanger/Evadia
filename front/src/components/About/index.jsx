@@ -62,7 +62,7 @@ const About = () => (
                 times: [0, 0.2, 0.5, 0.8, 3],
               }}
               src={avatarGM}
-              className="About__team__avatarGM"
+              className="About__team__avatar"
               alt="avatar"
             />
             <p className="About__team__dev">Germain Michaud</p>
@@ -110,7 +110,7 @@ const About = () => (
                 times: [0, 0.2, 0.5, 0.8, 3],
               }}
               src={avatarAS}
-              className="About__team__avatarAS"
+              className="About__team__avatar"
               alt="avatar"
             />
             <p className="About__team__dev">Alison Serra</p>
@@ -158,7 +158,7 @@ const About = () => (
                 times: [0, 0.2, 0.5, 0.8, 3],
               }}
               src={avatarCK}
-              className="About__team__avatarCK"
+              className="About__team__avatar"
               alt="avatar"
             />
             <p className="About__team__dev">Clément Kieken</p>
@@ -205,7 +205,7 @@ const About = () => (
                 times: [0, 0.2, 0.5, 0.8, 3],
               }}
               src={avatarFC}
-              className="About__team__avatarFC"
+              className="About__team__avatar"
               alt="avatar"
             />
             <p className="About__team__dev">François Charron</p>
@@ -253,7 +253,7 @@ const About = () => (
                 times: [0, 0.2, 0.5, 0.8, 3],
               }}
               src={avatarLB}
-              className="About__team__avatarLB"
+              className="About__team__avatar"
               alt="avatar"
             />
             <p className="About__team__dev">Loïc Ballanger</p>

@@ -93,36 +93,8 @@
       transition: 0.6s;
     }
 
-    &__avatarFC {
-      width: 95px;
-      height: 120px;
-      text-align: center;
-      border-bottom: 2px solid black;
-      border-radius: 20%;
-    }
-    &__avatarCK {
-      width: 90px;
-      height: 120px;
-      text-align: center;
-      border-bottom: 2px solid black;
-      border-radius: 20%;
-    }
-    &__avatarLB {
-      width: 105px;
-      height: 120px;
-      text-align: center;
-      border-bottom: 2px solid black;
-      border-radius: 20%;
-    }
-    &__avatarAS {
-      width: 90px;
-      height: 120px;
-      text-align: center;
-      border-bottom: 2px solid black;
-      border-radius: 20%;
-    }
-    &__avatarGM {
-      width: 100px;
+    &__avatar {
+      width: 120px;
       height: 120px;
       text-align: center;
       border-bottom: 2px solid black;
