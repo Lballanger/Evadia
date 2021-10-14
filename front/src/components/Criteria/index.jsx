@@ -140,6 +140,7 @@ const Criteria = () => {
       setMapCenter(data[0].coordinates.x, data[0].coordinates.y);
       history.push('/results');
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('Error get by criteria: ', error.response.data);
       // Afficher une popup si il y a une erreur
     } finally {
@@ -258,8 +259,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_health_institution.pharmacy}
-                onClick={() => handleInstituteToggle('pharmacy')}
+                data-isOn={criterias.type_health_institution.pharmacie}
+                onClick={() => handleInstituteToggle('pharmacie')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -270,8 +271,10 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_health_institution.hospital}
-                onClick={() => handleInstituteToggle('hospital')}
+                data-isOn={
+                  criterias.type_health_institution['centre hospitalier']
+                }
+                onClick={() => handleInstituteToggle('centre hospitalier')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -282,8 +285,10 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_personal_health.doctor}
-                onClick={() => handlePersonalToggle('doctor')}
+                data-isOn={
+                  criterias.type_personal_health['Médecin généraliste']
+                }
+                onClick={() => handlePersonalToggle('Médecin généraliste')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -294,8 +299,10 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_health_institution.nursery}
-                onClick={() => handleInstituteToggle('nursery')}
+                data-isOn={
+                  criterias.type_health_institution['crèche et garderie']
+                }
+                onClick={() => handleInstituteToggle('crèche et garderie')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -306,8 +313,10 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_personal_health.dentist}
-                onClick={() => handlePersonalToggle('dentist')}
+                data-isOn={
+                  criterias.type_personal_health['Chirurgien-dentiste']
+                }
+                onClick={() => handlePersonalToggle('Chirurgien-dentiste')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -318,8 +327,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_personal_health.cardiologist}
-                onClick={() => handlePersonalToggle('cardiologist')}
+                data-isOn={criterias.type_personal_health.cardiologue}
+                onClick={() => handlePersonalToggle('cardiologue')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -330,8 +339,12 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_personal_health.dermatologist}
-                onClick={() => handlePersonalToggle('dermatologist')}
+                data-isOn={
+                  criterias.type_personal_health['Dermatologue et vénérologue']
+                }
+                onClick={() =>
+                  handlePersonalToggle('Dermatologue et vénérologue')
+                }
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -342,8 +355,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_personal_health.ophtalmologist}
-                onClick={() => handlePersonalToggle('ophtalmologist')}
+                data-isOn={criterias.type_personal_health.ophtalmologiste}
+                onClick={() => handlePersonalToggle('ophtalmologiste')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -354,8 +367,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_personal_health.pediatrician}
-                onClick={() => handlePersonalToggle('pediatrician')}
+                data-isOn={criterias.type_personal_health.pédiatre}
+                onClick={() => handlePersonalToggle('pédiatre')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -366,8 +379,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_personal_health.pulmonologist}
-                onClick={() => handlePersonalToggle('pulmonologist')}
+                data-isOn={criterias.type_personal_health.pneumologue}
+                onClick={() => handlePersonalToggle('pneumologue')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -378,8 +391,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_personal_health.psychiatrist}
-                onClick={() => handlePersonalToggle('psychiatrist')}
+                data-isOn={criterias.type_personal_health.psychiatre}
+                onClick={() => handlePersonalToggle('psychiatre')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -390,8 +403,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_personal_health.midwife}
-                onClick={() => handlePersonalToggle('midwife')}
+                data-isOn={criterias.type_personal_health['Sage-femme']}
+                onClick={() => handlePersonalToggle('Sage-femme')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
@@ -402,8 +415,8 @@ const Criteria = () => {
             <div className="choice">
               <div
                 className="switch"
-                data-isOn={criterias.type_health_institution.healthCenter}
-                onClick={() => handleInstituteToggle('healthCenter')}
+                data-isOn={criterias.type_health_institution['Centre de soins']}
+                onClick={() => handleInstituteToggle('Centre de soins')}
               >
                 <motion.div className="handle" layout transition={spring} />
               </div>
