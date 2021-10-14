@@ -281,10 +281,10 @@ const Details = () => {
                 {city.taxation
                   ? city.taxation.map((tax) => (
                       <p key={tax.id}>
-                        {tax.year} | <strong>{tax.housing_tax}</strong>
+                        {tax.year} | <strong>{tax.housing_tax} %</strong>
                       </p>
                     ))
-                  : 'Non renseigné'}
+                  : 'réservé aux membres'}
               </li>
             </ul>
           </div>
