@@ -15,7 +15,7 @@ const userController = {
         lastname: user.lastname,
         role: user.role,
         city: user.city,
-        favorites: user.favorites,
+        favorites: user.favorites || [],
       });
     } catch (error) {
       return response.status(500).json(error.message);

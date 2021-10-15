@@ -1,9 +1,9 @@
+/* eslint-disable no-param-reassign */
 const client = require('../database');
 
 /**
  * An entity representing a common
  * @typedef Commune
- * @property {string} code_insee
  * @property {string} code_departement
  * @property {string} code_postal
  * @property {string} code_region
@@ -226,9 +226,13 @@ class Commune {
         [user]
       );
       if (rows.length > 0) {
-        return new Commune(rows);
+        return rows.map((row) => {
+          row.commune_id = row.commune_code_insee;
+          delete row.commune_code_insee;
+          return new Commune(row);
+        });
       }
-      return null;
+      return [];
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
