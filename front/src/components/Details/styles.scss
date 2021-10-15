@@ -7,6 +7,7 @@
 
 .details__new__search {
   margin-bottom: 2rem;
+  justify-content: space-between;
 }
 
 .details__card {
@@ -101,11 +102,7 @@
         text-align: center;
         width: 100%;
 
-        background: linear-gradient(
-          to left,
-          rgb(255, 255, 255) 50%,
-          rgb(158, 219, 255) 50%
-        );
+        background: linear-gradient(to left, rgb(255, 255, 255) 50%, rgb(158, 219, 255) 50%);
         background-size: 200% 100%;
         background-position: right bottom;
         transition: all 0.7s ease;

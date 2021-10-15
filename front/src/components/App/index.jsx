@@ -24,11 +24,14 @@ import './index.scss';
 import NewPassword from '../ForgottenPassword/NewPassword';
 import ForgottenPassword from '../ForgottenPassword';
 import userStore from '../../store/user';
+import mapStore from '../../store/map';
 import Map from '../Map';
 import useWindowSize from '../../hooks/useWindowSize';
+import MobileMap from '../MobileMap';
 
 const App = () => {
   const setUser = userStore((state) => state.setUser);
+  const showMap = mapStore((state) => state.showMap);
   const setFavorites = useCity((state) => state.setFavorites);
   const { data, failureCount } = useUser();
   const { isMobile } = useWindowSize();
@@ -74,6 +77,7 @@ const App = () => {
       <Header />
       <main>
         {!isMobile ? <Map /> : null}
+        {isMobile && showMap ? <MobileMap /> : null}
         <Switch>
           <Route path="/" exact component={Homepage} />
           <Route path="/contact" exact component={Contact} />

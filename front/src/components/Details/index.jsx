@@ -1,7 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { IoStar, IoStarOutline, IoSchool, IoBanOutline } from 'react-icons/io5';
+import {
+  IoStar,
+  IoStarOutline,
+  IoSchool,
+  IoBanOutline,
+  IoMapOutline,
+} from 'react-icons/io5';
 import { GiHealthNormal, GiHealing, GiShop } from 'react-icons/gi';
 import toast from 'react-hot-toast';
 import cityStore from '../../store/city';
@@ -41,6 +47,7 @@ const Details = () => {
   const markersStore = mapStore((state) => state.markers);
   const setMapCenter = mapStore((state) => state.setMapCenter);
   const setMapZoom = mapStore((state) => state.setMapZoom);
+  const setShowMap = mapStore((state) => state.setShowMap);
   const [loading, setLoading] = useState(true);
   const [cards, setCards] = useState(initialCardsState);
   const { isMobile, isTablet } = useWindowSize();
@@ -249,6 +256,22 @@ const Details = () => {
     <div className="details__container">
       <div className="details__new__search" style={{ display: 'flex' }}>
         <Dropdown />
+
+        <button
+          type="button"
+          onClick={() => setShowMap(true)}
+          style={{
+            backgroundColor: '#38bd98',
+            textAlign: 'center',
+            borderRadius: '0.5rem',
+            padding: '0.5rem 1rem',
+            border: 'none',
+            cursor: 'pointer',
+            alignSelf: 'flex-start',
+          }}
+        >
+          <IoMapOutline color="#fff" size="20px" />
+        </button>
       </div>
 
       <div className="details__card">

@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { IoMapOutline } from 'react-icons/io5';
 import useWindowSize from '../../hooks/useWindowSize';
 import cityStore from '../../store/city';
+import mapStore from '../../store/map';
 import Map from '../Map';
 import paris from '../../assets/images/paris.jpg';
 import backgroundResults from '../../assets/images/backgroundResults.jpg';
@@ -11,6 +13,7 @@ import './styles.scss';
 const Results = () => {
   const { isMobile } = useWindowSize();
   const cities = cityStore((state) => state.cities);
+  const setShowMap = mapStore((state) => state.setShowMap);
 
   const transformCoords = (data) =>
     data.map((city) => ({
@@ -31,7 +34,15 @@ const Results = () => {
       <div className={`list__results${isMobile ? '' : ' with-map'}`}>
         <div className="results">
           <div className="results__criteria">
-            <div className="criteria__return">
+            <div
+              className="criteria__return"
+              style={{
+                display: 'flex',
+                alignContent: 'center',
+                gap: '1rem',
+                flexDirection: 'row',
+              }}
+            >
               <NavLink
                 type="button"
                 to="/criteria"
@@ -39,7 +50,23 @@ const Results = () => {
               >
                 Modifiez vos critères
               </NavLink>
+              <button
+                type="button"
+                onClick={() => setShowMap(true)}
+                style={{
+                  backgroundColor: '#38bd98',
+                  textAlign: 'center',
+                  borderRadius: '0.5rem',
+                  padding: '0.5rem 1rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                  alignSelf: 'center',
+                }}
+              >
+                <IoMapOutline color="#fff" size="20px" />
+              </button>
             </div>
+
             <div className="resultsNbr">
               {cities.length} ville{cities.length > 1 ? 's' : ''} dans votre
               recherche.

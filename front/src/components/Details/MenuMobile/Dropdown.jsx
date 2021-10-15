@@ -3,7 +3,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router';
-import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5';
+import {
+  IoChevronDownOutline,
+  IoChevronUpOutline,
+  IoMapOutline,
+} from 'react-icons/io5';
 import useClickOutside from '../../../hooks/useClickOutside';
 import cityStore from '../../../store/city';
 import API from '../../../api';
@@ -61,7 +65,11 @@ const Dropdown = () => {
         {displayMenu ? (
           <ul className="dropdown__ul">
             <li className="dropdown__list">
-              <a className="active" href="/criteria">
+              <a
+                className="active"
+                href="#"
+                onClick={() => history.push('/criteria')}
+              >
                 Par critères
               </a>
             </li>
