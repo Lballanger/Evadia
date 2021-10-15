@@ -108,7 +108,10 @@ const searchController = {
     }
 
     // Remove type_health_institution and type_personal_health if both are empty
-    if (params.type_health_institution && params.type_health_institution.length) {
+    if (
+      params.type_health_institution &&
+      params.type_health_institution.length
+    ) {
       typeHealthInstitution = params.type_health_institution;
     }
 
@@ -155,22 +158,25 @@ const searchController = {
       if (commune === null) {
         // if commune is not register in favorite then add
         await Commune.add(insee, id, boolean);
-        response.json(
-          `La commune ${insee} à bien été rajouté dans vos bookmarks`
-        );
+        response.json({
+          status: 'added',
+          message: `La commune ${insee} à bien été rajouté dans vos bookmarks`,
+        });
         // eslint-disable-next-line eqeqeq
       } else if (`${commune.is_favorite}` == boolean) {
         // delete if is true in coming and register as true (the opposite is true too)
         await Commune.delete(insee, id);
-        response.json(
-          `La commune ${insee} à bien été supprimé de vos bookmarks`
-        );
+        response.json({
+          status: 'removed',
+          message: `La commune ${insee} à bien été supprimé de vos bookmarks`,
+        });
       } else {
         // change if is true in coming and register as false (the opposite also work)
         await Commune.update(insee, id, boolean);
-        response.json(
-          `La commune ${insee} à bien été modifié dans vos bookmarks en ${boolean}`
-        );
+        response.json({
+          status: 'updated',
+          message: `La commune ${insee} à bien été modifié dans vos bookmarks en ${boolean}`,
+        });
       }
     } catch (error) {
       console.log(error);
