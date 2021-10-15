@@ -50,21 +50,23 @@ const Results = () => {
               >
                 Modifiez vos critères
               </NavLink>
-              <button
-                type="button"
-                onClick={() => setShowMap(true)}
-                style={{
-                  backgroundColor: '#38bd98',
-                  textAlign: 'center',
-                  borderRadius: '0.5rem',
-                  padding: '0.5rem 1rem',
-                  border: 'none',
-                  cursor: 'pointer',
-                  alignSelf: 'center',
-                }}
-              >
-                <IoMapOutline color="#fff" size="20px" />
-              </button>
+              {isMobile ? (
+                <button
+                  type="button"
+                  onClick={() => setShowMap(true)}
+                  style={{
+                    backgroundColor: '#38bd98',
+                    textAlign: 'center',
+                    borderRadius: '0.5rem',
+                    padding: '0.5rem 1rem',
+                    border: 'none',
+                    cursor: 'pointer',
+                    alignSelf: 'center',
+                  }}
+                >
+                  <IoMapOutline color="#fff" size="20px" />
+                </button>
+              ) : null}
             </div>
 
             <div className="resultsNbr">
