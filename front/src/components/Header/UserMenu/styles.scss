@@ -1,0 +1,46 @@
+.user-menu {
+  position: absolute;
+  top: 120%;
+  right: 0px;
+  background: rgb(79 146 186);
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+  box-shadow: rgb(0 0 0 / 70%) 0px 4px 10px -4px;
+  text-align: left;
+  width: 12rem;
+  cursor: auto;
+  z-index: 1;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &__link {
+      background: rgba(35, 111, 158, 0);
+      border: none;
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgb(243, 243, 243);
+      font-family: Helvetica;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem;
+      border-radius: 0.3rem;
+      transition: background 0.3s ease-in-out;
+
+      &:hover {
+        background: rgba(35, 111, 158, 1);
+      }
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}

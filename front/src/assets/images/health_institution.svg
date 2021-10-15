@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="282.5" height="457.444" viewBox="0 0 282.5 457.444">
+  <defs>
+    <filter id="Icon_ionic-ios-pin" x="0" y="0" width="282.5" height="457.444" filterUnits="userSpaceOnUse">
+      <feOffset dx="14" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="health_institution" transform="translate(-32 -22.5)">
+    <g transform="matrix(1, 0, 0, 1, 32, 22.5)" filter="url(#Icon_ionic-ios-pin)">
+      <path id="Icon_ionic-ios-pin-2" data-name="Icon ionic-ios-pin" d="M156.875,3.375c-82.26,0-128,61.98-128,138.342,0,107.611,128,292.1,128,292.1s127-184.491,127-292.1C283.875,65.355,239.135,3.375,156.875,3.375Z" transform="translate(-28.88 7.13)" fill="#d44755"/>
+    </g>
+    <path id="Icon_map-hospital" data-name="Icon map-hospital" d="M98.808.72a2.851,2.851,0,0,0-2.843,2.843v39.8A2.851,2.851,0,0,1,93.123,46.2H36.271a2.851,2.851,0,0,1-2.843-2.843V3.563A2.851,2.851,0,0,0,30.586.72H5A2.851,2.851,0,0,0,2.16,3.563V134.322A2.851,2.851,0,0,0,5,137.164H30.586a2.851,2.851,0,0,0,2.843-2.843V88.84A2.851,2.851,0,0,1,36.271,86H93.123a2.851,2.851,0,0,1,2.843,2.843v45.481a2.851,2.851,0,0,0,2.843,2.843h25.583a2.851,2.851,0,0,0,2.843-2.843V3.563A2.851,2.851,0,0,0,124.391.72Z" transform="translate(95.303 111.058)" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,101 @@
+.font-link {
+  font-family: "Cagliostro", regular;
+}
+.koho {
+  font-family: "KoHo", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("../../assets/images/bckgrnd_blue.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.details__map {
+  width: 100%;
+  position: fixed;
+  inset: 0;
+}
+
+
+
+@keyframes ldio-biwfkwl6g9l {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.45,0,0.9,0.55)
+  }
+  0% {
+    transform: translate(0,0)
+  }
+  50% {
+    transform: translate(0,108px);
+    animation-timing-function: cubic-bezier(0,0.45,0.55,0.9);
+  }
+  100% {
+    transform: translate(0,0);
+  }
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 9rem auto;
+
+  span {
+    font-size: 1.5rem;
+  }
+}
+
+.ldio-biwfkwl6g9l div {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url("../../assets/images/logo.png");
+  background-size: 100px 100px;
+  left: 74px;
+  top: 12px;
+  animation: ldio-biwfkwl6g9l 1.6949152542372883s linear infinite;
+}
+.loadingio-spinner-ball-9gurzzc50hk {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: transparent;
+}
+.ldio-biwfkwl6g9l {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-biwfkwl6g9l div { box-sizing: content-box; }

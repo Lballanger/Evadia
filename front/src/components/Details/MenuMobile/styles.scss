@@ -1,0 +1,92 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 11rem;
+  background-color: #38bd98;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+
+  &__ul {
+    margin-top: 0.5rem;
+    background-color: #38bd98;
+    border-radius: 0.5rem;
+  }
+
+  &__list {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+    border-bottom: 1px solid rgb(68, 68, 68);
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: rgb(255, 255, 255);
+  }
+
+  &__list:hover {
+    background-color: darkcyan;
+  }
+
+  &__button {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+
+    &__arrow {
+      transition: transform 0.3s;
+
+      &__animation {
+        transform: rotateZ(180deg);
+      }
+    }
+  }
+}
+
+// .dropdown__ul {
+//   list-style-type: none;
+//   margin: 0;
+//   padding: 0;
+//   top: 45px;
+//   right: 0px;
+//   width: 200px;
+//   background-color: white;
+//   font-weight: bold;
+//   position: absolute;
+
+//   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+//   z-index: 1;
+// }
+// .dropwdpwn__list a {
+//   color: #000;
+//   text-decoration: none;
+// }
+// .dropwdpwn__list {
+//   padding: 8px 16px;
+//   border-bottom: 1px solid #e5e5e5;
+// }
+// .dropwdpwn__list :last-child {
+//   border-bottom: none;
+// }
+// .dropwdpwn__list :hover {
+//   background-color: #e5e5e5;
+//   color: white;
+// }
+// .dropdown__button {
+//   width: 178px;
+//   height: 18px;
+//   background-color: #ff3232;
+//   padding: 12px;
+//   border-radius: 5px;
+//   font-weight: bold;
+//   color: white;
+// }
+// .dropdown__button:before {
+//   content: "";
+//   position: absolute;
+//   width: 0px;
+//   height: 0px;
+//   border: 10px solid;
+//   border-color: white transparent transparent transparent;
+//   right: 6px;
+//   top: 18px;
+// }

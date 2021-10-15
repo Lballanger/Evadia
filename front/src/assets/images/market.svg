@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="282.5" height="457.444" viewBox="0 0 282.5 457.444">
+  <defs>
+    <filter id="Icon_ionic-ios-pin" x="0" y="0" width="282.5" height="457.444" filterUnits="userSpaceOnUse">
+      <feOffset dx="14" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="market" transform="translate(-33 -22.5)">
+    <g transform="matrix(1, 0, 0, 1, 33, 22.5)" filter="url(#Icon_ionic-ios-pin)">
+      <path id="Icon_ionic-ios-pin-2" data-name="Icon ionic-ios-pin" d="M156.875,3.375c-82.26,0-128,61.98-128,138.342,0,107.611,128,292.1,128,292.1s127-184.491,127-292.1C283.875,65.355,239.135,3.375,156.875,3.375Z" transform="translate(-28.88 7.13)" fill="#7f47d4"/>
+    </g>
+    <g id="Icon_map-grocery-or-supermarket" data-name="Icon map-grocery-or-supermarket" transform="translate(75.643 105.902)">
+      <path id="Tracé_1" data-name="Tracé 1" d="M56.4,41.16a13.8,13.8,0,1,1-13.8-13.8,13.8,13.8,0,0,1,13.8,13.8Z" transform="translate(109.2 87.36)" fill="#fff"/>
+      <path id="Tracé_2" data-name="Tracé 2" d="M35.52,41.16a13.8,13.8,0,1,1-13.8-13.8,13.8,13.8,0,0,1,13.8,13.8Z" transform="translate(30.03 87.36)" fill="#fff"/>
+      <path id="Tracé_3" data-name="Tracé 3" d="M162.15,97.47H54.41l2.3-3.733a6.906,6.906,0,0,0,.8-5.358l-2.246-8.646,99.991-5.2a7.361,7.361,0,0,0,6.89-7.255V21.57a6.92,6.92,0,0,0-6.9-6.9H38.361L37.012,9.485A6.9,6.9,0,0,0,30.332,4.32H6.9a6.9,6.9,0,1,0,0,13.8H25L43.422,89l-7.245,11.747a6.9,6.9,0,0,0,5.872,10.522h120.1a6.9,6.9,0,0,0,0-13.8Z" transform="translate(0 0)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

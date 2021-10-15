@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="282.5" height="457.444" viewBox="0 0 282.5 457.444">
+  <defs>
+    <filter id="Icon_ionic-ios-pin" x="0" y="0" width="282.5" height="457.444" filterUnits="userSpaceOnUse">
+      <feOffset dx="14" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="baby" transform="translate(-32 -22.5)">
+    <g transform="matrix(1, 0, 0, 1, 32, 22.5)" filter="url(#Icon_ionic-ios-pin)">
+      <path id="Icon_ionic-ios-pin-2" data-name="Icon ionic-ios-pin" d="M156.875,3.375c-82.26,0-128,61.98-128,138.342,0,107.611,128,292.1,128,292.1s127-184.491,127-292.1C283.875,65.355,239.135,3.375,156.875,3.375Z" transform="translate(-28.88 7.13)" fill="#9ae1b9"/>
+    </g>
+    <path id="Icon_material-child-friendly" data-name="Icon material-child-friendly" d="M87.7,3V64.6h61.6A61.583,61.583,0,0,0,87.7,3Zm48.664,106.953A61.2,61.2,0,0,0,149.3,72.3H37.188L29.873,56.9H3V72.3H20.094s14.553,31.339,16.324,34.034A26.94,26.94,0,1,0,75.842,133.9H91.858a26.929,26.929,0,1,0,44.506-23.947ZM49.2,141.6a11.55,11.55,0,1,1,11.55-11.55A11.535,11.535,0,0,1,49.2,141.6Zm69.3,0a11.55,11.55,0,1,1,11.55-11.55A11.535,11.535,0,0,1,118.5,141.6Z" transform="translate(83.1 91)" fill="#fff"/>
+  </g>
+</svg>

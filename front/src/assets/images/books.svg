@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="282.5" height="457.444" viewBox="0 0 282.5 457.444">
+  <defs>
+    <filter id="Icon_ionic-ios-pin" x="0" y="0" width="282.5" height="457.444" filterUnits="userSpaceOnUse">
+      <feOffset dx="14" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="books" transform="translate(-32 -22.5)">
+    <g transform="matrix(1, 0, 0, 1, 32, 22.5)" filter="url(#Icon_ionic-ios-pin)">
+      <path id="Icon_ionic-ios-pin-2" data-name="Icon ionic-ios-pin" d="M156.875,3.375c-82.26,0-128,61.98-128,138.342,0,107.611,128,292.1,128,292.1s127-184.491,127-292.1C283.875,65.355,239.135,3.375,156.875,3.375Z" transform="translate(-28.88 7.13)" fill="#8b5a28"/>
+    </g>
+    <path id="Icon_metro-books" data-name="Icon metro-books" d="M40.715,8.571H8.021A5.465,5.465,0,0,0,2.571,14.02V133.9a5.465,5.465,0,0,0,5.449,5.449H40.715a5.465,5.465,0,0,0,5.449-5.449V14.021a5.465,5.465,0,0,0-5.449-5.449ZM35.266,41.266H13.47v-10.9h21.8v10.9ZM95.206,8.571H62.511a5.465,5.465,0,0,0-5.449,5.449V133.9a5.465,5.465,0,0,0,5.449,5.449H95.206a5.465,5.465,0,0,0,5.449-5.449V14.021a5.465,5.465,0,0,0-5.449-5.449ZM89.757,41.266H67.96v-10.9h21.8ZM132.853,17l-29.2,14.711a5.465,5.465,0,0,0-2.414,7.318l49.038,97.325a5.465,5.465,0,0,0,7.318,2.414l29.2-14.711a5.465,5.465,0,0,0,2.414-7.318L140.171,19.412A5.465,5.465,0,0,0,132.853,17Zm27.741,116.9a5.449,5.449,0,1,1-5.449-5.449A5.449,5.449,0,0,1,160.595,133.9Z" transform="translate(63.545 95.325)" fill="#fff"/>
+  </g>
+</svg>

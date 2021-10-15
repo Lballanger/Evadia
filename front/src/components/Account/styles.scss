@@ -1,0 +1,212 @@
+.account {
+  &__avatar {
+    &__img {
+      height: 6rem;
+      margin-top: 1.6rem;
+      margin-left: 0.2rem;
+      position: absolute;
+    }
+
+    &__display {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__infos {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 480px;
+    height: auto;
+    padding: 0;
+    margin: 4.8rem 0rem 2.2rem 0.3rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+    backdrop-filter: blur(3px);
+    font-weight: bold;
+
+    &__edit {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      border: none;
+      text-decoration: none;
+      color: #fff;
+      background-color: #38bd98;
+      cursor: pointer;
+      padding: 1rem;
+      border-radius: 20px 0px;
+      transition: 0.3s;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      &:hover {
+        background-color: darkcyan;
+      }
+      &.cancel {
+        background-color: #bb3c3c;
+        &:hover {
+          background-color: #862a2a;
+        }
+      }
+    }
+
+    &__ul {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      padding: 3rem 3rem;
+      width: 100%;
+    }
+
+    &__li {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    &__form {
+      padding: 4rem 3rem;
+      width: 100%;
+
+      &__container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+      }
+    }
+    &__input,
+    .react-autosuggest__input {
+      width: 100%;
+      padding: 0.4rem;
+      border: 1px solid #8f8f8f;
+      border-radius: 0.3rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    &__submit {
+      align-self: center;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 10px -4px rgb(0 0 0 / 30%);
+      background-color: #38bd98;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 3px;
+      margin: 0.6rem 0;
+      transition: 0.6s;
+      &:hover {
+        background-color: darkcyan;
+      }
+    }
+  }
+
+  &__delete {
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    display: flex;
+    justify-content: center;
+
+    &__btn {
+      border: none;
+      text-decoration: none;
+      background-color: rgb(226, 43, 43);
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.6s;
+      padding: 0.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+      backdrop-filter: blur(3px);
+      margin-top: 80px;
+
+      &:hover {
+        background-color: rgb(138, 30, 30);
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    padding-top: 8rem;
+    justify-content: center;
+  }
+}
+
+.react-autosuggest__container--open {
+  position: relative;
+}
+.react-autosuggest__suggestions-container--open {
+  position: absolute;
+  z-index: 99;
+  background: #fff;
+  width: 100%;
+}
+.react-autosuggest__suggestion {
+  padding: 0.3rem;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.favoris .accordion__title {
+  background-color: #dcb425d3;
+  color: black;
+  font-weight: bold;
+  transition: 0.6s;
+}
+.favoris .accordion__title:hover {
+  background-color: darkcyan;
+}
+.favoris .accordion__content {
+  background-color: #dcb42571;
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(3px);
+}
+
+.blackList .accordion__title {
+  background-color: rgba(41, 39, 39, 0.829);
+  font-weight: bold;
+  transition: 0.6s;
+}
+.blackList .accordion__title:hover {
+  background-color: darkcyan;
+}
+.blackList .accordion__content {
+  background-color: rgba(41, 39, 39, 0.404);
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(3px);
+}
+
+@media screen and (max-width: 768px) {
+  .account {
+    &__infos {
+      width: 20rem;
+
+      &__edit {
+        margin-left: 14.1rem;
+      }
+    }
+
+    &__avatar {
+      &__img {
+        height: 4rem;
+        margin-top: 0.1rem;
+        margin-left: 10.1rem;
+      }
+    }
+    &__delete__btn {
+      margin-top: 10px;
+    }
+  }
+}

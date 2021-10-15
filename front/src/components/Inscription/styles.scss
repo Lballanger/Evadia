@@ -1,0 +1,169 @@
+.inscription {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding: 1rem 2rem;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 6rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+  }
+
+  &__logo {
+    width: 22rem;
+    margin-left: 1.5rem;
+    margin-top: -11rem;
+    border-radius: 8px;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    & > div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      span {
+        margin-top: 2rem;
+        margin-left: 1.8rem;
+        text-align: left;
+        max-width: 80%;
+        font-size: 1.5rem;
+        text-shadow: 1px 1px 40px;
+        width: 22rem;
+      }
+    }
+  }
+
+  &__link {
+    margin-left: 0.2rem;
+    text-decoration: underline;
+    transition: 0.6s;
+  }
+
+  &__link:hover {
+    color: darkcyan;
+  }
+
+  &__form__readLegals {
+    margin-bottom: 30px;
+  }
+
+  &__form__readLegals__title {
+    margin-left: 5px;
+    font-size: small;
+  }
+
+  &__form__readLegals__link {
+    margin-left: 5px;
+  }
+
+  &__form-group-button {
+  margin: 1rem auto;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem 1.1rem;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #fff;
+  background: #04aa6d;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  display: block;
+  outline: none;
+  border: none;
+  box-shadow: 0 5px #1f5f35;
+
+    &:hover {
+  box-shadow: 0 3px #1f5f35;
+  background-color: darkcyan;
+  top: 1px;
+    }
+
+    &__form-group-button:active {
+    box-shadow: 0 0 #57cc99;
+    top: 5px;
+    }
+
+    &:disabled {
+      cursor: auto;
+      background-color: #85e2c8;
+      &:hover {
+        background-color: #85e2c8;
+        box-shadow: 0 5px #1f5f35;
+        top: 0;
+      }
+      
+    }
+  }
+
+  .react-autosuggest__container {
+    position: relative;
+    width: 100%;
+
+    .react-autosuggest__suggestions-container--open {
+      position: absolute;
+      z-index: 99;
+      top: calc(100% - 0.8rem);
+      background: #fff;
+      box-shadow: 0 4px 10px -4px;
+      padding: 0.4rem;
+      width: 100%;
+      font-size: 1.2rem;
+      border-radius: 0.3rem;
+
+      .auto-suggest__result {
+        padding: 0.1rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        background: #f7f7f7;
+        margin-bottom: 0.1rem;
+        color: #333;
+        cursor: pointer;
+        border-radius: 0.1rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background: #d6d6d6;
+          color: rgb(37, 37, 37);
+        }
+      }
+    }
+  }
+}
+
+.form__auto-suggest {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 100%;
+  margin-bottom: 0.8rem;
+
+  .inscription__label {
+    font-size: 1.1rem;
+    color: rgb(102, 102, 102);
+  }
+
+  input {
+    width: 100%;
+    font-size: 1.3rem;
+    border-radius: 0.3rem;
+    box-shadow: rgb(0 0 0 / 30%) 0px 2px 10px -4px;
+    border: 1px solid rgb(239, 239, 239);
+    padding: 0.8rem 0.6rem;
+  }
+}

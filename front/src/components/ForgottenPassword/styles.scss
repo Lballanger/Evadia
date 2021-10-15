@@ -1,0 +1,83 @@
+.forgoten-password {
+  padding: 1rem 2rem;
+  background-image: url("../../assets/images/bckgrnd_uhd.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 8rem;;
+    margin-bottom: 5rem;
+    text-align: center;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+
+    & > div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      span {
+        text-align: left;
+        max-width: 80%;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  &__form__readLegals {
+    margin-bottom: 30px;
+  }
+
+  &__form__readLegals__title {
+    margin-left: 5px;
+    font-size: small;
+  }
+
+  &__form__readLegals__link {
+    margin-left: 5px;
+  }
+
+  &__form-group-button {
+  margin: 1rem 1rem auto;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #fff;
+  background: #04aa6d;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  display: block;
+  outline: none;
+  border: none;
+  box-shadow: 0 5px #1f5f35;
+  }
+
+  &__form-group-button:hover {
+  box-shadow: 0 3px #1f5f35;
+  background-color: darkcyan;
+  top: 1px;
+  }
+
+  &__form-group-button:active {
+  box-shadow: 0 0 #57cc99;
+  top: 5px;
+  }
+}
