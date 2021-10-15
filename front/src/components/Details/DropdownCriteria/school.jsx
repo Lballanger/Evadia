@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useRef } from 'react';
@@ -6,7 +7,8 @@ import useClickOutside from '../../../hooks/useClickOutside';
 
 import './styles.scss';
 
-const DropdownSchool = () => {
+// eslint-disable-next-line react/prop-types
+const DropdownSchool = ({ data = [] }) => {
   // Méthode pour le petit menu déroulant.
   const [displayMenu, setDisplayMenu] = useState(false);
   const dropdownRef = useRef();
@@ -32,9 +34,15 @@ const DropdownSchool = () => {
         </div>
         {displayMenu ? (
           <ul className="details__dropdown__ul">
-            <li className="details__dropdown__li">3 écoles primaires</li>
-            <li className="details__dropdown__li">2 collèges</li>
-            <li className="details__dropdown__li">1 lycée</li>
+            {data && data.length < 10 ? (
+              data.map((element) => (
+                <li className="details__dropdown__li">{element.type}</li>
+              ))
+            ) : data && data.length >= 10 ? (
+              <li className="details__dropdown__li">{data.length} écoles</li>
+            ) : (
+              <li className="details__dropdown__li">Aucune école</li>
+            )}
           </ul>
         ) : null}
       </div>

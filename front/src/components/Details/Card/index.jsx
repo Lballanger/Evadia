@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const Card = ({ isDisabled, isActive, handleCards, cardName, children }) => (
@@ -27,6 +27,4 @@ Card.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const areEqual = (prev, next) => prev !== next;
-
-export default memo(Card, areEqual);
+export default Card;

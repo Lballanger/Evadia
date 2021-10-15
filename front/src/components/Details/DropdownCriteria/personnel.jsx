@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useRef } from 'react';
@@ -6,7 +7,8 @@ import useClickOutside from '../../../hooks/useClickOutside';
 
 import './styles.scss';
 
-const DropdownPersonnel = () => {
+// eslint-disable-next-line react/prop-types
+const DropdownPersonnel = ({ data = [] }) => {
   // Méthode pour le petit menu déroulant.
   const [displayMenu, setDisplayMenu] = useState(false);
   const dropdownRef = useRef();
@@ -32,15 +34,19 @@ const DropdownPersonnel = () => {
         </div>
         {displayMenu ? (
           <ul className="details__dropdown__ul">
-            <li className="details__dropdown__li">8 médecins généralistes</li>
-            <li className="details__dropdown__li">5 sages-femmes</li>
-            <li className="details__dropdown__li">4 pédiatres</li>
-            <li className="details__dropdown__li">3 ophtalmologues</li>
-            <li className="details__dropdown__li">2 dentistes</li>
-            <li className="details__dropdown__li">1 dermatologue</li>
-            <li className="details__dropdown__li">0 cardiologue</li>
-            <li className="details__dropdown__li">0 pneumologue</li>
-            <li className="details__dropdown__li">2 psychiatres</li>
+            {data && data.length < 10 ? (
+              data.map((element) => (
+                <li className="details__dropdown__li">{element.profession}</li>
+              ))
+            ) : data && data.length >= 10 ? (
+              <li className="details__dropdown__li">
+                {data.length} personnel de santé
+              </li>
+            ) : (
+              <li className="details__dropdown__li">
+                Aucun personnel de santé
+              </li>
+            )}
           </ul>
         ) : null}
       </div>

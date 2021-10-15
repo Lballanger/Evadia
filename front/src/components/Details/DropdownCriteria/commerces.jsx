@@ -6,7 +6,8 @@ import useClickOutside from '../../../hooks/useClickOutside';
 
 import './styles.scss';
 
-const DropdownShop = () => {
+// eslint-disable-next-line react/prop-types
+const DropdownShop = ({ data = [] }) => {
   // Méthode pour le petit menu déroulant.
   const [displayMenu, setDisplayMenu] = useState(false);
   const dropdownRef = useRef();
@@ -32,7 +33,9 @@ const DropdownShop = () => {
         </div>
         {displayMenu ? (
           <ul className="details__dropdown__ul">
-            <li className="details__dropdown__li">42 commerces trouvés</li>
+            <li className="details__dropdown__li">
+              {data ? `${data.length} commerces trouvés` : 'Aucun commerce'}
+            </li>
           </ul>
         ) : null}
       </div>

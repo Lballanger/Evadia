@@ -261,7 +261,7 @@ const Map = ({ location: { pathname } }) => {
               position={marker.coords}
               icon={getIcon(marker.type)}
             >
-              <Popup>{marker.name}</Popup>
+              <Popup>{marker.name || 'introuvable'}</Popup>
             </Marker>
           ))}
         </MarkerClusterGroup>

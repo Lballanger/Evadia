@@ -13,7 +13,6 @@ import useWindowSize from '../../hooks/useWindowSize';
 import './styles.scss';
 import BtnDesktop from './BtnDesktop/BtnDesktop';
 import mapStore from '../../store/map';
-import Card from './Card';
 import DropdownEtablissement from './DropdownCriteria/etablissment';
 import DropdownPersonnel from './DropdownCriteria/personnel';
 import DropdownShop from './DropdownCriteria/commerces';
@@ -26,54 +25,7 @@ const initialCardsState = {
   personal_health: false,
 };
 
-let markers = [];
-
-const buttons = [
-  {
-    cardName: 'Etablissement de santé',
-    key: 'health_institution',
-    icon: () => (
-      <GiHealthNormal
-        className="details__card__main__display__cadres__icon"
-        color="green"
-        size="2.6rem"
-      />
-    ),
-  },
-  {
-    cardName: 'Personnel de santé',
-    key: 'personal_health',
-    icon: () => (
-      <GiHealing
-        className="details__card__main__display__cadres__icon"
-        color="green"
-        size="2.6rem"
-      />
-    ),
-  },
-  {
-    cardName: 'Commerces',
-    key: 'commerce',
-    icon: () => (
-      <GiShop
-        className="details__card__main__display__cadres__icon"
-        color="green"
-        size="2.6rem"
-      />
-    ),
-  },
-  {
-    cardName: 'Ecoles',
-    key: 'schools',
-    icon: () => (
-      <IoSchool
-        className="details__card__main__display__cadres__icon"
-        color="green"
-        size="2.6rem"
-      />
-    ),
-  },
-];
+const markers = [];
 
 // eslint-disable-next-line react/prop-types
 const Details = () => {
@@ -86,53 +38,92 @@ const Details = () => {
   const updateFromFavorite = cityStore((state) => state.updateFromFavorite);
   const user = userStore((state) => state.user);
   const setMarkers = mapStore((state) => state.setMarkers);
+  const markersStore = mapStore((state) => state.markers);
   const setMapCenter = mapStore((state) => state.setMapCenter);
   const setMapZoom = mapStore((state) => state.setMapZoom);
   const [loading, setLoading] = useState(true);
   const [cards, setCards] = useState(initialCardsState);
   const { isMobile, isTablet } = useWindowSize();
 
-  const handleCards = (name) => {
-    setCards((state) => {
-      const data = city[name];
-      // eslint-disable-next-line no-restricted-syntax
-      if (!markers.length) {
-        markers.push({
-          name: city.city_name,
-          type: 'city',
-          coords: [city.coordinates.x, city.coordinates.y],
-          key: 'city',
-        });
-      }
-      if (!state[name] === true) {
-        const newData =
-          data !== null
-            ? [...data].map((marker) => {
-                const coords = marker.coordinates
-                  .slice(1, -1)
-                  .split(',')
-                  .map((val) => +val);
-                return {
-                  type: marker.type,
-                  name: marker.name,
-                  coords,
-                  key: name,
-                };
-              })
-            : [];
-        markers = [...markers, ...newData];
-      } else {
-        markers = markers.filter((marker) => marker.key !== name);
-      }
-      setMarkers(markers);
-      // if (markers.length)
-      //   setMapCenter(markers[0].coords[0], markers[0].coords[1]);
-      return {
-        ...state,
-        [name]: !state[name],
-      };
-    });
-  };
+  // const handleCards = (name) => {
+  //   if (!city[name]) return;
+  //   // setCards((state) => {
+  //   //   const data = city[name];
+  //   //   // eslint-disable-next-line no-restricted-syntax
+  //   //   if (!markers.length) {
+  //   //     markers = markersStore.map((marker) => ({
+  //   //       ...marker,
+  //   //       key: marker.name,
+  //   //     }));
+  //   //   }
+  //   //   if (!state[name] === true) {
+  //   //     const newData =
+  //   //       data !== null
+  //   //         ? [...data].map((marker) => {
+  //   //             const coords = marker.coordinates
+  //   //               .slice(1, -1)
+  //   //               .split(',')
+  //   //               .map((val) => +val);
+  //   //             return {
+  //   //               type: marker.type || marker.categorie || marker.profession,
+  //   //               name: marker.name,
+  //   //               coords,
+  //   //               key: name,
+  //   //             };
+  //   //           })
+  //   //         : [];
+  //   //     markers = [...markers, ...newData];
+  //   //   } else {
+  //   //     markers = markers.filter((marker) => marker.key !== name);
+  //   //   }
+  //   //   setMarkers(markers);
+  //   //   // if (markers.length)
+  //   //   //   setMapCenter(markers[0].coords[0], markers[0].coords[1]);
+  //   //   return {
+  //   //     ...state,
+  //   //     [name]: !state[name],
+  //   //   };
+  //   // });
+  //   setCards((state) => {
+  //     const data = city[name];
+  //     const hiddenLength = markers.filter((marker) => marker.hidden).length;
+  //     if (!hiddenLength) {
+  //       //
+  //     }
+  //     if (!state[name] === true) {
+  //       const newData =
+  //         data !== null
+  //           ? [...data].map((marker) => {
+  //               const coords = marker.coordinates
+  //                 .slice(1, -1)
+  //                 .split(',')
+  //                 .map((val) => +val);
+  //               return {
+  //                 type: marker.type || marker.categorie || marker.profession,
+  //                 name: marker.name,
+  //                 coords,
+  //                 key: name,
+  //                 hidden: true,
+  //               };
+  //             })
+  //           : [];
+  //       markers = [...markers, ...newData];
+  //     } else {
+  //       markers = markers.map((marker) => {
+  //         if (marker.key === name) {
+  //           marker.hidden = false;
+  //         }
+  //         return marker;
+  //       });
+  //     }
+
+  //     return {
+  //       ...state,
+  //       [name]: !state[name],
+  //     };
+  //   });
+  //   setMarkers(markers);
+  // };
 
   const showBan = () => {
     if (city.is_favorite === false) {
@@ -203,8 +194,38 @@ const Details = () => {
                 };
               })
             : [];
+        const schoolsMarkers =
+          data.schools !== null
+            ? [...data.schools].map((schools) => {
+                const coords = schools.coordinates
+                  .slice(1, -1)
+                  .split(',')
+                  .map((val) => +val);
+                return {
+                  type: 'Ecole',
+                  name: schools.name,
+                  coords,
+                };
+              })
+            : [];
+        const healthInstitutionMarkers =
+          data.health_institution !== null
+            ? [...data.health_institution].map((healthInstitution) => {
+                const coords = healthInstitution.coordinates
+                  .slice(1, -1)
+                  .split(',')
+                  .map((val) => +val);
+                return {
+                  type: 'healthInstitution',
+                  name: healthInstitution.categorie,
+                  coords,
+                };
+              })
+            : [];
         setMarkers([
           ...commerceMarkers,
+          ...schoolsMarkers,
+          ...healthInstitutionMarkers,
           {
             name: data.city_name,
             type: 'city',
@@ -295,29 +316,109 @@ const Details = () => {
             <ul className="details__card__main__ul">
               <li className="details__card__main__li">
                 <span className="details__card__main__li__infos">
-                  <DropdownEtablissement />
+                  <DropdownEtablissement data={city.health_institution} />
                 </span>
               </li>
               <li className="details__card__main__li">
                 <span className="details__card__main__li__infos">
-                  <DropdownPersonnel />
+                  <DropdownPersonnel data={city.personal_health} />
                 </span>
               </li>
               <li className="details__card__main__li">
                 <span className="details__card__main__li__infos">
-                  <DropdownShop />
+                  <DropdownShop data={city.commerce} />
                 </span>
               </li>
               <li className="details__card__main__li">
                 <span className="details__card__main__li__infos">
-                  <DropdownSchool />
+                  <DropdownSchool data={city.schools} />
                 </span>
               </li>
             </ul>
           </div>
         ) : (
           <div className="details__card__main__display">
-            {buttons.map((btn) => (
+            <div
+              className={`details__card__main__display__parent ${
+                !city.health_institution ? 'disabled' : ''
+              } ${cards.health_institution ? 'active' : ''}`}
+              // onClick={() => handleCards('health_institution')}
+            >
+              <div className="details__card__main__display__cadres">
+                <GiHealthNormal
+                  className="details__card__main__display__cadres__icon"
+                  color="green"
+                  size="2.6rem"
+                />
+                <span className="details__card__main__display__cadres__text">
+                  {city.health_institution
+                    ? `${city.health_institution.length} `
+                    : ''}
+                  Etablissement
+                  {city.health_institution && city.health_institution.length > 1
+                    ? `s`
+                    : ''}{' '}
+                  de santé
+                </span>
+              </div>
+            </div>
+            <div
+              className={`details__card__main__display__parent ${
+                !city.personal_health ? 'disabled' : ''
+              } ${cards.personal_health ? 'active' : ''}`}
+              // onClick={() => handleCards('personal_health')}
+            >
+              <div className="details__card__main__display__cadres">
+                <GiHealing
+                  className="details__card__main__display__cadres__icon"
+                  color="green"
+                  size="2.6rem"
+                />
+                <span className="details__card__main__display__cadres__text">
+                  {city.personal_health
+                    ? `${city.personal_health.length} `
+                    : ''}
+                  Personnel de santé
+                </span>
+              </div>
+            </div>
+            <div
+              className={`details__card__main__display__parent ${
+                !city.commerce ? 'disabled' : ''
+              } ${cards.commerce ? 'active' : ''}`}
+              // onClick={() => handleCards('commerce')}
+            >
+              <div className="details__card__main__display__cadres">
+                <GiShop
+                  className="details__card__main__display__cadres__icon"
+                  color="green"
+                  size="2.6rem"
+                />
+                <span className="details__card__main__display__cadres__text">
+                  {city.commerce ? `${city.commerce.length} ` : ''}Commerce
+                  {city.commerce && city.commerce.length > 1 ? `s` : ''}
+                </span>
+              </div>
+            </div>
+            <div
+              className={`details__card__main__display__parent ${
+                !city.schools ? 'disabled' : ''
+              } ${cards.schools ? 'active' : ''}`}
+              // onClick={() => handleCards('schools')}
+            >
+              <div className="details__card__main__display__cadres">
+                <IoSchool
+                  className="details__card__main__display__cadres__icon"
+                  color="green"
+                  size="2.6rem"
+                />
+                <span className="details__card__main__display__cadres__text">
+                  {city.schools ? `${city.schools.length} ` : ''}Ecole
+                  {city.schools && city.schools.length > 1 ? `s` : ''}
+                </span>
+              </div>
+            </div>
+            {/* {buttons.map(btn => (
               <Card
                 key={btn.key}
                 cardName={btn.cardName}
@@ -327,7 +428,7 @@ const Details = () => {
               >
                 {btn.icon()}
               </Card>
-            ))}
+            ))} */}
           </div>
         )}
       </div>
