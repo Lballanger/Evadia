@@ -256,22 +256,23 @@ const Details = () => {
     <div className="details__container">
       <div className="details__new__search" style={{ display: 'flex' }}>
         <Dropdown />
-
-        <button
-          type="button"
-          onClick={() => setShowMap(true)}
-          style={{
-            backgroundColor: '#38bd98',
-            textAlign: 'center',
-            borderRadius: '0.5rem',
-            padding: '0.5rem 1rem',
-            border: 'none',
-            cursor: 'pointer',
-            alignSelf: 'flex-start',
-          }}
-        >
-          <IoMapOutline color="#fff" size="20px" />
-        </button>
+        {isMobile ? (
+          <button
+            type="button"
+            onClick={() => setShowMap(true)}
+            style={{
+              backgroundColor: '#38bd98',
+              textAlign: 'center',
+              borderRadius: '0.5rem',
+              padding: '0.5rem 1rem',
+              border: 'none',
+              cursor: 'pointer',
+              alignSelf: 'flex-start',
+            }}
+          >
+            <IoMapOutline color="#fff" size="20px" />
+          </button>
+        ) : null}
       </div>
 
       <div className="details__card">
