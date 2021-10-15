@@ -212,7 +212,7 @@
         display: inline-block;
         outline: none;
         border: none;
-        box-shadow: 4px 7px #1f5f35;
+        box-shadow: 0px 7px #1f5f35;
         &__button {
           width: 20%;
           color: inherit;
@@ -224,7 +224,7 @@
       }
 
       &__link:hover {
-        box-shadow: 3px 3px #7e611f;
+        box-shadow: 0px 3px #7e611f;
         background: linear-gradient(145deg, #ffe459, #95880e);
         top: 3px;
         color: black;
@@ -336,8 +336,8 @@
 
   &__close {
     position: absolute;
-    top: 1.15rem;
-    right: 1.1rem;
+    top: 1.12rem;
+    right: 1.12rem;
     background: #987731;
     border: none;
     cursor: pointer;
