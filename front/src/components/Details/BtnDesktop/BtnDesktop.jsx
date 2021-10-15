@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useRef } from 'react';
@@ -61,7 +62,11 @@ const BtnDesktop = () => {
             type="button"
             title="Retour aux critères"
           >
-            <a className="btn__desktop__details__active" href="/criteria">
+            <a
+              className="btn__desktop__details__active"
+              href="#"
+              onClick={() => history.push('/criteria')}
+            >
               <IconContext.Provider value={{ color: 'white', size: '1.5rem' }}>
                 <IoSwapHorizontalOutline />
               </IconContext.Provider>
