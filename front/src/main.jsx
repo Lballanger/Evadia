@@ -4,6 +4,7 @@ import { QueryClientProvider, setLogger } from 'react-query';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import clientQuery from './hooks';
+import ScrollToTop from './hooks/useScrollTop';
 
 import App from './components/App';
 
@@ -15,6 +16,7 @@ setLogger({
 
 ReactDOM.render(
   <Router>
+    <ScrollToTop />
     <React.StrictMode>
       <QueryClientProvider client={clientQuery}>
         <Toaster position="bottom-center" />
