@@ -101,15 +101,19 @@
         text-align: center;
         width: 100%;
 
-        background: linear-gradient(to left, rgb(255, 255, 255) 50%, rgb(158, 219, 255) 50%);
+        background: linear-gradient(
+          to left,
+          rgb(255, 255, 255) 50%,
+          rgb(158, 219, 255) 50%
+        );
         background-size: 200% 100%;
         background-position: right bottom;
         transition: all 0.7s ease;
 
         &:hover {
           background-position: left bottom;
-          transform: scale(1.07);
-          cursor: pointer;
+          // transform: scale(1.07);
+          // cursor: pointer;
         }
 
         &__icon {

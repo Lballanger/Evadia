@@ -6,7 +6,7 @@
     border-bottom: 2px black solid;
     // padding-bottom: 4%;
     // padding-top: 4%;
-    background: #efefef;
+    background: rgb(7, 180, 180);
     width: 100%;
     // background: rgb(72, 196, 236);
     // background: linear-gradient(90deg, rgba(72, 196, 236, 1) 0%, rgba(67, 48, 189, 1) 100%);
@@ -21,10 +21,11 @@
       cursor: pointer;
       padding: 1rem;
       width: 100%;
+      color: white;
     }
 
     &__details__btn:hover {
-      background-color: rgb(219, 219, 219);
+      background-color: rgb(7, 146, 146);
       // border-radius: 20%;
     }
   }
