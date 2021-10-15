@@ -45,13 +45,13 @@ const Inscription = () => {
       /^.*(?=.{6,120})(?!.*\s)(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\!\@\#\$\%\^\&\*\(\)\-\=\¡\£\_\+\`\~\.\,\<\>\/\?\;\:\'\"\\\|\[\]\{\}]).*$/;
     switch (event.target.name) {
       case 'firstname':
-        if (event.target.value.trim().length < 2)
+        if (event.target.value.trim().length < 1)
           errorsObj.firstname =
             'Votre prénom doit avoir au minimum 2 caractères';
         else if (errorsObj.firstname) delete errorsObj.firstname;
         break;
       case 'lastname':
-        if (event.target.value.trim().length < 2)
+        if (event.target.value.trim().length < 1)
           errorsObj.lastname = 'Votre nom doit avoir au minimum 2 caractères';
         else if (errorsObj.lastname) delete errorsObj.lastname;
         break;

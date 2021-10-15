@@ -10,7 +10,7 @@
     margin-top: 6rem;
     margin-bottom: 3rem;
     text-align: center;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
   }
 
   &__logo {
@@ -39,7 +39,7 @@
         text-align: left;
         max-width: 80%;
         font-size: 1.5rem;
-        text-shadow: 1px 1px 40px;
+        // text-shadow: 1px 1px 40px;
         width: 22rem;
       }
     }
@@ -69,34 +69,34 @@
   }
 
   &__form-group-button {
-  margin: 1rem auto;
-  justify-content: center;
-  align-items: center;
-  padding: 0.8rem 1.1rem;
-  border: none;
-  border-radius: 20px;
-  font-weight: 600;
-  color: #fff;
-  background: #04aa6d;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  position: relative;
-  display: block;
-  outline: none;
-  border: none;
-  box-shadow: 0 5px #1f5f35;
+    margin: 1rem auto;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 1.1rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #fff;
+    background: #04aa6d;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    display: block;
+    outline: none;
+    border: none;
+    box-shadow: 0 5px #1f5f35;
 
     &:hover {
-  box-shadow: 0 3px #1f5f35;
-  background-color: darkcyan;
-  top: 1px;
+      box-shadow: 0 3px #1f5f35;
+      background-color: darkcyan;
+      top: 1px;
     }
 
     &__form-group-button:active {
-    box-shadow: 0 0 #57cc99;
-    top: 5px;
+      box-shadow: 0 0 #57cc99;
+      top: 5px;
     }
 
     &:disabled {
@@ -107,7 +107,6 @@
         box-shadow: 0 5px #1f5f35;
         top: 0;
       }
-      
     }
   }
 
