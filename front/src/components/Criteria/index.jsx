@@ -6,6 +6,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MultiSelect } from 'react-multi-select-component';
 import { IoLockClosed } from 'react-icons/io5';
+import toast from 'react-hot-toast';
 import API from '../../api';
 import cityStore from '../../store/city';
 import mapStore from '../../store/map';
@@ -132,6 +133,10 @@ const Criteria = () => {
       }
       setIsLoading(true);
       const { data } = await API.getCityWithCriteria(items);
+      if (!data.length) {
+        toast.error('Aucune commune trouvée');
+        return;
+      }
       setCities(data);
       const cityMarkers = data.map((city) => ({
         name: city.city_name,

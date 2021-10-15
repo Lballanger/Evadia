@@ -48,7 +48,7 @@ const Results = () => {
         </div>
 
         {cities.map((city) => (
-          <Link to={`/details/${city.code_insee}`}>
+          <Link key={city.code_insee} to={`/details/${city.code_insee}`}>
             <div className="result">
               <img
                 className="picture"
