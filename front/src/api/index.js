@@ -5,7 +5,7 @@ import axios from 'axios';
 const LOCAL_REFRESH_KEY = 'ON_DEMENAGE:REFRESH_TOKEN';
 
 const instance = axios.create({
-  baseURL: 'http://lballanger.fr/api',
+  baseURL: 'http://lballanger.fr/evadia/api',
   headers: {
     'Content-Type': 'application/json',
   },
